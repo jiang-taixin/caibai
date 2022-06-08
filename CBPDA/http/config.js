@@ -1,0 +1,1 @@
+export const API_BASE = 'http://plm4.kmtsolution.com/cb-scm-api/api';

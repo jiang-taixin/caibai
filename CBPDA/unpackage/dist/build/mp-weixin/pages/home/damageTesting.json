@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "有损检验",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u--text": "/uni_modules/uview-ui/components/u--text/u--text",
+    "u--input": "/uni_modules/uview-ui/components/u--input/u--input",
+    "u-row": "/uni_modules/uview-ui/components/u-row/u-row",
+    "u-col": "/uni_modules/uview-ui/components/u-col/u-col",
+    "uni-datetime-picker": "/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker",
+    "uni-data-select": "/uni_modules/uni-data-select/components/uni-data-select/uni-data-select",
+    "c-table": "/components/c-table/c-table",
+    "u-button": "/uni_modules/uview-ui/components/u-button/u-button"
+  }
+}

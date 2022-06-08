@@ -1,0 +1,1 @@
+<view id="{{id}}" data="{{data}}" change:data="{{vxeTableModule.updateData}}" class="data-v-d826ae80"></view>

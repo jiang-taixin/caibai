@@ -1,0 +1,16 @@
+{
+  "navigationBarTitleText": "拣货实施",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "uni-table": "/uni_modules/uni-table/components/uni-table/uni-table",
+    "uni-tr": "/uni_modules/uni-table/components/uni-tr/uni-tr",
+    "uni-th": "/uni_modules/uni-table/components/uni-th/uni-th",
+    "uni-td": "/uni_modules/uni-table/components/uni-td/uni-td",
+    "zb-dropdown": "/uni_modules/zb-dropdown/components/zb-dropdown/zb-dropdown",
+    "uni-easyinput": "/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput",
+    "u-button": "/uni_modules/uview-ui/components/u-button/u-button",
+    "u-row": "/uni_modules/uview-ui/components/u-row/u-row",
+    "u-col": "/uni_modules/uview-ui/components/u-col/u-col",
+    "u--text": "/uni_modules/uview-ui/components/u--text/u--text"
+  }
+}
