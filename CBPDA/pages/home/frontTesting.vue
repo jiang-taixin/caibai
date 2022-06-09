@@ -50,22 +50,6 @@
 		<u-row>
 			<u-col span="6">
 				<div class="col-layout">
-					<u--text type="primary" class="desc-text" text="无损件数"></u--text>
-					<u--input v-model="undamagedNum" border="surround" disabled=true>
-					</u--input>
-				</div>
-			</u-col>
-			<u-col span="6">
-				<div class="col-layout">
-					<u--text type="primary" class="desc-text" text="有损件数"></u--text>
-					<u--input v-model="damageNum" border="surround" disabled=true>
-					</u--input>
-				</div>
-			</u-col>
-		</u-row>
-		<u-row>
-			<u-col span="6">
-				<div class="col-layout">
 					<u--text type="primary" class="desc-text" text="款号"></u--text>
 					<u--input v-model="modelNum" border="surround" disabled=true>
 					</u--input>
@@ -90,8 +74,8 @@
 			<u-col span="6">
 				<div class="col-layout">
 
-					<u--text type="primary" class="desc-text-edit" text="出货件数"></u--text>
-					<u--input border="surround" type="number" clearable>
+					<u--text type="primary" class="desc-text" text="出货件数"></u--text>
+					<u--input border="surround" type="number" disabled=true>
 					</u--input>
 
 				</div>
@@ -100,7 +84,23 @@
 		<u-row>
 			<u-col span="6">
 				<div class="col-layout">
-					<u--text type="primary" class="desc-text-edit" text="出货克重"></u--text>
+					<u--text type="primary" class="desc-text" text="出货克重"></u--text>
+					<u--input border="surround" disabled=true>
+					</u--input>
+				</div>
+			</u-col>
+			<u-col span="6">
+				<div class="col-layout">
+					<u--text type="primary" class="desc-text" text="质检数量"></u--text>
+					<u--input border="surround" disabled=true>
+					</u--input>
+				</div>
+			</u-col>
+		</u-row>
+		<u-row>
+			<u-col span="6">
+				<div class="col-layout">
+					<u--text type="primary" class="desc-text-edit" text="质检克重"></u--text>
 					<u--input border="surround" clearable>
 					</u--input>
 				</div>
@@ -109,7 +109,6 @@
 				
 			</u-col>
 		</u-row>
-		
 		<uni-table border stripe emptyText="暂无更多数据" style="margin-left: 5px;margin-right: 5px;">
 			<!-- 表头行 -->
 			<uni-tr>

@@ -53,6 +53,15 @@
             
         }
 		,{
+            "path" : "pages/home/frontTesting",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "入库前质检",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+		,{
 		    "path" : "pages/home/damageTesting",
 		    "style" :                                                                                    
 		    {
@@ -63,6 +72,15 @@
 		}
         ,{
             "path" : "pages/home/pickingManagement",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "逐条拣货配货",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+		,{
+            "path" : "pages/home/picking/picking",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "逐条拣货配货",
@@ -84,16 +102,6 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "送检管理",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        
-        ,{
-            "path" : "pages/home/picking/picking",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "逐条拣货配货",
                 "enablePullDownRefresh": false
             }
             

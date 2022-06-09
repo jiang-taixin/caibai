@@ -194,7 +194,6 @@
 				this.selectAngecy = e;
 			},
 			changeDate(e) {
-
 				this.inspectionTime = e;
 				console.log("change date :", this.inspectionTime);
 			},
@@ -207,7 +206,6 @@
 						checkWeight: ""
 					});
 				}
-
 			},
 			del(index) {
 				this.tableData.splice(index, 1);
@@ -217,14 +215,12 @@
 					url: `/spotcheck/querySpotCheckByCode?barCode=${this.codeNumber}`,
 					method: 'get'
 				};
-
 				uni.showLoading({
 					title: '加载中...'
 				});
 				http.httpRequest(opts, null).then((res) => {
 					uni.hideLoading();
 					if (res.data.code === "200") {
-						console.log("********response:",res),
 						this.receiveData = res.data.data;
 						this.SOU = "SOU";
 						this.damageNum = res.data.data.checkNumber;
