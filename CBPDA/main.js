@@ -8,8 +8,11 @@ import uView from '@/uni_modules/uview-ui'
 Vue.use(uView)
 
 import myRequest from './http/http.js'
-
 Vue.prototype.$http = myRequest
+import {angecy,reason,category} from './common/js/common.js'
+Vue.prototype.angecy = angecy
+Vue.prototype.reason = reason
+Vue.prototype.category = category
 
 const app = new Vue({
 	...App

@@ -3,7 +3,7 @@
 		<div class="divContainer">
 			<u-row justify="space-between" gutter="1">
 				<u-col span="9">
-					<u--text type="primary" class="desc-text-edit" text="扫码" color="black"></u--text>
+					<u--text type="primary" class="desc-text-edit" text="扫码"></u--text>
 					<u--input v-model="codeNumber" placeholder="扫码或填写包码" border="surround" clearable>
 					</u--input>
 				</u-col>
@@ -115,15 +115,6 @@
 				damageNum: 0, //有损检测件数
 				inspectionTime: "", //送检时间
 				selectAngecy: 0, //送检机构
-				angecy: [{
-						value: 0,
-						text: "首检"
-					},
-					{
-						value: 1,
-						text: "国检"
-					},
-				],
 				tableData: [],
 				receiveData: {},
 			}
@@ -131,6 +122,9 @@
 		mounted() {
 			//页面加载完成之后的操作
 			this.qualityInspector = "当前用户";
+			var myDate = new Date();
+			var time = myDate.toLocaleDateString().split('/').join('-');
+			this.inspectionTime = time;
 		},
 		methods: {
 			startSearch() {
@@ -235,49 +229,5 @@
 </script>
 
 <style>
-	.divContainer {
-		margin-top: 10px;
-		margin-left: 10px;
-		margin-right: 10px;
-	}
-
-	.col-layout {
-		width: 90%;
-		height: 60px;
-		margin-left: 5%;
-		margin-top: 10px;
-	}
-
-	.desc-text {
-		background-color: #e1a7a0;
-	}
-
-	.desc-text-edit {
-		background-color: #3ec6c7;
-	}
-
-	.table-layout {
-		/*margin-left: 5%;*/
-		margin-top: 10px;
-	}
-
-	.table-th {
-		width: 100;
-	}
-
-	.c-column {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.c-filling {
-		height: 200px;
-		flex-grow: 1;
-		margin-top: 10px;
-	}
-
-	.c-row {
-		display: flex;
-		flex-direction: row;
-	}
+	
 </style>

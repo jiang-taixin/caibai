@@ -5,11 +5,12 @@
     "pages/mine/mine",
     "pages/spare/spare",
     "pages/home/qualityTesting",
+    "pages/home/frontTesting",
     "pages/home/damageTesting",
     "pages/home/pickingManagement",
+    "pages/home/picking/picking",
     "pages/home/wholeOrderDistribution",
-    "pages/home/submissionManagement",
-    "pages/home/picking/picking"
+    "pages/home/submissionManagement"
   ],
   "subPackages": [],
   "window": {

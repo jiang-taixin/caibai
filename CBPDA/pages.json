@@ -47,7 +47,7 @@
             "path" : "pages/home/qualityTesting",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "产品质量检验",
+                "navigationBarTitleText": "初检信息录入",
                 "enablePullDownRefresh": false
             }
             

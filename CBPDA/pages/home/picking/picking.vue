@@ -3,8 +3,9 @@
 		<div class="divContainer">
 			<u-row justify="space-between" gutter="1">
 				<u-col span="9">
-					<u--text type="primary" class="desc-text-edit" text="配货单" color="black"></u--text>
-					<u--input v-model="codeNumber" placeholder="扫描或输入配货单" border="surround" clearable> </u--input>
+					<u--text type="primary" class="desc-text-edit" text="配货单"></u--text>
+					<u--input v-model="codeNumber" placeholder="扫描或输入配货单" border="surround" clearable>
+					</u--input>
 				</u-col>
 				<u-col span="1">
 					<view>
@@ -24,89 +25,123 @@
 			<u--text type="primary" class="desc-text-edit" text="P/S/W"></u--text>
 			<u-row justify="space-between" gutter="1">
 				<u-col span="4">
-					<u--input v-model="department" placeholder="" border="surround" disabled=true>
+					<u--input v-model="department" border="surround" disabled=true>
 					</u--input>
 				</u-col>
 				<u-col span="4">
-					<u--input v-model="warehouse" placeholder="" border="surround" clearable>
+					<u--input v-model="warehouse" border="surround" clearable>
 					</u--input>
 				</u-col>
 				<u-col span="4">
-					<u--input v-model="number" placeholder="" border="surround" disabled=true>
+					<u--input v-model="number" border="surround" disabled=true>
 					</u--input>
 				</u-col>
 			</u-row>
 		</div>
 		<div class="divContainer">
 			<u--text type="primary" class="desc-text" text="推荐仓位"></u--text>
-			<u-row customStyle="margin-bottom: 10px">
+			<u-row>
 				<u-col span="6">
-					<u--input v-model="" placeholder="" border="surround" disabled=true>
+					<u--input v-model="recommend" placeholder="" border="surround" disabled=true>
 					</u--input>
 				</u-col>
 				<u-col span="6">
-					<u--input placeholder="" border="surround" disabled=true>
+					<u--input v-model="steps" placeholder="" border="surround" disabled=true>
 					</u--input>
 				</u-col>
 			</u-row>
 		</div>
-		<div class="divContainer">
-			<u-row>
-				<u-col span="6">
-					<div class="col-layout">
-						<u--text type="primary" class="desc-text" text="款号"></u--text>
-						<u--input v-model="qualityInspector" border="surround" disabled=true>
-						</u--input>
+		<u-row>
+			<u-col span="6">
+				<div class="col-layout">
+					<u--text type="primary" class="desc-text" text="款号"></u--text>
+					<u--input v-model="modelNum" border="surround" disabled=true>
+					</u--input>
+				</div>
+			</u-col>
+			<u-col span="6">
+				<div class="col-layout">
+					<u--text type="primary" class="desc-text" text="名称"></u--text>
+					<u--input v-model="name" border="surround" disabled=true>
+					</u--input>
+				</div>
+
+			</u-col>
+		</u-row>
+		<u-row>
+			<u-col span="6">
+				<div class="col-layout">
+					<u--text type="primary" class="desc-text" text="分配数量"></u--text>
+					<u--input v-model="distributeNum" border="surround" disabled=true>
+					</u--input>
+				</div>
+			</u-col>
+			<u-col span="6">
+				<div class="col-layout">
+					<u--text type="primary" class="desc-text" text="SOU"></u--text>
+					<u--input v-model="SOU" border="surround" disabled=true>
+					</u--input>
+				</div>
+			</u-col>
+		</u-row>
+		<u-row>
+			<u-col span="6">
+				<div class="col-layout">
+					<u--text type="primary" class="desc-text" text="合计数量"></u--text>
+					<u--input v-model="totalNum" border="surround" disabled=true>
+					</u--input>
+				</div>
+			</u-col>
+			<u-col span="6">
+				<div class="col-layout">
+					<u--text type="primary" class="desc-text-edit" text="扫码输入"></u--text>
+					<u--input v-model="inputNum" border="surround" clearable>
+					</u--input>
+				</div>
+
+			</u-col>
+		</u-row>
+		<uni-list class="custom-list">
+			<uni-list-item clickable="true" style="font-size: 13px;" direction="column" v-for="(item, index) in tableData" @click="clickItem">
+				<template v-slot:body>
+					<div style="width: 100%;display:inline-block" >
+						<u--text text="标签名称:" size=13 style="float:left;width: 70px;"></u--text>
+						<u--text v-text="item.tagName" size=13 style="float:left;width: 150px;"></u--text>
 					</div>
-				</u-col>
-				<u-col span="6">
-					<div class="col-layout">
-						<u--text type="primary" class="desc-text" text="名称"></u--text>
-						<u--input v-model="supplier" border="surround" disabled=true>
-						</u--input>
+					<div style="width: 100%;display:inline-block" >
+						<u--text text="商品条码:" size=13 style="float:left;width: 70px;"></u--text>
+						<u--text v-text="item.barCode" size=13 style="float:left;width: 150px;"></u--text>
 					</div>
-			
-				</u-col>
-			</u-row>
-		</div>
-		<div class="divContainer">
-			<u-row>
-				<u-col span="6">
-					<div class="col-layout">
-						<u--text type="primary" class="desc-text" text="分配数量"></u--text>
-						<u--input v-model="qualityInspector" border="surround" disabled=true>
-						</u--input>
+					<div style="width: 100%;display:inline-block" >
+						<u--text text="商品包码:" size=13 style="float:left;width: 70px;"></u--text>
+						<u--text v-text="item.packageCode" size=13 style="float:left;width: 150px;"></u--text>
 					</div>
-				</u-col>
-				<u-col span="6">
-					<div class="col-layout">
-						<u--text type="primary" class="desc-text" text="SOU"></u--text>
-						<u--input v-model="supplier" border="surround" disabled=true>
-						</u--input>
+					<div style="width: 100%;display:inline-block" >
+						<u--text text="数量/克重:" size=13 style="float:left;width: 70px;"></u--text>
+						<u--text v-text="item.mainNum" size=13 style="float:left;width: 150px;"></u--text>
 					</div>
-			
-				</u-col>
-			</u-row>
-		</div>
-		<div class="divContainer">
-			<u-row>
-				<u-col span="6">
-					<div class="col-layout">
-						<u--text type="primary" class="desc-text" text="合计数量"></u--text>
-						<u--input v-model="qualityInspector" border="surround" disabled=true>
-						</u--input>
+					<div style="width: 100%;display:inline-block" >
+						<u--text text="次要数量:" size=13 style="float:left;width: 70px;"></u--text>
+						<u--text v-text="item.secondaryNum" size=13 style="float:left;width: 220px;background-color: blue;"></u--text>
 					</div>
-				</u-col>
-				<u-col span="6">
-					<div class="col-layout">
-						<u--text type="primary" class="desc-text-edit" text="扫码输入"></u--text>
-						<u--input v-model="supplier" border="surround">
-						</u--input>
+					<div style="width: 100%;display:inline-block" >
+						<u--text text="仓位:" size=13 style="float:left;width: 70px;"></u--text>
+						<u--text v-text="item.location" size=13 style="float:left;width: 200px;"></u--text>
 					</div>
-			
-				</u-col>
-			</u-row>
-		</div>
+					<div style="width: 100%;display:inline-block" >
+						<u--text text="物料名称:" size=13 style="float:left;width: 70px;"></u--text>
+						<u--text v-text="item.location" size=13 style="float:left;width: 200px;"></u--text>
+					</div>
+					<div style="width: 100%;display:inline-block" >
+						<u--text text="款号:" size=13 style="float:left;width: 70px;"></u--text>
+						<u--text v-text="item.location" size=13 style="float:left;width: 200px;"></u--text>
+					</div>
+				</template>
+			</uni-list-item>
+		</uni-list>
+		<u-button type="primary" @click="commit" text="提交"
+			style="width: 80%;margin-left: 10%;margin-top: 30px;"></u-button>
+		<u-toast ref="uToast" />
 	</view>
 </template>
 
@@ -114,7 +149,41 @@
 	export default {
 		data() {
 			return {
-
+				codeNumber: "", //条形码或二维码
+				department: "", //传入的发货部门
+				warehouse: "", //传入的发货库位
+				number: "", //
+				recommend: "", //推荐库位
+				steps: "", //进度步数
+				modelNum: "", //款号
+				name: "", //名称
+				distributeNum: "", //分配数量
+				SOU: "", //SOU
+				totalNum: "", //合计数量
+				inputNum: "", //扫码输入号码
+				tableData:[
+					{tagName:"tag1",
+					barCode:"1111111111111111111111",
+					packageCode:"PACK123434556665555",
+					mainNum:"120/50",
+					secondaryNum:"100",
+					location:"ABV1111"
+					},
+					{tagName:"tag123",
+					barCode:"33212111111111111111",
+					packageCode:"PACK1232332226665555",
+					mainNum:"10/50",
+					secondaryNum:"80",
+					location:"ABV2222"
+					},
+					{tagName:"tag3",
+					barCode:"33333333333333333333",
+					packageCode:"PACK444444444444444444444",
+					mainNum:"110/80",
+					secondaryNum:"90",
+					location:"ABV3333"
+					}
+				],
 			}
 		},
 		onLoad: function(option) {
@@ -122,55 +191,13 @@
 			console.log(option.date);
 		},
 		methods: {
-
+			clickItem(e){
+				console.log("click item :",e);
+			},
 		}
 	}
 </script>
 
 <style>
-	.divContainer {
-		margin-top: 10px;
-		margin-left: 10px;
-		margin-right: 10px;
-	}
 
-	.col-layout {
-		width: 90%;
-		height: 60px;
-		margin-left: 5%;
-		margin-top: 10px;
-	}
-
-	.desc-text {
-		background-color: #e1a7a0;
-	}
-
-	.desc-text-edit {
-		background-color: #3ec6c7;
-	}
-
-	.table-layout {
-		/*margin-left: 5%;*/
-		margin-top: 10px;
-	}
-
-	.table-th {
-		width: 100;
-	}
-
-	.c-column {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.c-filling {
-		height: 200px;
-		flex-grow: 1;
-		margin-top: 10px;
-	}
-
-	.c-row {
-		display: flex;
-		flex-direction: row;
-	}
 </style>

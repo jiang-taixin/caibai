@@ -1,19 +1,3 @@
 {
-    "id": "fui-swipe-action",
-    "name": "SwipeAction 滑动菜单 组件（fui-swipe-action）",
-    "version": "v1.0.0",
-    "description": "SwipeAction 滑动菜单，用于滑动操作的组件。  SwipeAction 提供了 fui-swipeaction-group 和 fui-swipe-action 两个组件来组合使用。",
-    "keywords": [
-        "SwipeAction",
-        "滑动菜单",
-        "组件",
-        "FirstUI",
-        "Nvue"
-    ],
-    "dcloudext": {
-        "category": [
-            "前端组件",
-            "通用组件"
-        ]
-    }
+    
 }

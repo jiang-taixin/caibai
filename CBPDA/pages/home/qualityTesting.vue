@@ -21,10 +21,7 @@
 				</u-col>
 			</u-row>
 		</div>
-		<div class="divContainer">
-			<u--text type="primary" class="desc-text-edit" text="质检类别"></u--text>
-			<uni-data-select v-model="selectCategory" :localdata="category" @change="changeCategory"></uni-data-select>
-		</div>
+		
 		<div class="divContainer">
 			<u--text type="primary" class="desc-text" text="前置单号"></u--text>
 			<u--input v-model="supplier" border="surround" disabled=true>
@@ -89,8 +86,7 @@
 			</u-col>
 			<u-col span="6">
 				<div class="col-layout">
-
-					<u--text type="primary" class="desc-text-edit" text="出货件数"></u--text>
+					<u--text type="primary" class="desc-text-edit" text="合格件数"></u--text>
 					<u--input border="surround" type="number" clearable>
 					</u--input>
 
@@ -100,7 +96,7 @@
 		<u-row>
 			<u-col span="6">
 				<div class="col-layout">
-					<u--text type="primary" class="desc-text-edit" text="出货克重"></u--text>
+					<u--text type="primary" class="desc-text-edit" text="合格克重"></u--text>
 					<u--input border="surround" clearable>
 					</u--input>
 				</div>
@@ -183,57 +179,6 @@
 				purchaseNum: "100", //采购件数
 				material: "贵金属", //贵金属材质
 				total: 0, //不合格总计
-				selectCategory: "", //质检类别
-				reason: [{ //不合格原因
-						value: 0,
-						text: "面残"
-					},
-					{
-						value: 1,
-						text: "变形"
-					},
-					{
-						value: 2,
-						text: "断开"
-					},
-					{
-						value: 3,
-						text: "氧化红斑"
-					},
-					{
-						value: 4,
-						text: "砂眼"
-					},
-					{
-						value: 5,
-						text: "花型不对称"
-					},
-					{
-						value: 6,
-						text: "无印记"
-					},
-					{
-						value: 7,
-						text: "印记不清"
-					},
-					{
-						value: 8,
-						text: "印记不符"
-					},
-					{
-						value: 9,
-						text: "克重不符"
-					},
-				],
-				category: [{ //质检类别
-						value: 0,
-						text: "商品"
-					},
-					{
-						value: 1,
-						text: "辅料"
-					},
-				],
 				tableData: [],
 			}
 
@@ -304,49 +249,5 @@
 </script>
 
 <style>
-	.divContainer {
-		margin-top: 10px;
-		margin-left: 10px;
-		margin-right: 10px;
-	}
-
-	.col-layout {
-		width: 90%;
-		height: 60px;
-		margin-left: 5%;
-		margin-top: 10px;
-	}
-
-	.desc-text {
-		background-color: #e1a7a0;
-	}
-
-	.desc-text-edit {
-		background-color: #3ec6c7;
-	}
-
-	.table-layout {
-		/*margin-left: 5%;*/
-		margin-top: 10px;
-	}
-
-	.table-th {
-		width: 100;
-	}
-
-	.c-column {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.c-filling {
-		height: 200px;
-		flex-grow: 1;
-		margin-top: 10px;
-	}
-
-	.c-row {
-		display: flex;
-		flex-direction: row;
-	}
+	
 </style>

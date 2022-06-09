@@ -17,4 +17,5 @@
 </style>
 <style lang="scss">
 	@import "@/uni_modules/uview-ui/index.scss";
+	@import url('./static/style/main.css');
 </style>

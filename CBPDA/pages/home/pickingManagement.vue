@@ -123,38 +123,5 @@
 </script>
 
 <style>
-	.divContainer {
-		margin-top: 10px;
-		margin-left: 10px;
-		margin-right: 10px;
-	}
-
-	.desc-text {
-		background-color: #e1a7a0;
-	}
-
-	.desc-text-edit {
-		background-color: #3ec6c7;
-	}
-	.col-layout {
-		width: 90%;
-		height: 60px;
-		margin-left: 5%;
-		margin-top: 10px;
-	}
-	.c-column {
-		display: flex;
-		flex-direction: column;
-	}
 	
-	.c-filling {
-		height: 200px;
-		flex-grow: 1;
-		margin-top: 10px;
-	}
-	
-	.c-row {
-		display: flex;
-		flex-direction: row;
-	}
 </style>
