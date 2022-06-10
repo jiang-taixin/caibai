@@ -39,51 +39,10 @@
 			</u-row>
 		</div>
 		<div class="divContainer">
-			<u--text type="primary" class="desc-text" text="推荐仓位" size=13></u--text>
-			<u-row>
-				<u-col span="6">
-					<u--input font-size=13 v-model="recommend" placeholder="" border="surround" disabled=true>
-					</u--input>
-				</u-col>
-				<u-col span="6">
-					<u--input font-size=13 v-model="steps" placeholder="" border="surround" disabled=true>
-					</u--input>
-				</u-col>
-			</u-row>
+			<u--text type="primary" class="desc-text" text="计划总数" size=13></u--text>
+			<u--input font-size=13 v-model="total" placeholder="" border="surround" disabled=true>
+			</u--input>
 		</div>
-		<u-row>
-			<u-col span="6">
-				<div class="col-layout">
-					<u--text type="primary" class="desc-text" text="款号" size=13></u--text>
-					<u--input font-size=13 v-model="modelNum" border="surround" disabled=true>
-					</u--input>
-				</div>
-			</u-col>
-			<u-col span="6">
-				<div class="col-layout">
-					<u--text type="primary" class="desc-text" text="名称" size=13></u--text>
-					<u--input font-size=13 v-model="name" border="surround" disabled=true>
-					</u--input>
-				</div>
-
-			</u-col>
-		</u-row>
-		<u-row>
-			<u-col span="6">
-				<div class="col-layout">
-					<u--text type="primary" class="desc-text" text="分配数量" size=13></u--text>
-					<u--input font-size=13 v-model="distributeNum" border="surround" disabled=true>
-					</u--input>
-				</div>
-			</u-col>
-			<u-col span="6">
-				<div class="col-layout">
-					<u--text type="primary" class="desc-text" text="SOU" size=13></u--text>
-					<u--input font-size=13 v-model="SOU" border="surround" disabled=true>
-					</u--input>
-				</div>
-			</u-col>
-		</u-row>
 		<u-row>
 			<u-col span="6">
 				<div class="col-layout">
@@ -108,10 +67,11 @@
 			<uni-list-item clickable="true" style="font-size: 13px;" direction="column" v-for="(item, index) in tableData" @click="clickItem(index)">
 				<template v-slot:body>
 					<div style="width: 100%;display:inline-block" >
-						<u--text text="标签名称:" size=13 style="float:left;width: 70px;"></u--text>
-						<u--text v-text="item.tagName" size=13 style="float:left;width: 200px;"></u--text>
+						<u--text text="SOU:" size=13 style="float:left;width: 70px;"></u--text>
+						<u--text v-text="item.SOU" size=13 style="float:left;width: 200px;"></u--text>
 						<uni-tag :circle="true" :inverted="true" :text="`${index + 1}`" type="success" size="mini"/>
 					</div>
+					
 					<div style="width: 100%;display:inline-block" >
 						<u--text text="商品条码:" size=13 style="float:left;width: 70px;"></u--text>
 						<u--text v-text="item.barCode" size=13 style="float:left;width: 220px;"></u--text>
@@ -121,20 +81,16 @@
 						<u--text v-text="item.packageCode" size=13 style="float:left;width: 220px;"></u--text>
 					</div>
 					<div style="width: 100%;display:inline-block" >
-						<u--text text="数量/克重:" size=13 style="float:left;width: 70px;"></u--text>
-						<u--text v-text="item.mainNum" size=13 style="float:left;width: 220px;"></u--text>
-					</div>
-					<div style="width: 100%;display:inline-block" >
-						<u--text text="次要数量:" size=13 style="float:left;width: 70px;"></u--text>
-						<u--text v-text="item.secondaryNum" size=13 style="float:left;width: 220px;"></u--text>
+						<u--text text="标签名称:" size=13 style="float:left;width: 70px;"></u--text>
+						<u--text v-text="item.tagName" size=13 style="float:left;width: 220px;"></u--text>
 					</div>
 					<div style="width: 100%;display:inline-block" >
 						<u--text text="仓位:" size=13 style="float:left;width: 70px;"></u--text>
 						<u--text v-text="item.location" size=13 style="float:left;width: 220px;"></u--text>
 					</div>
 					<div style="width: 100%;display:inline-block" >
-						<u--text text="物料名称:" size=13 style="float:left;width: 70px;"></u--text>
-						<u--text v-text="item.location" size=13 style="float:left;width: 220px;"></u--text>
+						<u--text text="数量:" size=13 style="float:left;width: 70px;"></u--text>
+						<u--text v-text="item.mainNum" size=13 style="float:left;width: 220px;"></u--text>
 					</div>
 					<div style="width: 100%;display:inline-block" >
 						<u--text text="款号:" size=13 style="float:left;width: 70px;"></u--text>
@@ -145,15 +101,22 @@
 		</uni-list>
 		<div style="position: fixed;bottom: 0px;width: 100%;background-color:aquamarine;">
 			<u-row >
-				<u-col span="6">
+				<u-col span="4">
 					<div class="col-layout">
 						<u-button type="primary" @click="commit" text="确认"
 							style="width: 80%;margin-left: 10%;"></u-button>
 					</div>
 				</u-col>
-				<u-col span="6">
+				<u-col span="4">
 					<div class="col-layout">
 						<u-button type="primary" @click="toDamage" text="暂存"
+							style="width: 80%;margin-left: 10%;">
+						</u-button>
+					</div>
+				</u-col>
+				<u-col span="4">
+					<div class="col-layout">
+						<u-button type="primary" @click="toDamage" text="保存"
 							style="width: 80%;margin-left: 10%;">
 						</u-button>
 					</div>
@@ -163,6 +126,10 @@
 		<u-toast ref="uToast" />
 		<u-popup :show="showEditPage" mode="bottom"  @close="close">
 		    <view>
+				<div style="width: 100%;display:inline-block" >
+					<u--text text="SOU:" size=13 style="float:left;width: 70px;"></u--text>
+					<u--text v-text="tableData[selectedIndex].SOU" size=13 style="float:left;width: 220px;"></u--text>
+				</div>
 	            <div style="width: 100%;display:inline-block" >
 	            	<u--text text="标签名称:" size=13 style="float:left;width: 70px;"></u--text>
 	            	<u--text v-text="tableData[selectedIndex].tagName" size=13 style="float:left;width: 220px;"></u--text>
@@ -188,15 +155,11 @@
 					<u--text v-text="tableData[selectedIndex].location" size=13 style="float:left;width: 220px;"></u--text>
 				</div>
 	            <div style="width: 100%;display:inline-block" >
-	            	<u--text text="数量/克重:" size=13 style="float:left;width: 70px;"></u--text>
+	            	<u--text text="数量:" size=13 style="float:left;width: 70px;"></u--text>
 					<u--input font-size=13 v-model="mainNum" border="surround" clearable>
 					</u--input>
 	            </div>
-	            <div style="width: 100%;display:inline-block" >
-	            	<u--text text="次要数量:" size=13 style="float:left;width: 70px;"></u--text>
-					<u--input font-size=13 v-model="secondaryNum" border="surround" clearable>
-					</u--input>
-	            </div>
+	            
 	            <div style="width: 100%;display:inline-block" >
 	            	<u--text text="备注:" size=13 style="float:left;width: 70px;"></u--text>
 	            	<u--input font-size=13 v-model="remarks" border="surround" clearable>
@@ -238,12 +201,7 @@
 				department: "", //传入的发货部门
 				warehouse: "", //传入的发货库位
 				number: "", //
-				recommend: "", //推荐库位
-				steps: "", //进度步数
-				modelNum: "", //款号
-				name: "", //名称
-				distributeNum: "", //分配数量
-				SOU: "", //SOU
+				total:"",     //计划总数
 				totalNum: "", //合计数量
 				inputNum: "", //扫码输入号码
 				tableData:[
@@ -251,46 +209,37 @@
 					barCode:"1111111111111111111111",
 					packageCode:"PACK123434556665555",
 					mainNum:"120",
-					secondaryNum:"100",
+					SOU:"SOU111111",
 					location:"ABV1111",
 					modelNum:"KUAN111",
-					materialName:"物料111",
+					
 					remarks:"备注信息1，备注信息",
 					},
 					{tagName:"tag123",
 					barCode:"33212111111111111111",
 					packageCode:"PACK1232332226665555",
 					mainNum:"10",
-					secondaryNum:"80",
+					SOU:"SOU22222",
 					location:"ABV2222",
 					modelNum:"KUAN222",
-					materialName:"物料222",
+					
 					remarks:"备注信息2，备注信息",
 					},
 					{tagName:"tag3",
 					barCode:"33333333333333333333",
 					packageCode:"PACK444444444444444444444",
 					mainNum:"110",
-					secondaryNum:"90",
+					SOU:"SOU33333",
 					location:"ABV3333",
 					modelNum:"KUAN333",
-					materialName:"物料333",
+					
 					remarks:"备注信息3，备注信息",
 					}
 				],
 				showEditPage:false,      //是否显示编辑页面
 				selectedIndex:0,         //当前选中的数据行
 				mainNum:"",              //数量、克重    用于当前行的信息编辑
-				secondaryNum:"",         //次要数量    用于当前行的信息编辑
 				remarks:"",              //备注   用于当前行的信息编辑
-			}
-		},
-		onNavigationBarButtonTap(val) {
-			console.log("------- click nav button:",val);
-			if(val.index === 0){
-				console.log("下一步");
-			}else{
-				console.log("上一步");
 			}
 		},
 		onLoad: function(option) {
@@ -306,7 +255,6 @@
 				
 				//
 				this.mainNum = this.tableData[this.selectedIndex].mainNum;
-				this.secondaryNum = this.tableData[this.selectedIndex].secondaryNum;
 				this.remarks = this.tableData[this.selectedIndex].remarks;
 			},
 			close(){
@@ -314,7 +262,6 @@
 			},
 			confirmEdit(){
 				this.tableData[this.selectedIndex].mainNum = this.mainNum;
-				this.tableData[this.selectedIndex].secondaryNum = this.secondaryNum;
 				this.tableData[this.selectedIndex].remarks = this.remarks;
 				
 				this.showEditPage = false;

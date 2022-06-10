@@ -3,8 +3,8 @@
 		<div class="divContainer">
 			<u-row justify="space-between" gutter="1">
 				<u-col span="9">
-					<u--text type="primary" class="desc-text-edit" text="扫码"></u--text>
-					<u--input v-model="codeNumber" placeholder="扫码或填写包码" border="surround" clearable>
+					<u--text type="primary" class="desc-text-edit" text="扫码" size=13></u--text>
+					<u--input font-size=13 v-model="codeNumber" placeholder="扫码或填写包码" border="surround" clearable>
 					</u--input>
 				</u-col>
 				<u-col span="1">
@@ -22,26 +22,26 @@
 			</u-row>
 		</div>
 		<div class="divContainer">
-			<u--text type="primary" class="desc-text-edit" text="质检类别"></u--text>
+			<u--text type="primary" class="desc-text-edit" text="质检类别" size=13></u--text>
 			<uni-data-select v-model="selectCategory" :localdata="category" @change="changeCategory"></uni-data-select>
 		</div>
 		<div class="divContainer">
-			<u--text type="primary" class="desc-text" text="前置单号"></u--text>
-			<u--input v-model="supplier" border="surround" disabled=true>
+			<u--text type="primary" class="desc-text" text="前置单号" size=13></u--text>
+			<u--input font-size=13 v-model="supplier" border="surround" disabled=true>
 			</u--input>
 		</div>
 		<u-row>
 			<u-col span="6">
 				<div class="col-layout">
-					<u--text type="primary" class="desc-text" text="质检人"></u--text>
-					<u--input v-model="qualityInspector" border="surround" disabled=true>
+					<u--text type="primary" class="desc-text" text="质检人" size=13></u--text>
+					<u--input font-size=13 v-model="qualityInspector" border="surround" disabled=true>
 					</u--input>
 				</div>
 			</u-col>
 			<u-col span="6">
 				<div class="col-layout">
-					<u--text type="primary" class="desc-text" text="供应商"></u--text>
-					<u--input v-model="supplier" border="surround" disabled=true>
+					<u--text type="primary" class="desc-text" text="供应商" size=13></u--text>
+					<u--input font-size=13 v-model="supplier" border="surround" disabled=true>
 					</u--input>
 				</div>
 			</u-col>
@@ -49,52 +49,36 @@
 		<u-row>
 			<u-col span="6">
 				<div class="col-layout">
-					<u--text type="primary" class="desc-text" text="款号"></u--text>
-					<u--input v-model="modelNum" border="surround" disabled=true>
+					<u--text type="primary" class="desc-text" text="款号" size=13></u--text>
+					<u--input font-size=13 v-model="modelNum" border="surround" disabled=true>
 					</u--input>
 				</div>
 			</u-col>
 			<u-col span="6">	
 				<div class="col-layout">
-					<u--text type="primary" class="desc-text" text="贵金属材质"></u--text>
-					<u--input v-model="material" border="surround" disabled=true>
+					<u--text type="primary" class="desc-text" text="贵金属材质" size=13></u--text>
+					<u--input font-size=13 v-model="material" border="surround" disabled=true>
 					</u--input>
 				</div>
 			</u-col>
 		</u-row>
 		<div class="divContainer">
-			<u--text type="primary" class="desc-text" text="采购件数"></u--text>
-			<u--input v-model="purchaseNum" border="surround" disabled=true>
+			<u--text type="primary" class="desc-text" text="采购件数" size=13></u--text>
+			<u--input font-size=13 v-model="purchaseNum" border="surround" disabled=true>
 			</u--input>
 		</div>
 		<u-row>
 			<u-col span="6">
 				<div class="col-layout">
-					<u--text type="primary" class="desc-text" text="出货件数"></u--text>
-					<u--input border="surround" type="number" disabled=true>
+					<u--text type="primary" class="desc-text" text="出货件数" size=13></u--text>
+					<u--input font-size=13 border="surround" type="number" disabled=true>
 					</u--input>
 				</div>
 			</u-col>
 			<u-col span="6">
 				<div class="col-layout">
-					<u--text type="primary" class="desc-text" text="出货克重"></u--text>
-					<u--input border="surround" disabled=true>
-					</u--input>
-				</div>
-			</u-col>
-		</u-row>
-		<u-row>
-			<u-col span="6">
-				<div class="col-layout">
-					<u--text type="primary" class="desc-text" text="质检件数"></u--text>
-					<u--input border="surround" disabled=true>
-					</u--input>
-				</div>
-			</u-col>
-			<u-col span="6">
-				<div class="col-layout">
-					<u--text type="primary" class="desc-text" text="质检克重"></u--text>
-					<u--input border="surround" disabled=true>
+					<u--text type="primary" class="desc-text" text="出货克重" size=13></u--text>
+					<u--input font-size=13 border="surround" disabled=true>
 					</u--input>
 				</div>
 			</u-col>
@@ -102,16 +86,32 @@
 		<u-row>
 			<u-col span="6">
 				<div class="col-layout">
-					<u--text type="primary" class="desc-text-edit" text="合格件数"></u--text>
-					<u--input v-model="qualifiedNum" border="surround" clearable>
+					<u--text type="primary" class="desc-text" text="质检件数" size=13></u--text>
+					<u--input font-size=13 border="surround" disabled=true>
+					</u--input>
+				</div>
+			</u-col>
+			<u-col span="6">
+				<div class="col-layout">
+					<u--text type="primary" class="desc-text" text="质检克重" size=13></u--text>
+					<u--input font-size=13 border="surround" disabled=true>
+					</u--input>
+				</div>
+			</u-col>
+		</u-row>
+		<u-row>
+			<u-col span="6">
+				<div class="col-layout">
+					<u--text type="primary" class="desc-text-edit" text="合格件数" size=13></u--text>
+					<u--input font-size=13 v-model="qualifiedNum" border="surround" clearable>
 					</u--input>
 					
 				</div>
 			</u-col>
 			<u-col span="6">
 				<div class="col-layout">
-					<u--text type="primary" class="desc-text-edit" text="合格克重"></u--text>
-					<u--input v-model="qualifiedWeight" border="surround" clearable>
+					<u--text type="primary" class="desc-text-edit" text="合格克重" size=13></u--text>
+					<u--input font-size=13 v-model="qualifiedWeight" border="surround" clearable>
 					</u--input>
 					
 				</div>

@@ -23,7 +23,6 @@
                 "navigationBarTitleText": "",
                 "enablePullDownRefresh": false
             }
-            
         }
         ,{
             "path" : "pages/mine/mine",
@@ -32,7 +31,6 @@
                 "navigationBarTitleText": "",
                 "enablePullDownRefresh": false
             }
-            
         }
         ,{
             "path" : "pages/spare/spare",
@@ -41,7 +39,6 @@
                 "navigationBarTitleText": "",
                 "enablePullDownRefresh": false
             }
-            
         }
         ,{
             "path" : "pages/home/qualityTesting",
@@ -49,8 +46,7 @@
             {
                 "navigationBarTitleText": "初检信息录入",
                 "enablePullDownRefresh": false
-            }
-            
+            } 
         }
 		,{
             "path" : "pages/home/frontTesting",
@@ -59,7 +55,6 @@
                 "navigationBarTitleText": "入库前质检",
                 "enablePullDownRefresh": false
             }
-            
         }
 		,{
 		    "path" : "pages/home/damageTesting",
@@ -67,8 +62,7 @@
 		    {
 		        "navigationBarTitleText": "有损检验",
 		        "enablePullDownRefresh": false
-		    }
-		    
+		    }  
 		}
         ,{
             "path" : "pages/home/pickingManagement",
@@ -77,26 +71,45 @@
                 "navigationBarTitleText": "逐条拣货配货",
                 "enablePullDownRefresh": false
             }
-            
         }
 		,{
             "path" : "pages/home/picking/picking",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "逐条拣货配货",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": {
+						"buttons": [
+							{
+								"text": ">",
+								"float": "right"
+							},
+							{
+								"text": "<",
+								"float": "right"
+							}
+						]
+					}
+				}
             }
-            
         }
 		,{
 		    "path" : "pages/home/wholeOrderDistribution",
 		    "style" :                                                                                    
 		    {
-		        "navigationBarTitleText": "整单配货",
+		        "navigationBarTitleText": "整单拣货配货",
 		        "enablePullDownRefresh": false
 		    }
-		    
 		}
+		,{
+            "path" : "pages/home/wholePicking/wholePicking",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "整单拣货配货",
+                "enablePullDownRefresh": false
+            } 
+        }
         ,{
             "path" : "pages/home/submissionManagement",
             "style" :                                                                                    
@@ -104,7 +117,6 @@
                 "navigationBarTitleText": "送检管理",
                 "enablePullDownRefresh": false
             }
-            
         }
     ],
 	"globalStyle": {
@@ -122,28 +134,22 @@
 					"selectedIconPath":"static/logo.png"
 				},
 				{
-					
 						"text":"应用",
 						"pagePath":"pages/application/application",
 						"iconPath":"static/logo.png",
 						"selectedIconPath":"static/logo.png"
-					
 				},
 				{
-					
 						"text":"备用",
 						"pagePath":"pages/spare/spare",
 						"iconPath":"static/logo.png",
 						"selectedIconPath":"static/logo.png"
-					
 				},
 				{
-					
 						"text":"我的",
 						"pagePath":"pages/mine/mine",
 						"iconPath":"static/logo.png",
-						"selectedIconPath":"static/logo.png"
-					
+						"selectedIconPath":"static/logo.png"	
 				}
 			]
 		},

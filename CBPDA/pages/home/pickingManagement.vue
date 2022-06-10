@@ -1,22 +1,22 @@
 <template>
 	<view>
 		<div class="divContainer">
-			<u--text type="primary" class="desc-text-edit" text="发货部门"></u--text>
+			<u--text type="primary" class="desc-text-edit" text="发货部门" size=13></u--text>
 			<uni-data-select v-model="selectDepartment" :localdata="department" @change="changeDepartment">
 			</uni-data-select>
 		</div>
 		<div class="divContainer">
-			<u--text type="primary" class="desc-text-edit" text="发货库位"></u--text>
+			<u--text type="primary" class="desc-text-edit" text="发货库位" size=13></u--text>
 			<uni-data-select v-model="selectWarehouse" :localdata="warehouse" @change="changeWarehouse">
 			</uni-data-select>
 		</div>
 		<div class="divContainer">
-			<u--text type="primary" class="desc-text-edit" text="工号"></u--text>
-			<u--input v-model="employeeNumber" border="surround" clearable>
+			<u--text type="primary" class="desc-text-edit" text="工号" size=13></u--text>
+			<u--input font-size=13 v-model="employeeNumber" border="surround" clearable>
 			</u--input>
 		</div>
 		<div class="divContainer">
-			<u--text type="primary" class="desc-text-edit" text="日期"></u--text>
+			<u--text type="primary" class="desc-text-edit" text="日期" size=13></u--text>
 			<uni-datetime-picker v-model="date" type="date" :value="single" start="2021-3-20" end="2099-6-20"
 				@change="changeDate" />
 		</div>
@@ -93,8 +93,8 @@
 					return;
 				}
 				if (this.selectWarehouse === '' || this.selectWarehouse === undefined) {
-					this.$refs.uToast.error(`请选择库位并重试`);
-					return;
+					//this.$refs.uToast.error(`请选择库位并重试`);
+					//return;
 				}
 				if (this.employeeNumber === '' || this.employeeNumber === undefined) {
 					this.$refs.uToast.error(`请填写工号并重试`);

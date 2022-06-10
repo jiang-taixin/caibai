@@ -3,8 +3,8 @@
 		<div class="divContainer">
 			<u-row justify="space-between" gutter="1">
 				<u-col span="9">
-					<u--text type="primary" class="desc-text-edit" text="扫码"></u--text>
-					<u--input v-model="codeNumber" placeholder="扫码或填写包码" border="surround" clearable>
+					<u--text type="primary" class="desc-text-edit" text="扫码" size=13></u--text>
+					<u--input font-size=13 v-model="codeNumber" placeholder="扫码或填写包码" border="surround" clearable>
 					</u--input>
 				</u-col>
 				<u-col span="1">
@@ -22,23 +22,23 @@
 			</u-row>
 		</div>
 		<div class="divContainer">
-			<u--text type="primary" class="desc-text" text="SOU码"></u--text>
-			<u--input v-model="SOU" border="surround" disabled=true>
+			<u--text type="primary" class="desc-text" text="SOU码" size=13></u--text>
+			<u--input font-size=13 v-model="SOU" border="surround" disabled=true>
 			</u--input>
 		</div>
 		<u-row>
 			<u-col span="6">
 				<div class="col-layout">
-					<u--text type="primary" class="desc-text" text="送检人"></u--text>
-					<u--input border="surround" v-model="qualityInspector" disabled=true>
+					<u--text type="primary" class="desc-text" text="送检人" size=13></u--text>
+					<u--input font-size=13 border="surround" v-model="qualityInspector" disabled=true>
 					</u--input>
 				</div>
 			</u-col>
 			<u-col span="6">
 				<div class="col-layout">
-					<u--text type="primary" class="desc-text" text="有损检测件数"></u--text>
+					<u--text type="primary" class="desc-text" text="有损检测件数" size=13></u--text>
 					</u--input>
-					<u--input border="surround" v-model="damageNum" disabled=true>
+					<u--input font-size=13 border="surround" v-model="damageNum" disabled=true>
 					</u--input>
 				</div>
 			</u-col>
@@ -46,21 +46,21 @@
 		<u-row>
 			<u-col span="6">
 				<div class="col-layout">
-					<u--text type="primary" class="desc-text-edit" text="送检时间"></u--text>
+					<u--text type="primary" class="desc-text-edit" text="送检时间" size=13></u--text>
 					<uni-datetime-picker v-model="inspectionTime" type="date" :value="single" start="2021-3-20"
 						end="2099-6-20" @change="changeDate" />
 				</div>
 			</u-col>
 			<u-col span="6">
 				<div class="col-layout">
-					<u--text type="primary" class="desc-text-edit" text="送检机构"></u--text>
+					<u--text type="primary" class="desc-text-edit" text="送检机构" size=13></u--text>
 					<uni-data-select v-model="selectAngecy" :localdata="angecy" @change="changeAngecy">
 					</uni-data-select>
 				</div>
 			</u-col>
 		</u-row>
-		<div style="margin-top: 20px;margin-left: 5%;width: 90%;">
-			<u--text type="primary" class="desc-text" text="有损检测"></u--text>
+		<div style="margin-top: 10px;margin-left: 5%;width: 90%;">
+			<u--text type="primary" class="desc-text" text="有损检测" size=13></u--text>
 		</div>
 		<uni-table border stripe emptyText="暂无更多数据" style="margin-left: 5px;margin-top: 5px;">
 			<!-- 表头行 -->
@@ -86,7 +86,7 @@
 				</uni-td>
 			</uni-tr>
 		</uni-table>
-		<u-row justify="space-between" style="margin-top: 10px;">
+		<u-row justify="space-between" style="margin-top: 5px;">
 			<u-col span="3">
 				<u-button type="primary" @click="add" text="+" style="width: 30px;height: 30px;">
 				</u-button>
