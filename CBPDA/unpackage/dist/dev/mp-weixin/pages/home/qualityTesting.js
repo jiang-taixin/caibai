@@ -94,40 +94,40 @@ var components
 try {
   components = {
     uRow: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-row/u-row */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-row/u-row")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-row/u-row.vue */ 246))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-row/u-row */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-row/u-row")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-row/u-row.vue */ 254))
     },
     uCol: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-col/u-col */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-col/u-col")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-col/u-col.vue */ 254))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-col/u-col */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-col/u-col")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-col/u-col.vue */ 262))
     },
     "u-Text": function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--text/u--text */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--text/u--text")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--text/u--text.vue */ 262))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--text/u--text */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--text/u--text")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--text/u--text.vue */ 270))
     },
     "u-Input": function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 268))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 276))
     },
     uButton: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 274))
-    },
-    uniDataSelect: function() {
-      return Promise.all(/*! import() | uni_modules/uni-data-select/components/uni-data-select/uni-data-select */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-data-select/components/uni-data-select/uni-data-select")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-data-select/components/uni-data-select/uni-data-select.vue */ 284))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 282))
     },
     uniTable: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-table/uni-table */ "uni_modules/uni-table/components/uni-table/uni-table").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-table/uni-table.vue */ 293))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-table/uni-table */ "uni_modules/uni-table/components/uni-table/uni-table").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-table/uni-table.vue */ 292))
     },
     uniTr: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-tr/uni-tr */ "uni_modules/uni-table/components/uni-tr/uni-tr").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-tr/uni-tr.vue */ 300))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-tr/uni-tr */ "uni_modules/uni-table/components/uni-tr/uni-tr").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-tr/uni-tr.vue */ 299))
     },
     uniTh: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-th/uni-th */ "uni_modules/uni-table/components/uni-th/uni-th").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-th/uni-th.vue */ 307))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-th/uni-th */ "uni_modules/uni-table/components/uni-th/uni-th").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-th/uni-th.vue */ 306))
     },
     uniTd: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-td/uni-td */ "uni_modules/uni-table/components/uni-td/uni-td").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-td/uni-td.vue */ 314))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-td/uni-td */ "uni_modules/uni-table/components/uni-td/uni-td").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-td/uni-td.vue */ 313))
+    },
+    uniDataSelect: function() {
+      return Promise.all(/*! import() | uni_modules/uni-data-select/components/uni-data-select/uni-data-select */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-data-select/components/uni-data-select/uni-data-select")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-data-select/components/uni-data-select/uni-data-select.vue */ 320))
     },
     uniEasyinput: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 321))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 329))
     },
     uToast: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uview-ui/components/u-toast/u-toast */ "uni_modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-toast/u-toast.vue */ 239))
+      return __webpack_require__.e(/*! import() | uni_modules/uview-ui/components/u-toast/u-toast */ "uni_modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-toast/u-toast.vue */ 247))
     }
   }
 } catch (e) {
@@ -184,7 +184,205 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _http = _interopRequireDefault(__webpack_require__(/*! ../../http/http.js */ 138));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
 //
@@ -355,11 +553,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-var _default =
-{
-  data: function data() {
-    return {
-      codeNumber: "", //条形码或二维码
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//import {angecy,reason,category} from "@/argument/js/common.js"
+var _default = { data: function data() {return { codeNumber: "", //条形码或二维码
       qualityInspector: "26314", //质检人
       damageNum: "10", //有损件数
       undamagedNum: "5", //无损件数
@@ -368,122 +588,9 @@ var _default =
       purchaseNum: "100", //采购件数
       material: "贵金属", //贵金属材质
       total: 0, //不合格总计
-      selectCategory: "", //质检类别
-      reason: [{ //不合格原因
-        value: 0,
-        text: "面残" },
-
-      {
-        value: 1,
-        text: "变形" },
-
-      {
-        value: 2,
-        text: "断开" },
-
-      {
-        value: 3,
-        text: "氧化红斑" },
-
-      {
-        value: 4,
-        text: "砂眼" },
-
-      {
-        value: 5,
-        text: "花型不对称" },
-
-      {
-        value: 6,
-        text: "无印记" },
-
-      {
-        value: 7,
-        text: "印记不清" },
-
-      {
-        value: 8,
-        text: "印记不符" },
-
-      {
-        value: 9,
-        text: "克重不符" }],
-
-
-      category: [{ //质检类别
-        value: 0,
-        text: "商品" },
-
-      {
-        value: 1,
-        text: "辅料" }],
-
-
-      tableData: [] };
-
-
-  },
-  mounted: function mounted() {
-    //页面加载完成之后的操作
-    this.qualityInspector = "当前用户";
-  },
-  methods: {
-    startSearch: function startSearch() {
-      this.$refs.uToast.success("search with ".concat(this.codeNumber));
-    },
-    startScan: function startScan() {
-      var vm = this;
-      uni.scanCode({
-        success: function success(res) {
-          if (res.errMsg == "scanCode:ok") {
-            vm.$nextTick(function () {
-              vm.codeNumber = res.result;
-            });
-          } else {
-            this.$refs.uToast.success("\u626B\u7801\u5931\u8D25\uFF0C\u8BF7\u91CD\u8BD5");
-          }
-
-        } });
-
-    },
-    changeCategory: function changeCategory(e) {
-      this.selectCategory = e;
-    },
-    changeReason: function changeReason(e) {
-      console.log("change reason :", e);
-    },
-    commit: function commit() {
-
-    },
-    toDamage: function toDamage() {
-      uni.navigateTo({
-        url: 'damageTesting' });
-
-    },
-    add: function add() {
-      this.tableData.push({
-        reason: "",
-        number: "" });
-
-    },
-    del: function del(index) {
-      this.tableData.splice(index, 1);
-      this.getTotal();
-    },
-    blur: function blur() {
-      this.getTotal();
-    },
-    numberConfirm: function numberConfirm() {
-      this.getTotal();
-    },
-    getTotal: function getTotal() {var _this = this;
-      this.total = 0;
-      this.tableData.forEach(function (element) {
-        if (element.number !== '' && element.number.toString() !== 'NaN') {
-          _this.total += parseInt(element.number);
-        }
-      });
-    } } };exports.default = _default;
+      tableData: [], reason: [{ //不合格原因
+        value: 0, text: "面残" }, { value: 1, text: "变形" }, { value: 2, text: "断开" }, { value: 3, text: "氧化红斑" }, { value: 4, text: "砂眼" }, { value: 5, text: "花型不对称" }, { value: 6, text: "无印记" }, { value: 7, text: "印记不清" }, { value: 8, text: "印记不符" }, { value: 9, text: "克重不符" }] };}, mounted: function mounted() {//页面加载完成之后的操作
+    this.qualityInspector = "当前用户";}, methods: { startSearch: function startSearch() {this.$refs.uToast.success("search with ".concat(this.codeNumber));}, startScan: function startScan() {var vm = this;uni.scanCode({ success: function success(res) {if (res.errMsg == "scanCode:ok") {vm.$nextTick(function () {vm.codeNumber = res.result;});} else {this.$refs.uToast.success("\u626B\u7801\u5931\u8D25\uFF0C\u8BF7\u91CD\u8BD5");}} });}, changeCategory: function changeCategory(e) {this.selectCategory = e;}, changeReason: function changeReason(e) {console.log("change reason :", e);}, commit: function commit() {}, toDamage: function toDamage() {uni.navigateTo({ url: 'damageTesting' });}, add: function add() {this.tableData.push({ reason: "", number: "" });}, del: function del(index) {this.tableData.splice(index, 1);this.getTotal();}, blur: function blur() {this.getTotal();}, numberConfirm: function numberConfirm() {this.getTotal();}, getTotal: function getTotal() {var _this = this;this.total = 0;this.tableData.forEach(function (element) {if (element.number !== '' && element.number.toString() !== 'NaN') {_this.total += parseInt(element.number);}});} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })

@@ -42,15 +42,14 @@
 /* 透明度 */
 /* 文章场景相关 */
 .divContainer {
-	margin-top: 10px;
+	margin-top: 5px;
 	margin-left: 10px;
 	margin-right: 10px;
 }
 .col-layout {
 	width: 90%;
-	height: 60px;
 	margin-left: 5%;
-	margin-top: 10px;
+	margin-top: 2px;
 }
 .desc-text {
 	background-color: #e1a7a0;
@@ -60,7 +59,7 @@
 }
 .table-layout {
 	/*margin-left: 5%;*/
-	margin-top: 10px;
+	margin-top: 5px;
 }
 .table-th {
 	width: 100;
@@ -72,11 +71,16 @@
 .c-filling {
 	height: 200px;
 	flex-grow: 1;
-	margin-top: 10px;
+	margin-top: 5px;
 }
 .c-row {
 	display: flex;
 	flex-direction: row;
+}
+.custom-list {
+	width: 98%;
+	margin-left: 5px;
+	margin-bottom: 60px;
 }
 .u-line-1 {
   display: -webkit-box !important;

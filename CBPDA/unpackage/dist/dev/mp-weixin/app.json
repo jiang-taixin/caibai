@@ -10,6 +10,7 @@
     "pages/home/pickingManagement",
     "pages/home/picking/picking",
     "pages/home/wholeOrderDistribution",
+    "pages/home/wholePicking/wholePicking",
     "pages/home/submissionManagement"
   ],
   "subPackages": [],

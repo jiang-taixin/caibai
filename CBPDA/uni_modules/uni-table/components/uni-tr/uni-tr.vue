@@ -1,6 +1,6 @@
 <template>
 	<!-- #ifdef H5 -->
-	<tr class="uni-table-tr">
+	<tr class="uni-table-tr" @click="getRow">
 		<th v-if="selection === 'selection' && ishead" class="checkbox" :class="{ 'tr-table--border': border }">
 			<table-checkbox :checked="checked" :indeterminate="indeterminate" :disabled="disabled" @checkboxSelected="checkboxSelected"></table-checkbox>
 		</th>
@@ -9,7 +9,7 @@
 	</tr>
 	<!-- #endif -->
 	<!-- #ifndef H5 -->
-	<view class="uni-table-tr">
+	<view class="uni-table-tr" @click="getRow">
 		<view v-if="selection === 'selection' " class="checkbox" :class="{ 'tr-table--border': border }">
 			<table-checkbox :checked="checked" :indeterminate="indeterminate" :disabled="disabled" @checkboxSelected="checkboxSelected"></table-checkbox>
 		</view>
@@ -104,6 +104,9 @@ export default {
 					this.root.check(this, e.detail.value.length > 0 ? true : false)
 				}
 			})
+		},
+		getRow(){
+			this.$emit("row-click");
 		},
 		/**
 		 * 获取父元素实例
