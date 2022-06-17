@@ -11,7 +11,10 @@
     "pages/home/picking/picking",
     "pages/home/wholeOrderDistribution",
     "pages/home/wholePicking/wholePicking",
-    "pages/home/submissionManagement"
+    "pages/home/createInspection",
+    "pages/home/provisionalReceipt",
+    "pages/home/inspectionDetail",
+    "pages/home/inspectionConfirm"
   ],
   "subPackages": [],
   "window": {
@@ -25,26 +28,26 @@
       {
         "text": "首页",
         "pagePath": "pages/index/index",
-        "iconPath": "static/logo.png",
-        "selectedIconPath": "static/logo.png"
+        "iconPath": "static/home.png",
+        "selectedIconPath": "static/homeed.png"
       },
       {
         "text": "应用",
         "pagePath": "pages/application/application",
-        "iconPath": "static/logo.png",
-        "selectedIconPath": "static/logo.png"
+        "iconPath": "static/app.png",
+        "selectedIconPath": "static/apped.png"
       },
       {
         "text": "备用",
         "pagePath": "pages/spare/spare",
-        "iconPath": "static/logo.png",
-        "selectedIconPath": "static/logo.png"
+        "iconPath": "static/spare.png",
+        "selectedIconPath": "static/spared.png"
       },
       {
         "text": "我的",
         "pagePath": "pages/mine/mine",
-        "iconPath": "static/logo.png",
-        "selectedIconPath": "static/logo.png"
+        "iconPath": "static/me.png",
+        "selectedIconPath": "static/meed.png"
       }
     ]
   },

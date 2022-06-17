@@ -1,7 +1,11 @@
 <script>
 	export default {
 		onLaunch: function() {
-			console.log('App Launch')
+			console.log('App Launch');
+			wx.cloud.init({
+				env:"caibai-dev-8gi415mp2b8cd338",
+				traceUser:true,
+			})
 		},
 		onShow: function() {
 			console.log('App Show')

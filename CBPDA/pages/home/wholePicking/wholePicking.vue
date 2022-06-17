@@ -11,12 +11,12 @@
 				</u-col>
 				<u-col span="1">
 					<view style="width: 30px;height: 30px;">
-						<u-button type="primary" :plain="true" icon="scan" @click="startScan"></u-button>
+						<u-button type="primary" :plain="true" icon="scan" @click="startScan" style="width: 30px;height: 30px;"></u-button>
 					</view>
 				</u-col>
 				<u-col span="1">
 					<view style="width: 30px;height: 30px;">
-						<u-button type="primary" :plain="true" icon="search" @click="startSearch"></u-button>
+						<u-button type="primary" :plain="true" icon="search" @click="startSearch" style="width: 30px;height: 30px;"></u-button>
 					</view>
 				</u-col>
 			</u-row>

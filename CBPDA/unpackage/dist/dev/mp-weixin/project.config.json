@@ -37,6 +37,7 @@
   "appid": "wxfd7f275ef7216a4c",
   "projectname": "CBPDA",
   "condition": {},
+  "cloudfunctionRoot": "cloudfunctions/",
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2

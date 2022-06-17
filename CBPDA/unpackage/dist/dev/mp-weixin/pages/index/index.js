@@ -94,19 +94,19 @@ var components
 try {
   components = {
     uSwiper: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 214))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 230))
     },
     uGrid: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid/u-grid */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid/u-grid")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid/u-grid.vue */ 222))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid/u-grid */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid/u-grid")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid/u-grid.vue */ 238))
     },
     uGridItem: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid-item/u-grid-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid-item/u-grid-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid-item/u-grid-item.vue */ 230))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid-item/u-grid-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid-item/u-grid-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid-item/u-grid-item.vue */ 246))
     },
     uIcon: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 238))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 254))
     },
     uToast: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uview-ui/components/u-toast/u-toast */ "uni_modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-toast/u-toast.vue */ 247))
+      return __webpack_require__.e(/*! import() | uni_modules/uview-ui/components/u-toast/u-toast */ "uni_modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-toast/u-toast.vue */ 263))
     }
   }
 } catch (e) {
@@ -235,8 +235,23 @@ var _default =
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
-        name: 'bag',
-        title: '复检',
+        name: 'reload',
+        title: '回货暂收',
+        platform: ["APP", "WEIXIN", "H5"] },
+
+      {
+        name: 'heart',
+        title: '创建送检单',
+        platform: ["APP", "WEIXIN", "H5"] },
+
+      {
+        name: 'list-dot',
+        title: '送检单明细',
+        platform: ["APP", "WEIXIN", "H5"] },
+
+      {
+        name: 'list',
+        title: '取检确认',
         platform: ["APP", "WEIXIN", "H5"] }],
 
 
@@ -268,14 +283,11 @@ var _default =
 
     platform = "WEIXIN";
 
-
-
     this.platfrom = platform;
     console.log("********* platform :", this.platfrom);
   },
   methods: {
     click: function click(name) {
-      this.$refs.uToast.success("\u70B9\u51FB\u4E86\u7B2C".concat(name, "\u4E2A"));
       switch (name) {
         case 0:
           uni.navigateTo({
@@ -304,7 +316,22 @@ var _default =
           break;
         case 5:
           uni.navigateTo({
-            url: '/pages/home/submissionManagement' });
+            url: '/pages/home/provisionalReceipt' });
+
+          break;
+        case 6:
+          uni.navigateTo({
+            url: '/pages/home/createInspection' });
+
+          break;
+        case 7:
+          uni.navigateTo({
+            url: '/pages/home/inspectionDetail' });
+
+          break;
+        case 8:
+          uni.navigateTo({
+            url: '/pages/home/inspectionConfirm' });
 
           break;
         default:

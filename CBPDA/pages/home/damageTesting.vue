@@ -11,12 +11,12 @@
 				</u-col>
 				<u-col span="1">
 					<view style="width: 30px;height: 30px;">
-						<u-button type="primary" :plain="true" icon="scan" @click="startScan"></u-button>
+						<u-button type="primary" :plain="true" icon="scan" @click="startScan" style="width: 30px;height: 30px;"></u-button>
 					</view>
 				</u-col>
 				<u-col span="1">
 					<view style="width: 30px;height: 30px;">
-						<u-button type="primary" :plain="true" icon="search" @click="startSearch"></u-button>
+						<u-button type="primary" :plain="true" icon="search" @click="startSearch" style="width: 30px;height: 30px;"></u-button>
 					</view>
 				</u-col>
 			</u-row>
@@ -219,7 +219,7 @@
 			},
 			add() {
 				if (this.tableData.length >= parseInt(this.damageNum)) {
-					this.$refs.uToast.success(`数量已达上限`);
+					this.$refs.uToast.error(`数量已达上限`);
 					return;
 				} else {
 					this.tableData.push({
@@ -241,6 +241,7 @@
 				http.httpRequest(opts, null).then((res) => {
 					uni.hideLoading();
 					if (res.data.code === "200") {
+						console.log("-----------response data:",res);
 						this.receiveData = res.data.data;
 						this.SOU = "SOU";
 						this.damageNum = res.data.data.checkNumber;
@@ -255,55 +256,5 @@
 </script>
 
 <style>
-	.divContainer {
-		margin-top: 5px;
-		margin-left: 10px;
-		margin-right: 10px;
-	}
-
-	.col-layout {
-		width: 90%;
-		height: 60px;
-		margin-left: 5%;
-		margin-top: 5px;
-	}
-
-	.desc-text {
-		background-color: #e1a7a0;
-	}
-
-	.desc-text-edit {
-		background-color: #3ec6c7;
-	}
-
-	.table-layout {
-		/*margin-left: 5%;*/
-		margin-top: 5px;
-	}
-
-	.table-th {
-		width: 100;
-	}
-
-	.c-column {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.c-filling {
-		height: 200px;
-		flex-grow: 1;
-		margin-top: 5px;
-	}
-
-	.c-row {
-		display: flex;
-		flex-direction: row;
-	}
-
-	.custom-list {
-		width: 98%;
-		margin-left: 5px;
-		margin-bottom: 60px;
-	}
+	
 </style>

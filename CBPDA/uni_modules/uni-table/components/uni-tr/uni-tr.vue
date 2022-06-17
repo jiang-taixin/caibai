@@ -147,7 +147,7 @@ $border-color: #ebeef5;
 	color: #333;
 	font-weight: 500;
 	border-bottom: 1px $border-color solid;
-	font-size: 14px;
+	font-size: 13px;
 	// text-align: center;
 }
 

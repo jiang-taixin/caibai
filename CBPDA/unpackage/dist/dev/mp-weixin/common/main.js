@@ -99,6 +99,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 {
   onLaunch: function onLaunch() {
     console.log('App Launch');
+    wx.cloud.init({
+      env: "caibai-dev-8gi415mp2b8cd338",
+      traceUser: true });
+
   },
   onShow: function onShow() {
     console.log('App Show');

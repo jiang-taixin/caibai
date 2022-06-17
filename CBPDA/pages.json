@@ -20,24 +20,21 @@
             "path" : "pages/application/application",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
+                "navigationStyle": "custom"
             }
         }
         ,{
             "path" : "pages/mine/mine",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
+                "navigationStyle": "custom"
             }
         }
         ,{
             "path" : "pages/spare/spare",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
+                "navigationStyle": "custom"
             }
         }
         ,{
@@ -111,12 +108,40 @@
             } 
         }
         ,{
-            "path" : "pages/home/submissionManagement",
+            "path" : "pages/home/createInspection",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "送检管理",
+                "navigationBarTitleText": "创建送检单",
                 "enablePullDownRefresh": false
             }
+            
+        }
+        ,{
+            "path" : "pages/home/provisionalReceipt",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "回货暂收",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/home/inspectionDetail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "送检单明细",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/home/inspectionConfirm",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "取检确认",
+                "enablePullDownRefresh": false
+            }
+            
         }
     ],
 	"globalStyle": {
@@ -130,26 +155,26 @@
 				{
 					"text":"首页",
 					"pagePath":"pages/index/index",
-					"iconPath":"static/logo.png",
-					"selectedIconPath":"static/logo.png"
+					"iconPath":"static/home.png",
+					"selectedIconPath":"static/homeed.png"
 				},
 				{
 						"text":"应用",
 						"pagePath":"pages/application/application",
-						"iconPath":"static/logo.png",
-						"selectedIconPath":"static/logo.png"
+						"iconPath":"static/app.png",
+						"selectedIconPath":"static/apped.png"
 				},
 				{
 						"text":"备用",
 						"pagePath":"pages/spare/spare",
-						"iconPath":"static/logo.png",
-						"selectedIconPath":"static/logo.png"
+						"iconPath":"static/spare.png",
+						"selectedIconPath":"static/spared.png"
 				},
 				{
 						"text":"我的",
 						"pagePath":"pages/mine/mine",
-						"iconPath":"static/logo.png",
-						"selectedIconPath":"static/logo.png"	
+						"iconPath":"static/me.png",
+						"selectedIconPath":"static/meed.png"	
 				}
 			]
 		},
