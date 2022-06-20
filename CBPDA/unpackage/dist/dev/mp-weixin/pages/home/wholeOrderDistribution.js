@@ -213,6 +213,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -278,8 +286,10 @@ var _default =
         this.$refs.uToast.error("\u8BF7\u9009\u62E9\u65F6\u95F4\u5E76\u91CD\u8BD5");
         return;
       }
-      console.log("---------select department :", this.department.find(function (item) {return item.value === _this.selectDepartment;}).text);
-      console.log("---------select warehouse :", this.warehouse.find(function (item) {return item.value === _this.selectDepartment;}).text);
+      console.log("---------select department :", this.department.find(function (item) {return item.value === _this.
+        selectDepartment;}).text);
+      console.log("---------select warehouse :", this.warehouse.find(function (item) {return item.value === _this.
+        selectDepartment;}).text);
       console.log("---------date :", this.date);
       uni.navigateTo({
         url: "wholePicking/wholePicking?selectDepartment=".concat(this.selectDepartment, "&selectWarehouse=").concat(this.selectWarehouse, "&date=").concat(this.date)

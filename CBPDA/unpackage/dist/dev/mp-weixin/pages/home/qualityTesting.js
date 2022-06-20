@@ -184,7 +184,205 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _http = _interopRequireDefault(__webpack_require__(/*! ../../http/http.js */ 138));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
 //
@@ -352,11 +550,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-var _default =
-{
-  data: function data() {
-    return {
-      codeNumber: "", //条形码或二维码
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//import {angecy,reason,category} from "@/argument/js/common.js"
+var _default = { data: function data() {return { codeNumber: "", //条形码或二维码
       qualityInspector: "26314", //质检人
       damageNum: "10", //有损件数
       undamagedNum: "5", //无损件数
@@ -365,71 +588,9 @@ var _default =
       purchaseNum: "100", //采购件数
       material: "贵金属", //贵金属材质
       total: 0, //不合格总计
-      tableData: [] };
-
-
-  },
-  mounted: function mounted() {
-    //页面加载完成之后的操作
-    this.qualityInspector = "当前用户";
-  },
-  methods: {
-    startSearch: function startSearch() {
-      this.$refs.uToast.success("search with ".concat(this.codeNumber));
-    },
-    startScan: function startScan() {
-      var vm = this;
-      uni.scanCode({
-        success: function success(res) {
-          if (res.errMsg == "scanCode:ok") {
-            vm.$nextTick(function () {
-              vm.codeNumber = res.result;
-            });
-          } else {
-            this.$refs.uToast.success("\u626B\u7801\u5931\u8D25\uFF0C\u8BF7\u91CD\u8BD5");
-          }
-
-        } });
-
-    },
-    changeCategory: function changeCategory(e) {
-      this.selectCategory = e;
-    },
-    changeReason: function changeReason(e) {
-      console.log("change reason :", e);
-    },
-    commit: function commit() {
-
-    },
-    toDamage: function toDamage() {
-      uni.navigateTo({
-        url: 'damageTesting' });
-
-    },
-    add: function add() {
-      this.tableData.push({
-        reason: "",
-        number: "" });
-
-    },
-    del: function del(index) {
-      this.tableData.splice(index, 1);
-      this.getTotal();
-    },
-    blur: function blur() {
-      this.getTotal();
-    },
-    numberConfirm: function numberConfirm() {
-      this.getTotal();
-    },
-    getTotal: function getTotal() {var _this = this;
-      this.total = 0;
-      this.tableData.forEach(function (element) {
-        if (element.number !== '' && element.number.toString() !== 'NaN') {
-          _this.total += parseInt(element.number);
-        }
-      });
-    } } };exports.default = _default;
+      tableData: [], reason: [{ //不合格原因
+        value: 0, text: "面残" }, { value: 1, text: "变形" }, { value: 2, text: "断开" }, { value: 3, text: "氧化红斑" }, { value: 4, text: "砂眼" }, { value: 5, text: "花型不对称" }, { value: 6, text: "无印记" }, { value: 7, text: "印记不清" }, { value: 8, text: "印记不符" }, { value: 9, text: "克重不符" }] };}, mounted: function mounted() {//页面加载完成之后的操作
+    this.qualityInspector = "当前用户";}, methods: { startSearch: function startSearch() {this.$refs.uToast.success("search with ".concat(this.codeNumber));}, startScan: function startScan() {var vm = this;uni.scanCode({ success: function success(res) {if (res.errMsg == "scanCode:ok") {vm.$nextTick(function () {vm.codeNumber = res.result;});} else {this.$refs.uToast.success("\u626B\u7801\u5931\u8D25\uFF0C\u8BF7\u91CD\u8BD5");}} });}, changeCategory: function changeCategory(e) {this.selectCategory = e;}, changeReason: function changeReason(e) {console.log("change reason :", e);}, commit: function commit() {}, toDamage: function toDamage() {uni.navigateTo({ url: 'damageTesting' });}, add: function add() {this.tableData.push({ reason: "", number: "" });}, del: function del(index) {this.tableData.splice(index, 1);this.getTotal();}, blur: function blur() {this.getTotal();}, numberConfirm: function numberConfirm() {this.getTotal();}, getTotal: function getTotal() {var _this = this;this.total = 0;this.tableData.forEach(function (element) {if (element.number !== '' && element.number.toString() !== 'NaN') {_this.total += parseInt(element.number);}});} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })

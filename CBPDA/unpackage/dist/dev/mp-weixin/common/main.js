@@ -16,12 +16,8 @@ var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 4));
 var _uviewUi = _interopRequireDefault(__webpack_require__(/*! @/uni_modules/uview-ui */ 14));
 
 
-var _http = _interopRequireDefault(__webpack_require__(/*! ./http/http.js */ 138));
-
-var _common = __webpack_require__(/*! ./common/js/common.js */ 208);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;_vue.default.config.productionTip = false;_App.default.mpType = 'app';_vue.default.use(_uviewUi.default);_vue.default.prototype.$http = _http.default;
-_vue.default.prototype.angecy = _common.angecy;
-_vue.default.prototype.reason = _common.reason;
-_vue.default.prototype.category = _common.category;
+var _http = _interopRequireDefault(__webpack_require__(/*! ./http/http.js */ 138));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;_vue.default.config.productionTip = false;_App.default.mpType = 'app';_vue.default.use(_uviewUi.default);
+_vue.default.prototype.$http = _http.default;
 
 var app = new _vue.default(_objectSpread({},
 _App.default));
@@ -103,6 +99,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 {
   onLaunch: function onLaunch() {
     console.log('App Launch');
+    wx.cloud.init({
+      env: "caibai-dev-8gi415mp2b8cd338",
+      traceUser: true });
+
   },
   onShow: function onShow() {
     console.log('App Show');

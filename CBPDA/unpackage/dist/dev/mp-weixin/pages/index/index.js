@@ -235,15 +235,30 @@ var _default =
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
-        name: 'bag',
-        title: '复检',
+        name: 'reload',
+        title: '回货暂收',
+        platform: ["APP", "WEIXIN", "H5"] },
+
+      {
+        name: 'heart',
+        title: '创建送检单',
+        platform: ["APP", "WEIXIN", "H5"] },
+
+      {
+        name: 'list-dot',
+        title: '送检单明细',
+        platform: ["APP", "WEIXIN", "H5"] },
+
+      {
+        name: 'list',
+        title: '取检确认',
         platform: ["APP", "WEIXIN", "H5"] }],
 
 
       list1: [
-      'https://cdn.uviewui.com/uview/swiper/swiper1.png',
-      'https://cdn.uviewui.com/uview/swiper/swiper2.png',
-      'https://cdn.uviewui.com/uview/swiper/swiper3.png'] };
+      '/static/1.png',
+      '/static/2.png',
+      '/static/3.png'] };
 
 
   },
@@ -268,14 +283,11 @@ var _default =
 
     platform = "WEIXIN";
 
-
-
     this.platfrom = platform;
     console.log("********* platform :", this.platfrom);
   },
   methods: {
     click: function click(name) {
-      this.$refs.uToast.success("\u70B9\u51FB\u4E86\u7B2C".concat(name, "\u4E2A"));
       switch (name) {
         case 0:
           uni.navigateTo({
@@ -304,7 +316,22 @@ var _default =
           break;
         case 5:
           uni.navigateTo({
-            url: '/pages/home/submissionManagement' });
+            url: '/pages/home/provisionalReceipt' });
+
+          break;
+        case 6:
+          uni.navigateTo({
+            url: '/pages/home/createInspection' });
+
+          break;
+        case 7:
+          uni.navigateTo({
+            url: '/pages/home/inspectionDetail' });
+
+          break;
+        case 8:
+          uni.navigateTo({
+            url: '/pages/home/inspectionConfirm' });
 
           break;
         default:

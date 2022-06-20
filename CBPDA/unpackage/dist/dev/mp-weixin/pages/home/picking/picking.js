@@ -111,14 +111,17 @@ try {
     uniEasyinput: function() {
       return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 345))
     },
-    uniList: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-list/components/uni-list/uni-list */ "uni_modules/uni-list/components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-list/components/uni-list/uni-list.vue */ 209))
+    uniTable: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-table/uni-table */ "uni_modules/uni-table/components/uni-table/uni-table").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-table/uni-table.vue */ 308))
     },
-    uniListItem: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-list/components/uni-list-item/uni-list-item */ "uni_modules/uni-list/components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-list/components/uni-list-item/uni-list-item.vue */ 220))
+    uniTr: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-tr/uni-tr */ "uni_modules/uni-table/components/uni-tr/uni-tr").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-tr/uni-tr.vue */ 315))
     },
-    uniTag: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-tag/components/uni-tag/uni-tag */ "uni_modules/uni-tag/components/uni-tag/uni-tag").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-tag/components/uni-tag/uni-tag.vue */ 229))
+    uniTh: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-th/uni-th */ "uni_modules/uni-table/components/uni-th/uni-th").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-th/uni-th.vue */ 322))
+    },
+    uniTd: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-td/uni-td */ "uni_modules/uni-table/components/uni-td/uni-td").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-td/uni-td.vue */ 329))
     },
     uToast: function() {
       return __webpack_require__.e(/*! import() | uni_modules/uview-ui/components/u-toast/u-toast */ "uni_modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-toast/u-toast.vue */ 263))
@@ -413,6 +416,40 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -429,8 +466,8 @@ var _default =
       SOU: "", //SOU
       totalNum: "", //合计数量
       inputNum: "", //扫码输入号码
-      tableData: [
-      { tagName: "tag1",
+      tableData: [{
+        tagName: "tag1",
         barCode: "1111111111111111111111",
         packageCode: "PACK123434556665555",
         mainNum: "120",
@@ -440,7 +477,8 @@ var _default =
         materialName: "物料111",
         remarks: "备注信息1，备注信息" },
 
-      { tagName: "tag123",
+      {
+        tagName: "tag123",
         barCode: "33212111111111111111",
         packageCode: "PACK1232332226665555",
         mainNum: "10",
@@ -450,7 +488,8 @@ var _default =
         materialName: "物料222",
         remarks: "备注信息2，备注信息" },
 
-      { tagName: "tag3",
+      {
+        tagName: "tag3",
         barCode: "33333333333333333333",
         packageCode: "PACK444444444444444444444",
         mainNum: "110",
@@ -481,12 +520,11 @@ var _default =
     console.log(option.date);
   },
   methods: {
-    clickItem: function clickItem(e) {
-      this.selectedIndex = e;
-      console.log("click item :", e);
-      this.showEditPage = true;
-      console.log("*******************:", this.tableData[this.selectedIndex].tagName);
+    rowClick: function rowClick(item, index) {
+      console.log("*******************:", item);
+      this.selectedIndex = index;
 
+      this.showEditPage = true;
       //
       this.mainNum = this.tableData[this.selectedIndex].mainNum;
       this.secondaryNum = this.tableData[this.selectedIndex].secondaryNum;

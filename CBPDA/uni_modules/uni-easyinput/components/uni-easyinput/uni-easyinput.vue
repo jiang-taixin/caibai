@@ -336,7 +336,7 @@
 		width: 100%;
 		display: flex;
 		box-sizing: border-box;
-		min-height: 36px;
+		min-height: 28px;
 		/* #endif */
 		flex-direction: row;
 		align-items: center;
@@ -371,7 +371,7 @@
 		flex: 1;
 		line-height: 1.5;
 		font-size: 14px;
-		padding-top: 6px;
+		padding-top: 2px;
 		padding-bottom: 10px;
 		height: 80px;
 		/* #ifndef APP-NVUE */

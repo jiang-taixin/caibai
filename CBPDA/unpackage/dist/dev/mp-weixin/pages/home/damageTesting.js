@@ -294,6 +294,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _http = _interopRequireDefault(__webpack_require__(/*! ../../http/http.js */ 138));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -400,19 +416,32 @@ var _http = _interopRequireDefault(__webpack_require__(/*! ../../http/http.js */
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//import {angecy,reason,category} from "@/argument/js/common.js"
 var _default = { data: function data() {return { codeNumber: "", //条形码或二维码
       qualityInspector: "26314", //送检人
       SOU: "SOU123456789", //SOU
       damageNum: 0, //有损检测件数
       inspectionTime: "", //送检时间
       selectAngecy: 0, //送检机构
-      tableData: [], receiveData: {} };}, mounted: function mounted() {//页面加载完成之后的操作
+      tableData: [], receiveData: {}, angecy: [{ value: 0, text: "首检" }, { value: 1, text: "国检" }] };}, mounted: function mounted() {//页面加载完成之后的操作
     this.qualityInspector = "当前用户";var myDate = new Date();var time = myDate.toLocaleDateString().split('/').join('-');this.inspectionTime = time;}, methods: { startSearch: function startSearch() {//this.$refs.uToast.success(`search with ${this.codeNumber}`)
-      this.getBasicMessage();}, startScan: function startScan() {var vm = this;uni.scanCode({ success: function success(res) {if (res.errMsg == "scanCode:ok") {vm.$nextTick(function () {vm.codeNumber = res.result;});} else {this.$refs.uToast.error("\u626B\u7801\u5931\u8D25\uFF0C\u8BF7\u91CD\u8BD5");}} });}, commit: function commit() {var _this = this;this.$refs.uToast.success("commit");var opts = { url: "/spotcheck/updateInspectData", method: 'post' };if (this.inspectionTime === '' || this.inspectionTime === undefined) {this.$refs.uToast.error("\u8BF7\u9009\u62E9\u9001\u68C0\u65F6\u95F4\u5E76\u91CD\u8BD5");return;}if (this.tableData.length < this.damageNum) {this.$refs.uToast.error("\u63D0\u4EA4\u91CF\u5FC5\u987B\u4E0E\u6709\u635F\u4EF6\u6570\u4E00\u81F4");return;}var vm = this;this.tableData.forEach(function (element, index) {element["itemCode"] = index;element["checkEndDate"] = vm.inspectionTime;element["checkType"] = vm.selectAngecy;element["spotCheckCode"] = vm.receiveData.spotCheckCode;});this.receiveData.details = this.tableData;this.receiveData.inspectDate = this.inspectionTime;this.receiveData.inspectBy = this.qualityInspector;this.receiveData.inspectOrgan = this.selectAngecy;var param = this.receiveData;uni.showLoading({ title: '加载中...' });_http.default.httpRequest(opts, param).then(function (res) {console.log("*******response:", res);uni.hideLoading();if (res.data.code === "200") {_this.$refs.uToast.success('提交成功');} else {_this.$refs.uToast.error('提交失败');}});}, changeAngecy: function changeAngecy(e) {this.selectAngecy = e;}, changeDate: function changeDate(e) {this.inspectionTime = e;console.log("change date :", this.inspectionTime);}, add: function add() {if (this.tableData.length >= parseInt(this.damageNum)) {this.$refs.uToast.success("\u6570\u91CF\u5DF2\u8FBE\u4E0A\u9650");return;} else {this.tableData.push({ checkWeight: "" });}}, del: function del(index) {this.tableData.splice(index, 1);}, getBasicMessage: function getBasicMessage() {var _this2 = this;var opts = { url: "/spotcheck/querySpotCheckByCode?barCode=".concat(this.codeNumber), method: 'get' };uni.showLoading({ title: '加载中...' });_http.default.httpRequest(opts, null).then(function (res) {uni.hideLoading();if (res.data.code === "200") {_this2.receiveData = res.data.data;_this2.SOU = "SOU";_this2.damageNum = res.data.data.checkNumber;_this2.tableData = res.data.data.details;} else {
-          _this2.$refs.uToast.error('获取数据失败，请重试');
-        }
-      });
-    } } };exports.default = _default;
+      this.getBasicMessage();}, startScan: function startScan() {var vm = this;uni.scanCode({ success: function success(res) {if (res.errMsg == "scanCode:ok") {vm.$nextTick(function () {vm.codeNumber = res.result;});} else {this.$refs.uToast.error("\u626B\u7801\u5931\u8D25\uFF0C\u8BF7\u91CD\u8BD5");}} });}, commit: function commit() {var _this = this;this.$refs.uToast.success("commit");var opts = { url: "/spotcheck/updateInspectData", method: 'post' };if (this.inspectionTime === '' || this.inspectionTime === undefined) {this.$refs.uToast.error("\u8BF7\u9009\u62E9\u9001\u68C0\u65F6\u95F4\u5E76\u91CD\u8BD5");return;}if (this.tableData.length < this.damageNum) {this.$refs.uToast.error("\u63D0\u4EA4\u91CF\u5FC5\u987B\u4E0E\u6709\u635F\u4EF6\u6570\u4E00\u81F4");return;}var vm = this;this.tableData.forEach(function (element, index) {element["itemCode"] = index;element["checkEndDate"] = vm.inspectionTime;element["checkType"] = vm.selectAngecy;element["spotCheckCode"] = vm.receiveData.spotCheckCode;});this.receiveData.details = this.tableData;this.receiveData.inspectDate = this.inspectionTime;this.receiveData.inspectBy = this.qualityInspector;this.receiveData.inspectOrgan = this.selectAngecy;var param = this.receiveData;uni.showLoading({ title: '加载中...' });_http.default.httpRequest(opts, param).then(function (res) {console.log("*******response:", res);uni.hideLoading();if (res.data.code === "200") {_this.$refs.uToast.success('提交成功');} else {_this.$refs.uToast.error('提交失败');}});}, changeAngecy: function changeAngecy(e) {this.selectAngecy = e;}, changeDate: function changeDate(e) {this.inspectionTime = e;console.log("change date :", this.inspectionTime);}, add: function add() {if (this.tableData.length >= parseInt(this.damageNum)) {this.$refs.uToast.error("\u6570\u91CF\u5DF2\u8FBE\u4E0A\u9650");return;} else {this.tableData.push({ checkWeight: "" });}}, del: function del(index) {this.tableData.splice(index, 1);}, getBasicMessage: function getBasicMessage() {var _this2 = this;var opts = { url: "/spotcheck/querySpotCheckByCode?barCode=".concat(this.codeNumber), method: 'get' };uni.showLoading({ title: '加载中...' });_http.default.httpRequest(opts, null).then(function (res) {uni.hideLoading();if (res.data.code === "200") {console.log("-----------response data:", res);_this2.receiveData = res.data.data;_this2.SOU = "SOU";_this2.damageNum = res.data.data.checkNumber;_this2.tableData = res.data.data.details;} else {_this2.$refs.uToast.error('获取数据失败，请重试');}});} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })

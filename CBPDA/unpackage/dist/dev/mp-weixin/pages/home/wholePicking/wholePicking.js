@@ -111,14 +111,17 @@ try {
     uniEasyinput: function() {
       return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 345))
     },
-    uniList: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-list/components/uni-list/uni-list */ "uni_modules/uni-list/components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-list/components/uni-list/uni-list.vue */ 209))
+    uniTable: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-table/uni-table */ "uni_modules/uni-table/components/uni-table/uni-table").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-table/uni-table.vue */ 308))
     },
-    uniListItem: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-list/components/uni-list-item/uni-list-item */ "uni_modules/uni-list/components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-list/components/uni-list-item/uni-list-item.vue */ 220))
+    uniTr: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-tr/uni-tr */ "uni_modules/uni-table/components/uni-tr/uni-tr").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-tr/uni-tr.vue */ 315))
     },
-    uniTag: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-tag/components/uni-tag/uni-tag */ "uni_modules/uni-tag/components/uni-tag/uni-tag").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-tag/components/uni-tag/uni-tag.vue */ 229))
+    uniTh: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-th/uni-th */ "uni_modules/uni-table/components/uni-th/uni-th").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-th/uni-th.vue */ 322))
+    },
+    uniTd: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-td/uni-td */ "uni_modules/uni-table/components/uni-td/uni-td").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-td/uni-td.vue */ 329))
     },
     uToast: function() {
       return __webpack_require__.e(/*! import() | uni_modules/uview-ui/components/u-toast/u-toast */ "uni_modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-toast/u-toast.vue */ 263))
@@ -376,6 +379,29 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -387,35 +413,37 @@ var _default =
       total: "", //计划总数
       totalNum: "", //合计数量
       inputNum: "", //扫码输入号码
-      tableData: [
-      { tagName: "tag1",
+      tableData: [{
+        tagName: "tag1",
         barCode: "1111111111111111111111",
         packageCode: "PACK123434556665555",
         mainNum: "120",
         SOU: "SOU111111",
         location: "ABV1111",
         modelNum: "KUAN111",
-
+        materialName: "namename",
         remarks: "备注信息1，备注信息" },
 
-      { tagName: "tag123",
+      {
+        tagName: "tag123",
         barCode: "33212111111111111111",
         packageCode: "PACK1232332226665555",
         mainNum: "10",
         SOU: "SOU22222",
         location: "ABV2222",
         modelNum: "KUAN222",
-
+        materialName: "namename",
         remarks: "备注信息2，备注信息" },
 
-      { tagName: "tag3",
+      {
+        tagName: "tag3",
         barCode: "33333333333333333333",
         packageCode: "PACK444444444444444444444",
         mainNum: "110",
         SOU: "SOU33333",
         location: "ABV3333",
         modelNum: "KUAN333",
-
+        materialName: "namename",
         remarks: "备注信息3，备注信息" }],
 
 
@@ -440,6 +468,14 @@ var _default =
       this.mainNum = this.tableData[this.selectedIndex].mainNum;
       this.remarks = this.tableData[this.selectedIndex].remarks;
     },
+    rowClick: function rowClick(item, index) {
+      this.selectedIndex = index;
+      this.showEditPage = true;
+
+      //
+      this.mainNum = this.tableData[this.selectedIndex].mainNum;
+      this.remarks = this.tableData[this.selectedIndex].remarks;
+    },
     close: function close() {
       this.showEditPage = false;
     },
@@ -458,7 +494,7 @@ var _default =
     },
     blur: function blur(e) {
       //扫码结束获取信息并更新进列表
-      console.log("blur :", e.target.value);
+      console.log("blur :", this.inputNum);
     } } };exports.default = _default;
 
 /***/ })

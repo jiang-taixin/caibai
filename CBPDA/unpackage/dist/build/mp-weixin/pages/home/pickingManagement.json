@@ -1,16 +1,14 @@
 {
-  "navigationBarTitleText": "拣货实施",
+  "navigationBarTitleText": "逐条拣货配货",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "uni-table": "/uni_modules/uni-table/components/uni-table/uni-table",
-    "uni-tr": "/uni_modules/uni-table/components/uni-tr/uni-tr",
-    "uni-th": "/uni_modules/uni-table/components/uni-th/uni-th",
-    "uni-td": "/uni_modules/uni-table/components/uni-td/uni-td",
-    "zb-dropdown": "/uni_modules/zb-dropdown/components/zb-dropdown/zb-dropdown",
-    "uni-easyinput": "/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput",
-    "u-button": "/uni_modules/uview-ui/components/u-button/u-button",
+    "u--text": "/uni_modules/uview-ui/components/u--text/u--text",
+    "uni-data-select": "/uni_modules/uni-data-select/components/uni-data-select/uni-data-select",
+    "u--input": "/uni_modules/uview-ui/components/u--input/u--input",
+    "uni-datetime-picker": "/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker",
     "u-row": "/uni_modules/uview-ui/components/u-row/u-row",
     "u-col": "/uni_modules/uview-ui/components/u-col/u-col",
-    "u--text": "/uni_modules/uview-ui/components/u--text/u--text"
+    "u-button": "/uni_modules/uview-ui/components/u-button/u-button",
+    "u-toast": "/uni_modules/uview-ui/components/u-toast/u-toast"
   }
 }

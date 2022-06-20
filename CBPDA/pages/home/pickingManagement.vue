@@ -1,22 +1,26 @@
 <template>
 	<view>
 		<div class="divContainer">
-			<u--text type="primary" class="desc-text-edit" text="发货部门" size=13></u--text>
+			<view class="desc-text-edit">
+			<u--text type="primary" text="发货部门" size=13></u--text></view>
 			<uni-data-select v-model="selectDepartment" :localdata="department" @change="changeDepartment">
 			</uni-data-select>
 		</div>
 		<div class="divContainer">
-			<u--text type="primary" class="desc-text-edit" text="发货库位" size=13></u--text>
+			<view class="desc-text-edit""">
+			<u--text type="primary" text="发货库位" size=13></u--text></view>
 			<uni-data-select v-model="selectWarehouse" :localdata="warehouse" @change="changeWarehouse">
 			</uni-data-select>
 		</div>
 		<div class="divContainer">
-			<u--text type="primary" class="desc-text-edit" text="工号" size=13></u--text>
+			<view class="desc-text-edit">
+			<u--text type="primary" text="工号" size=13></u--text></view>
 			<u--input font-size=13 v-model="employeeNumber" border="surround" clearable>
 			</u--input>
 		</div>
 		<div class="divContainer">
-			<u--text type="primary" class="desc-text-edit" text="日期" size=13></u--text>
+			<view class="desc-text-edit">
+			<u--text type="primary" class="desc-text-edit" text="日期" size=13></u--text></view>
 			<uni-datetime-picker v-model="date" type="date" :value="single" start="2021-3-20" end="2099-6-20"
 				@change="changeDate" />
 		</div>

@@ -354,7 +354,7 @@ var _props = _interopRequireDefault(__webpack_require__(/*! ./props.js */ 297));
     wrapperStyle: function wrapperStyle() {var style = {}; // 禁用状态下，被背景色加上对应的样式
       if (this.disabled) {style.backgroundColor = this.disabledColor;} // 无边框时，去除内边距
       if (this.border === "none") {style.padding = "0";} else {// 由于uni-app的iOS开发者能力有限，导致需要分开写才有效
-        style.paddingTop = "6px";style.paddingBottom = "6px";style.paddingLeft = "9px";style.paddingRight = "9px";}return uni.$u.deepMerge(style, uni.$u.addStyle(this.customStyle));}, // 输入框的样式
+        style.paddingTop = "0px";style.paddingBottom = "0px";style.paddingLeft = "9px";style.paddingRight = "9px";}return uni.$u.deepMerge(style, uni.$u.addStyle(this.customStyle));}, // 输入框的样式
     inputStyle: function inputStyle() {var style = { color: this.color, fontSize: uni.$u.addUnit(this.fontSize), textAlign: this.inputAlign };return style;} }, methods: {
     // 在微信小程序中，不支持将函数当做props参数，故只能通过ref形式调用
     setFormatter: function setFormatter(e) {

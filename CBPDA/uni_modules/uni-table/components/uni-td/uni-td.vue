@@ -75,8 +75,8 @@
 
 	.uni-table-td {
 		display: table-cell;
-		padding: 8px 10px;
-		font-size: 14px;
+		padding: 1px 1px;
+		font-size: 13px;
 		border-bottom: 1px $border-color solid;
 		font-weight: 400;
 		color: #606266;

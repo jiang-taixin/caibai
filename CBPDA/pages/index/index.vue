@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<u-swiper :list="list1" @change="change" @click="click"></u-swiper>
+		<u-swiper :list="list1" @change="change" :radius="0" @click="click" indicator></u-swiper>
 		<u-grid :border="false" col="3" @click="click">
 			<u-grid-item v-for="(listItem,listIndex) in list" :key="listIndex"
 				v-if="listItem.platform.indexOf(platfrom) !== -1">
@@ -45,15 +45,30 @@
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						name: 'bag',
-						title: '复检',
+						name: 'reload',
+						title: '回货暂收',
 						platform: ["APP", "WEIXIN", "H5"],
-					}
+					},
+					{
+						name: 'heart',
+						title: '创建送检单',
+						platform: ["APP", "WEIXIN", "H5"],
+					},
+					{
+						name: 'list-dot',
+						title: '送检单明细',
+						platform: ["APP", "WEIXIN", "H5"],
+					},
+					{
+						name: 'list',
+						title: '取检确认',
+						platform: ["APP", "WEIXIN", "H5"],
+					},
 				],
 				list1: [
-					'https://cdn.uviewui.com/uview/swiper/swiper1.png',
-					'https://cdn.uviewui.com/uview/swiper/swiper2.png',
-					'https://cdn.uviewui.com/uview/swiper/swiper3.png',
+					'/static/1.png',
+					'/static/2.png',
+					'/static/3.png',
 				]
 			}
 		},
@@ -78,14 +93,11 @@
 			// #ifdef MP-WEIXIN
 			platform = "WEIXIN";
 			// #endif
-
-
 			this.platfrom = platform;
 			console.log("********* platform :", this.platfrom);
 		},
 		methods: {
 			click(name) {
-				this.$refs.uToast.success(`点击了第${name}个`)
 				switch (name) {
 					case 0:
 						uni.navigateTo({
@@ -114,9 +126,24 @@
 						break;
 					case 5:
 						uni.navigateTo({
-							url: '/pages/home/submissionManagement'
+							url: '/pages/home/provisionalReceipt'
 						});
 						break;
+					case 6:
+						uni.navigateTo({
+							url: '/pages/home/createInspection'
+						});
+						break;	
+					case 7:
+						uni.navigateTo({
+							url: '/pages/home/inspectionDetail'
+						});
+						break;
+					case 8:
+						uni.navigateTo({
+							url: '/pages/home/inspectionConfirm'
+						});
+						break;	
 					default:
 						uni.navigateTo({
 							url: '/pages/home/qualityTesting'

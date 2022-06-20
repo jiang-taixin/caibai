@@ -221,6 +221,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         }
       });
     },
+    getRow: function getRow() {
+      this.$emit("row-click");
+    },
     /**
         * 获取父元素实例
         */

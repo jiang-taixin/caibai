@@ -1,0 +1,229 @@
+<template>
+	<view>
+		<div class="divContainer">
+			<u-row justify="space-between" gutter="1">
+				<u-col span="9">
+					<view class="desc-text-edit">
+						<u--text type="primary" text="扫码" size=13></u--text>
+					</view>
+					<u--input font-size=13 v-model="codeNumber" placeholder="出货汇总单二维码" border="surround" clearable>
+					</u--input>
+				</u-col>
+				<u-col span="1">
+					<view style="width: 30px;height: 30px;">
+						<u-button type="primary" :plain="true" icon="scan" style="width: 30px;height: 30px;"
+							@click="startScan"></u-button>
+					</view>
+				</u-col>
+				<u-col span="1">
+					<view style="width: 30px;height: 30px;">
+						<u-button type="primary" :plain="true" icon="search" style="width: 30px;height: 30px;"
+							@click="startSearch"></u-button>
+					</view>
+				</u-col>
+			</u-row>
+		</div>
+		<div class="divContainer">
+			<view class="desc-text">
+				<u--text type="primary" text="质检人" size=13></u--text>
+			</view>
+
+			<u--input font-size=13 v-model="qualityInspector" border="surround" disabled=true>
+			</u--input>
+		</div>
+		<uni-table border stripe emptyText="暂无更多数据" class="custom-list" type="selection"
+			@selection-change="selectionChange">
+			<!-- 表头行 -->
+			<uni-tr>
+				<uni-th align="center">序号</uni-th>
+				<uni-th align="left">暂收时间</uni-th>
+				<uni-th align="center">采购订单号</uni-th>
+				<uni-th align="center">订单行项目号</uni-th>
+				<uni-th align="left">商品编号</uni-th>
+				<uni-th align="left">商品描述</uni-th>
+				<uni-th align="left">包码</uni-th>
+				<uni-th align="left">订单数量</uni-th>
+			</uni-tr>
+			<!-- 表格数据行 -->
+			<uni-tr v-for="(item, index) in tableData" @row-click="rowClick(item,index)">
+				<uni-td>{{index}}</uni-td>
+				<uni-td>{{item.receiveDate}}</uni-td>
+				<uni-td>{{item.orderCode}}</uni-td>
+				<uni-td>{{item.itemNum}}</uni-td>
+				<uni-td>{{item.productCode}}</uni-td>
+				<uni-td>{{item.productDesc}}</uni-td>
+				<uni-td>{{item.packageCode}}</uni-td>
+				<uni-td>{{item.orderNum}}</uni-td>
+			</uni-tr>
+		</uni-table>
+
+		<u-button type="primary" @click="create" text="创建送检单" style="width: 80%;margin-left: 10%;margin-top: 30px;">
+		</u-button>
+
+		<u-toast ref="uToast" />
+
+		<u-popup :show="showCreatePage" mode="bottom" @close="close">
+			<view>
+				<div style="width: 100%;display:inline-block">
+					<view style="float:left;width: 70px;">
+						<text style="font-size: 13px;">送检单号:</text>
+					</view>
+					<view style="float:left;width: 220px;">
+						<!--u--text改text u--text在微信小程序中v-text无效-->
+						<text v-text="inspectionCode" style="font-size: 13px;" />
+					</view>
+				</div>
+				<div style="width: 100%;display:inline-block">
+					<view style="float:left;width: 70px;">
+						<text style="font-size: 13px;">总件数:</text>
+					</view>
+					<view style="float:left;width: 220px;">
+						<text v-text="totalNum" style="font-size: 13px;" />
+					</view>
+				</div>
+				<div style="width: 100%;display:inline-block">
+					<view style="float:left;width: 70px;">
+						<text style="font-size: 13px;">送检人:</text>
+					</view>
+					<u--input font-size=13 v-model="inspectionName" border="surround" clearable>
+					</u--input>
+
+				</div>
+				<div style="width: 100%;display:inline-block">
+					<view style="float:left;width: 70px;">
+						<text style="font-size: 13px;">状态:</text>
+					</view>
+					<view style="float:left;width: 220px;">
+						<text style="font-size: 13px;">新建状态</text>
+					</view>
+				</div>
+				<div style="width: 100%;display:inline-block">
+					<view style="float:left;width: 70px;">
+						<text style="font-size: 13px;">送检单类型:</text>
+					</view>
+					<view style="float:left;width: 220px;">
+						<uni-data-select v-model="inspectionCategory" :localdata="category" @change="changeAngecy">
+						</uni-data-select>
+					</view>
+				</div>
+				<div style="width: 100%;display:inline-block">
+					<view style="float:left;width: 70px;">
+						<text style="font-size: 13px;">送检机构:</text>
+					</view>
+					<view style="float:left;width: 220px;">
+						<uni-data-select v-model="selectAngecy" :localdata="angecy" @change="changeAngecy">
+						</uni-data-select>
+					</view>
+				</div>
+				<div style="width: 100%;display:inline-block">
+					<view style="float:left;width: 70px;">
+						<text style="font-size: 13px;">送检日期:</text>
+					</view>
+					<view style="float:left;width: 220px;">
+						<uni-datetime-picker v-model="inspectionTime" type="date" :value="single" start="2021-3-20"
+							end="2099-6-20" @change="changeDate" />
+					</view>
+				</div>
+				<div style="width: 100%;display:inline-block">
+					<view style="float:left;width: 70px;">
+						<text style="font-size: 13px;">备注:</text>
+					</view>
+					<u--input font-size=13 v-model="remarks" border="surround" clearable>
+					</u--input>
+				</div>
+
+				<u-row>
+					<u-col span="6">
+						<div class="col-layout">
+							<u-button type="primary" @click="confirmCreate" text="确认"
+								style="width: 80%;margin-left: 10%;margin-bottom: 10px;"></u-button>
+						</div>
+					</u-col>
+					<u-col span="6">
+						<div class="col-layout">
+							<u-button type="warning" @click="cancelCreate" text="取消"
+								style="width: 80%;margin-left: 10%;margin-bottom: 10px;">
+							</u-button>
+						</div>
+					</u-col>
+				</u-row>
+			</view>
+		</u-popup>
+
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				codeNumber: "", //出货汇总单单号
+				qualityInspector: "", //质检人
+				tableData: [],
+				showCreatePage: false, //显示创建页面
+				inspectionCode: "", //送检单号
+				totalNum: 2, //总件数
+				inspectionName: "", //送检人
+				remarks: "", //备注
+				inspectionCategory: "", //送检类型
+				inspectionDate: "", //送检日期
+				inspectionAngecy: "", //送检机构
+				angecy : [{
+						value: 0,
+						text: "首检"
+					},
+					{
+						value: 1,
+						text: "国检"
+					},
+				],
+				category : [{
+						value: 0,
+						text: "贵金属首检送检单"
+					},
+					{
+						value: 1,
+						text: "镶嵌国检送检单"
+					},
+					{
+						value: 2,
+						text: "摆件国检送检单"
+					},
+				],
+			}
+		},
+		methods: {
+			startSearch() {
+				this.$refs.uToast.success(`search with ${this.codeNumber}`)
+			},
+			startScan() {
+				let vm = this;
+				uni.scanCode({
+					success: function(res) {
+						if (res.errMsg == "scanCode:ok") {
+							vm.$nextTick(() => {
+								vm.codeNumber = res.result;
+							});
+						} else {
+							this.$refs.uToast.success(`扫码失败，请重试`);
+						}
+
+					}
+				});
+			},
+			create() {
+				this.showCreatePage = true;
+			},
+			confirmCreate(){
+				this.showCreatePage = false;
+			},
+			cancelCreate(){
+				this.showCreatePage = false;
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

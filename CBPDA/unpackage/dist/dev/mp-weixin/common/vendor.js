@@ -18429,75 +18429,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.API_BASE =
 /* 205 */,
 /* 206 */,
 /* 207 */,
-/* 208 */
-/*!***********************************************************************!*\
-  !*** /Users/taixin.jiang/Desktop/cb_github/CBPDA/common/js/common.js ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.category = exports.reason = exports.angecy = void 0;var angecy = [{
-  value: 0,
-  text: "首检" },
-
-{
-  value: 1,
-  text: "国检" }];exports.angecy = angecy;
-
-
-
-var reason = [{ //不合格原因
-  value: 0,
-  text: "面残" },
-
-{
-  value: 1,
-  text: "变形" },
-
-{
-  value: 2,
-  text: "断开" },
-
-{
-  value: 3,
-  text: "氧化红斑" },
-
-{
-  value: 4,
-  text: "砂眼" },
-
-{
-  value: 5,
-  text: "花型不对称" },
-
-{
-  value: 6,
-  text: "无印记" },
-
-{
-  value: 7,
-  text: "印记不清" },
-
-{
-  value: 8,
-  text: "印记不符" },
-
-{
-  value: 9,
-  text: "克重不符" }];exports.reason = reason;
-
-
-
-var category = [{ //质检类别
-  value: 0,
-  text: "商品" },
-
-{
-  value: 1,
-  text: "辅料" }];exports.category = category;
-
-/***/ }),
+/* 208 */,
 /* 209 */,
 /* 210 */,
 /* 211 */,
