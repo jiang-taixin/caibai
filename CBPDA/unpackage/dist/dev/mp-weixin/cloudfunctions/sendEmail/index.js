@@ -36,9 +36,9 @@ exports.main = async (event, context) => {
   
   //创建邮件对象
   var mail = {
-	  from:'来自菜百<caibai_dev@163.com>',
-	  subject:'测试邮件',
-	  to:'jiangtaixin123@126.com',       //接收人
+	  from:'菜百<caibai_dev@163.com>',
+	  subject:'送检单明细',
+	  to:_recipients,       //接收人
 	  text:_text,
 	  html:_html,
   }

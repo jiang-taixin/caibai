@@ -380,7 +380,6 @@ var _default =
 
 
 
-
   },
   methods: {
     startSearch: function startSearch() {

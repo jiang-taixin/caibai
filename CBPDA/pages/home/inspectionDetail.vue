@@ -58,7 +58,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="送检时间" size=13></u--text>
 					</view>
-		
+
 					<u--input font-size=13 v-model="inspectionTime" border="surround" disabled=true>
 					</u--input>
 				</div>
@@ -102,6 +102,7 @@
 		</u-button>
 
 		<u-toast ref="uToast" />
+
 	</view>
 </template>
 
@@ -115,7 +116,7 @@
 				inspectionType: "", //送检单类型
 				inspectionTime: "", //送检时间
 				selectAngecy: "", //送检时间
-				inspectionAngecy:"",//送检机构
+				inspectionAngecy: "", //送检机构
 				tableData: [{
 					orderCode: "YHD1110000",
 					itemNum: "001",
@@ -134,7 +135,7 @@
 					orderCode: "YHD11100003",
 					itemNum: "003",
 					productCode: "P103",
-					productDesc: "product description",
+					productDesc: "product descriptionproduct descriptionproduct descriptionproduct descriptionproduct descriptionproduct description",
 					packageCode: "PAC120",
 					orderNum: 10
 				}],
@@ -167,13 +168,34 @@
 				console.log("change date :", this.inspectionTime);
 			},
 			exportData() {
+				// 列标题
+				let str =
+					'<tr><td bgcolor="gray">采购订单号</td><td bgcolor="gray">订单行项目号</td><td bgcolor="gray">商品编号</td><td bgcolor="gray">商品描述</td><td bgcolor="gray">包码</td><td bgcolor="gray">订单数量</td></tr>'
+				// 循环遍历，每行加入tr标签，每个单元格加td标签
+				for (let i = 0; i < this.tableData.length; i++) {
+					str += '<tr>'
+					for (let item in this.tableData[i]) {
+						str += `<td>${this.tableData[i][item] + '\t'}</td>`
+					}
+					str += '</tr>'
+				}
+				let template = `<html xmlns:o="urn:schemas-microsoft-com:office:office" 
+				        xmlns:x="urn:schemas-microsoft-com:office:excel" 
+				        xmlns="http://www.w3.org/TR/REC-html40">
+						<body>
+						<h4>送检单明细信息</h4>
+						<table border="1" width="100%" cellspacing="0"">${str}</table>
+						<hr/>
+						<font color="red">不要基于此邮件进行回复</font>
+						</body>
+						</html>`
+
 				wx.cloud.callFunction({
 					name: "sendEmail",
-					//js携带参数传到云端
+					//发送邮件需要的信息
 					data: {
-						_text: "测试信息测试信息", //邮件内容
 						_recipients: "taixin.jiang@accenture.com", //收件人
-						_html:``,
+						_html: template,
 					},
 					success(res) {
 						console.log("发送成功", res)

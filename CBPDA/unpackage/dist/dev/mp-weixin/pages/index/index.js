@@ -256,9 +256,9 @@ var _default =
 
 
       list1: [
-      'https://cdn.uviewui.com/uview/swiper/swiper1.png',
-      'https://cdn.uviewui.com/uview/swiper/swiper2.png',
-      'https://cdn.uviewui.com/uview/swiper/swiper3.png'] };
+      '/static/1.png',
+      '/static/2.png',
+      '/static/3.png'] };
 
 
   },

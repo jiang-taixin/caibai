@@ -285,6 +285,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
@@ -314,7 +315,7 @@ var _default =
         orderCode: "YHD11100003",
         itemNum: "003",
         productCode: "P103",
-        productDesc: "product description",
+        productDesc: "product descriptionproduct descriptionproduct descriptionproduct descriptionproduct descriptionproduct description",
         packageCode: "PAC120",
         orderNum: 10 }] };
 
@@ -347,13 +348,34 @@ var _default =
       console.log("change date :", this.inspectionTime);
     },
     exportData: function exportData() {
+      // 列标题
+      var str =
+      '<tr><td bgcolor="gray">采购订单号</td><td bgcolor="gray">订单行项目号</td><td bgcolor="gray">商品编号</td><td bgcolor="gray">商品描述</td><td bgcolor="gray">包码</td><td bgcolor="gray">订单数量</td></tr>';
+      // 循环遍历，每行加入tr标签，每个单元格加td标签
+      for (var i = 0; i < this.tableData.length; i++) {
+        str += '<tr>';
+        for (var item in this.tableData[i]) {
+          str += "<td>".concat(this.tableData[i][item] + '\t', "</td>");
+        }
+        str += '</tr>';
+      }
+      var template = "<html xmlns:o=\"urn:schemas-microsoft-com:office:office\" \n\t\t\t        xmlns:x=\"urn:schemas-microsoft-com:office:excel\" \n\t\t\t        xmlns=\"http://www.w3.org/TR/REC-html40\">\n\t\t\t\t\t<body>\n\t\t\t\t\t<h4>\u9001\u68C0\u5355\u660E\u7EC6\u4FE1\u606F</h4>\n\t\t\t\t\t<table border=\"1\" width=\"100%\" cellspacing=\"0\"\">".concat(
+
+
+
+
+      str, "</table>\n\t\t\t\t\t<hr/>\n\t\t\t\t\t<font color=\"red\">\u4E0D\u8981\u57FA\u4E8E\u6B64\u90AE\u4EF6\u8FDB\u884C\u56DE\u590D</font>\n\t\t\t\t\t</body>\n\t\t\t\t\t</html>");
+
+
+
+
+
       wx.cloud.callFunction({
         name: "sendEmail",
-        //js携带参数传到云端
+        //发送邮件需要的信息
         data: {
-          _text: "测试信息测试信息", //邮件内容
           _recipients: "taixin.jiang@accenture.com", //收件人
-          _html: "" },
+          _html: template },
 
         success: function success(res) {
           console.log("发送成功", res);
