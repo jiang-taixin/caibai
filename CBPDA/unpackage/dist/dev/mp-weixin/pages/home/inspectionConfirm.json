@@ -1,0 +1,16 @@
+{
+  "navigationBarTitleText": "取检确认",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-row": "/uni_modules/uview-ui/components/u-row/u-row",
+    "u-col": "/uni_modules/uview-ui/components/u-col/u-col",
+    "u--text": "/uni_modules/uview-ui/components/u--text/u--text",
+    "u--input": "/uni_modules/uview-ui/components/u--input/u--input",
+    "u-button": "/uni_modules/uview-ui/components/u-button/u-button",
+    "uni-table": "/uni_modules/uni-table/components/uni-table/uni-table",
+    "uni-tr": "/uni_modules/uni-table/components/uni-tr/uni-tr",
+    "uni-th": "/uni_modules/uni-table/components/uni-th/uni-th",
+    "uni-td": "/uni_modules/uni-table/components/uni-td/uni-td",
+    "u-toast": "/uni_modules/uview-ui/components/u-toast/u-toast"
+  }
+}

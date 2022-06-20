@@ -59,7 +59,7 @@ component.options.__file = "pages/home/picking/picking.vue"
 /*!*****************************************************************************************************************!*\
   !*** /Users/taixin.jiang/Desktop/cb_github/CBPDA/pages/home/picking/picking.vue?vue&type=template&id=cd2a8d08& ***!
   \*****************************************************************************************************************/
-/*! no static exports found */
+/*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -82,9 +82,78 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--16-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!/Users/taixin.jiang/Desktop/cb_github/CBPDA/pages/home/picking/picking.vue?vue&type=template&id=cd2a8d08& ***!
   \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js):\nSyntaxError: Unexpected token (1:1886)\n    at Parser._raise (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:746:17)\n    at Parser.raiseWithData (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:739:17)\n    at Parser.raise (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:733:17)\n    at Parser.unexpected (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:8807:16)\n    at Parser.parseParenAndDistinguishExpression (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:10303:12)\n    at Parser.parseExprAtom (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:10007:21)\n    at Parser.parseExprSubscripts (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:9656:23)\n    at Parser.parseMaybeUnary (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:9636:21)\n    at Parser.parseExprOps (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:9506:23)\n    at Parser.parseMaybeConditional (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:9479:23)\n    at Parser.parseMaybeAssign (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:9434:21)\n    at Parser.parseObjectProperty (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:10586:101)\n    at Parser.parseObjPropValue (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:10611:101)\n    at Parser.parseObjectMember (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:10535:10)\n    at Parser.parseObj (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:10448:25)\n    at Parser.parseExprAtom (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:10055:28)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
+var components
+try {
+  components = {
+    uRow: function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-row/u-row */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-row/u-row")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-row/u-row.vue */ 270))
+    },
+    uCol: function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-col/u-col */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-col/u-col")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-col/u-col.vue */ 278))
+    },
+    "u-Text": function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--text/u--text */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--text/u--text")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--text/u--text.vue */ 286))
+    },
+    "u-Input": function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 292))
+    },
+    uButton: function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 298))
+    },
+    uniEasyinput: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 345))
+    },
+    uniList: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-list/components/uni-list/uni-list */ "uni_modules/uni-list/components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-list/components/uni-list/uni-list.vue */ 209))
+    },
+    uniListItem: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-list/components/uni-list-item/uni-list-item */ "uni_modules/uni-list/components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-list/components/uni-list-item/uni-list-item.vue */ 220))
+    },
+    uniTag: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-tag/components/uni-tag/uni-tag */ "uni_modules/uni-tag/components/uni-tag/uni-tag").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-tag/components/uni-tag/uni-tag.vue */ 229))
+    },
+    uToast: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uview-ui/components/u-toast/u-toast */ "uni_modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-toast/u-toast.vue */ 263))
+    },
+    uPopup: function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 363))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+}
+var recyclableRender = false
+var staticRenderFns = []
+render._withStripped = true
+
+
 
 /***/ }),
 
@@ -223,18 +292,227 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
-    return {};
+    return {
+      codeNumber: "", //条形码或二维码
+      department: "", //传入的发货部门
+      warehouse: "", //传入的发货库位
+      number: "", //
+      recommend: "", //推荐库位
+      steps: "", //进度步数
+      modelNum: "", //款号
+      name: "", //名称
+      distributeNum: "", //分配数量
+      SOU: "", //SOU
+      totalNum: "", //合计数量
+      inputNum: "", //扫码输入号码
+      tableData: [
+      { tagName: "tag1",
+        barCode: "1111111111111111111111",
+        packageCode: "PACK123434556665555",
+        mainNum: "120",
+        secondaryNum: "100",
+        location: "ABV1111",
+        modelNum: "KUAN111",
+        materialName: "物料111",
+        remarks: "备注信息1，备注信息" },
+
+      { tagName: "tag123",
+        barCode: "33212111111111111111",
+        packageCode: "PACK1232332226665555",
+        mainNum: "10",
+        secondaryNum: "80",
+        location: "ABV2222",
+        modelNum: "KUAN222",
+        materialName: "物料222",
+        remarks: "备注信息2，备注信息" },
+
+      { tagName: "tag3",
+        barCode: "33333333333333333333",
+        packageCode: "PACK444444444444444444444",
+        mainNum: "110",
+        secondaryNum: "90",
+        location: "ABV3333",
+        modelNum: "KUAN333",
+        materialName: "物料333",
+        remarks: "备注信息3，备注信息" }],
 
 
+      showEditPage: false, //是否显示编辑页面
+      selectedIndex: 0, //当前选中的数据行
+      mainNum: "", //数量、克重    用于当前行的信息编辑
+      secondaryNum: "", //次要数量    用于当前行的信息编辑
+      remarks: "" //备注   用于当前行的信息编辑
+    };
+  },
+  onNavigationBarButtonTap: function onNavigationBarButtonTap(val) {
+    console.log("------- click nav button:", val);
+    if (val.index === 0) {
+      console.log("下一步");
+    } else {
+      console.log("上一步");
+    }
   },
   onLoad: function onLoad(option) {
     //获取url中传入的参数
     console.log(option.date);
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    clickItem: function clickItem(e) {
+      this.selectedIndex = e;
+      console.log("click item :", e);
+      this.showEditPage = true;
+      console.log("*******************:", this.tableData[this.selectedIndex].tagName);
+
+      //
+      this.mainNum = this.tableData[this.selectedIndex].mainNum;
+      this.secondaryNum = this.tableData[this.selectedIndex].secondaryNum;
+      this.remarks = this.tableData[this.selectedIndex].remarks;
+    },
+    close: function close() {
+      this.showEditPage = false;
+    },
+    confirmEdit: function confirmEdit() {
+      this.tableData[this.selectedIndex].mainNum = this.mainNum;
+      this.tableData[this.selectedIndex].secondaryNum = this.secondaryNum;
+      this.tableData[this.selectedIndex].remarks = this.remarks;
+
+      this.showEditPage = false;
+    },
+    cancelEdit: function cancelEdit() {
+      this.showEditPage = false;
+    },
+    deleteItem: function deleteItem() {
+      this.tableData.splice(this.selectedIndex, 1);
+      this.showEditPage = false;
+    },
+    blur: function blur(e) {
+      //扫码结束获取信息并更新进列表
+      console.log("blur :", e.target.value);
+    } } };exports.default = _default;
 
 /***/ })
 
