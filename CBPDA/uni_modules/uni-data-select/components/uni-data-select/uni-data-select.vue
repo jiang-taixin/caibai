@@ -113,7 +113,7 @@
 			localdata: {
 				immediate: true,
 				handler(val, old) {
-					if (Array.isArray(val) && !old) {
+					if (Array.isArray(val)) {
 						this.mixinDatacomResData = val
 					}
 				}

@@ -45,21 +45,22 @@
 				<uni-th align="left">订单数量</uni-th>
 			</uni-tr>
 			<!-- 表格数据行 -->
-			<uni-tr v-for="(item, index) in tableData" @row-click="rowClick(item,index)">
+			<uni-tr v-for="(item, index) in tableData">
 				<uni-td>{{index}}</uni-td>
-				<uni-td>{{item.receiveDate}}</uni-td>
-				<uni-td>{{item.orderCode}}</uni-td>
-				<uni-td>{{item.itemNum}}</uni-td>
-				<uni-td>{{item.productCode}}</uni-td>
-				<uni-td>{{item.productDesc}}</uni-td>
-				<uni-td>{{item.packageCode}}</uni-td>
-				<uni-td>{{item.orderNum}}</uni-td>
+				<uni-td>{{item.temprecDate}}</uni-td>
+				<uni-td>{{item.poCode}}</uni-td>
+				<uni-td>{{item.poItemCode}}</uni-td>
+				<uni-td>{{item.materielCode}}</uni-td>
+				<uni-td>{{item.materielDesc}}</uni-td>
+				<uni-td>{{item.barCode}}</uni-td>
+				<uni-td>{{item.goodsPurchaseNum}}</uni-td>
 			</uni-tr>
 		</uni-table>
 
-		<u-button type="primary" @click="create" text="创建送检单" style="width: 80%;margin-left: 10%;margin-top: 30px;">
-		</u-button>
-
+		<view style="width: 80%;margin-left: 10%;margin-top: 30px;">
+			<u-button type="primary" @click="create" text="创建送检单">
+			</u-button>
+		</view>
 		<u-toast ref="uToast" />
 
 		<u-popup :show="showCreatePage" mode="bottom" @close="close">
@@ -111,7 +112,7 @@
 						<text style="font-size: 13px;">送检机构:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<uni-data-select v-model="selectAngecy" :localdata="angecy" @change="changeAngecy">
+						<uni-data-select v-model="inspectionAngecy" :localdata="angecy" @change="changeAngecy">
 						</uni-data-select>
 					</view>
 				</div>
@@ -120,7 +121,7 @@
 						<text style="font-size: 13px;">送检日期:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<uni-datetime-picker v-model="inspectionTime" type="date" :value="single" start="2021-3-20"
+						<uni-datetime-picker v-model="inspectionDate" type="date" :value="single" start="2021-3-20"
 							end="2099-6-20" @change="changeDate" />
 					</view>
 				</div>
@@ -160,6 +161,7 @@
 				codeNumber: "", //出货汇总单单号
 				qualityInspector: "", //质检人
 				tableData: [],
+				selectedList:[],      //选中行数组
 				showCreatePage: false, //显示创建页面
 				inspectionCode: "", //送检单号
 				totalNum: 2, //总件数
@@ -168,16 +170,16 @@
 				inspectionCategory: "", //送检类型
 				inspectionDate: "", //送检日期
 				inspectionAngecy: "", //送检机构
-				angecy : [{
+				angecy: [{
 						value: 0,
 						text: "首检"
 					},
 					{
 						value: 1,
 						text: "国检"
-					},
+					}
 				],
-				category : [{
+				category: [{
 						value: 0,
 						text: "贵金属首检送检单"
 					},
@@ -194,7 +196,42 @@
 		},
 		methods: {
 			startSearch() {
-				this.$refs.uToast.success(`search with ${this.codeNumber}`)
+				if (this.codeNumber === '' || this.codeNumber === undefined) {
+					this.$refs.uToast.error(`请先扫描出货汇总单`);
+					return;
+				}
+				var opts = {
+					url: ``,
+					method: 'post'
+				};
+				let vm = this;
+				var param = {
+					"interface_num": "MOBSCMD0001",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": {
+						"deliveryCode": this.codeNumber
+					},
+				};
+				uni.showLoading({
+					title: '加载中...'
+				});
+				this.$http.httpRequest(opts, param).then((res) => {
+					console.log("*******response:", res);
+					uni.hideLoading();
+					if (res.data.code === "200") {
+						//收到数据将暂收时间转为日期格式   状态转换为文字描述
+						if (res.data.data.length != 0) {
+							for (let i in res.data.data) {
+								res.data.data[i].temprecDate = this.$dateTrans.formatMsToDate(res.data.data[i]
+									.temprecDate);
+							}
+						}
+						this.tableData = res.data.data;
+					} else {
+						this.$refs.uToast.error('获取数据失败，请重试');
+					}
+				});
 			},
 			startScan() {
 				let vm = this;
@@ -211,13 +248,79 @@
 					}
 				});
 			},
+			selectionChange(){
+				this.selectedList = res.detail.index;
+			},
 			create() {
 				this.showCreatePage = true;
+				this.angecy = [{
+						value: 0,
+						text: "首检"
+					},
+					{
+						value: 1,
+						text: "国检"
+					},
+					{
+						value: 1,
+						text: "国检"
+					},
+				];
 			},
-			confirmCreate(){
-				this.showCreatePage = false;
+			confirmCreate() {
+				if (this.inspectionName === '' || this.inspectionName === undefined) {
+					this.$refs.uToast.error(`请先输入送检人姓名`);
+					return;
+				}
+				if (this.inspectionDate === '' || this.inspectionDate === undefined) {
+					this.$refs.uToast.error(`请选择送检时间`);
+					return;
+				}
+				if (this.inspectionCategory === '' || this.inspectionCategory === undefined) {
+					this.$refs.uToast.error(`请选择送检类别`);
+					return;
+				}
+				if (this.inspectionAngecy === '' || this.inspectionAngecy === undefined) {
+					this.$refs.uToast.error(`请选择送检机构`);
+					return;
+				}
+				
+				var opts = {
+					url: ``,
+					method: 'post'
+				};
+				let vm = this;
+				var bodyList = [];
+				for (var i = 0; i < this.selectedList.length; i++) {
+					bodyList.push(this.tableData[this.selectedList[i]]);
+				}
+				
+				var param = {
+					"interface_num": "MOBSCMD0002",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": bodyList,
+				};
+				uni.showLoading({
+					title: '加载中...'
+				});
+				this.$http.httpRequest(opts, param).then((res) => {
+					uni.hideLoading();
+					this.showCreatePage = false;
+					if (res.data.code === "200") {
+						this.$refs.uToast.success('提交成功');
+					} else {
+						this.$refs.uToast.error('提交失败，请重试');
+					}
+				});
+				
+				this.category.find((item) => {
+				   if(item.value === parseInt(this.inspectionCategory)){
+				     console.log("category:",item.text);
+				   }
+				 });
 			},
-			cancelCreate(){
+			cancelCreate() {
 				this.showCreatePage = false;
 			}
 		}

@@ -11,12 +11,14 @@
 				</u-col>
 				<u-col span="1">
 					<view style="width: 30px;height: 30px;">
-						<u-button type="primary" :plain="true" icon="scan" @click="startScan" style="width: 30px;height: 30px;"></u-button>
+						<u-button type="primary" :plain="true" icon="scan" @click="startScan"
+							style="width: 30px;height: 30px;"></u-button>
 					</view>
 				</u-col>
 				<u-col span="1">
 					<view style="width: 30px;height: 30px;">
-						<u-button type="primary" :plain="true" icon="search" @click="startSearch" style="width: 30px;height: 30px;"></u-button>
+						<u-button type="primary" :plain="true" icon="search" @click="startSearch"
+							style="width: 30px;height: 30px;"></u-button>
 					</view>
 				</u-col>
 			</u-row>
@@ -114,15 +116,15 @@
 			<u-col span="3">
 			</u-col>
 		</u-row>
-		<u-button type="primary" @click="commit" text="提交" style="width: 80%;margin-left: 10%;margin-top: 30px;">
-		</u-button>
+		<view style="width: 80%;margin-left: 10%;margin-top: 30px;">
+			<u-button type="primary" @click="commit" text="提交" >
+			</u-button>
+		</view>
 		<u-toast ref="uToast" />
 	</view>
 </template>
 
 <script>
-	import http from '../../http/http.js'
-	//import {angecy,reason,category} from "@/argument/js/common.js"
 	export default {
 		data() {
 			return {
@@ -134,7 +136,7 @@
 				selectAngecy: 0, //送检机构
 				tableData: [],
 				receiveData: {},
-				angecy : [{
+				angecy: [{
 						value: 0,
 						text: "首检"
 					},
@@ -153,10 +155,6 @@
 			this.inspectionTime = time;
 		},
 		methods: {
-			startSearch() {
-				//this.$refs.uToast.success(`search with ${this.codeNumber}`)
-				this.getBasicMessage();
-			},
 			startScan() {
 				let vm = this;
 				uni.scanCode({
@@ -171,10 +169,38 @@
 					}
 				});
 			},
-			commit() {
-				this.$refs.uToast.success(`commit`);
+			startSearch() {
 				var opts = {
-					url: `/spotcheck/updateInspectData`,
+					url: ``,
+					method: 'post'
+				};
+				uni.showLoading({
+					title: '加载中...'
+				});
+				var param = {
+					"interface_num": "MOBSCMD0003",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": {
+						"barCode": this.codeNumber
+					},
+				};
+				this.$http.httpRequest(opts, param).then((res) => {
+					uni.hideLoading();
+					if (res.data.code === "200") {
+						console.log("-----------response data:", res);
+						this.receiveData = res.data.data;
+						this.SOU = res.data.data.sou;
+						this.damageNum = res.data.data.checkNumber;
+						this.tableData = res.data.data.details;
+					} else {
+						this.$refs.uToast.error('获取数据失败，请重试');
+					}
+				});
+			},
+			commit() {
+				var opts = {
+					url: ``,
 					method: 'post'
 				};
 				if (this.inspectionTime === '' || this.inspectionTime === undefined) {
@@ -196,11 +222,17 @@
 				this.receiveData.inspectDate = this.inspectionTime;
 				this.receiveData.inspectBy = this.qualityInspector;
 				this.receiveData.inspectOrgan = this.selectAngecy;
-				var param = this.receiveData;
+				var bodyList = this.receiveData;
+				var param = {
+					"interface_num": "MOBSCMD0004",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": bodyList,
+				};
 				uni.showLoading({
 					title: '加载中...'
 				});
-				http.httpRequest(opts, param).then((res) => {
+				this.$http.httpRequest(opts, param).then((res) => {
 					console.log("*******response:", res);
 					uni.hideLoading();
 					if (res.data.code === "200") {
@@ -230,31 +262,10 @@
 			del(index) {
 				this.tableData.splice(index, 1);
 			},
-			getBasicMessage() {
-				var opts = {
-					url: `/spotcheck/querySpotCheckByCode?barCode=${this.codeNumber}`,
-					method: 'get'
-				};
-				uni.showLoading({
-					title: '加载中...'
-				});
-				http.httpRequest(opts, null).then((res) => {
-					uni.hideLoading();
-					if (res.data.code === "200") {
-						console.log("-----------response data:",res);
-						this.receiveData = res.data.data;
-						this.SOU = "SOU";
-						this.damageNum = res.data.data.checkNumber;
-						this.tableData = res.data.data.details;
-					} else {
-						this.$refs.uToast.error('获取数据失败，请重试');
-					}
-				});
-			}
 		}
 	}
 </script>
 
 <style>
-	
+
 </style>

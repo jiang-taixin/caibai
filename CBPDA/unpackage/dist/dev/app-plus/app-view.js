@@ -4148,57 +4148,64 @@ var render = function() {
         1
       ),
       _c(
-        "u-row",
-        { staticStyle: { "margin-bottom": "10px" }, attrs: { _i: 92 } },
+        "uni-view",
+        { staticStyle: { "margin-top": "30px" }, attrs: { _i: 92 } },
         [
           _c(
-            "u-col",
-            { attrs: { _i: 93 } },
+            "u-row",
+            { staticStyle: { "margin-bottom": "10px" }, attrs: { _i: 93 } },
             [
               _c(
-                "div",
-                { staticClass: _vm._$g(94, "sc"), attrs: { _i: 94 } },
+                "u-col",
+                { attrs: { _i: 94 } },
                 [
-                  _c("u-button", {
-                    staticStyle: {
-                      width: "80%",
-                      "margin-left": "10%",
-                      "margin-bottom": "10px"
-                    },
-                    attrs: { _i: 95 },
-                    on: {
-                      click: function($event) {
-                        return _vm.$handleViewEvent($event)
-                      }
-                    }
-                  })
+                  _c(
+                    "div",
+                    { staticClass: _vm._$g(95, "sc"), attrs: { _i: 95 } },
+                    [
+                      _c("u-button", {
+                        staticStyle: {
+                          width: "80%",
+                          "margin-left": "10%",
+                          "margin-bottom": "10px"
+                        },
+                        attrs: { _i: 96 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    ],
+                    1
+                  )
                 ],
                 1
-              )
-            ],
-            1
-          ),
-          _c(
-            "u-col",
-            { attrs: { _i: 96 } },
-            [
+              ),
               _c(
-                "div",
-                { staticClass: _vm._$g(97, "sc"), attrs: { _i: 97 } },
+                "u-col",
+                { attrs: { _i: 97 } },
                 [
-                  _c("u-button", {
-                    staticStyle: {
-                      width: "80%",
-                      "margin-left": "10%",
-                      "margin-bottom": "10px"
-                    },
-                    attrs: { _i: 98 },
-                    on: {
-                      click: function($event) {
-                        return _vm.$handleViewEvent($event)
-                      }
-                    }
-                  })
+                  _c(
+                    "div",
+                    { staticClass: _vm._$g(98, "sc"), attrs: { _i: 98 } },
+                    [
+                      _c("u-button", {
+                        staticStyle: {
+                          width: "80%",
+                          "margin-left": "10%",
+                          "margin-bottom": "10px"
+                        },
+                        attrs: { _i: 99 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    ],
+                    1
+                  )
                 ],
                 1
               )
@@ -4208,7 +4215,7 @@ var render = function() {
         ],
         1
       ),
-      _c("u-toast", { ref: "uToast", attrs: { _i: 99 } })
+      _c("u-toast", { ref: "uToast", attrs: { _i: 100 } })
     ],
     1
   )
@@ -11404,57 +11411,64 @@ var render = function() {
         1
       ),
       _c(
-        "u-row",
-        { staticStyle: { "margin-bottom": "10px" }, attrs: { _i: 104 } },
+        "uni-view",
+        { staticStyle: { "margin-top": "30px" }, attrs: { _i: 104 } },
         [
           _c(
-            "u-col",
+            "u-row",
             { attrs: { _i: 105 } },
             [
               _c(
-                "div",
-                { staticClass: _vm._$g(106, "sc"), attrs: { _i: 106 } },
+                "u-col",
+                { attrs: { _i: 106 } },
                 [
-                  _c("u-button", {
-                    staticStyle: {
-                      width: "80%",
-                      "margin-left": "10%",
-                      "margin-bottom": "10px"
-                    },
-                    attrs: { _i: 107 },
-                    on: {
-                      click: function($event) {
-                        return _vm.$handleViewEvent($event)
-                      }
-                    }
-                  })
+                  _c(
+                    "div",
+                    { staticClass: _vm._$g(107, "sc"), attrs: { _i: 107 } },
+                    [
+                      _c("u-button", {
+                        staticStyle: {
+                          width: "80%",
+                          "margin-left": "10%",
+                          "margin-bottom": "10px"
+                        },
+                        attrs: { _i: 108 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    ],
+                    1
+                  )
                 ],
                 1
-              )
-            ],
-            1
-          ),
-          _c(
-            "u-col",
-            { attrs: { _i: 108 } },
-            [
+              ),
               _c(
-                "div",
-                { staticClass: _vm._$g(109, "sc"), attrs: { _i: 109 } },
+                "u-col",
+                { attrs: { _i: 109 } },
                 [
-                  _c("u-button", {
-                    staticStyle: {
-                      width: "80%",
-                      "margin-left": "10%",
-                      "margin-bottom": "10px"
-                    },
-                    attrs: { _i: 110 },
-                    on: {
-                      click: function($event) {
-                        return _vm.$handleViewEvent($event)
-                      }
-                    }
-                  })
+                  _c(
+                    "div",
+                    { staticClass: _vm._$g(110, "sc"), attrs: { _i: 110 } },
+                    [
+                      _c("u-button", {
+                        staticStyle: {
+                          width: "80%",
+                          "margin-left": "10%",
+                          "margin-bottom": "10px"
+                        },
+                        attrs: { _i: 111 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    ],
+                    1
+                  )
                 ],
                 1
               )
@@ -11464,7 +11478,7 @@ var render = function() {
         ],
         1
       ),
-      _c("u-toast", { ref: "uToast", attrs: { _i: 111 } })
+      _c("u-toast", { ref: "uToast", attrs: { _i: 112 } })
     ],
     1
   )
@@ -12035,20 +12049,29 @@ var render = function() {
         ],
         1
       ),
-      _c("u-button", {
-        staticStyle: {
-          width: "80%",
-          "margin-left": "10%",
-          "margin-top": "30px"
+      _c(
+        "uni-view",
+        {
+          staticStyle: {
+            width: "80%",
+            "margin-left": "10%",
+            "margin-top": "30px"
+          },
+          attrs: { _i: 64 }
         },
-        attrs: { _i: 64 },
-        on: {
-          click: function($event) {
-            return _vm.$handleViewEvent($event)
-          }
-        }
-      }),
-      _c("u-toast", { ref: "uToast", attrs: { _i: 65 } })
+        [
+          _c("u-button", {
+            attrs: { _i: 65 },
+            on: {
+              click: function($event) {
+                return _vm.$handleViewEvent($event)
+              }
+            }
+          })
+        ],
+        1
+      ),
+      _c("u-toast", { ref: "uToast", attrs: { _i: 66 } })
     ],
     1
   )
@@ -12315,57 +12338,64 @@ var render = function() {
         1
       ),
       _c(
-        "u-row",
-        { staticStyle: { "margin-top": "50px" }, attrs: { _i: 17 } },
+        "uni-view",
+        { staticStyle: { "margin-top": "30px" }, attrs: { _i: 17 } },
         [
           _c(
-            "u-col",
-            { attrs: { _i: 18 } },
+            "u-row",
+            { staticStyle: { "margin-top": "50px" }, attrs: { _i: 18 } },
             [
               _c(
-                "div",
-                { staticClass: _vm._$g(19, "sc"), attrs: { _i: 19 } },
+                "u-col",
+                { attrs: { _i: 19 } },
                 [
-                  _c("u-button", {
-                    staticStyle: {
-                      width: "80%",
-                      "margin-left": "10%",
-                      "margin-bottom": "10px"
-                    },
-                    attrs: { _i: 20 },
-                    on: {
-                      click: function($event) {
-                        return _vm.$handleViewEvent($event)
-                      }
-                    }
-                  })
+                  _c(
+                    "div",
+                    { staticClass: _vm._$g(20, "sc"), attrs: { _i: 20 } },
+                    [
+                      _c("u-button", {
+                        staticStyle: {
+                          width: "80%",
+                          "margin-left": "10%",
+                          "margin-bottom": "10px"
+                        },
+                        attrs: { _i: 21 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    ],
+                    1
+                  )
                 ],
                 1
-              )
-            ],
-            1
-          ),
-          _c(
-            "u-col",
-            { attrs: { _i: 21 } },
-            [
+              ),
               _c(
-                "div",
-                { staticClass: _vm._$g(22, "sc"), attrs: { _i: 22 } },
+                "u-col",
+                { attrs: { _i: 22 } },
                 [
-                  _c("u-button", {
-                    staticStyle: {
-                      width: "80%",
-                      "margin-left": "10%",
-                      "margin-bottom": "10px"
-                    },
-                    attrs: { _i: 23 },
-                    on: {
-                      click: function($event) {
-                        return _vm.$handleViewEvent($event)
-                      }
-                    }
-                  })
+                  _c(
+                    "div",
+                    { staticClass: _vm._$g(23, "sc"), attrs: { _i: 23 } },
+                    [
+                      _c("u-button", {
+                        staticStyle: {
+                          width: "80%",
+                          "margin-left": "10%",
+                          "margin-bottom": "10px"
+                        },
+                        attrs: { _i: 24 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    ],
+                    1
+                  )
                 ],
                 1
               )
@@ -12375,7 +12405,7 @@ var render = function() {
         ],
         1
       ),
-      _c("u-toast", { ref: "uToast", attrs: { _i: 24 } })
+      _c("u-toast", { ref: "uToast", attrs: { _i: 25 } })
     ],
     1
   )
@@ -14461,57 +14491,64 @@ var render = function() {
         1
       ),
       _c(
-        "u-row",
-        { staticStyle: { "margin-top": "50px" }, attrs: { _i: 17 } },
+        "uni-view",
+        { staticStyle: { "margin-top": "30px" }, attrs: { _i: 17 } },
         [
           _c(
-            "u-col",
+            "u-row",
             { attrs: { _i: 18 } },
             [
               _c(
-                "div",
-                { staticClass: _vm._$g(19, "sc"), attrs: { _i: 19 } },
+                "u-col",
+                { attrs: { _i: 19 } },
                 [
-                  _c("u-button", {
-                    staticStyle: {
-                      width: "80%",
-                      "margin-left": "10%",
-                      "margin-bottom": "10px"
-                    },
-                    attrs: { _i: 20 },
-                    on: {
-                      click: function($event) {
-                        return _vm.$handleViewEvent($event)
-                      }
-                    }
-                  })
+                  _c(
+                    "div",
+                    { staticClass: _vm._$g(20, "sc"), attrs: { _i: 20 } },
+                    [
+                      _c("u-button", {
+                        staticStyle: {
+                          width: "80%",
+                          "margin-left": "10%",
+                          "margin-bottom": "10px"
+                        },
+                        attrs: { _i: 21 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    ],
+                    1
+                  )
                 ],
                 1
-              )
-            ],
-            1
-          ),
-          _c(
-            "u-col",
-            { attrs: { _i: 21 } },
-            [
+              ),
               _c(
-                "div",
-                { staticClass: _vm._$g(22, "sc"), attrs: { _i: 22 } },
+                "u-col",
+                { attrs: { _i: 22 } },
                 [
-                  _c("u-button", {
-                    staticStyle: {
-                      width: "80%",
-                      "margin-left": "10%",
-                      "margin-bottom": "10px"
-                    },
-                    attrs: { _i: 23 },
-                    on: {
-                      click: function($event) {
-                        return _vm.$handleViewEvent($event)
-                      }
-                    }
-                  })
+                  _c(
+                    "div",
+                    { staticClass: _vm._$g(23, "sc"), attrs: { _i: 23 } },
+                    [
+                      _c("u-button", {
+                        staticStyle: {
+                          width: "80%",
+                          "margin-left": "10%",
+                          "margin-bottom": "10px"
+                        },
+                        attrs: { _i: 24 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    ],
+                    1
+                  )
                 ],
                 1
               )
@@ -14521,7 +14558,7 @@ var render = function() {
         ],
         1
       ),
-      _c("u-toast", { ref: "uToast", attrs: { _i: 24 } })
+      _c("u-toast", { ref: "uToast", attrs: { _i: 25 } })
     ],
     1
   )
@@ -15876,15 +15913,7 @@ var render = function() {
           _vm._l(_vm._$g(27, "f"), function(item, index, $20, $30) {
             return _c(
               "uni-tr",
-              {
-                key: item,
-                attrs: { _i: "27-" + $30 },
-                on: {
-                  "row-click": function($event) {
-                    return _vm.$handleViewEvent($event)
-                  }
-                }
-              },
+              { key: item, attrs: { _i: "27-" + $30 } },
               [
                 _c("uni-td", { attrs: { _i: "28-" + $30 } }, [
                   _vm._v(_vm._$g("28-" + $30, "t0-0"))
@@ -15917,24 +15946,33 @@ var render = function() {
         ],
         2
       ),
-      _c("u-button", {
-        staticStyle: {
-          width: "80%",
-          "margin-left": "10%",
-          "margin-top": "30px"
+      _c(
+        "uni-view",
+        {
+          staticStyle: {
+            width: "80%",
+            "margin-left": "10%",
+            "margin-top": "30px"
+          },
+          attrs: { _i: 36 }
         },
-        attrs: { _i: 36 },
-        on: {
-          click: function($event) {
-            return _vm.$handleViewEvent($event)
-          }
-        }
-      }),
-      _c("u-toast", { ref: "uToast", attrs: { _i: 37 } }),
+        [
+          _c("u-button", {
+            attrs: { _i: 37 },
+            on: {
+              click: function($event) {
+                return _vm.$handleViewEvent($event)
+              }
+            }
+          })
+        ],
+        1
+      ),
+      _c("u-toast", { ref: "uToast", attrs: { _i: 38 } }),
       _c(
         "u-popup",
         {
-          attrs: { _i: 38 },
+          attrs: { _i: 39 },
           on: {
             close: function($event) {
               return _vm.$handleViewEvent($event)
@@ -15944,27 +15982,27 @@ var render = function() {
         [
           _c(
             "uni-view",
-            { attrs: { _i: 39 } },
+            { attrs: { _i: 40 } },
             [
               _c(
                 "div",
                 {
                   staticStyle: { width: "100%", display: "inline-block" },
-                  attrs: { _i: 40 }
+                  attrs: { _i: 41 }
                 },
                 [
                   _c(
                     "uni-view",
                     {
                       staticStyle: { float: "left", width: "70px" },
-                      attrs: { _i: 41 }
+                      attrs: { _i: 42 }
                     },
                     [
                       _c(
                         "v-uni-text",
                         {
                           staticStyle: { "font-size": "13px" },
-                          attrs: { _i: 42 }
+                          attrs: { _i: 43 }
                         },
                         [_vm._v("送检单号:")]
                       )
@@ -15975,13 +16013,13 @@ var render = function() {
                     "uni-view",
                     {
                       staticStyle: { float: "left", width: "220px" },
-                      attrs: { _i: 43 }
+                      attrs: { _i: 44 }
                     },
                     [
                       _c("v-uni-text", {
                         staticStyle: { "font-size": "13px" },
-                        attrs: { _i: 44 },
-                        domProps: { textContent: _vm._s(_vm._$g(44, "v-text")) }
+                        attrs: { _i: 45 },
+                        domProps: { textContent: _vm._s(_vm._$g(45, "v-text")) }
                       })
                     ],
                     1
@@ -15993,21 +16031,21 @@ var render = function() {
                 "div",
                 {
                   staticStyle: { width: "100%", display: "inline-block" },
-                  attrs: { _i: 45 }
+                  attrs: { _i: 46 }
                 },
                 [
                   _c(
                     "uni-view",
                     {
                       staticStyle: { float: "left", width: "70px" },
-                      attrs: { _i: 46 }
+                      attrs: { _i: 47 }
                     },
                     [
                       _c(
                         "v-uni-text",
                         {
                           staticStyle: { "font-size": "13px" },
-                          attrs: { _i: 47 }
+                          attrs: { _i: 48 }
                         },
                         [_vm._v("总件数:")]
                       )
@@ -16018,13 +16056,13 @@ var render = function() {
                     "uni-view",
                     {
                       staticStyle: { float: "left", width: "220px" },
-                      attrs: { _i: 48 }
+                      attrs: { _i: 49 }
                     },
                     [
                       _c("v-uni-text", {
                         staticStyle: { "font-size": "13px" },
-                        attrs: { _i: 49 },
-                        domProps: { textContent: _vm._s(_vm._$g(49, "v-text")) }
+                        attrs: { _i: 50 },
+                        domProps: { textContent: _vm._s(_vm._$g(50, "v-text")) }
                       })
                     ],
                     1
@@ -16036,21 +16074,21 @@ var render = function() {
                 "div",
                 {
                   staticStyle: { width: "100%", display: "inline-block" },
-                  attrs: { _i: 50 }
+                  attrs: { _i: 51 }
                 },
                 [
                   _c(
                     "uni-view",
                     {
                       staticStyle: { float: "left", width: "70px" },
-                      attrs: { _i: 51 }
+                      attrs: { _i: 52 }
                     },
                     [
                       _c(
                         "v-uni-text",
                         {
                           staticStyle: { "font-size": "13px" },
-                          attrs: { _i: 52 }
+                          attrs: { _i: 53 }
                         },
                         [_vm._v("送检人:")]
                       )
@@ -16058,9 +16096,9 @@ var render = function() {
                     1
                   ),
                   _c("u--input", {
-                    attrs: { _i: 53 },
+                    attrs: { _i: 54 },
                     model: {
-                      value: _vm._$g(53, "v-model"),
+                      value: _vm._$g(54, "v-model"),
                       callback: function() {},
                       expression: "inspectionName"
                     }
@@ -16072,21 +16110,21 @@ var render = function() {
                 "div",
                 {
                   staticStyle: { width: "100%", display: "inline-block" },
-                  attrs: { _i: 54 }
+                  attrs: { _i: 55 }
                 },
                 [
                   _c(
                     "uni-view",
                     {
                       staticStyle: { float: "left", width: "70px" },
-                      attrs: { _i: 55 }
+                      attrs: { _i: 56 }
                     },
                     [
                       _c(
                         "v-uni-text",
                         {
                           staticStyle: { "font-size": "13px" },
-                          attrs: { _i: 56 }
+                          attrs: { _i: 57 }
                         },
                         [_vm._v("状态:")]
                       )
@@ -16097,14 +16135,14 @@ var render = function() {
                     "uni-view",
                     {
                       staticStyle: { float: "left", width: "220px" },
-                      attrs: { _i: 57 }
+                      attrs: { _i: 58 }
                     },
                     [
                       _c(
                         "v-uni-text",
                         {
                           staticStyle: { "font-size": "13px" },
-                          attrs: { _i: 58 }
+                          attrs: { _i: 59 }
                         },
                         [_vm._v("新建状态")]
                       )
@@ -16118,21 +16156,21 @@ var render = function() {
                 "div",
                 {
                   staticStyle: { width: "100%", display: "inline-block" },
-                  attrs: { _i: 59 }
+                  attrs: { _i: 60 }
                 },
                 [
                   _c(
                     "uni-view",
                     {
                       staticStyle: { float: "left", width: "70px" },
-                      attrs: { _i: 60 }
+                      attrs: { _i: 61 }
                     },
                     [
                       _c(
                         "v-uni-text",
                         {
                           staticStyle: { "font-size": "13px" },
-                          attrs: { _i: 61 }
+                          attrs: { _i: 62 }
                         },
                         [_vm._v("送检单类型:")]
                       )
@@ -16143,18 +16181,18 @@ var render = function() {
                     "uni-view",
                     {
                       staticStyle: { float: "left", width: "220px" },
-                      attrs: { _i: 62 }
+                      attrs: { _i: 63 }
                     },
                     [
                       _c("uni-data-select", {
-                        attrs: { _i: 63 },
+                        attrs: { _i: 64 },
                         on: {
                           change: function($event) {
                             return _vm.$handleViewEvent($event)
                           }
                         },
                         model: {
-                          value: _vm._$g(63, "v-model"),
+                          value: _vm._$g(64, "v-model"),
                           callback: function() {},
                           expression: "inspectionCategory"
                         }
@@ -16169,21 +16207,21 @@ var render = function() {
                 "div",
                 {
                   staticStyle: { width: "100%", display: "inline-block" },
-                  attrs: { _i: 64 }
+                  attrs: { _i: 65 }
                 },
                 [
                   _c(
                     "uni-view",
                     {
                       staticStyle: { float: "left", width: "70px" },
-                      attrs: { _i: 65 }
+                      attrs: { _i: 66 }
                     },
                     [
                       _c(
                         "v-uni-text",
                         {
                           staticStyle: { "font-size": "13px" },
-                          attrs: { _i: 66 }
+                          attrs: { _i: 67 }
                         },
                         [_vm._v("送检机构:")]
                       )
@@ -16194,18 +16232,18 @@ var render = function() {
                     "uni-view",
                     {
                       staticStyle: { float: "left", width: "220px" },
-                      attrs: { _i: 67 }
+                      attrs: { _i: 68 }
                     },
                     [
                       _c("uni-data-select", {
-                        attrs: { _i: 68 },
+                        attrs: { _i: 69 },
                         on: {
                           change: function($event) {
                             return _vm.$handleViewEvent($event)
                           }
                         },
                         model: {
-                          value: _vm._$g(68, "v-model"),
+                          value: _vm._$g(69, "v-model"),
                           callback: function() {},
                           expression: "selectAngecy"
                         }
@@ -16220,21 +16258,21 @@ var render = function() {
                 "div",
                 {
                   staticStyle: { width: "100%", display: "inline-block" },
-                  attrs: { _i: 69 }
+                  attrs: { _i: 70 }
                 },
                 [
                   _c(
                     "uni-view",
                     {
                       staticStyle: { float: "left", width: "70px" },
-                      attrs: { _i: 70 }
+                      attrs: { _i: 71 }
                     },
                     [
                       _c(
                         "v-uni-text",
                         {
                           staticStyle: { "font-size": "13px" },
-                          attrs: { _i: 71 }
+                          attrs: { _i: 72 }
                         },
                         [_vm._v("送检日期:")]
                       )
@@ -16245,18 +16283,18 @@ var render = function() {
                     "uni-view",
                     {
                       staticStyle: { float: "left", width: "220px" },
-                      attrs: { _i: 72 }
+                      attrs: { _i: 73 }
                     },
                     [
                       _c("uni-datetime-picker", {
-                        attrs: { _i: 73 },
+                        attrs: { _i: 74 },
                         on: {
                           change: function($event) {
                             return _vm.$handleViewEvent($event)
                           }
                         },
                         model: {
-                          value: _vm._$g(73, "v-model"),
+                          value: _vm._$g(74, "v-model"),
                           callback: function() {},
                           expression: "inspectionTime"
                         }
@@ -16271,21 +16309,21 @@ var render = function() {
                 "div",
                 {
                   staticStyle: { width: "100%", display: "inline-block" },
-                  attrs: { _i: 74 }
+                  attrs: { _i: 75 }
                 },
                 [
                   _c(
                     "uni-view",
                     {
                       staticStyle: { float: "left", width: "70px" },
-                      attrs: { _i: 75 }
+                      attrs: { _i: 76 }
                     },
                     [
                       _c(
                         "v-uni-text",
                         {
                           staticStyle: { "font-size": "13px" },
-                          attrs: { _i: 76 }
+                          attrs: { _i: 77 }
                         },
                         [_vm._v("备注:")]
                       )
@@ -16293,9 +16331,9 @@ var render = function() {
                     1
                   ),
                   _c("u--input", {
-                    attrs: { _i: 77 },
+                    attrs: { _i: 78 },
                     model: {
-                      value: _vm._$g(77, "v-model"),
+                      value: _vm._$g(78, "v-model"),
                       callback: function() {},
                       expression: "remarks"
                     }
@@ -16305,15 +16343,15 @@ var render = function() {
               ),
               _c(
                 "u-row",
-                { attrs: { _i: 78 } },
+                { attrs: { _i: 79 } },
                 [
                   _c(
                     "u-col",
-                    { attrs: { _i: 79 } },
+                    { attrs: { _i: 80 } },
                     [
                       _c(
                         "div",
-                        { staticClass: _vm._$g(80, "sc"), attrs: { _i: 80 } },
+                        { staticClass: _vm._$g(81, "sc"), attrs: { _i: 81 } },
                         [
                           _c("u-button", {
                             staticStyle: {
@@ -16321,7 +16359,7 @@ var render = function() {
                               "margin-left": "10%",
                               "margin-bottom": "10px"
                             },
-                            attrs: { _i: 81 },
+                            attrs: { _i: 82 },
                             on: {
                               click: function($event) {
                                 return _vm.$handleViewEvent($event)
@@ -16336,11 +16374,11 @@ var render = function() {
                   ),
                   _c(
                     "u-col",
-                    { attrs: { _i: 82 } },
+                    { attrs: { _i: 83 } },
                     [
                       _c(
                         "div",
-                        { staticClass: _vm._$g(83, "sc"), attrs: { _i: 83 } },
+                        { staticClass: _vm._$g(84, "sc"), attrs: { _i: 84 } },
                         [
                           _c("u-button", {
                             staticStyle: {
@@ -16348,7 +16386,7 @@ var render = function() {
                               "margin-left": "10%",
                               "margin-bottom": "10px"
                             },
-                            attrs: { _i: 84 },
+                            attrs: { _i: 85 },
                             on: {
                               click: function($event) {
                                 return _vm.$handleViewEvent($event)
@@ -16401,19 +16439,9 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/using-components.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/style.js!/Users/taixin.jiang/Desktop/cb_github/CBPDA/pages/home/createInspection.vue?vue&type=script&lang=js&mpType=page ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
-
-{
-
-  data: function data() {
-    return {
-      wxsProps: {} };
-
-  },
-  components: {} };exports.default = _default;
+throw new Error("Module build failed (from ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/view/script.js):\nSyntaxError: Unexpected token, expected \",\" (230:6)\n    at Object._raise (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:746:17)\n    at Object.raiseWithData (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:739:17)\n    at Object.raise (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:733:17)\n    at Object.unexpected (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:8807:16)\n    at Object.expect (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:8793:28)\n    at Object.parseCallExpressionArguments (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:9830:14)\n    at Object.parseSubscript (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:9750:31)\n    at Object.parseSubscript (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:6447:18)\n    at Object.parseSubscripts (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:9679:19)\n    at Object.parseExprSubscripts (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:9662:17)\n    at Object.parseMaybeUnary (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:9636:21)\n    at Object.parseMaybeUnary (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:6877:20)\n    at Object.parseExprOps (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:9506:23)\n    at Object.parseMaybeConditional (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:9479:23)\n    at Object.parseMaybeAssign (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:9434:21)\n    at Object.parseMaybeAssign (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:6822:20)\n    at Object.parseExpression (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:9386:23)\n    at Object.parseStatementContent (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:11285:23)\n    at Object.parseStatementContent (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:6575:18)\n    at Object.parseStatement (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:11156:17)\n    at Object.parseBlockOrModuleBlockBody (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:11731:25)\n    at Object.parseBlockBody (/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/@babel/parser/lib/index.js:11717:10)");
 
 /***/ }),
 /* 334 */
@@ -16645,7 +16673,7 @@ var render = function() {
                     model: {
                       value: _vm._$g(18, "v-model"),
                       callback: function() {},
-                      expression: "packageNumber"
+                      expression: "barCode"
                     }
                   })
                 ],
@@ -16762,15 +16790,7 @@ var render = function() {
           _vm._l(_vm._$g(40, "f"), function(item, index, $20, $30) {
             return _c(
               "uni-tr",
-              {
-                key: item,
-                attrs: { _i: "40-" + $30 },
-                on: {
-                  "row-click": function($event) {
-                    return _vm.$handleViewEvent($event)
-                  }
-                }
-              },
+              { key: item, attrs: { _i: "40-" + $30 } },
               [
                 _c("uni-td", { attrs: { _i: "41-" + $30 } }, [
                   _vm._v(_vm._$g("41-" + $30, "t0-0"))
@@ -16807,57 +16827,64 @@ var render = function() {
         2
       ),
       _c(
-        "u-row",
-        { staticStyle: { "margin-bottom": "10px" }, attrs: { _i: 50 } },
+        "uni-view",
+        { staticStyle: { "margin-top": "30px" }, attrs: { _i: 50 } },
         [
           _c(
-            "u-col",
-            { attrs: { _i: 51 } },
+            "u-row",
+            { staticStyle: { "margin-bottom": "10px" }, attrs: { _i: 51 } },
             [
               _c(
-                "div",
-                { staticClass: _vm._$g(52, "sc"), attrs: { _i: 52 } },
+                "u-col",
+                { attrs: { _i: 52 } },
                 [
-                  _c("u-button", {
-                    staticStyle: {
-                      width: "80%",
-                      "margin-left": "10%",
-                      "margin-bottom": "10px"
-                    },
-                    attrs: { _i: 53 },
-                    on: {
-                      click: function($event) {
-                        return _vm.$handleViewEvent($event)
-                      }
-                    }
-                  })
+                  _c(
+                    "div",
+                    { staticClass: _vm._$g(53, "sc"), attrs: { _i: 53 } },
+                    [
+                      _c("u-button", {
+                        staticStyle: {
+                          width: "80%",
+                          "margin-left": "10%",
+                          "margin-bottom": "10px"
+                        },
+                        attrs: { _i: 54 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    ],
+                    1
+                  )
                 ],
                 1
-              )
-            ],
-            1
-          ),
-          _c(
-            "u-col",
-            { attrs: { _i: 54 } },
-            [
+              ),
               _c(
-                "div",
-                { staticClass: _vm._$g(55, "sc"), attrs: { _i: 55 } },
+                "u-col",
+                { attrs: { _i: 55 } },
                 [
-                  _c("u-button", {
-                    staticStyle: {
-                      width: "80%",
-                      "margin-left": "10%",
-                      "margin-bottom": "10px"
-                    },
-                    attrs: { _i: 56 },
-                    on: {
-                      click: function($event) {
-                        return _vm.$handleViewEvent($event)
-                      }
-                    }
-                  })
+                  _c(
+                    "div",
+                    { staticClass: _vm._$g(56, "sc"), attrs: { _i: 56 } },
+                    [
+                      _c("u-button", {
+                        staticStyle: {
+                          width: "80%",
+                          "margin-left": "10%",
+                          "margin-bottom": "10px"
+                        },
+                        attrs: { _i: 57 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    ],
+                    1
+                  )
                 ],
                 1
               )
@@ -16867,7 +16894,7 @@ var render = function() {
         ],
         1
       ),
-      _c("u-toast", { ref: "uToast", attrs: { _i: 57 } })
+      _c("u-toast", { ref: "uToast", attrs: { _i: 58 } })
     ],
     1
   )
@@ -17297,15 +17324,7 @@ var render = function() {
           _vm._l(_vm._$g(48, "f"), function(item, index, $20, $30) {
             return _c(
               "uni-tr",
-              {
-                key: item,
-                attrs: { _i: "48-" + $30 },
-                on: {
-                  "row-click": function($event) {
-                    return _vm.$handleViewEvent($event)
-                  }
-                }
-              },
+              { key: item, attrs: { _i: "48-" + $30 } },
               [
                 _c("uni-td", { attrs: { _i: "49-" + $30 } }, [
                   _vm._v(_vm._$g("49-" + $30, "t0-0"))
@@ -17335,20 +17354,29 @@ var render = function() {
         ],
         2
       ),
-      _c("u-button", {
-        staticStyle: {
-          width: "80%",
-          "margin-left": "10%",
-          "margin-top": "30px"
+      _c(
+        "uni-view",
+        {
+          staticStyle: {
+            width: "80%",
+            "margin-left": "10%",
+            "margin-top": "30px"
+          },
+          attrs: { _i: 56 }
         },
-        attrs: { _i: 56 },
-        on: {
-          click: function($event) {
-            return _vm.$handleViewEvent($event)
-          }
-        }
-      }),
-      _c("u-toast", { ref: "uToast", attrs: { _i: 57 } })
+        [
+          _c("u-button", {
+            attrs: { _i: 57 },
+            on: {
+              click: function($event) {
+                return _vm.$handleViewEvent($event)
+              }
+            }
+          })
+        ],
+        1
+      ),
+      _c("u-toast", { ref: "uToast", attrs: { _i: 58 } })
     ],
     1
   )
@@ -17778,15 +17806,7 @@ var render = function() {
           _vm._l(_vm._$g(48, "f"), function(item, index, $20, $30) {
             return _c(
               "uni-tr",
-              {
-                key: item,
-                attrs: { _i: "48-" + $30 },
-                on: {
-                  "row-click": function($event) {
-                    return _vm.$handleViewEvent($event)
-                  }
-                }
-              },
+              { key: item, attrs: { _i: "48-" + $30 } },
               [
                 _c("uni-td", { attrs: { _i: "49-" + $30 } }, [
                   _vm._v(_vm._$g("49-" + $30, "t0-0"))
@@ -17816,20 +17836,29 @@ var render = function() {
         ],
         2
       ),
-      _c("u-button", {
-        staticStyle: {
-          width: "80%",
-          "margin-left": "10%",
-          "margin-top": "30px"
+      _c(
+        "uni-view",
+        {
+          staticStyle: {
+            width: "80%",
+            "margin-left": "10%",
+            "margin-top": "30px"
+          },
+          attrs: { _i: 56 }
         },
-        attrs: { _i: 56 },
-        on: {
-          click: function($event) {
-            return _vm.$handleViewEvent($event)
-          }
-        }
-      }),
-      _c("u-toast", { ref: "uToast", attrs: { _i: 57 } })
+        [
+          _c("u-button", {
+            attrs: { _i: 57 },
+            on: {
+              click: function($event) {
+                return _vm.$handleViewEvent($event)
+              }
+            }
+          })
+        ],
+        1
+      ),
+      _c("u-toast", { ref: "uToast", attrs: { _i: 58 } })
     ],
     1
   )

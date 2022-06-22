@@ -29,7 +29,7 @@
 					<view class="desc-text-edit">
 						<u--text type="primary" text="扫码" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="packageNumber" placeholder="包码" border="surround" clearable>
+					<u--input font-size=13 v-model="barCode" placeholder="包码" border="surround" clearable>
 					</u--input>
 				</u-col>
 				<u-col span="1">
@@ -69,35 +69,36 @@
 				<uni-th align="left">订单数量</uni-th>
 			</uni-tr>
 			<!-- 表格数据行 -->
-			<uni-tr v-for="(item, index) in tableData" @row-click="rowClick(item,index)">
+			<uni-tr v-for="(item, index) in tableData">
 				<uni-td>{{index}}</uni-td>
-				<uni-td>{{item.receiveDate}}</uni-td>
-				<uni-td>{{item.receiveStatus}}</uni-td>
-				<uni-td>{{item.orderCode}}</uni-td>
-				<uni-td>{{item.itemNum}}</uni-td>
-				<uni-td>{{item.productCode}}</uni-td>
-				<uni-td>{{item.productDesc}}</uni-td>
-				<uni-td>{{item.packageCode}}</uni-td>
-				<uni-td>{{item.orderNum}}</uni-td>
+				<uni-td>{{item.temprecDate}}</uni-td>
+				<uni-td>{{item.itemStatus}}</uni-td>
+				<uni-td>{{item.poCode}}</uni-td>
+				<uni-td>{{item.poItemCode}}</uni-td>
+				<uni-td>{{item.materielCode}}</uni-td>
+				<uni-td>{{item.materielDesc}}</uni-td>
+				<uni-td>{{item.barCode}}</uni-td>
+				<uni-td>{{item.goodsPurchaseNum}}</uni-td>
 			</uni-tr>
 		</uni-table>
 
-		<u-row style="margin-bottom: 10px;">
-			<u-col span="6">
-				<div class="col-layout">
-					<u-button type="primary" @click="receiveConfirm" text="暂收确认"
-						style="width: 80%;margin-left: 10%;margin-bottom: 10px;"></u-button>
-				</div>
-			</u-col>
-			<u-col span="6">
-				<div class="col-layout">
-					<u-button type="primary" @click="createInspection" text="创建送检单"
-						style="width: 80%;margin-left: 10%;margin-bottom: 10px;">
-					</u-button>
-				</div>
-			</u-col>
-		</u-row>
-		
+		<view style="margin-top: 30px;">
+			<u-row style="margin-bottom: 10px;">
+				<u-col span="6">
+					<div class="col-layout">
+						<u-button type="primary" @click="receiveConfirm" text="暂收确认"
+							style="width: 80%;margin-left: 10%;margin-bottom: 10px;"></u-button>
+					</div>
+				</u-col>
+				<u-col span="6">
+					<div class="col-layout">
+						<u-button type="primary" @click="createInspection" text="创建送检单"
+							style="width: 80%;margin-left: 10%;margin-bottom: 10px;">
+						</u-button>
+					</div>
+				</u-col>
+			</u-row>
+		</view>
 		<u-toast ref="uToast" />
 	</view>
 </template>
@@ -106,42 +107,67 @@
 	export default {
 		data() {
 			return {
-				codeNumber:"",                   //出货汇总单单号
-				qualityInspector:"",             //质检人
-				packageNumber:"",                //包码
-				tableData: [{
-					receiveDate: "2022-6-16",
-					receiveStatus: "",
-					orderCode: "YHD1110000",
-					itemNum: "001",
-					productCode: "P109",
-					productDesc: "product description",
-					packageCode: "PAC123",
-					orderNum: 12
-				}, {
-					receiveDate: "2022-6-12",
-					receiveStatus: "",
-					orderCode: "YHD11100002",
-					itemNum: "002",
-					productCode: "P102",
-					productDesc: "product description",
-					packageCode: "PAC122",
-					orderNum: 11
-				}, {
-					receiveDate: "2022-6-13",
-					receiveStatus: "",
-					orderCode: "YHD11100003",
-					itemNum: "003",
-					productCode: "P103",
-					productDesc: "product description",
-					packageCode: "PAC120",
-					orderNum: 10
-				}],
+				codeNumber: "", //出货汇总单单号
+				qualityInspector: "", //质检人
+				barCode: "", //包码
+				selectedList: [], //选中的列表数据
+				tableData: [],
 			}
+		},
+		mounted() {
+			this.qualityInspector = "当前用户";
 		},
 		methods: {
 			startSearch() {
-				this.$refs.uToast.success(`search with ${this.codeNumber}`)
+				if (this.codeNumber === '' || this.codeNumber === undefined) {
+					this.$refs.uToast.error(`请先扫描出货汇总单`);
+					return;
+				}
+				var opts = {
+					url: ``,
+					method: 'post'
+				};
+				let vm = this;
+				var param = {
+					"interface_num": "MOBSCMD0001",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": {
+						"deliveryCode": this.codeNumber
+					},
+				};
+				uni.showLoading({
+					title: '加载中...'
+				});
+				this.$http.httpRequest(opts, param).then((res) => {
+					console.log("*******response:", res);
+					uni.hideLoading();
+					if (res.data.code === "200") {
+						//收到数据将暂收时间转为日期格式   状态转换为文字描述
+						if (res.data.data.length != 0) {
+							for (let i in res.data.data) {
+								res.data.data[i].temprecDate = this.$dateTrans.formatMsToDate(res.data.data[i]
+									.temprecDate);
+								switch (res.data.data[i].itemStatus) {
+									case "0":
+										res.data.data[i].itemStatus = "";
+										break;
+									case "1":
+										res.data.data[i].itemStatus = "";
+										break;
+									case "2":
+										res.data.data[i].itemStatus = "已确认暂收";
+										break;
+									default:
+
+								}
+							}
+						}
+						this.tableData = res.data.data;
+					} else {
+						this.$refs.uToast.error('获取数据失败，请重试');
+					}
+				});
 			},
 			startScan() {
 				let vm = this;
@@ -152,14 +178,24 @@
 								vm.codeNumber = res.result;
 							});
 						} else {
-							this.$refs.uToast.success(`扫码失败，请重试`);
+							this.$refs.uToast.error(`扫码失败，请重试`);
 						}
-			
+
 					}
 				});
 			},
 			addPackage() {
-				this.$refs.uToast.success(`search with ${this.packageNumber}`)
+				if (this.barCode === '' || this.barCode === undefined) {
+					this.$refs.uToast.error(`请先扫描包码`);
+					return;
+				}
+				//点击添加扫描到的包码与列表中包码一致则选中当前行
+				for (let i in this.tableData) {
+					if (this.tableData[i].barCode == this.barCode) {
+						this.$refs.table.toggleRowSelection(parseInt(i), true);
+					}
+				}
+				this.barCode = null;
 			},
 			startScanPackage() {
 				let vm = this;
@@ -167,12 +203,12 @@
 					success: function(res) {
 						if (res.errMsg == "scanCode:ok") {
 							vm.$nextTick(() => {
-								vm.packageNumber = res.result;
+								vm.barCode = res.result;
 							});
 						} else {
-							this.$refs.uToast.success(`扫码失败，请重试`);
+							this.$refs.uToast.error(`扫码失败，请重试`);
 						}
-			
+
 					}
 				});
 			},
@@ -182,11 +218,40 @@
 				});
 			},
 			selectionChange(res) {
-				console.log("selectionChange", res.details.index);
+				this.selectedList = res.detail.index;
 			},
 			receiveConfirm() {
-				//用于设置某一行被选中
-				this.$refs.table.toggleRowSelection(2,true);
+				if (this.codeNumber === '' || this.codeNumber === undefined) {
+					this.$refs.uToast.error(`请先扫描出货汇总单`);
+					return;
+				}
+				var opts = {
+					url: ``,
+					method: 'post'
+				};
+				let vm = this;
+				var bodyList = [];
+				for (var i = 0; i < this.selectedList.length; i++) {
+					bodyList.push(this.tableData[this.selectedList[i]]);
+				}
+
+				var param = {
+					"interface_num": "MOBSCMD0002",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": bodyList,
+				};
+				uni.showLoading({
+					title: '加载中...'
+				});
+				this.$http.httpRequest(opts, param).then((res) => {
+					uni.hideLoading();
+					if (res.data.code === "200") {
+						this.$refs.uToast.success('提交成功');
+					} else {
+						this.$refs.uToast.error('提交失败，请重试');
+					}
+				});
 			}
 		}
 	}

@@ -10,6 +10,9 @@ Vue.use(uView)
 import myRequest from './http/http.js'
 Vue.prototype.$http = myRequest
 
+import dateTrans from './JS/dateTrans.js'
+Vue.use(dateTrans)
+
 const app = new Vue({
 	...App
 })

@@ -192,21 +192,23 @@
 				<div>{{total}}</div>
 			</u-col>
 		</u-row>
-		<u-row style="margin-bottom: 10px;">
-			<u-col span="6">
-				<div class="col-layout">
-					<u-button type="primary" @click="commit" text="提交"
-						style="width: 80%;margin-left: 10%;margin-bottom: 10px;"></u-button>
-				</div>
-			</u-col>
-			<u-col span="6">
-				<div class="col-layout">
-					<u-button type="primary" @click="toDamage" text="抽检录入"
-						style="width: 80%;margin-left: 10%;margin-bottom: 10px;">
-					</u-button>
-				</div>
-			</u-col>
-		</u-row>
+		<view style="margin-top: 30px;">
+			<u-row>
+				<u-col span="6">
+					<div class="col-layout">
+						<u-button type="primary" @click="commit" text="提交"
+							style="width: 80%;margin-left: 10%;margin-bottom: 10px;"></u-button>
+					</div>
+				</u-col>
+				<u-col span="6">
+					<div class="col-layout">
+						<u-button type="primary" @click="toDamage" text="抽检录入"
+							style="width: 80%;margin-left: 10%;margin-bottom: 10px;">
+						</u-button>
+					</div>
+				</u-col>
+			</u-row>
+		</view>
 		<u-toast ref="uToast" />
 	</view>
 </template>
@@ -230,7 +232,7 @@
 				qualifiedNum: "", //合格件数
 				qualifiedWeight: "", //合格克重
 				tableData: [],
-				reason : [{ //不合格原因
+				reason: [{ //不合格原因
 						value: 0,
 						text: "面残"
 					},
@@ -271,7 +273,7 @@
 						text: "克重不符"
 					},
 				],
-				category : [{ //质检类别
+				category: [{ //质检类别
 						value: 0,
 						text: "商品"
 					},

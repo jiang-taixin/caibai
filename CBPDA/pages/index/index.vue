@@ -133,7 +133,7 @@
 						uni.navigateTo({
 							url: '/pages/home/createInspection'
 						});
-						break;	
+						break;
 					case 7:
 						uni.navigateTo({
 							url: '/pages/home/inspectionDetail'
@@ -143,7 +143,7 @@
 						uni.navigateTo({
 							url: '/pages/home/inspectionConfirm'
 						});
-						break;	
+						break;
 					default:
 						uni.navigateTo({
 							url: '/pages/home/qualityTesting'
@@ -156,5 +156,5 @@
 </script>
 
 <style>
-	
+
 </style>

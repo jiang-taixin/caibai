@@ -43,22 +43,32 @@
             /* ios打包配置 */
             "ios" : {},
             /* SDK配置 */
-            "sdkConfigs" : {}
-        }
+            "sdkConfigs" : {},
+            "icons" : {
+                "android" : {
+                    "hdpi" : "/static/logo/72.png",
+                    "xhdpi" : "/static/logo/96.png",
+                    "xxhdpi" : "/static/logo/144.png",
+                    "xxxhdpi" : "/static/logo/192.png"
+                }
+            }
+        },
+        "nativePlugins" : {}
     },
     /* 快应用特有相关 */
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
         "appid" : "wxfd7f275ef7216a4c",
-		"cloudfunctionRoot":"cloudfunctions/",
+        "cloudfunctionRoot" : "cloudfunctions/",
         "setting" : {
             "urlCheck" : false,
             "es6" : true,
             "postcss" : true,
             "minified" : false
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+		"lazyCodeLoading": "requiredComponents"
     },
     "mp-alipay" : {
         "usingComponents" : true

@@ -1,9 +1,11 @@
-import {API_BASE} from '../http/config.js'
+import {
+	API_BASE
+} from '../http/config.js'
 
 const baseUrl = API_BASE;
 
-const httpRequest = (opts, data) => {  
-    //1.请求的一些默认信息
+const httpRequest = (opts, data) => {
+	//1.请求的一些默认信息
 	let httpDefaultOpts = {
 		url: baseUrl + opts.url,
 		data: data,
@@ -12,18 +14,23 @@ const httpRequest = (opts, data) => {
 			'X-Requested-With': 'XMLHttpRequest',
 			"Accept": "*/*",
 			"Content-Type": "application/json",
-			"username":"user",
+			"username": "user",
 		} : {
 			'X-Requested-With': 'XMLHttpRequest',
 			'Content-Type': 'application/json',
-			"username":"user",
+			"username": "user",
 		},
 		dataType: 'json',
 	}
+	var time = format(new Date(), "yyyy-MM-dd HH:mm:ss");
+	httpDefaultOpts.data["source_system"] = "MOBILE";
+	httpDefaultOpts.data["request_time"] = time;
+	httpDefaultOpts.data["bus_key"] = "";
+	httpDefaultOpts.data["bus_type"] = "";
 	console.log(`----------start request with url :${httpDefaultOpts.url}`);
-	console.log('----------start request with data :',httpDefaultOpts.data);
-	
-	return new Promise((resolve, reject)=>{
+	console.log('----------start request with data :', httpDefaultOpts.data);
+
+	return new Promise((resolve, reject) => {
 		uni.request(httpDefaultOpts).then(
 			(res) => {
 				resolve(res[1])
@@ -61,7 +68,7 @@ const httpTokenRequest = (opts, data) => {
 		},
 		dataType: 'json',
 	}
-	return  new Promise(function(resolve, reject) {
+	return new Promise(function(resolve, reject) {
 		uni.request(httpDefaultOpts).then(
 			(res) => {
 				resolve(res[1])
@@ -71,6 +78,35 @@ const httpTokenRequest = (opts, data) => {
 				reject(response)
 			}
 		)
+	})
+};
+
+var format = function(time, format) {
+	var t = new Date(time);
+	var tf = function(i) {
+		return (i < 10 ? '0' : '') + i
+	};
+	return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function(a) {
+		switch (a) {
+			case 'yyyy':
+				return tf(t.getFullYear());
+				break;
+			case 'MM':
+				return tf(t.getMonth() + 1);
+				break;
+			case 'mm':
+				return tf(t.getMinutes());
+				break;
+			case 'dd':
+				return tf(t.getDate());
+				break;
+			case 'HH':
+				return tf(t.getHours());
+				break;
+			case 'ss':
+				return tf(t.getSeconds());
+				break;
+		}
 	})
 };
 

@@ -87,7 +87,7 @@
 				<uni-th align="left">订单数量</uni-th>
 			</uni-tr>
 			<!-- 表格数据行 -->
-			<uni-tr v-for="(item, index) in tableData" @row-click="rowClick(item,index)">
+			<uni-tr v-for="(item, index) in tableData">
 				<uni-td>{{index}}</uni-td>
 				<uni-td>{{item.orderCode}}</uni-td>
 				<uni-td>{{item.itemNum}}</uni-td>
@@ -98,9 +98,10 @@
 			</uni-tr>
 		</uni-table>
 
-		<u-button type="primary" @click="exportData" text="导出数据" style="width: 80%;margin-left: 10%;margin-top: 30px;">
-		</u-button>
-
+		<view style="width: 80%;margin-left: 10%;margin-top: 30px;">
+			<u-button type="primary" @click="exportData" text="导出数据">
+			</u-button>
+		</view>
 		<u-toast ref="uToast" />
 
 	</view>
@@ -185,6 +186,7 @@
 						<body>
 						<h4>送检单明细信息</h4>
 						<table border="1" width="100%" cellspacing="0"">${str}</table>
+						<br><br>
 						<hr/>
 						<font color="red">不要基于此邮件进行回复</font>
 						</body>

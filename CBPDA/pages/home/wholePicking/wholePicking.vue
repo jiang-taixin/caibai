@@ -62,9 +62,6 @@
 					<view class="desc-text-edit">
 						<u--text type="primary" text="扫码输入" size=13></u--text>
 					</view>
-					<!-- <u--input font-size=13 v-model="inputNum" border="surround" @blur="blured" @change="change" clearable>
-					</u--input> 
-					u-input控件有问题 blur取不到值-->
 					<uni-easyinput v-model="inputNum" placeholder="扫码输入" @blur="blur">
 					</uni-easyinput>
 				</div>

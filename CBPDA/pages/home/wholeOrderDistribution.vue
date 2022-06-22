@@ -28,21 +28,23 @@
 			<uni-datetime-picker v-model="date" type="date" :value="single" start="2021-3-20" end="2099-6-20"
 				@change="changeDate" />
 		</div>
-		<u-row style="margin-top: 50px;">
-			<u-col span="6">
-				<div class="col-layout">
-					<u-button type="primary" @click="confirm" text="确认"
-						style="width: 80%;margin-left: 10%;margin-bottom: 10px;"></u-button>
-				</div>
-			</u-col>
-			<u-col span="6">
-				<div class="col-layout">
-					<u-button type="error" @click="cancel" text="取消"
-						style="width: 80%;margin-left: 10%;margin-bottom: 10px;">
-					</u-button>
-				</div>
-			</u-col>
-		</u-row>
+		<view style="margin-top: 30px;">
+			<u-row>
+				<u-col span="6">
+					<div class="col-layout">
+						<u-button type="primary" @click="confirm" text="确认"
+							style="width: 80%;margin-left: 10%;margin-bottom: 10px;"></u-button>
+					</div>
+				</u-col>
+				<u-col span="6">
+					<div class="col-layout">
+						<u-button type="error" @click="cancel" text="取消"
+							style="width: 80%;margin-left: 10%;margin-bottom: 10px;">
+						</u-button>
+					</div>
+				</u-col>
+			</u-row>
+		</view>
 		<u-toast ref="uToast" />
 	</view>
 </template>

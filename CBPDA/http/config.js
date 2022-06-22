@@ -1,1 +1,1 @@
-export const API_BASE = 'http://plm4.kmtsolution.com/cb-scm-api/api';
+export const API_BASE = 'http://172.18.0.17:8080/cb/outside/mobile/v1';

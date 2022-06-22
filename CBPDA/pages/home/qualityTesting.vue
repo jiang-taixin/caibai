@@ -11,12 +11,14 @@
 				</u-col>
 				<u-col span="1">
 					<view style="width: 30px;height: 30px;">
-						<u-button type="primary" :plain="true" icon="scan" @click="startScan" style="width: 30px;height: 30px;"></u-button>
+						<u-button type="primary" :plain="true" icon="scan" @click="startScan"
+							style="width: 30px;height: 30px;"></u-button>
 					</view>
 				</u-col>
 				<u-col span="1">
 					<view style="width: 30px;height: 30px;">
-						<u-button type="primary" :plain="true" icon="search" @click="startSearch" style="width: 30px;height: 30px;"></u-button>
+						<u-button type="primary" :plain="true" icon="search" @click="startSearch"
+							style="width: 30px;height: 30px;"></u-button>
 					</view>
 				</u-col>
 			</u-row>
@@ -175,21 +177,23 @@
 				<div>{{total}}</div>
 			</u-col>
 		</u-row>
-		<u-row style="margin-bottom: 10px;">
-			<u-col span="6">
-				<div class="col-layout">
-					<u-button type="primary" @click="commit" text="提交"
-						style="width: 80%;margin-left: 10%;margin-bottom: 10px;"></u-button>
-				</div>
-			</u-col>
-			<u-col span="6">
-				<div class="col-layout">
-					<u-button type="primary" @click="toDamage" text="抽检录入"
-						style="width: 80%;margin-left: 10%;margin-bottom: 10px;">
-					</u-button>
-				</div>
-			</u-col>
-		</u-row>
+		<view style="margin-top: 30px;">
+			<u-row style="margin-bottom: 10px;">
+				<u-col span="6">
+					<div class="col-layout">
+						<u-button type="primary" @click="commit" text="提交"
+							style="width: 80%;margin-left: 10%;margin-bottom: 10px;"></u-button>
+					</div>
+				</u-col>
+				<u-col span="6">
+					<div class="col-layout">
+						<u-button type="primary" @click="toDamage" text="抽检录入"
+							style="width: 80%;margin-left: 10%;margin-bottom: 10px;">
+						</u-button>
+					</div>
+				</u-col>
+			</u-row>
+		</view>
 		<u-toast ref="uToast" />
 	</view>
 </template>
@@ -210,7 +214,7 @@
 				material: "贵金属", //贵金属材质
 				total: 0, //不合格总计
 				tableData: [],
-				reason : [{ //不合格原因
+				reason: [{ //不合格原因
 						value: 0,
 						text: "面残"
 					},

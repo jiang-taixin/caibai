@@ -58,7 +58,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="送检时间" size=13></u--text>
 					</view>
-		
+
 					<u--input font-size=13 v-model="inspectionTime" border="surround" disabled=true>
 					</u--input>
 				</div>
@@ -87,7 +87,7 @@
 				<uni-th align="left">订单数量</uni-th>
 			</uni-tr>
 			<!-- 表格数据行 -->
-			<uni-tr v-for="(item, index) in tableData" @row-click="rowClick(item,index)">
+			<uni-tr v-for="(item, index) in tableData">
 				<uni-td>{{index}}</uni-td>
 				<uni-td>{{item.orderCode}}</uni-td>
 				<uni-td>{{item.itemNum}}</uni-td>
@@ -98,9 +98,10 @@
 			</uni-tr>
 		</uni-table>
 
-		<u-button type="primary" @click="exportData" text="导出数据" style="width: 80%;margin-left: 10%;margin-top: 30px;">
-		</u-button>
-
+		<view style="width: 80%;margin-left: 10%;margin-top: 30px;">
+			<u-button type="primary" @click="confirm" text="取检确认">
+			</u-button>
+		</view>
 		<u-toast ref="uToast" />
 	</view>
 </template>
@@ -115,7 +116,7 @@
 				inspectionType: "", //送检单类型
 				inspectionTime: "", //送检时间
 				selectAngecy: "", //送检时间
-				inspectionAngecy:"",//送检机构
+				inspectionAngecy: "", //送检机构
 				tableData: [{
 					orderCode: "YHD1110000",
 					itemNum: "001",
@@ -166,21 +167,8 @@
 				this.inspectionTime = e;
 				console.log("change date :", this.inspectionTime);
 			},
-			exportData() {
-				wx.cloud.callFunction({
-					name: "sendEmail",
-					//js携带参数传到云端
-					data: {
-						_text: "测试信息测试信息", //邮件内容
-						_recipients: "taixin.jiang@accenture.com", //收件人
-					},
-					success(res) {
-						console.log("发送成功", res)
-					},
-					fail(res) {
-						console.log("发送失败", res)
-					}
-				})
+			confirm() {
+				
 			}
 		}
 	}
