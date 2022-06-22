@@ -18271,7 +18271,13 @@ platform;exports.default = _default;
 
 
 
-var baseUrl = _config.API_BASE;
+var baseUrl = "";
+
+if (true) {
+  // TODO
+  baseUrl = _config.API_BASE_DEVELOPMENT;
+}
+if (false) {}
 
 var httpRequest = function httpRequest(opts, data) {
   //1.请求的一些默认信息
@@ -18394,7 +18400,11 @@ var format = function format(time, _format) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.API_BASE = void 0;var API_BASE = 'http://172.18.0.17:8080/cb/outside/mobile/v1';exports.API_BASE = API_BASE;
+Object.defineProperty(exports, "__esModule", { value: true });exports.API_BASE_PRODUCTION = exports.API_BASE_DEVELOPMENT = void 0; //测试环境API地址
+var API_BASE_DEVELOPMENT = 'http://plm4.kmtsolution.com/cb/outside/mobile/v1';
+
+//正式环境API地址
+exports.API_BASE_DEVELOPMENT = API_BASE_DEVELOPMENT;var API_BASE_PRODUCTION = 'http://plm4.kmtsolution.com/cb/outside/mobile/v1';exports.API_BASE_PRODUCTION = API_BASE_PRODUCTION;
 
 /***/ }),
 /* 140 */

@@ -140,7 +140,6 @@
 					title: '加载中...'
 				});
 				this.$http.httpRequest(opts, param).then((res) => {
-					console.log("*******response:", res);
 					uni.hideLoading();
 					if (res.data.code === "200") {
 						//收到数据将暂收时间转为日期格式   状态转换为文字描述
@@ -221,10 +220,6 @@
 				this.selectedList = res.detail.index;
 			},
 			receiveConfirm() {
-				if (this.codeNumber === '' || this.codeNumber === undefined) {
-					this.$refs.uToast.error(`请先扫描出货汇总单`);
-					return;
-				}
 				var opts = {
 					url: ``,
 					method: 'post'

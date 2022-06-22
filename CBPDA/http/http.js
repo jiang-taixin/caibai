@@ -1,8 +1,17 @@
 import {
-	API_BASE
+	API_BASE_DEVELOPMENT,API_BASE_PRODUCTION
 } from '../http/config.js'
 
-const baseUrl = API_BASE;
+var baseUrl = "";
+
+if (process.env.NODE_ENV === 'development') {
+	// TODO
+	baseUrl = API_BASE_DEVELOPMENT;
+}
+if (process.env.NODE_ENV === 'production') {
+	// TODO
+	baseUrl = API_BASE_PRODUCTION;
+}
 
 const httpRequest = (opts, data) => {
 	//1.请求的一些默认信息

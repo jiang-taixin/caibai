@@ -1,1 +1,5 @@
-export const API_BASE = 'http://172.18.0.17:8080/cb/outside/mobile/v1';
+//测试环境API地址
+export const API_BASE_DEVELOPMENT = 'http://plm4.kmtsolution.com/cb/outside/mobile/v1';
+
+//正式环境API地址
+export const API_BASE_PRODUCTION = 'http://plm4.kmtsolution.com/cb/outside/mobile/v1';
