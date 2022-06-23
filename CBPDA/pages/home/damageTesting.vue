@@ -136,15 +136,7 @@
 				selectAngecy: 0, //送检机构
 				tableData: [],
 				receiveData: {},
-				angecy: [{
-						value: 0,
-						text: "首检"
-					},
-					{
-						value: 1,
-						text: "国检"
-					},
-				],
+				angecy: [],
 			}
 		},
 		mounted() {
@@ -153,6 +145,14 @@
 			var myDate = new Date();
 			var time = myDate.toLocaleDateString().split('/').join('-');
 			this.inspectionTime = time;
+			
+			let vm = this;
+			uni.getStorage({
+				key:"organList",
+				success(res) {
+					vm.angecy = res.data;
+				}
+			})
 		},
 		methods: {
 			startScan() {

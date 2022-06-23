@@ -325,15 +325,7 @@ var _default =
       selectAngecy: 0, //送检机构
       tableData: [],
       receiveData: {},
-      angecy: [{
-        value: 0,
-        text: "首检" },
-
-      {
-        value: 1,
-        text: "国检" }] };
-
-
+      angecy: [] };
 
   },
   mounted: function mounted() {
@@ -342,6 +334,14 @@ var _default =
     var myDate = new Date();
     var time = myDate.toLocaleDateString().split('/').join('-');
     this.inspectionTime = time;
+
+    var vm = this;
+    uni.getStorage({
+      key: "organList",
+      success: function success(res) {
+        vm.angecy = res.data;
+      } });
+
   },
   methods: {
     startScan: function startScan() {
@@ -377,7 +377,6 @@ var _default =
       this.$http.httpRequest(opts, param).then(function (res) {
         uni.hideLoading();
         if (res.data.code === "200") {
-          console.log("-----------response data:", res);
           _this.receiveData = res.data.data;
           _this.SOU = res.data.data.sou;
           _this.damageNum = res.data.data.checkNumber;
@@ -440,7 +439,7 @@ var _default =
     },
     add: function add() {
       if (this.tableData.length >= parseInt(this.damageNum)) {
-        this.$refs.uToast.error("\u6570\u91CF\u5DF2\u8FBE\u4E0A\u9650");
+        this.$refs.uToast.error("\u5DF2\u8FBE\u6709\u635F\u4EF6\u6570\u4E0A\u9650");
         return;
       } else {
         this.tableData.push({

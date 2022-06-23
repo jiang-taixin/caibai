@@ -18300,8 +18300,8 @@ var httpRequest = function httpRequest(opts, data) {
   var time = format(new Date(), "yyyy-MM-dd HH:mm:ss");
   httpDefaultOpts.data["source_system"] = "MOBILE";
   httpDefaultOpts.data["request_time"] = time;
-  httpDefaultOpts.data["bus_key"] = "";
-  httpDefaultOpts.data["bus_type"] = "";
+  httpDefaultOpts.data["bus_key"] = "WGEC";
+  httpDefaultOpts.data["bus_type"] = "001";
   console.log("----------start request with url :".concat(httpDefaultOpts.url));
   console.log('----------start request with data :', httpDefaultOpts.data);
 

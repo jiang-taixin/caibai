@@ -268,6 +268,13 @@ var _default =
   beforeCreate: function beforeCreate() {
 
   },
+  mounted: function mounted() {
+    //页面加载完成获取枚举值并缓存在本地
+    this.getAngecy(); //送检机构
+    this.getInspectionCategory(); //送检单类型
+    this.getReason(); //不合格原因
+    this.getTestingCategory(); //质检类别
+  },
   created: function created() {
     //判断平台类型    设置模块是否显示
     var platform = undefined;
@@ -339,6 +346,150 @@ var _default =
             url: '/pages/home/qualityTesting' });}
 
 
+    },
+    getAngecy: function getAngecy() {var _this = this;
+      //获取检测机构
+      var opts = {
+        url: "",
+        method: 'post' };
+
+      var param = {
+        "interface_num": "MOBSCMD0005",
+        "serial_no": "123456789",
+        "access_token": "abc",
+        "bus_data": {
+          "enumCode": "PO_CHECK_TYPE" } };
+
+
+      this.$http.httpRequest(opts, param).then(function (res) {
+        if (res.data.code === "200") {
+          var organList = [];
+          if (res.data.data.PO_CHECK_TYPE.length != 0) {
+            for (var i in res.data.data.PO_CHECK_TYPE) {
+              organList.push({
+                "text": res.data.data.PO_CHECK_TYPE[i].name,
+                "value": res.data.data.PO_CHECK_TYPE[i].code });
+
+            }
+          }
+          uni.setStorage({
+            key: 'organList',
+            data: organList,
+            success: function success() {
+            } });
+
+        } else {
+          _this.$refs.uToast.error('获取检测机构失败，请刷新页面');
+        }
+      });
+    },
+    getInspectionCategory: function getInspectionCategory() {var _this2 = this;
+      //获取送检单类别
+      var opts = {
+        url: "",
+        method: 'post' };
+
+      var param = {
+        "interface_num": "MOBSCMD0005",
+        "serial_no": "123456789",
+        "access_token": "abc",
+        "bus_data": {
+          "enumCode": "INSPECT_TYPE" } };
+
+
+      this.$http.httpRequest(opts, param).then(function (res) {
+        if (res.data.code === "200") {
+          var categoryList = [];
+          if (res.data.data.INSPECT_TYPE.length != 0) {
+            for (var i in res.data.data.INSPECT_TYPE) {
+              categoryList.push({
+                "text": res.data.data.INSPECT_TYPE[i].name,
+                "value": res.data.data.INSPECT_TYPE[i].code });
+
+            }
+          }
+          uni.setStorage({
+            key: 'categoryList',
+            data: categoryList,
+            success: function success() {
+            } });
+
+        } else {
+          _this2.$refs.uToast.error('获取送检单类别失败，请刷新页面');
+        }
+      });
+    },
+    getReason: function getReason() {var _this3 = this;
+      //获取不合格原因
+      var opts = {
+        url: "",
+        method: 'post' };
+
+      var param = {
+        "interface_num": "MOBSCMD0005",
+        "serial_no": "123456789",
+        "access_token": "abc",
+        "bus_data": {
+          "enumCode": "TEMPREC_UNQ_REASON" } };
+
+
+      this.$http.httpRequest(opts, param).then(function (res) {
+        if (res.data.code === "200") {
+          var reasonList = [];
+          if (res.data.data.TEMPREC_UNQ_REASON.length != 0) {
+            for (var i in res.data.data.TEMPREC_UNQ_REASON) {
+              reasonList.push({
+                "text": res.data.data.TEMPREC_UNQ_REASON[i].name,
+                "value": res.data.data.TEMPREC_UNQ_REASON[i].code });
+
+            }
+          }
+          uni.setStorage({
+            key: 'reasonList',
+            data: reasonList,
+            success: function success() {
+            } });
+
+        } else {
+          _this3.$refs.uToast.error('获取不合格原因失败，请刷新页面');
+        }
+      });
+    },
+    getTestingCategory: function getTestingCategory() {var _this4 = this;
+      //获取质检类别
+      var opts = {
+        url: "",
+        method: 'post' };
+
+      var param = {
+        "interface_num": "MOBSCMD0005",
+        "serial_no": "123456789",
+        "access_token": "abc",
+        "bus_data": {
+          "enumCode": "CHECK_CATEGORY" } };
+
+
+      this.$http.httpRequest(opts, param).then(function (res) {
+        if (res.data.code === "200") {
+          var typeList = [];
+          if (res.data.data.CHECK_CATEGORY.length != 0) {
+            for (var i in res.data.data.CHECK_CATEGORY) {
+              typeList.push({
+                "text": res.data.data.CHECK_CATEGORY[i].name,
+                "value": res.data.data.CHECK_CATEGORY[i].code });
+
+            }
+          }
+          uni.setStorage({
+            key: 'typeList',
+            data: typeList,
+            success: function success() {
+            } });
+
+        } else {
+          _this4.$refs.uToast.error('获取质检类别失败，请刷新页面');
+        }
+      });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

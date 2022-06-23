@@ -359,28 +359,25 @@ var _default =
       inspectionCategory: "", //送检类型
       inspectionDate: "", //送检日期
       inspectionAngecy: "", //送检机构
-      angecy: [{
-        value: 0,
-        text: "首检" },
+      angecy: [],
+      category: [] };
 
-      {
-        value: 1,
-        text: "国检" }],
+  },
+  mounted: function mounted() {
+    var vm = this;
+    uni.getStorage({
+      key: "organList",
+      success: function success(res) {
+        vm.angecy = res.data;
+        console.log("*********************angecy:", vm.angecy);
+      } });
 
-
-      category: [{
-        value: 0,
-        text: "贵金属首检送检单" },
-
-      {
-        value: 1,
-        text: "镶嵌国检送检单" },
-
-      {
-        value: 2,
-        text: "摆件国检送检单" }] };
-
-
+    uni.getStorage({
+      key: "categoryList",
+      success: function success(res) {
+        vm.category = res.data;
+        console.log("*********************angecy:", vm.category);
+      } });
 
   },
   methods: {
@@ -442,19 +439,6 @@ var _default =
     },
     create: function create() {
       this.showCreatePage = true;
-      this.angecy = [{
-        value: 0,
-        text: "首检" },
-
-      {
-        value: 1,
-        text: "国检" },
-
-      {
-        value: 1,
-        text: "国检" }];
-
-
     },
     confirmCreate: function confirmCreate() {var _this2 = this;
       if (this.inspectionName === '' || this.inspectionName === undefined) {

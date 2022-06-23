@@ -170,29 +170,26 @@
 				inspectionCategory: "", //送检类型
 				inspectionDate: "", //送检日期
 				inspectionAngecy: "", //送检机构
-				angecy: [{
-						value: 0,
-						text: "首检"
-					},
-					{
-						value: 1,
-						text: "国检"
-					}
-				],
-				category: [{
-						value: 0,
-						text: "贵金属首检送检单"
-					},
-					{
-						value: 1,
-						text: "镶嵌国检送检单"
-					},
-					{
-						value: 2,
-						text: "摆件国检送检单"
-					},
-				],
+				angecy: [],
+				category: [],
 			}
+		},
+		mounted() {
+			let vm = this;
+			uni.getStorage({
+				key:"organList",
+				success(res) {
+					vm.angecy = res.data;
+					console.log("*********************angecy:",vm.angecy);
+				}
+			});
+			uni.getStorage({
+				key:"categoryList",
+				success(res) {
+					vm.category = res.data;
+					console.log("*********************angecy:",vm.category);
+				}
+			})
 		},
 		methods: {
 			startSearch() {
@@ -253,19 +250,6 @@
 			},
 			create() {
 				this.showCreatePage = true;
-				this.angecy = [{
-						value: 0,
-						text: "首检"
-					},
-					{
-						value: 1,
-						text: "国检"
-					},
-					{
-						value: 1,
-						text: "国检"
-					},
-				];
 			},
 			confirmCreate() {
 				if (this.inspectionName === '' || this.inspectionName === undefined) {
