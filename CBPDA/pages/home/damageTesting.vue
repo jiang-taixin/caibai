@@ -188,7 +188,6 @@
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
 					if (res.data.code === "200") {
-						console.log("-----------response data:", res);
 						this.receiveData = res.data.data;
 						this.SOU = res.data.data.sou;
 						this.damageNum = res.data.data.checkNumber;
@@ -251,7 +250,7 @@
 			},
 			add() {
 				if (this.tableData.length >= parseInt(this.damageNum)) {
-					this.$refs.uToast.error(`数量已达上限`);
+					this.$refs.uToast.error(`已达有损件数上限`);
 					return;
 				} else {
 					this.tableData.push({

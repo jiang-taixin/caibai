@@ -43,7 +43,9 @@
             /* ios打包配置 */
             "ios" : {},
             /* SDK配置 */
-            "sdkConfigs" : {},
+            "sdkConfigs" : {
+                "ad" : {}
+            },
             "icons" : {
                 "android" : {
                     "hdpi" : "/static/logo/72.png",
@@ -51,6 +53,9 @@
                     "xxhdpi" : "/static/logo/144.png",
                     "xxxhdpi" : "/static/logo/192.png"
                 }
+            },
+            "splashscreen" : {
+                "androidStyle" : "common"
             }
         },
         "nativePlugins" : {}
@@ -68,7 +73,7 @@
             "minified" : false
         },
         "usingComponents" : true,
-		"lazyCodeLoading": "requiredComponents"
+        "lazyCodeLoading" : "requiredComponents"
     },
     "mp-alipay" : {
         "usingComponents" : true

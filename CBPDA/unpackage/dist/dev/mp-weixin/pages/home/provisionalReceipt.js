@@ -320,7 +320,6 @@ var _default =
         title: '加载中...' });
 
       this.$http.httpRequest(opts, param).then(function (res) {
-        console.log("*******response:", res);
         uni.hideLoading();
         if (res.data.code === "200") {
           //收到数据将暂收时间转为日期格式   状态转换为文字描述
@@ -401,10 +400,6 @@ var _default =
       this.selectedList = res.detail.index;
     },
     receiveConfirm: function receiveConfirm() {var _this2 = this;
-      if (this.codeNumber === '' || this.codeNumber === undefined) {
-        this.$refs.uToast.error("\u8BF7\u5148\u626B\u63CF\u51FA\u8D27\u6C47\u603B\u5355");
-        return;
-      }
       var opts = {
         url: "",
         method: 'post' };
