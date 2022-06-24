@@ -5,16 +5,13 @@ import {
 var baseUrl = "";
 
 if (process.env.NODE_ENV === 'development') {
-	// TODO
 	baseUrl = API_BASE_DEVELOPMENT;
 }
 if (process.env.NODE_ENV === 'production') {
-	// TODO
 	baseUrl = API_BASE_PRODUCTION;
 }
 
 const httpRequest = (opts, data) => {
-	//1.请求的一些默认信息
 	let httpDefaultOpts = {
 		url: baseUrl + opts.url,
 		data: data,
@@ -51,45 +48,6 @@ const httpRequest = (opts, data) => {
 		)
 	})
 };
-//带Token请求
-const httpTokenRequest = (opts, data) => {
-	let token = "";
-	uni.getStorage({
-		key: 'token',
-		success: function(ress) {
-			token = ress.data
-		}
-	});
-	//此token是登录成功后后台返回保存在storage中的
-	let httpDefaultOpts = {
-		url: baseUrl + opts.url,
-		data: data,
-		method: opts.method,
-		header: opts.method == 'get' ? {
-			'Token': token,
-			'X-Requested-With': 'XMLHttpRequest',
-			"Accept": "application/json",
-			"Content-Type": "application/json; charset=UTF-8"
-		} : {
-			'Token': token,
-			'X-Requested-With': 'XMLHttpRequest',
-			'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-		},
-		dataType: 'json',
-	}
-	return new Promise(function(resolve, reject) {
-		uni.request(httpDefaultOpts).then(
-			(res) => {
-				resolve(res[1])
-			}
-		).catch(
-			(response) => {
-				reject(response)
-			}
-		)
-	})
-};
-
 var format = function(time, format) {
 	var t = new Date(time);
 	var tf = function(i) {
@@ -121,6 +79,5 @@ var format = function(time, format) {
 
 export default {
 	baseUrl,
-	httpRequest,
-	httpTokenRequest
+	httpRequest
 }

@@ -1,22 +1,28 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/home/home",
     "pages/application/application",
     "pages/mine/mine",
-    "pages/spare/spare",
-    "pages/home/qualityTesting",
-    "pages/home/frontTesting",
-    "pages/home/damageTesting",
-    "pages/home/pickingManagement",
-    "pages/home/picking/picking",
-    "pages/home/wholeOrderDistribution",
-    "pages/home/wholePicking/wholePicking",
-    "pages/home/createInspection",
-    "pages/home/provisionalReceipt",
-    "pages/home/inspectionDetail",
-    "pages/home/inspectionConfirm"
+    "pages/spare/spare"
   ],
-  "subPackages": [],
+  "subPackages": [
+    {
+      "root": "pages_home",
+      "pages": [
+        "qualityTesting",
+        "frontTesting",
+        "damageTesting",
+        "pickingManagement",
+        "picking/picking",
+        "wholeOrderDistribution",
+        "wholePicking/wholePicking",
+        "createInspection",
+        "provisionalReceipt",
+        "inspectionDetail",
+        "inspectionConfirm"
+      ]
+    }
+  ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
@@ -27,7 +33,7 @@
     "list": [
       {
         "text": "首页",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/home/home",
         "iconPath": "static/home.png",
         "selectedIconPath": "static/homeed.png"
       },

@@ -18274,13 +18274,11 @@ platform;exports.default = _default;
 var baseUrl = "";
 
 if (true) {
-  // TODO
   baseUrl = _config.API_BASE_DEVELOPMENT;
 }
 if (false) {}
 
 var httpRequest = function httpRequest(opts, data) {
-  //1.请求的一些默认信息
   var httpDefaultOpts = {
     url: baseUrl + opts.url,
     data: data,
@@ -18317,45 +18315,6 @@ var httpRequest = function httpRequest(opts, data) {
 
   });
 };
-//带Token请求
-var httpTokenRequest = function httpTokenRequest(opts, data) {
-  var token = "";
-  uni.getStorage({
-    key: 'token',
-    success: function success(ress) {
-      token = ress.data;
-    } });
-
-  //此token是登录成功后后台返回保存在storage中的
-  var httpDefaultOpts = {
-    url: baseUrl + opts.url,
-    data: data,
-    method: opts.method,
-    header: opts.method == 'get' ? {
-      'Token': token,
-      'X-Requested-With': 'XMLHttpRequest',
-      "Accept": "application/json",
-      "Content-Type": "application/json; charset=UTF-8" } :
-    {
-      'Token': token,
-      'X-Requested-With': 'XMLHttpRequest',
-      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
-
-    dataType: 'json' };
-
-  return new Promise(function (resolve, reject) {
-    uni.request(httpDefaultOpts).then(
-    function (res) {
-      resolve(res[1]);
-    }).
-    catch(
-    function (response) {
-      reject(response);
-    });
-
-  });
-};
-
 var format = function format(time, _format) {
   var t = new Date(time);
   var tf = function tf(i) {
@@ -18387,8 +18346,7 @@ var format = function format(time, _format) {
 
 {
   baseUrl: baseUrl,
-  httpRequest: httpRequest,
-  httpTokenRequest: httpTokenRequest };exports.default = _default;
+  httpRequest: httpRequest };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
