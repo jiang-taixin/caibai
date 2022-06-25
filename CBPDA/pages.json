@@ -149,7 +149,16 @@
 				    }
 				    
 				}
-			]
+			    ,{
+                    "path" : "RFIDDemo",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "RFID测试",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
 		}
 	],
 	"globalStyle": {

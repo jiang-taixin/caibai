@@ -1,0 +1,22 @@
+{
+    "name": "RFIDLib",
+    "id": "RFIDLib",
+    "version": "1.0.0",
+    "description": "RFIDLib",
+    "_dp_type": "nativeplugin",
+    "_dp_nativeplugin": {
+        "android": {
+            "hooksClass": "",
+            "plugins": [
+                {
+                    "type": "module",
+                    "name": "RFIDLib",
+                    "class": "com.caibai.rfidlib.RFIDModule"
+                }
+            ],
+            "integrateType": "aar",
+            "abis": []
+        }
+    }
+}
+

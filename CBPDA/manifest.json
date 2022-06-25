@@ -38,7 +38,8 @@
                     "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
                     "<uses-feature android:name=\"android.hardware.camera\"/>",
                     "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
-                ]
+                ],
+                "minSdkVersion" : 21
             },
             /* ios打包配置 */
             "ios" : {},
@@ -58,7 +59,22 @@
                 "androidStyle" : "common"
             }
         },
-        "nativePlugins" : {}
+        "nativePlugins" : {
+            "RFIDLib" : {
+                "__plugin_info__" : {
+                    "name" : "RFIDLib",
+                    "description" : "RFIDLib",
+                    "platforms" : "Android",
+                    "url" : "",
+                    "android_package_name" : "",
+                    "ios_bundle_id" : "",
+                    "isCloud" : false,
+                    "bought" : -1,
+                    "pid" : "",
+                    "parameters" : {}
+                }
+            }
+        }
     },
     /* 快应用特有相关 */
     "quickapp" : {},
@@ -74,7 +90,9 @@
         },
         "usingComponents" : true,
         "lazyCodeLoading" : "requiredComponents",
-		"optimization":{"subPackages":true}
+        "optimization" : {
+            "subPackages" : true
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true

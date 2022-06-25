@@ -63,6 +63,11 @@
 						title: '取检确认',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
+					{
+						name: 'star',
+						title: 'RFID',
+						platform: ["APP", "WEIXIN", "H5"],
+					},
 				],
 				list1: [
 					'/static/1.png',
@@ -79,11 +84,11 @@
 		},
 		mounted() {
 			//页面加载完成获取枚举值并缓存在本地
-			
-			this.getAngecy();                //送检机构
-			this.getInspectionCategory();    //送检单类型
-			this.getReason();                //不合格原因
-			this.getTestingCategory();       //质检类别
+
+			this.getAngecy(); //送检机构
+			this.getInspectionCategory(); //送检单类型
+			this.getReason(); //不合格原因
+			this.getTestingCategory(); //质检类别
 		},
 		created() {
 			//判断平台类型    设置模块是否显示
@@ -151,13 +156,18 @@
 							url: '/pages_home/inspectionConfirm'
 						});
 						break;
+					case 9:
+						uni.navigateTo({
+							url: '/pages_home/RFIDDemo'
+						});
+						break;
 					default:
 						uni.navigateTo({
 							url: '/pages_home/qualityTesting'
 						});
 				}
 			},
-			getAngecy(){
+			getAngecy() {
 				//获取检测机构
 				var opts = {
 					url: ``,
@@ -177,23 +187,22 @@
 						if (res.data.data.PO_CHECK_TYPE.length != 0) {
 							for (let i in res.data.data.PO_CHECK_TYPE) {
 								organList.push({
-									"text":res.data.data.PO_CHECK_TYPE[i].name,
-									"value":res.data.data.PO_CHECK_TYPE[i].code,
+									"text": res.data.data.PO_CHECK_TYPE[i].name,
+									"value": res.data.data.PO_CHECK_TYPE[i].code,
 								});
 							}
 						}
 						uni.setStorage({
 							key: 'organList',
 							data: organList,
-							success: function () {
-							}
+							success: function() {}
 						});
 					} else {
 						this.$refs.uToast.error('获取检测机构失败，请刷新页面');
 					}
 				});
 			},
-			getInspectionCategory(){
+			getInspectionCategory() {
 				//获取送检单类别
 				var opts = {
 					url: ``,
@@ -213,23 +222,22 @@
 						if (res.data.data.INSPECT_TYPE.length != 0) {
 							for (let i in res.data.data.INSPECT_TYPE) {
 								categoryList.push({
-									"text":res.data.data.INSPECT_TYPE[i].name,
-									"value":res.data.data.INSPECT_TYPE[i].code,
+									"text": res.data.data.INSPECT_TYPE[i].name,
+									"value": res.data.data.INSPECT_TYPE[i].code,
 								});
 							}
 						}
 						uni.setStorage({
 							key: 'categoryList',
 							data: categoryList,
-							success: function () {
-							}
+							success: function() {}
 						});
 					} else {
 						this.$refs.uToast.error('获取送检单类别失败，请刷新页面');
 					}
 				});
 			},
-			getReason(){
+			getReason() {
 				//获取不合格原因
 				var opts = {
 					url: ``,
@@ -249,23 +257,22 @@
 						if (res.data.data.TEMPREC_UNQ_REASON.length != 0) {
 							for (let i in res.data.data.TEMPREC_UNQ_REASON) {
 								reasonList.push({
-									"text":res.data.data.TEMPREC_UNQ_REASON[i].name,
-									"value":res.data.data.TEMPREC_UNQ_REASON[i].code,
+									"text": res.data.data.TEMPREC_UNQ_REASON[i].name,
+									"value": res.data.data.TEMPREC_UNQ_REASON[i].code,
 								});
 							}
 						}
 						uni.setStorage({
 							key: 'reasonList',
 							data: reasonList,
-							success: function () {
-							}
+							success: function() {}
 						});
 					} else {
 						this.$refs.uToast.error('获取不合格原因失败，请刷新页面');
 					}
 				});
 			},
-			getTestingCategory(){
+			getTestingCategory() {
 				//获取质检类别
 				var opts = {
 					url: ``,
@@ -285,16 +292,15 @@
 						if (res.data.data.CHECK_CATEGORY.length != 0) {
 							for (let i in res.data.data.CHECK_CATEGORY) {
 								typeList.push({
-									"text":res.data.data.CHECK_CATEGORY[i].name,
-									"value":res.data.data.CHECK_CATEGORY[i].code,
+									"text": res.data.data.CHECK_CATEGORY[i].name,
+									"value": res.data.data.CHECK_CATEGORY[i].code,
 								});
 							}
 						}
 						uni.setStorage({
 							key: 'typeList',
 							data: typeList,
-							success: function () {
-							}
+							success: function() {}
 						});
 					} else {
 						this.$refs.uToast.error('获取质检类别失败，请刷新页面');
