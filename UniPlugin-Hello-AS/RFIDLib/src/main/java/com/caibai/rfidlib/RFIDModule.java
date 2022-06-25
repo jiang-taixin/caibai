@@ -2,6 +2,8 @@ package com.caibai.rfidlib;
 
 import android.widget.Toast;
 
+import androidx.annotation.UiThread;
+
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 
@@ -24,20 +26,11 @@ public class RFIDModule extends UniModule {
     public void getRFID(String arg, JSCallback jsCallBack){
         this.callback = jsCallBack;
         rString = "JAVA to UNIAPP "+arg;
-
-
         com.alibaba.fastjson.JSONObject object = new com.alibaba.fastjson.JSONObject();
         object.put("res",rString);
         String[] list = {"rfid12222222222222","rfid12222222222222","rfid12222222222222","rfid12222222222222","rfid12222222222222",
-                "rfid12",
-                "rfid12",
-                "rfid12",
-                "rfid12",
-                "rfid33434",
-                "rfid33434",
-                "rfid33434",
-                "rfid33434",
-                "rfid33434"};
+                "rfid12", "rfid12", "rfid12", "rfid12", "rfid33434", "rfid33434", "rfid33434", "rfid33434", "rfid33434"};
+
 
         ArrayList arrayList = new ArrayList();
         for (int i = 0; i < list.length; i++) {
@@ -51,5 +44,13 @@ public class RFIDModule extends UniModule {
         object.put("rfidList",b);
         jsCallBack.invoke(object);
         System.out.println("*****************************:JS call JAVA");
+    }
+
+    @JSMethod(uiThread  = true)
+    public  void initRFID(JSCallback callback){
+        //初始化RFID SDK
+
+        //初始化结束返回初始化结果
+        callback.invoke("success");
     }
 }

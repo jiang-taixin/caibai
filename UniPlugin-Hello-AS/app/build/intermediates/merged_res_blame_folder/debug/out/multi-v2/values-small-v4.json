@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/taixin.jiang/Desktop/RFID/Android-SDK@3.4.15.81354_20220613/UniPlugin-Hello-AS/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-small-v4/values-small-v4.xml",
+            "outputFile": "/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-small-v4/values-small-v4.xml",
             "map": [
                 {
-                    "source": "/Users/taixin.jiang/Downloads/UniappPluginTest-master/android源代码/UniNativeTest/caches/transforms-3/df6ea8679774a514a8fa7722b490163e/transformed/material-1.4.0/res/values-small-v4/values-small-v4.xml",
+                    "source": "/Users/taixin.jiang/.gradle/caches/transforms-3/df6ea8679774a514a8fa7722b490163e/transformed/material-1.4.0/res/values-small-v4/values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
