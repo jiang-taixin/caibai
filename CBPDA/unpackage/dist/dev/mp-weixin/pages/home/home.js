@@ -94,19 +94,19 @@ var components
 try {
   components = {
     uSwiper: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 231))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 237))
     },
     uGrid: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid/u-grid */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid/u-grid")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid/u-grid.vue */ 239))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid/u-grid */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid/u-grid")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid/u-grid.vue */ 245))
     },
     uGridItem: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid-item/u-grid-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid-item/u-grid-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid-item/u-grid-item.vue */ 247))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid-item/u-grid-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid-item/u-grid-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid-item/u-grid-item.vue */ 253))
     },
     uIcon: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 255))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 261))
     },
     uToast: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uview-ui/components/u-toast/u-toast */ "uni_modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-toast/u-toast.vue */ 264))
+      return __webpack_require__.e(/*! import() | uni_modules/uview-ui/components/u-toast/u-toast */ "uni_modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-toast/u-toast.vue */ 270))
     }
   }
 } catch (e) {
@@ -214,12 +214,12 @@ var _default =
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
-        name: 'setting',
+        name: 'bell',
         title: '入库前质检',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
-        name: 'setting',
+        name: 'bell-fill',
         title: '有损检验',
         platform: ["APP", "WEIXIN", "H5"] },
 
@@ -234,12 +234,12 @@ var _default =
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
-        name: 'reload',
+        name: 'edit-pen',
         title: '回货暂收',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
-        name: 'heart',
+        name: 'order',
         title: '创建送检单',
         platform: ["APP", "WEIXIN", "H5"] },
 
@@ -251,6 +251,11 @@ var _default =
       {
         name: 'list',
         title: '取检确认',
+        platform: ["APP", "WEIXIN", "H5"] },
+
+      {
+        name: 'star',
+        title: 'RFID',
         platform: ["APP", "WEIXIN", "H5"] }],
 
 
@@ -341,6 +346,11 @@ var _default =
             url: '/pages_home/inspectionConfirm' });
 
           break;
+        case 9:
+          uni.navigateTo({
+            url: '/pages_home/RFIDDemo' });
+
+          break;
         default:
           uni.navigateTo({
             url: '/pages_home/qualityTesting' });}
@@ -375,8 +385,7 @@ var _default =
           uni.setStorage({
             key: 'organList',
             data: organList,
-            success: function success() {
-            } });
+            success: function success() {} });
 
         } else {
           _this.$refs.uToast.error('获取检测机构失败，请刷新页面');
@@ -411,8 +420,7 @@ var _default =
           uni.setStorage({
             key: 'categoryList',
             data: categoryList,
-            success: function success() {
-            } });
+            success: function success() {} });
 
         } else {
           _this2.$refs.uToast.error('获取送检单类别失败，请刷新页面');
@@ -447,8 +455,7 @@ var _default =
           uni.setStorage({
             key: 'reasonList',
             data: reasonList,
-            success: function success() {
-            } });
+            success: function success() {} });
 
         } else {
           _this3.$refs.uToast.error('获取不合格原因失败，请刷新页面');
@@ -483,8 +490,7 @@ var _default =
           uni.setStorage({
             key: 'typeList',
             data: typeList,
-            success: function success() {
-            } });
+            success: function success() {} });
 
         } else {
           _this4.$refs.uToast.error('获取质检类别失败，请刷新页面');

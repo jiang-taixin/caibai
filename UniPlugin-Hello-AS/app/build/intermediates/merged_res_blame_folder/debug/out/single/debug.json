@@ -1,14 +1,14 @@
 [
     {
-        "merged": "/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/build/intermediates/merged_res/debug/drawable-xxhdpi_splash.png.flat",
-        "source": "/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/src/main/res/drawable-xxhdpi/splash.png"
+        "merged": "com.android.UniPlugin.app-merged_res-26:/drawable-xxhdpi_push.png.flat",
+        "source": "com.android.UniPlugin.app-main-28:/drawable-xxhdpi/push.png"
     },
     {
-        "merged": "/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/build/intermediates/merged_res/debug/drawable-xxhdpi_icon.png.flat",
-        "source": "/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/src/main/res/drawable-xxhdpi/icon.png"
+        "merged": "com.android.UniPlugin.app-merged_res-26:/drawable-xxhdpi_splash.png.flat",
+        "source": "com.android.UniPlugin.app-main-28:/drawable-xxhdpi/splash.png"
     },
     {
-        "merged": "/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/build/intermediates/merged_res/debug/drawable-xxhdpi_push.png.flat",
-        "source": "/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/src/main/res/drawable-xxhdpi/push.png"
+        "merged": "com.android.UniPlugin.app-merged_res-26:/drawable-xxhdpi_icon.png.flat",
+        "source": "com.android.UniPlugin.app-main-28:/drawable-xxhdpi/icon.png"
     }
 ]

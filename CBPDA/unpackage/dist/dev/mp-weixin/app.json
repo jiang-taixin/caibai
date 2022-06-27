@@ -19,7 +19,8 @@
         "createInspection",
         "provisionalReceipt",
         "inspectionDetail",
-        "inspectionConfirm"
+        "inspectionConfirm",
+        "RFIDDemo"
       ]
     }
   ],
@@ -58,6 +59,5 @@
     ]
   },
   "lazyCodeLoading": "requiredComponents",
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

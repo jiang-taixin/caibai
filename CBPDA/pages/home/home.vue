@@ -4,7 +4,7 @@
 		<u-grid :border="false" col="3" @click="click">
 			<u-grid-item v-for="(listItem,listIndex) in list" :key="listIndex"
 				v-if="listItem.platform.indexOf(platfrom) !== -1">
-				<u-icon :customStyle="{paddingTop:20+'rpx'}" :name="listItem.name" :size="60"></u-icon>
+				<u-icon :customStyle="{paddingTop:20+'rpx'}" :name="listItem.name" :size="60" color="#2a439c"></u-icon>
 				<text class="grid-text">{{listItem.title}}</text>
 			</u-grid-item>
 		</u-grid>
@@ -24,12 +24,12 @@
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						name: 'setting',
+						name: 'bell',
 						title: '入库前质检',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						name: 'setting',
+						name: 'bell-fill',
 						title: '有损检验',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
@@ -44,12 +44,12 @@
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						name: 'reload',
+						name: 'edit-pen',
 						title: '回货暂收',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						name: 'heart',
+						name: 'order',
 						title: '创建送检单',
 						platform: ["APP", "WEIXIN", "H5"],
 					},

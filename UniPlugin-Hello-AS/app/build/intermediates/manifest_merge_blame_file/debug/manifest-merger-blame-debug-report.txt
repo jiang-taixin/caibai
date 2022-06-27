@@ -45,33 +45,33 @@
 26-->/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml:20:5-69
 26-->/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml:20:22-66
 27    <uses-permission android:name="android.permission.INTERNET" />
-27-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:17:5-67
-27-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:17:22-64
+27-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:17:5-67
+27-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:17:22-64
 28    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-28-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:18:5-79
-28-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:18:22-76
+28-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:18:5-79
+28-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:18:22-76
 29    <!--
 30    <uses-permission
 31        android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
 32    -->
 33    <!-- 华为修改角标需要设置权限 -->
 34    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" /> <!-- vivo 修改角标需要设置权限 -->
-34-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:24:5-91
-34-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:24:22-88
+34-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:24:5-91
+34-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:24:22-88
 35    <uses-permission android:name="com.vivo.notification.permission.BADGE_ICON" />
-35-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:26:5-83
-35-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:26:22-80
+35-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:26:5-83
+35-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:26:22-80
 36
 37    <queries>
-37-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:28:5-37:15
+37-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:28:5-37:15
 38        <intent>
-38-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:29:9-31:18
+38-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:29:9-31:18
 39            <action android:name="android.intent.action.MAIN" />
 39-->/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml:53:17-68
 39-->/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml:53:25-66
 40        </intent>
 41        <intent>
-41-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:32:9-36:18
+41-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:32:9-36:18
 42            <action android:name="android.intent.action.VIEW" />
 42-->/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml:42:17-68
 42-->/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml:42:25-66
@@ -84,11 +84,11 @@
 47
 48    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 49    <uses-permission android:name="com.asus.msa.SupplementaryDID.ACCESS" />
-49-->[oaid_sdk_1.0.25.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/2825e430ebf3c849a7ef9cd41edd5d7e/transformed/jetified-oaid_sdk_1.0.25/AndroidManifest.xml:13:5-76
-49-->[oaid_sdk_1.0.25.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/2825e430ebf3c849a7ef9cd41edd5d7e/transformed/jetified-oaid_sdk_1.0.25/AndroidManifest.xml:13:22-73
+49-->[oaid_sdk_1.0.25.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/d8de4055e7753cd91adc0de8909f5bdd/transformed/jetified-oaid_sdk_1.0.25/AndroidManifest.xml:13:5-76
+49-->[oaid_sdk_1.0.25.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/d8de4055e7753cd91adc0de8909f5bdd/transformed/jetified-oaid_sdk_1.0.25/AndroidManifest.xml:13:22-73
 50    <uses-permission android:name="freemme.permission.msa" /> <!-- Barcode(二维码)  end -->
-50-->[oaid_sdk_1.0.25.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/2825e430ebf3c849a7ef9cd41edd5d7e/transformed/jetified-oaid_sdk_1.0.25/AndroidManifest.xml:15:5-62
-50-->[oaid_sdk_1.0.25.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/2825e430ebf3c849a7ef9cd41edd5d7e/transformed/jetified-oaid_sdk_1.0.25/AndroidManifest.xml:15:22-59
+50-->[oaid_sdk_1.0.25.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/d8de4055e7753cd91adc0de8909f5bdd/transformed/jetified-oaid_sdk_1.0.25/AndroidManifest.xml:15:5-62
+50-->[oaid_sdk_1.0.25.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/d8de4055e7753cd91adc0de8909f5bdd/transformed/jetified-oaid_sdk_1.0.25/AndroidManifest.xml:15:22-59
 51    <application
 51-->/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml:23:5-88:19
 52        android:name="io.dcloud.application.DCloudApplication"
@@ -98,11 +98,11 @@
 54        android:allowClearUserData="true"
 54-->/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml:26:9-42
 55        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-55-->[androidx.core:core:1.5.0] /Users/taixin.jiang/.gradle/caches/transforms-3/a1605265a276ccaf05dba118648041ac/transformed/core-1.5.0/AndroidManifest.xml:24:18-86
+55-->[androidx.core:core:1.5.0] /Users/taixin.jiang/.gradle/caches/transforms-3/4cb2d3ae910a25e4d3b75b6b0d8d1b11/transformed/core-1.5.0/AndroidManifest.xml:24:18-86
 56        android:debuggable="true"
 56-->/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml:30:9-34
 57        android:extractNativeLibs="true"
-57-->[uniapp-v8-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/b926f5fc911886615e8eddb038663127/transformed/jetified-uniapp-v8-release/AndroidManifest.xml:29:18-50
+57-->[uniapp-v8-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/74678d11c30fadf64f86d31870e02e37/transformed/jetified-uniapp-v8-release/AndroidManifest.xml:29:18-50
 58        android:icon="@drawable/icon"
 58-->/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml:27:9-38
 59        android:label="@string/app_name"
@@ -113,7 +113,7 @@
 61-->/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml:31:9-35
 62        android:testOnly="true"
 63        android:usesCleartextTraffic="true" >
-63-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:172:9-44
+63-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:172:9-44
 64
 65        <!-- 应用入口 -->
 66        <activity
@@ -228,74 +228,74 @@
 124            android:exported="false"/>
 125        -->
 126        <activity
-126-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:181:9-187:58
+126-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:181:9-187:58
 127            android:name="io.dcloud.feature.nativeObj.photoview.PhotoActivity"
-127-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:182:13-79
+127-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:182:13-79
 128            android:configChanges="orientation|keyboardHidden"
-128-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:183:13-63
+128-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:183:13-63
 129            android:exported="false"
-129-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:184:13-37
+129-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:184:13-37
 130            android:noHistory="false"
-130-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:185:13-38
+130-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:185:13-38
 131            android:screenOrientation="behind"
-131-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:186:13-47
+131-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:186:13-47
 132            android:theme="@style/DeviceDefault.Light" />
-132-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:187:13-55
+132-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:187:13-55
 133        <activity
-133-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:188:9-197:58
+133-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:188:9-197:58
 134            android:name="io.dcloud.WebAppActivity"
-134-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:189:13-52
+134-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:189:13-52
 135            android:configChanges="orientation|keyboard|keyboardHidden|smallestScreenSize|screenLayout|screenSize|mcc|mnc|fontScale|navigation"
-135-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:190:13-144
+135-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:190:13-144
 136            android:hardwareAccelerated="true"
-136-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:191:13-47
+136-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:191:13-47
 137            android:icon="@drawable/dcloud_recent"
-137-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:192:13-51
+137-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:192:13-51
 138            android:label="@string/stream_my"
-138-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:193:13-46
+138-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:193:13-46
 139            android:launchMode="singleTask"
-139-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:194:13-44
+139-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:194:13-44
 140            android:screenOrientation="portrait"
-140-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:195:13-49
+140-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:195:13-49
 141            android:theme="@style/DCloudTheme"
-141-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:196:13-47
+141-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:196:13-47
 142            android:windowSoftInputMode="adjustResize" />
-142-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:197:13-55
+142-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:197:13-55
 143        <activity
-143-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:198:9-202:75
+143-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:198:9-202:75
 144            android:name="io.dcloud.ProcessMediator"
-144-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:199:13-53
+144-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:199:13-53
 145            android:excludeFromRecents="true"
-145-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:200:13-46
+145-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:200:13-46
 146            android:exported="false"
-146-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:201:13-37
+146-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:201:13-37
 147            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-147-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:202:13-72
+147-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:202:13-72
 148        <activity
-148-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:203:9-209:20
+148-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:203:9-209:20
 149            android:name="io.dcloud.WebviewActivity"
-149-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:204:13-53
+149-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:204:13-53
 150            android:exported="false"
-150-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:205:13-37
+150-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:205:13-37
 151            android:screenOrientation="portrait"
-151-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:206:13-49
+151-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:206:13-49
 152            android:theme="@style/ThemeNoTitleBar"
-152-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:207:13-51
+152-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:207:13-51
 153            android:windowSoftInputMode="adjustPan" >
-153-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:208:13-52
+153-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:208:13-52
 154        </activity>
 155
 156        <receiver
-156-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:211:9-219:20
+156-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:211:9-219:20
 157            android:name="io.dcloud.common.adapter.io.DownloadReceiver"
-157-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:212:13-72
+157-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:212:13-72
 158            android:exported="false" >
-158-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:213:13-37
+158-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:213:13-37
 159            <intent-filter>
-159-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:214:13-218:29
+159-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:214:13-218:29
 160                <action android:name="android.intent.action.PACKAGE_ADDED" />
-160-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:215:17-78
-160-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:215:25-75
+160-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:215:17-78
+160-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:215:25-75
 161
 162                <data android:scheme="package" /> <!-- HERE! -->
 162-->/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/src/main/AndroidManifest.xml:41:17-50
@@ -303,45 +303,45 @@
 163            </intent-filter>
 164        </receiver> <!-- gallery******start -->
 165        <activity
-165-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:222:9-227:63
+165-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:222:9-227:63
 166            android:name="com.dmcbig.mediapicker.PickerActivity"
-166-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:223:13-65
+166-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:223:13-65
 167            android:configChanges="orientation|screenSize"
-167-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:224:13-59
+167-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:224:13-59
 168            android:exported="false"
-168-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:225:13-37
+168-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:225:13-37
 169            android:theme="@style/DeviceDefault.Light"
-169-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:226:13-55
+169-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:226:13-55
 170            android:windowSoftInputMode="stateAlwaysHidden" />
-170-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:227:13-60
+170-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:227:13-60
 171        <activity
-171-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:228:9-233:63
+171-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:228:9-233:63
 172            android:name="com.dmcbig.mediapicker.PreviewActivity"
-172-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:229:13-66
+172-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:229:13-66
 173            android:configChanges="orientation|screenSize"
-173-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:230:13-59
+173-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:230:13-59
 174            android:exported="false"
-174-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:231:13-37
+174-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:231:13-37
 175            android:theme="@style/DeviceDefault.Light"
-175-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:232:13-55
+175-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:232:13-55
 176            android:windowSoftInputMode="stateAlwaysHidden" /> <!-- gallery******end -->
-176-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:233:13-60
+176-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:233:13-60
 177        <provider
-177-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:236:9-244:20
+177-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:236:9-244:20
 178            android:name="io.dcloud.common.util.DCloud_FileProvider"
-178-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:237:13-69
+178-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:237:13-69
 179            android:authorities="com.android.UniPlugin.dc.fileprovider"
-179-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:238:13-67
+179-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:238:13-67
 180            android:exported="false"
-180-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:239:13-37
+180-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:239:13-37
 181            android:grantUriPermissions="true" >
-181-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:240:13-47
+181-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:240:13-47
 182            <meta-data
-182-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:241:13-243:64
+182-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:241:13-243:64
 183                android:name="android.support.FILE_PROVIDER_PATHS"
-183-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:242:17-67
+183-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:242:17-67
 184                android:resource="@xml/dcloud_file_provider" />
-184-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:243:17-61
+184-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:243:17-61
 185        </provider>
 186        <!--
 187            <meta-data
@@ -349,42 +349,42 @@
 189            android:value="io.dcloud.%APPID%|%APPID%|" />
 190        -->
 191        <meta-data
-191-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:251:9-253:35
+191-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:251:9-253:35
 192            android:name="android.max_aspect"
-192-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:252:13-46
+192-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:252:13-46
 193            android:value="2.4" />
-193-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:253:13-32
+193-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:253:13-32
 194
 195        <activity
-195-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:255:9-260:63
+195-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:255:9-260:63
 196            android:name="io.dcloud.feature.gallery.imageedit.IMGEditActivity"
-196-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:256:13-79
+196-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:256:13-79
 197            android:configChanges="orientation|keyboardHidden|screenSize"
-197-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:257:13-74
+197-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:257:13-74
 198            android:exported="false"
-198-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:258:13-37
+198-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:258:13-37
 199            android:theme="@style/ImageEditTheme"
-199-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:259:13-50
+199-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:259:13-50
 200            android:windowSoftInputMode="stateAlwaysHidden" />
-200-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:260:13-60
+200-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:260:13-60
 201
 202        <service
-202-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:262:9-265:72
+202-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:262:9-265:72
 203            android:name="io.dcloud.ads.base.service.DownloadService"
-203-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:263:13-70
+203-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:263:13-70
 204            android:exported="false"
-204-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:264:13-37
+204-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:264:13-37
 205            android:permission="android.permission.BIND_JOB_SERVICE" />
-205-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/9e60c8795ad0d8103246136a1edf07ac/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:265:13-69
+205-->[lib.5plus.base-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/569a937590929b3d6faafe6e3c3eb118/transformed/jetified-lib.5plus.base-release/AndroidManifest.xml:265:13-69
 206
 207        <receiver
-207-->[uniapp-v8-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/b926f5fc911886615e8eddb038663127/transformed/jetified-uniapp-v8-release/AndroidManifest.xml:30:9-34:20
+207-->[uniapp-v8-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/74678d11c30fadf64f86d31870e02e37/transformed/jetified-uniapp-v8-release/AndroidManifest.xml:30:9-34:20
 208            android:name="com.taobao.weex.WXGlobalEventReceiver"
-208-->[uniapp-v8-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/b926f5fc911886615e8eddb038663127/transformed/jetified-uniapp-v8-release/AndroidManifest.xml:31:13-65
+208-->[uniapp-v8-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/74678d11c30fadf64f86d31870e02e37/transformed/jetified-uniapp-v8-release/AndroidManifest.xml:31:13-65
 209            android:enabled="true"
-209-->[uniapp-v8-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/b926f5fc911886615e8eddb038663127/transformed/jetified-uniapp-v8-release/AndroidManifest.xml:32:13-35
+209-->[uniapp-v8-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/74678d11c30fadf64f86d31870e02e37/transformed/jetified-uniapp-v8-release/AndroidManifest.xml:32:13-35
 210            android:exported="false" >
-210-->[uniapp-v8-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/b926f5fc911886615e8eddb038663127/transformed/jetified-uniapp-v8-release/AndroidManifest.xml:33:13-37
+210-->[uniapp-v8-release.aar] /Users/taixin.jiang/.gradle/caches/transforms-3/74678d11c30fadf64f86d31870e02e37/transformed/jetified-uniapp-v8-release/AndroidManifest.xml:33:13-37
 211        </receiver>
 212    </application>
 213

@@ -1,5 +1,7 @@
 package com.caibai.rfidlib;
 
+import android.app.Application;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.UiThread;
@@ -10,11 +12,16 @@ import com.taobao.weex.bridge.JSCallback;
 import java.util.ArrayList;
 
 import io.dcloud.feature.uniapp.common.UniModule;
+import com.ubx.usdk.USDKManager;
+import com.ubx.usdk.rfid.RfidManager;
 
 public class RFIDModule extends UniModule {
 
     JSCallback callback;
     String rString = "";
+
+    public  boolean RFID_INIT_STATUS = false;
+    public RfidManager mRfidManager;
 
     /**
      * 回调方法
@@ -51,6 +58,17 @@ public class RFIDModule extends UniModule {
         //初始化RFID SDK
 
         //初始化结束返回初始化结果
-        callback.invoke("success");
+        USDKManager.getInstance(BaseApplication.getContext()).getFeatureManagerAsync(USDKManager.FEATURE_TYPE.RFID, (featureType, status) -> {
+            if (featureType == USDKManager.FEATURE_TYPE.RFID && status == USDKManager.STATUS.SUCCESS) {
+                mRfidManager = (RfidManager) USDKManager.getInstance(BaseApplication.getContext()).getFeatureManager(USDKManager.FEATURE_TYPE.RFID);
+//                mRfidManager.registerCallback(callback);
+                // 设置波特率
+                if (mRfidManager.connectCom("/dev/ttyHSL0", 115200)) {
+                    RFID_INIT_STATUS = true;
+
+                    callback.invoke("success");
+                }
+            }
+        });
     }
 }

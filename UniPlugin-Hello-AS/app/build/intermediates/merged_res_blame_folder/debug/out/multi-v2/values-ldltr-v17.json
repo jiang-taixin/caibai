@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/taixin.jiang/Desktop/cb_github/UniPlugin-Hello-AS/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ldltr-v17/values-ldltr-v17.xml",
+            "outputFile": "com.android.UniPlugin.app-mergeDebugResources-24:/values-ldltr-v17/values-ldltr-v17.xml",
             "map": [
                 {
-                    "source": "/Users/taixin.jiang/.gradle/caches/transforms-3/b926f5fc911886615e8eddb038663127/transformed/jetified-uniapp-v8-release/res/values-ldltr-v17/values-ldltr-v17.xml",
+                    "source": "/Users/taixin.jiang/.gradle/caches/transforms-3/74678d11c30fadf64f86d31870e02e37/transformed/jetified-uniapp-v8-release/res/values-ldltr-v17/values-ldltr-v17.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

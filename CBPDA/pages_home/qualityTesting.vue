@@ -225,6 +225,8 @@
 				total: 0, //不合格总计
 				tableData: [],
 				reason: [],
+				
+				headerMessage :"",
 			}
 
 		},
@@ -259,13 +261,15 @@
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
 					if (res.data.code === "200") {
-						this.bookCode = res.data.data.bookCode; //前置单号
-						this.supplier = res.data.data.supName; //供应商
-						this.damageNum = res.data.data.damageInspectCounts;
+						this.headerMessage = res.data.data;
+						console.log("******************header :",this.headerMessage);
+						this.bookCode = res.data.data.bookCode;
+						this.supplier = res.data.data.supName;
+						this.damageNum = res.data.data.damageInspectCounts;      
 						this.undamagedNum = res.data.data.undamageInspectCounts;
-						this.modelNum = res.data.data.materielCode; //款号
-						this.purchaseNum = res.data.data.goodsPurchaseNum; //采购件数
-						this.material = res.data.data.goodsMetalMaterial; //贵金属材质
+						this.modelNum = res.data.data.materielCode;
+						this.purchaseNum = res.data.data.goodsPurchaseNum;
+						this.material = res.data.data.goodsMetalMaterial;
 					} else {
 						this.$refs.uToast.error('获取数据失败，请重试');
 					}
@@ -287,7 +291,6 @@
 				});
 			},
 			commit() {
-				console.log("************** start commit :",this.tableData);
 				var opts = {
 					url: ``,
 					method: 'post'
@@ -296,19 +299,32 @@
 				var bodyList = [];
 				for (var i = 0; i < this.tableData.length; i++) {
 					var argument = {
-						"argument1":this.tableData[i].reason,
-						"argument2":this.tableData[i].number,
+						"unqualifiedReason":this.tableData[i].reason,
+						"unqualifiedQuantity":this.tableData[i].number,
 					}
 					bodyList.push(argument);
 				};
+				
+				this.headerMessage["comeGood"] = "";//质检数量
+				this.headerMessage["comeGram"] = "";//质检克重
+				this.headerMessage["qualifiedQuantity"] = this.qualifiedNumber;//合计合格数量
+				this.headerMessage["unqualifiedQuantity"] = this.total;//合计不合格数量
+				this.headerMessage["qualifiedGram"] = this.qualifiedWeight;//合计合格克重
+				this.headerMessage["unqualifiedGram"] = "";//合计不合格克重
+				this.headerMessage["preCode"] = this.headerMessage.bookCode;//预约单号
+				this.headerMessage["preItemCode"] = this.headerMessage.itemCode;//预约单行项目
+				this.headerMessage["temprecType"] = "1";//质检类型
+				this.headerMessage["temprecStatus"] = "1";//质检状态
+				this.headerMessage["remarks"] = "20220627test";
+				
+				
+				
 				var body = {
-					"number":this.qualifiedNumber,
-					"weight":this.qualifiedWeight,
-					"total":this.testNum,
-					"data":bodyList,
+					"faws":bodyList,
+					"header":this.headerMessage
 				};
 				var param = {
-					"interface_num": "MOBSCMD0006",
+					"interface_num": "MOBSCMD0007",
 					"serial_no": "123456789",
 					"access_token": "abc",
 					"bus_data": body,
@@ -317,6 +333,7 @@
 					title: '加载中...'
 				});
 				this.$http.httpRequest(opts, param).then((res) => {
+					console.log("*****************response:",res);
 					uni.hideLoading();
 					if (res.data.code === "200") {
 						this.$refs.uToast.success('提交成功');

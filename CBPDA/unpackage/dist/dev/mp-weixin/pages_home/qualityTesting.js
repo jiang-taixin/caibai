@@ -94,37 +94,37 @@ var components
 try {
   components = {
     uRow: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-row/u-row */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-row/u-row")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-row/u-row.vue */ 271))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-row/u-row */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-row/u-row")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-row/u-row.vue */ 277))
     },
     uCol: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-col/u-col */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-col/u-col")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-col/u-col.vue */ 279))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-col/u-col */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-col/u-col")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-col/u-col.vue */ 285))
     },
     "u-Text": function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--text/u--text */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--text/u--text")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--text/u--text.vue */ 287))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--text/u--text */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--text/u--text")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--text/u--text.vue */ 293))
     },
     "u-Input": function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 293))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 299))
     },
     uButton: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 299))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 305))
     },
     uniTable: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-table/uni-table */ "uni_modules/uni-table/components/uni-table/uni-table").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-table/uni-table.vue */ 309))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-table/uni-table */ "uni_modules/uni-table/components/uni-table/uni-table").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-table/uni-table.vue */ 315))
     },
     uniTr: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-tr/uni-tr */ "uni_modules/uni-table/components/uni-tr/uni-tr").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-tr/uni-tr.vue */ 316))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-tr/uni-tr */ "uni_modules/uni-table/components/uni-tr/uni-tr").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-tr/uni-tr.vue */ 322))
     },
     uniTh: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-th/uni-th */ "uni_modules/uni-table/components/uni-th/uni-th").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-th/uni-th.vue */ 323))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-th/uni-th */ "uni_modules/uni-table/components/uni-th/uni-th").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-th/uni-th.vue */ 329))
     },
     uniTd: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-td/uni-td */ "uni_modules/uni-table/components/uni-td/uni-td").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-td/uni-td.vue */ 330))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-td/uni-td */ "uni_modules/uni-table/components/uni-td/uni-td").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-td/uni-td.vue */ 336))
     },
     uniDataSelect: function() {
-      return Promise.all(/*! import() | uni_modules/uni-data-select/components/uni-data-select/uni-data-select */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-data-select/components/uni-data-select/uni-data-select")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-data-select/components/uni-data-select/uni-data-select.vue */ 337))
+      return Promise.all(/*! import() | uni_modules/uni-data-select/components/uni-data-select/uni-data-select */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-data-select/components/uni-data-select/uni-data-select")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-data-select/components/uni-data-select/uni-data-select.vue */ 343))
     },
     uToast: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uview-ui/components/u-toast/u-toast */ "uni_modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-toast/u-toast.vue */ 264))
+      return __webpack_require__.e(/*! import() | uni_modules/uview-ui/components/u-toast/u-toast */ "uni_modules/uview-ui/components/u-toast/u-toast").then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-toast/u-toast.vue */ 270))
     }
   }
 } catch (e) {
@@ -407,7 +407,9 @@ var _default = {
       testNum: 0,
       total: 0, //不合格总计
       tableData: [],
-      reason: [] };
+      reason: [],
+
+      headerMessage: "" };
 
 
   },
@@ -442,13 +444,15 @@ var _default = {
       this.$http.httpRequest(opts, param).then(function (res) {
         uni.hideLoading();
         if (res.data.code === "200") {
-          _this.bookCode = res.data.data.bookCode; //前置单号
-          _this.supplier = res.data.data.supName; //供应商
+          _this.headerMessage = res.data.data;
+          console.log("******************header :", _this.headerMessage);
+          _this.bookCode = res.data.data.bookCode;
+          _this.supplier = res.data.data.supName;
           _this.damageNum = res.data.data.damageInspectCounts;
           _this.undamagedNum = res.data.data.undamageInspectCounts;
-          _this.modelNum = res.data.data.materielCode; //款号
-          _this.purchaseNum = res.data.data.goodsPurchaseNum; //采购件数
-          _this.material = res.data.data.goodsMetalMaterial; //贵金属材质
+          _this.modelNum = res.data.data.materielCode;
+          _this.purchaseNum = res.data.data.goodsPurchaseNum;
+          _this.material = res.data.data.goodsMetalMaterial;
         } else {
           _this.$refs.uToast.error('获取数据失败，请重试');
         }
@@ -470,7 +474,6 @@ var _default = {
 
     },
     commit: function commit() {var _this2 = this;
-      console.log("************** start commit :", this.tableData);
       var opts = {
         url: "",
         method: 'post' };
@@ -479,19 +482,32 @@ var _default = {
       var bodyList = [];
       for (var i = 0; i < this.tableData.length; i++) {
         var argument = {
-          "argument1": this.tableData[i].reason,
-          "argument2": this.tableData[i].number };
+          "unqualifiedReason": this.tableData[i].reason,
+          "unqualifiedQuantity": this.tableData[i].number };
 
         bodyList.push(argument);
       };
+
+      this.headerMessage["comeGood"] = ""; //质检数量
+      this.headerMessage["comeGram"] = ""; //质检克重
+      this.headerMessage["qualifiedQuantity"] = this.qualifiedNumber; //合计合格数量
+      this.headerMessage["unqualifiedQuantity"] = this.total; //合计不合格数量
+      this.headerMessage["qualifiedGram"] = this.qualifiedWeight; //合计合格克重
+      this.headerMessage["unqualifiedGram"] = ""; //合计不合格克重
+      this.headerMessage["preCode"] = this.headerMessage.bookCode; //预约单号
+      this.headerMessage["preItemCode"] = this.headerMessage.itemCode; //预约单行项目
+      this.headerMessage["temprecType"] = "1"; //质检类型
+      this.headerMessage["temprecStatus"] = "1"; //质检状态
+      this.headerMessage["remarks"] = "20220627test";
+
+
+
       var body = {
-        "number": this.qualifiedNumber,
-        "weight": this.qualifiedWeight,
-        "total": this.testNum,
-        "data": bodyList };
+        "faws": bodyList,
+        "header": this.headerMessage };
 
       var param = {
-        "interface_num": "MOBSCMD0006",
+        "interface_num": "MOBSCMD0007",
         "serial_no": "123456789",
         "access_token": "abc",
         "bus_data": body };
@@ -500,6 +516,7 @@ var _default = {
         title: '加载中...' });
 
       this.$http.httpRequest(opts, param).then(function (res) {
+        console.log("*****************response:", res);
         uni.hideLoading();
         if (res.data.code === "200") {
           _this2.$refs.uToast.success('提交成功');
