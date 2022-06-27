@@ -205,8 +205,6 @@
 </template>
 
 <script>
-	//import {angecy,reason,category} from "@/argument/js/common.js"
-	//import http from '../../http/http.js'
 	export default {
 		data() {
 			return {
@@ -226,7 +224,7 @@
 				tableData: [],
 				reason: [],
 				
-				headerMessage :"",
+				headerMessage :"",//用于保存扫码后获取的信息
 			}
 
 		},
@@ -243,6 +241,10 @@
 		},
 		methods: {
 			startSearch() {
+				if (this.codeNumber === '' || this.codeNumber === undefined) {
+					this.$refs.uToast.error(`请先扫描包码`);
+					return;
+				};
 				var opts = {
 					url: ``,
 					method: 'post'
@@ -262,14 +264,13 @@
 					uni.hideLoading();
 					if (res.data.code === "200") {
 						this.headerMessage = res.data.data;
-						console.log("******************header :",this.headerMessage);
-						this.bookCode = res.data.data.bookCode;
-						this.supplier = res.data.data.supName;
-						this.damageNum = res.data.data.damageInspectCounts;      
-						this.undamagedNum = res.data.data.undamageInspectCounts;
-						this.modelNum = res.data.data.materielCode;
-						this.purchaseNum = res.data.data.goodsPurchaseNum;
-						this.material = res.data.data.goodsMetalMaterial;
+						this.bookCode = this.headerMessage.bookCode;
+						this.supplier = this.headerMessage.supName;
+						this.damageNum = this.headerMessage.damageInspectCounts;      
+						this.undamagedNum = this.headerMessage.undamageInspectCounts;
+						this.modelNum = this.headerMessage.materielCode;
+						this.purchaseNum = this.headerMessage.goodsPurchaseNum;
+						this.material = this.headerMessage.goodsMetalMaterial;
 					} else {
 						this.$refs.uToast.error('获取数据失败，请重试');
 					}
@@ -291,6 +292,7 @@
 				});
 			},
 			commit() {
+				
 				var opts = {
 					url: ``,
 					method: 'post'
@@ -305,7 +307,7 @@
 					bodyList.push(argument);
 				};
 				
-				this.headerMessage["comeGood"] = "";//质检数量
+				this.headerMessage["comeGood"] = this.testNum;//质检数量
 				this.headerMessage["comeGram"] = "";//质检克重
 				this.headerMessage["qualifiedQuantity"] = this.qualifiedNumber;//合计合格数量
 				this.headerMessage["unqualifiedQuantity"] = this.total;//合计不合格数量
@@ -315,9 +317,6 @@
 				this.headerMessage["preItemCode"] = this.headerMessage.itemCode;//预约单行项目
 				this.headerMessage["temprecType"] = "1";//质检类型
 				this.headerMessage["temprecStatus"] = "1";//质检状态
-				this.headerMessage["remarks"] = "20220627test";
-				
-				
 				
 				var body = {
 					"faws":bodyList,

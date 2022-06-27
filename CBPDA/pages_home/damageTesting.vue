@@ -172,6 +172,10 @@
 				});
 			},
 			startSearch() {
+				if (this.codeNumber === '' || this.codeNumber === undefined) {
+					this.$refs.uToast.error(`请先扫描包码`);
+					return;
+				}
 				var opts = {
 					url: ``,
 					method: 'post'

@@ -399,10 +399,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
-//import argument from "@/argument/js/common.js"
-//import http from '../../http/http.js'
-var _default = {
+var _default =
+{
   data: function data() {
     return {
       codeNumber: "", //条形码或二维码

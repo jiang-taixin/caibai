@@ -387,10 +387,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
-//import {angecy,reason,category} from "@/argument/js/common.js"
-//import http from '../../http/http.js'
-var _default = {
+var _default =
+{
   data: function data() {
     return {
       codeNumber: "", //条形码或二维码
@@ -409,8 +407,8 @@ var _default = {
       tableData: [],
       reason: [],
 
-      headerMessage: "" };
-
+      headerMessage: "" //用于保存扫码后获取的信息
+    };
 
   },
   mounted: function mounted() {
@@ -426,6 +424,10 @@ var _default = {
   },
   methods: {
     startSearch: function startSearch() {var _this = this;
+      if (this.codeNumber === '' || this.codeNumber === undefined) {
+        this.$refs.uToast.error("\u8BF7\u5148\u626B\u63CF\u5305\u7801");
+        return;
+      };
       var opts = {
         url: "",
         method: 'post' };
@@ -445,14 +447,13 @@ var _default = {
         uni.hideLoading();
         if (res.data.code === "200") {
           _this.headerMessage = res.data.data;
-          console.log("******************header :", _this.headerMessage);
-          _this.bookCode = res.data.data.bookCode;
-          _this.supplier = res.data.data.supName;
-          _this.damageNum = res.data.data.damageInspectCounts;
-          _this.undamagedNum = res.data.data.undamageInspectCounts;
-          _this.modelNum = res.data.data.materielCode;
-          _this.purchaseNum = res.data.data.goodsPurchaseNum;
-          _this.material = res.data.data.goodsMetalMaterial;
+          _this.bookCode = _this.headerMessage.bookCode;
+          _this.supplier = _this.headerMessage.supName;
+          _this.damageNum = _this.headerMessage.damageInspectCounts;
+          _this.undamagedNum = _this.headerMessage.undamageInspectCounts;
+          _this.modelNum = _this.headerMessage.materielCode;
+          _this.purchaseNum = _this.headerMessage.goodsPurchaseNum;
+          _this.material = _this.headerMessage.goodsMetalMaterial;
         } else {
           _this.$refs.uToast.error('获取数据失败，请重试');
         }
@@ -474,6 +475,7 @@ var _default = {
 
     },
     commit: function commit() {var _this2 = this;
+
       var opts = {
         url: "",
         method: 'post' };
@@ -488,7 +490,7 @@ var _default = {
         bodyList.push(argument);
       };
 
-      this.headerMessage["comeGood"] = ""; //质检数量
+      this.headerMessage["comeGood"] = this.testNum; //质检数量
       this.headerMessage["comeGram"] = ""; //质检克重
       this.headerMessage["qualifiedQuantity"] = this.qualifiedNumber; //合计合格数量
       this.headerMessage["unqualifiedQuantity"] = this.total; //合计不合格数量
@@ -498,9 +500,6 @@ var _default = {
       this.headerMessage["preItemCode"] = this.headerMessage.itemCode; //预约单行项目
       this.headerMessage["temprecType"] = "1"; //质检类型
       this.headerMessage["temprecStatus"] = "1"; //质检状态
-      this.headerMessage["remarks"] = "20220627test";
-
-
 
       var body = {
         "faws": bodyList,

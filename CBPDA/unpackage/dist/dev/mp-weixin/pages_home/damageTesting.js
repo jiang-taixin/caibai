@@ -361,6 +361,10 @@ var _default =
 
     },
     startSearch: function startSearch() {var _this = this;
+      if (this.codeNumber === '' || this.codeNumber === undefined) {
+        this.$refs.uToast.error("\u8BF7\u5148\u626B\u63CF\u5305\u7801");
+        return;
+      }
       var opts = {
         url: "",
         method: 'post' };

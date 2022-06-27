@@ -214,8 +214,6 @@
 </template>
 
 <script>
-	//import argument from "@/argument/js/common.js"
-	//import http from '../../http/http.js'
 	export default {
 		data() {
 			return {
