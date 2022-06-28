@@ -8,7 +8,6 @@
     "uni-datetime-picker": "/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker",
     "u-row": "/uni_modules/uview-ui/components/u-row/u-row",
     "u-col": "/uni_modules/uview-ui/components/u-col/u-col",
-    "u-button": "/uni_modules/uview-ui/components/u-button/u-button",
-    "u-toast": "/uni_modules/uview-ui/components/u-toast/u-toast"
+    "u-button": "/uni_modules/uview-ui/components/u-button/u-button"
   }
 }

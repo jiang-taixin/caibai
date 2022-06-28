@@ -6,7 +6,7 @@
     "_dp_type": "nativeplugin",
     "_dp_nativeplugin": {
         "android": {
-            "hooksClass": "",
+            "hooksClass": "com.caibai.rfidlib.RFIDProxy",
             "plugins": [
                 {
                     "type": "module",

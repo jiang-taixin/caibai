@@ -1,6 +1,7 @@
 <template>
 	<view>
-		<button type="default" @click="click">点击</button>
+		<button type="default" @click="start">开始扫描</button>
+		<button type="default" @click="stop">停止扫描</button>
 		<text>{{text}}</text>
 		<uni-table border stripe emptyText="暂无更多数据" style="margin-left: 5px;margin-top: 5px;">
 			<!-- 表头行 -->
@@ -27,14 +28,17 @@
 			}
 		},
 		methods: {
-			click(){
-				rfidModule.getRFID("call rfid function ,and get rfid message",(res) => {
+			start(){
+				rfidModule.startScan((res) => {
 					console.log("************res:",res);
 					var s = JSON.stringify(res)
 					this.text = s;
 					
 					this.tableData = res.rfidList;
 				})
+			},
+			stop(){
+				rfidModule.stopScan();
 			}
 		}
 	}

@@ -1,74 +1,130 @@
 package com.caibai.rfidlib;
 
-import android.app.Application;
+import android.os.RemoteException;
 import android.util.Log;
-import android.widget.Toast;
-
-import androidx.annotation.UiThread;
 
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-import io.dcloud.feature.uniapp.common.UniModule;
 import com.ubx.usdk.USDKManager;
 import com.ubx.usdk.rfid.RfidManager;
+import com.ubx.usdk.rfid.aidl.IRfidCallback;
+import com.ubx.usdk.rfid.aidl.RfidDate;
+import com.ubx.usdk.rfid.util.CMDCode;
+import com.ubx.usdk.rfid.util.ErrorCode;
+
+import io.dcloud.feature.uniapp.common.UniModule;
 
 public class RFIDModule extends UniModule {
 
-    JSCallback callback;
-    String rString = "";
+    JSCallback uniCallBack;
 
-    public  boolean RFID_INIT_STATUS = false;
-    public RfidManager mRfidManager;
-
-    /**
-     * 回调方法
-     * 传入参数
-     * 返回参数
-     */
+    public RfidManager rfidManager;
+    public RfidDate rfidDate;
+    private ScanCallback callback;
+    List rfidList = new ArrayList();
 
     @JSMethod(uiThread = true)
-    public void getRFID(String arg, JSCallback jsCallBack){
-        this.callback = jsCallBack;
-        rString = "JAVA to UNIAPP "+arg;
-        com.alibaba.fastjson.JSONObject object = new com.alibaba.fastjson.JSONObject();
-        object.put("res",rString);
-        String[] list = {"rfid12222222222222","rfid12222222222222","rfid12222222222222","rfid12222222222222","rfid12222222222222",
-                "rfid12", "rfid12", "rfid12", "rfid12", "rfid33434", "rfid33434", "rfid33434", "rfid33434", "rfid33434"};
+    public void startScan(JSCallback jsCallBack){
+        this.uniCallBack = jsCallBack;
+        System.out.println("====================start scan");
+        setCallback();
+        System.out.println("*************************5");
+        RFIDProxy.rfidManager.customizedSessionTargetInventory(RFIDProxy.rfidManager.getReadId(), (byte) 0, (byte) 0, (byte) 1);
+        System.out.println("*************************6"+RFIDProxy.rfidManager.getReadId());
+    }
 
+    @JSMethod(uiThread = true)
+    public void stopScan(){
+        RFIDProxy.rfidManager.stopInventory();
+    }
 
-        ArrayList arrayList = new ArrayList();
-        for (int i = 0; i < list.length; i++) {
-            String array = list[i];
-            if (!arrayList.contains(array)) {
-                arrayList.add(array);
+    private void setCallback(){
+        System.out.println("*************************1:"+RFIDProxy.rfidManager);
+        if (RFIDProxy.rfidManager!=null) {
+            System.out.println("*************************2");
+            if (callback == null){
+                System.out.println("*************************3");
+                callback = new ScanCallback();
             }
+            System.out.println("*************************4");
+            RFIDProxy.rfidManager.registerCallback(callback);
         }
-        String[] b = (String[]) arrayList.toArray(new String[arrayList.size()]);
-
-        object.put("rfidList",b);
-        jsCallBack.invoke(object);
-        System.out.println("*****************************:JS call JAVA");
     }
 
-    @JSMethod(uiThread  = true)
-    public  void initRFID(JSCallback callback){
-        //初始化RFID SDK
 
-        //初始化结束返回初始化结果
-        USDKManager.getInstance(BaseApplication.getContext()).getFeatureManagerAsync(USDKManager.FEATURE_TYPE.RFID, (featureType, status) -> {
-            if (featureType == USDKManager.FEATURE_TYPE.RFID && status == USDKManager.STATUS.SUCCESS) {
-                mRfidManager = (RfidManager) USDKManager.getInstance(BaseApplication.getContext()).getFeatureManager(USDKManager.FEATURE_TYPE.RFID);
-//                mRfidManager.registerCallback(callback);
-                // 设置波特率
-                if (mRfidManager.connectCom("/dev/ttyHSL0", 115200)) {
-                    RFID_INIT_STATUS = true;
+    class ScanCallback extends IRfidCallback.Stub {
 
-                    callback.invoke("success");
-                }
-            }
-        });
+        /**
+         * 盘存数据回调（Inventory TAG Callback）
+         *
+         * @param b  cmd
+         * @param s  pc值
+         * @param s1 CRC Check Value
+         * @param s2 EPC Data
+         * @param b1 Ant
+         * @param s3 RSSI
+         * @param s4 Frequency
+         * @param i
+         * @param i1 Inventory Count
+         * @param s5 Read id
+         * @throws RemoteException
+         */
+        @Override
+        public void onInventoryTag(byte b, String s, String s1, String s2, byte b1, String s3, String s4, int i, int i1, String s5) throws RemoteException {
+
+            com.alibaba.fastjson.JSONObject object = new com.alibaba.fastjson.JSONObject();
+            rfidList.add(s2);
+            System.out.println("======================= list:"+rfidList);
+            object.put("rfidList",rfidList);
+
+            uniCallBack.invoke(object);
+        }
+
+        /**
+         * 盘存结束回调(Inventory Command Operate End)
+         *
+         * @param i  当前天线ID
+         * @param i1 当前指令盘存标签数量
+         * @param i2 读取速度
+         * @param i3 总共读取次数
+         * @param b  指令cmd
+         * @throws RemoteException
+         */
+        @Override
+        public void onInventoryTagEnd(int i, int i1, int i2, int i3, byte b) throws RemoteException {
+
+        }
+
+        @Override
+        public void onOperationTag(String s, String s1, String s2, String s3, int i, byte b, byte b1) throws RemoteException {
+
+        }
+
+        @Override
+        public void onOperationTagEnd(int i) throws RemoteException {
+
+        }
+
+        @Override
+        public void refreshSetting(RfidDate rfidDate) throws RemoteException {
+
+        }
+
+        /**
+         * (指令操作状态回调)Command operate status
+         * @param b  指令cmd对应CMDCode.class
+         * @param b1 执行状态对应ErrorCode.class
+         * @throws RemoteException
+         */
+        @Override
+        public void onExeCMDStatus(byte b, byte b1) throws RemoteException {
+
+        }
     }
+
 }

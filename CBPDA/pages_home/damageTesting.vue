@@ -120,7 +120,7 @@
 			<u-button type="primary" @click="commit" text="提交" >
 			</u-button>
 		</view>
-		<u-toast ref="uToast" />
+		
 	</view>
 </template>
 
@@ -166,14 +166,16 @@
 								vm.codeNumber = res.result;
 							});
 						} else {
-							this.$refs.uToast.error(`扫码失败，请重试`);
+							this.$toast.showToast("扫码失败，请重试");
+							
 						}
 					}
 				});
 			},
 			startSearch() {
 				if (this.codeNumber === '' || this.codeNumber === undefined) {
-					this.$refs.uToast.error(`请先扫描包码`);
+					this.$toast.showToast("请先扫描包码");
+					
 					return;
 				}
 				var opts = {
@@ -199,7 +201,8 @@
 						this.damageNum = res.data.data.checkNumber;
 						this.tableData = res.data.data.details;
 					} else {
-						this.$refs.uToast.error('获取数据失败，请重试');
+						this.$toast.showToast("获取数据失败，请重试");
+						
 					}
 				});
 			},
@@ -209,11 +212,13 @@
 					method: 'post'
 				};
 				if (this.inspectionTime === '' || this.inspectionTime === undefined) {
-					this.$refs.uToast.error(`请选择送检时间并重试`);
+					this.$toast.showToast("请选择送检时间并重试");
+					
 					return;
 				}
 				if (this.tableData.length < this.damageNum) {
-					this.$refs.uToast.error(`提交量必须与有损件数一致`);
+					this.$toast.showToast("提交量必须与有损件数一致");
+					
 					return;
 				}
 				let vm = this;
@@ -241,9 +246,11 @@
 					console.log("*******response:", res);
 					uni.hideLoading();
 					if (res.data.code === "200") {
-						this.$refs.uToast.success('提交成功');
+						this.$toast.showToast("提交成功");
+						
 					} else {
-						this.$refs.uToast.error('提交失败');
+						this.$toast.showToast("提交失败");
+						
 					}
 				});
 			},
@@ -256,7 +263,8 @@
 			},
 			add() {
 				if (this.tableData.length >= parseInt(this.damageNum)) {
-					this.$refs.uToast.error(`已达有损件数上限`);
+					this.$toast.showToast("已达有损件数上限");
+					
 					return;
 				} else {
 					this.tableData.push({

@@ -45,7 +45,7 @@
 				</u-col>
 			</u-row>
 		</view>
-		<u-toast ref="uToast" />
+		
 	</view>
 </template>
 
@@ -99,19 +99,23 @@
 			confirm() {
 				this.$refs.uToast.success(`confirm`);
 				if (this.selectDepartment === '' || this.selectDepartment === undefined) {
-					this.$refs.uToast.error(`请选择发货部门并重试`);
+					this.$toast.showToast("请选择发货部门并重试");
+					
 					return;
 				}
 				if (this.selectWarehouse === '' || this.selectWarehouse === undefined) {
-					//this.$refs.uToast.error(`请选择库位并重试`);
-					//return;
+					// this.$toast.showToast("请选择库位并重试");
+					
+					// return;
 				}
 				if (this.employeeNumber === '' || this.employeeNumber === undefined) {
-					this.$refs.uToast.error(`请填写工号并重试`);
+					this.$toast.showToast("请填写工号并重试");
+					
 					return;
 				}
 				if (this.date === '' || this.date === undefined) {
-					this.$refs.uToast.error(`请选择时间并重试`);
+					this.$toast.showToast("请选择时间并重试");
+					
 					return;
 				}
 				console.log("---------select department :", this.department.find(item => item.value === this

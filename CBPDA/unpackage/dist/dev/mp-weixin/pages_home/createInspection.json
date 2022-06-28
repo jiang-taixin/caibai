@@ -11,7 +11,6 @@
     "uni-tr": "/uni_modules/uni-table/components/uni-tr/uni-tr",
     "uni-th": "/uni_modules/uni-table/components/uni-th/uni-th",
     "uni-td": "/uni_modules/uni-table/components/uni-td/uni-td",
-    "u-toast": "/uni_modules/uview-ui/components/u-toast/u-toast",
     "u-popup": "/uni_modules/uview-ui/components/u-popup/u-popup",
     "uni-data-select": "/uni_modules/uni-data-select/components/uni-data-select/uni-data-select",
     "uni-datetime-picker": "/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker"

@@ -19,7 +19,7 @@
       ]
     },
     {
-      "hooksClass": "",
+      "hooksClass": "com.caibai.rfidlib.RFIDProxy",
       "plugins": [
         {
           "type": "module",

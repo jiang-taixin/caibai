@@ -61,8 +61,6 @@
 			<u-button type="primary" @click="create" text="创建送检单">
 			</u-button>
 		</view>
-		<u-toast ref="uToast" />
-
 		<u-popup :show="showCreatePage" mode="bottom" @close="close">
 			<view>
 				<div style="width: 100%;display:inline-block">
@@ -192,7 +190,7 @@
 		methods: {
 			startSearch() {
 				if (this.codeNumber === '' || this.codeNumber === undefined) {
-					this.$refs.uToast.error(`请先扫描出货汇总单`);
+					this.$toast.showToast("请先扫描出货汇总单");
 					return;
 				}
 				var opts = {
@@ -224,7 +222,8 @@
 						}
 						this.tableData = res.data.data;
 					} else {
-						this.$refs.uToast.error('获取数据失败，请重试');
+						this.$toast.showToast("获取数据失败，请重试");
+						
 					}
 				});
 			},
@@ -237,7 +236,8 @@
 								vm.codeNumber = res.result;
 							});
 						} else {
-							this.$refs.uToast.success(`扫码失败，请重试`);
+							this.$toast.showToast("扫码失败，请重试");
+							
 						}
 
 					}
@@ -251,19 +251,23 @@
 			},
 			confirmCreate() {
 				if (this.inspectionName === '' || this.inspectionName === undefined) {
-					this.$refs.uToast.error(`请先输入送检人姓名`);
+					this.$toast.showToast("请先输入送检人姓名");
+					
 					return;
 				}
 				if (this.inspectionDate === '' || this.inspectionDate === undefined) {
-					this.$refs.uToast.error(`请选择送检时间`);
+					this.$toast.showToast("请选择送检时间");
+					
 					return;
 				}
 				if (this.inspectionCategory === '' || this.inspectionCategory === undefined) {
-					this.$refs.uToast.error(`请选择送检类别`);
+					this.$toast.showToast("请选择送检类别");
+					
 					return;
 				}
 				if (this.inspectionAngecy === '' || this.inspectionAngecy === undefined) {
-					this.$refs.uToast.error(`请选择送检机构`);
+					this.$toast.showToast("请选择送检机构");
+					
 					return;
 				}
 				
@@ -290,9 +294,9 @@
 					uni.hideLoading();
 					this.showCreatePage = false;
 					if (res.data.code === "200") {
-						this.$refs.uToast.success('提交成功');
+						this.$toast.showToast("提交成功");
 					} else {
-						this.$refs.uToast.error('提交失败，请重试');
+						this.$toast.showToast("提交失败，请重试");
 					}
 				});
 				

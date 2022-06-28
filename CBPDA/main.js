@@ -12,6 +12,8 @@ Vue.prototype.$http = myRequest
 
 import dateTrans from './JS/dateTrans.js'
 Vue.use(dateTrans)
+import toast from './JS/Toast.js'
+Vue.use(toast)
 
 const app = new Vue({
 	...App

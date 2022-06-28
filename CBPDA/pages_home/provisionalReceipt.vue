@@ -99,7 +99,7 @@
 				</u-col>
 			</u-row>
 		</view>
-		<u-toast ref="uToast" />
+		
 	</view>
 </template>
 
@@ -120,7 +120,7 @@
 		methods: {
 			startSearch() {
 				if (this.codeNumber === '' || this.codeNumber === undefined) {
-					this.$refs.uToast.error(`请先扫描出货汇总单`);
+					this.$toast.showToast("请先扫描出货汇总单");
 					return;
 				}
 				var opts = {
@@ -164,7 +164,8 @@
 						}
 						this.tableData = res.data.data;
 					} else {
-						this.$refs.uToast.error('获取数据失败，请重试');
+						this.$toast.showToast("获取数据失败，请重试");
+						
 					}
 				});
 			},
@@ -177,7 +178,8 @@
 								vm.codeNumber = res.result;
 							});
 						} else {
-							this.$refs.uToast.error(`扫码失败，请重试`);
+							this.$toast.showToast("扫码失败，请重试");
+							
 						}
 
 					}
@@ -185,7 +187,8 @@
 			},
 			addPackage() {
 				if (this.barCode === '' || this.barCode === undefined) {
-					this.$refs.uToast.error(`请先扫描包码`);
+					this.$toast.showToast("请先扫描包码");
+					
 					return;
 				}
 				//点击添加扫描到的包码与列表中包码一致则选中当前行
@@ -205,7 +208,8 @@
 								vm.barCode = res.result;
 							});
 						} else {
-							this.$refs.uToast.error(`扫码失败，请重试`);
+							this.$toast.showToast("扫码失败，请重试");
+							
 						}
 
 					}
@@ -242,9 +246,11 @@
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
 					if (res.data.code === "200") {
-						this.$refs.uToast.success('提交成功');
+						this.$toast.showToast("提交成功");
+						
 					} else {
-						this.$refs.uToast.error('提交失败，请重试');
+						this.$toast.showToast("提交失败，请重试");
+						
 					}
 				});
 			}

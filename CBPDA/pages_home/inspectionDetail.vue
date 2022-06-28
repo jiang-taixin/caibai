@@ -102,7 +102,6 @@
 			<u-button type="primary" @click="exportData" text="导出数据">
 			</u-button>
 		</view>
-		<u-toast ref="uToast" />
 
 	</view>
 </template>
@@ -144,7 +143,7 @@
 		},
 		methods: {
 			startSearch() {
-				this.$refs.uToast.success(`search with ${this.codeNumber}`)
+				
 			},
 			startScan() {
 				let vm = this;
@@ -155,7 +154,8 @@
 								vm.codeNumber = res.result;
 							});
 						} else {
-							this.$refs.uToast.success(`扫码失败，请重试`);
+							this.$toast.showToast("扫码失败，请重试");
+							
 						}
 
 					}

@@ -209,7 +209,7 @@
 				</u-col>
 			</u-row>
 		</view>
-		<u-toast ref="uToast" />
+		
 	</view>
 </template>
 
@@ -253,7 +253,11 @@
 		},
 		methods: {
 			startSearch() {
-				this.$refs.uToast.success(`search with ${this.codeNumber}`)
+				if (this.codeNumber === '' || this.codeNumber === undefined) {
+					this.$toast.showToast("请先扫描包码");
+					
+					return;
+				};
 			},
 			startScan() {
 				let vm = this;
@@ -264,7 +268,8 @@
 								vm.codeNumber = res.result;
 							});
 						} else {
-							this.$refs.uToast.error(`扫码失败，请重试`);
+							this.$toast.showToast("扫码失败，请重试");
+							
 						}
 
 					}

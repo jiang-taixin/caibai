@@ -162,7 +162,6 @@
 				</u-col>
 			</u-row>
 		</div>
-		<u-toast ref="uToast" />
 		<u-popup :show="showEditPage" mode="bottom" @close="close">
 			<view>
 				<div style="width: 100%;display:inline-block">

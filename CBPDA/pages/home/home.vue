@@ -8,7 +8,6 @@
 				<text class="grid-text">{{listItem.title}}</text>
 			</u-grid-item>
 		</u-grid>
-		<u-toast ref="uToast" />
 	</view>
 </template>
 
@@ -66,7 +65,7 @@
 					{
 						name: 'star',
 						title: 'RFID',
-						platform: ["APP", "WEIXIN", "H5"],
+						platform: ["APP"],
 					},
 				],
 				list1: [
@@ -89,6 +88,7 @@
 			this.getInspectionCategory(); //送检单类型
 			this.getReason(); //不合格原因
 			this.getTestingCategory(); //质检类别
+			
 		},
 		created() {
 			//判断平台类型    设置模块是否显示
@@ -198,7 +198,8 @@
 							success: function() {}
 						});
 					} else {
-						this.$refs.uToast.error('获取检测机构失败，请刷新页面');
+						this.$toast.showToast("获取检测机构失败，请刷新页面");
+						
 					}
 				});
 			},
@@ -233,7 +234,8 @@
 							success: function() {}
 						});
 					} else {
-						this.$refs.uToast.error('获取送检单类别失败，请刷新页面');
+						this.$toast.showToast("获取送检单类别失败，请刷新页面");
+						
 					}
 				});
 			},
@@ -268,7 +270,8 @@
 							success: function() {}
 						});
 					} else {
-						this.$refs.uToast.error('获取不合格原因失败，请刷新页面');
+						this.$toast.showToast("获取不合格原因失败，请刷新页面");
+						
 					}
 				});
 			},
@@ -303,7 +306,8 @@
 							success: function() {}
 						});
 					} else {
-						this.$refs.uToast.error('获取质检类别失败，请刷新页面');
+						this.$toast.showToast("获取质检类别失败，请刷新页面");
+						
 					}
 				});
 			},

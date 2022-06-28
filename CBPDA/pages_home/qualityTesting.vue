@@ -200,7 +200,7 @@
 				</u-col>
 			</u-row>
 		</view>
-		<u-toast ref="uToast" />
+		
 	</view>
 </template>
 
@@ -242,7 +242,7 @@
 		methods: {
 			startSearch() {
 				if (this.codeNumber === '' || this.codeNumber === undefined) {
-					this.$refs.uToast.error(`请先扫描包码`);
+					this.$toast.showToast("请先扫描包码");
 					return;
 				};
 				var opts = {
@@ -272,7 +272,8 @@
 						this.purchaseNum = this.headerMessage.goodsPurchaseNum;
 						this.material = this.headerMessage.goodsMetalMaterial;
 					} else {
-						this.$refs.uToast.error('获取数据失败，请重试');
+						this.$toast.showToast("获取数据失败，请重试");
+						
 					}
 				});
 			},
@@ -285,7 +286,8 @@
 								vm.codeNumber = res.result;
 							});
 						} else {
-							this.$refs.uToast.success(`扫码失败，请重试`);
+							this.$toast.showToast("扫码失败，请重试");
+							
 						}
 
 					}
@@ -335,9 +337,11 @@
 					console.log("*****************response:",res);
 					uni.hideLoading();
 					if (res.data.code === "200") {
-						this.$refs.uToast.success('提交成功');
+						this.$toast.showToast("提交成功");
+						
 					} else {
-						this.$refs.uToast.error('提交失败');
+						this.$toast.showToast("提交失败");
+						
 					}
 				});
 			},
