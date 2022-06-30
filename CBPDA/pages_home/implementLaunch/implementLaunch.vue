@@ -137,8 +137,8 @@
 				<!-- 表头行 -->
 				<uni-tr>
 					<uni-th align="center">标签名称</uni-th>
-					<uni-th align="left">条形码</uni-th>
-					<uni-th align="left">仓位</uni-th>
+					<uni-th align="center">条形码</uni-th>
+					<uni-th align="center">仓位</uni-th>
 					<uni-th align="center">次要数量</uni-th>
 					<uni-th align="center">主要数量</uni-th>
 				</uni-tr>

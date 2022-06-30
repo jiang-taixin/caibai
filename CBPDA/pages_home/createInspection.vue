@@ -36,13 +36,13 @@
 			<!-- 表头行 -->
 			<uni-tr>
 				<uni-th align="center">序号</uni-th>
-				<uni-th align="left">暂收时间</uni-th>
+				<uni-th align="center">暂收时间</uni-th>
 				<uni-th align="center">采购订单号</uni-th>
 				<uni-th align="center">订单行项目号</uni-th>
-				<uni-th align="left">商品编号</uni-th>
-				<uni-th align="left">商品描述</uni-th>
-				<uni-th align="left">包码</uni-th>
-				<uni-th align="left">订单数量</uni-th>
+				<uni-th align="center">商品编号</uni-th>
+				<uni-th align="center">商品描述</uni-th>
+				<uni-th align="center">包码</uni-th>
+				<uni-th align="center">订单数量</uni-th>
 			</uni-tr>
 			<!-- 表格数据行 -->
 			<uni-tr v-for="(item, index) in tableData">
