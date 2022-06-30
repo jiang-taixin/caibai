@@ -281,9 +281,8 @@ var _default =
         return;
       }
       uni.navigateTo({
-        url: "implementLaunch/implementLaunch?selectDepartment=".concat(this.selectDepartment, "&selectWarehouse=").concat(this.selectWarehouse, "&date=").concat(this.date)
-        //url:`picking/picking?test=1`
-      });
+        url: "implementLaunch/implementLaunch?launchDepartment=".concat(this.launchDepartment, "&launchWarehouse=").concat(this.launchWarehouse, "&date=").concat(this.date) });
+
     },
     cancel: function cancel() {
       uni.navigateBack({});

@@ -110,8 +110,7 @@
 					return;
 				}
 				uni.navigateTo({
-					url: `implementLaunch/implementLaunch?selectDepartment=${this.selectDepartment}&selectWarehouse=${this.selectWarehouse}&date=${this.date}`
-					//url:`picking/picking?test=1`
+					url: `implementLaunch/implementLaunch?launchDepartment=${this.launchDepartment}&launchWarehouse=${this.launchWarehouse}&date=${this.date}`
 				})
 			},
 			cancel() {

@@ -90,7 +90,6 @@
 			<view class="desc-text-edit">
 				<u--text type="primary" text="备注" size=13></u--text>
 			</view>
-			
 			<textarea placeholder="输入备注信息" style="width: 100%;margin-top: 5px;background-color: aliceblue;" v-model="remarks"></textarea>
 		</div>
 		
