@@ -33,16 +33,6 @@
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						name: 'car',
-						title: '逐条拣货配货',
-						platform: ["APP", "WEIXIN", "H5"],
-					},
-					{
-						name: 'car-fill',
-						title: '整单配货',
-						platform: ["APP", "WEIXIN", "H5"],
-					},
-					{
 						name: 'edit-pen',
 						title: '回货暂收',
 						platform: ["APP", "WEIXIN", "H5"],
@@ -60,6 +50,16 @@
 					{
 						name: 'list',
 						title: '取检确认',
+						platform: ["APP", "WEIXIN", "H5"],
+					},
+					{
+						name: 'car',
+						title: '逐条拣货配货',
+						platform: ["APP", "WEIXIN", "H5"],
+					},
+					{
+						name: 'car-fill',
+						title: '整单配货',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
@@ -88,7 +88,7 @@
 			this.getInspectionCategory(); //送检单类型
 			this.getReason(); //不合格原因
 			this.getTestingCategory(); //质检类别
-			
+
 		},
 		created() {
 			//判断平台类型    设置模块是否显示
@@ -126,34 +126,35 @@
 							url: '/pages_home/damageTesting'
 						});
 						break;
+
 					case 3:
-						uni.navigateTo({
-							url: '/pages_home/pickingManagement'
-						});
-						break;
-					case 4:
-						uni.navigateTo({
-							url: '/pages_home/wholeOrderDistribution'
-						});
-						break;
-					case 5:
 						uni.navigateTo({
 							url: '/pages_home/provisionalReceipt'
 						});
 						break;
-					case 6:
+					case 4:
 						uni.navigateTo({
 							url: '/pages_home/createInspection'
 						});
 						break;
-					case 7:
+					case 5:
 						uni.navigateTo({
 							url: '/pages_home/inspectionDetail'
 						});
 						break;
-					case 8:
+					case 6:
 						uni.navigateTo({
 							url: '/pages_home/inspectionConfirm'
+						});
+						break;
+					case 7:
+						uni.navigateTo({
+							url: '/pages_home/pickingManagement'
+						});
+						break;
+					case 8:
+						uni.navigateTo({
+							url: '/pages_home/wholeOrderDistribution'
 						});
 						break;
 					case 9:
@@ -161,6 +162,7 @@
 							url: '/pages_home/RFIDDemo'
 						});
 						break;
+
 					default:
 						uni.navigateTo({
 							url: '/pages_home/qualityTesting'
@@ -199,7 +201,7 @@
 						});
 					} else {
 						this.$toast.showToast("获取检测机构失败，请刷新页面");
-						
+
 					}
 				});
 			},
@@ -235,7 +237,7 @@
 						});
 					} else {
 						this.$toast.showToast("获取送检单类别失败，请刷新页面");
-						
+
 					}
 				});
 			},
@@ -271,7 +273,7 @@
 						});
 					} else {
 						this.$toast.showToast("获取不合格原因失败，请刷新页面");
-						
+
 					}
 				});
 			},
@@ -307,7 +309,7 @@
 						});
 					} else {
 						this.$toast.showToast("获取质检类别失败，请刷新页面");
-						
+
 					}
 				});
 			},

@@ -390,7 +390,7 @@ var _default =
     return {
       codeNumber: "", //条形码或二维码
       qualityInspector: "", //质检人
-      bookCode: "",
+      bookCode: "", //前置单号
       damageNum: "", //有损件数
       undamagedNum: "", //无损件数
       supplier: "", //供应商

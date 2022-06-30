@@ -31,7 +31,7 @@
 			<u--input font-size=13 v-model="qualityInspector" border="surround" disabled=true>
 			</u--input>
 		</div>
-		<uni-table border stripe emptyText="暂无更多数据" class="custom-list" type="selection"
+		<uni-table ref="table" border stripe emptyText="暂无更多数据" class="custom-list" type="selection"
 			@selection-change="selectionChange">
 			<!-- 表头行 -->
 			<uni-tr>
@@ -48,12 +48,12 @@
 			<uni-tr v-for="(item, index) in tableData">
 				<uni-td>{{index}}</uni-td>
 				<uni-td>{{item.temprecDate}}</uni-td>
-				<uni-td>{{item.poCode}}</uni-td>
-				<uni-td>{{item.poItemCode}}</uni-td>
-				<uni-td>{{item.materielCode}}</uni-td>
-				<uni-td>{{item.materielDesc}}</uni-td>
-				<uni-td>{{item.barCode}}</uni-td>
-				<uni-td>{{item.goodsPurchaseNum}}</uni-td>
+				<uni-td>{{item.scmPoCode}}</uni-td>
+				<uni-td>{{item.poItemNo}}</uni-td>
+				<uni-td>{{item.materialCode}}</uni-td>
+				<uni-td>{{item.tagName}}</uni-td>
+				<uni-td>{{item.spbm}}</uni-td>
+				<uni-td>{{item.quatity}}</uni-td>
 			</uni-tr>
 		</uni-table>
 
@@ -162,7 +162,7 @@
 				selectedList:[],      //选中行数组
 				showCreatePage: false, //显示创建页面
 				inspectionCode: "", //送检单号
-				totalNum: 2, //总件数
+				totalNum: "", //总件数
 				inspectionName: "", //送检人
 				remarks: "", //备注
 				inspectionCategory: "", //送检类型
@@ -199,7 +199,7 @@
 				};
 				let vm = this;
 				var param = {
-					"interface_num": "MOBSCMD0001",
+					"interface_num": "MOBSCMD0010",
 					"serial_no": "123456789",
 					"access_token": "abc",
 					"bus_data": {
@@ -221,6 +221,7 @@
 							}
 						}
 						this.tableData = res.data.data;
+						//this.$refs.table.selectionAll();
 					} else {
 						this.$toast.showToast("获取数据失败，请重试");
 						
@@ -243,8 +244,9 @@
 					}
 				});
 			},
-			selectionChange(){
+			selectionChange(res){
 				this.selectedList = res.detail.index;
+				this.totalNum = this.selectedList.length;
 			},
 			create() {
 				this.showCreatePage = true;
@@ -252,22 +254,18 @@
 			confirmCreate() {
 				if (this.inspectionName === '' || this.inspectionName === undefined) {
 					this.$toast.showToast("请先输入送检人姓名");
-					
 					return;
 				}
 				if (this.inspectionDate === '' || this.inspectionDate === undefined) {
 					this.$toast.showToast("请选择送检时间");
-					
 					return;
 				}
 				if (this.inspectionCategory === '' || this.inspectionCategory === undefined) {
 					this.$toast.showToast("请选择送检类别");
-					
 					return;
 				}
 				if (this.inspectionAngecy === '' || this.inspectionAngecy === undefined) {
 					this.$toast.showToast("请选择送检机构");
-					
 					return;
 				}
 				
@@ -280,17 +278,28 @@
 				for (var i = 0; i < this.selectedList.length; i++) {
 					bodyList.push(this.tableData[this.selectedList[i]]);
 				}
-				
+				var header = {
+					"inspectStatus":"1",
+					"inspectOrgan":this.inspectionAngecy,
+					"inspectDate":this.inspectionDate,
+					"remarks":this.remarks,
+					"inspectBy":this.inspectionName,
+				};
+				var body = {
+					"details":bodyList,
+					"header":header
+				};
 				var param = {
-					"interface_num": "MOBSCMD0002",
+					"interface_num": "MOBSCMD0011",
 					"serial_no": "123456789",
 					"access_token": "abc",
-					"bus_data": bodyList,
+					"bus_data": body,
 				};
 				uni.showLoading({
 					title: '加载中...'
 				});
 				this.$http.httpRequest(opts, param).then((res) => {
+					console.log("*************res:",res);
 					uni.hideLoading();
 					this.showCreatePage = false;
 					if (res.data.code === "200") {

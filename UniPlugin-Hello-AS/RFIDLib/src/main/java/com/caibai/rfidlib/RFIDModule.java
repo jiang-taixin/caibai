@@ -1,21 +1,16 @@
 package com.caibai.rfidlib;
 
 import android.os.RemoteException;
-import android.util.Log;
 
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import com.ubx.usdk.USDKManager;
 import com.ubx.usdk.rfid.RfidManager;
 import com.ubx.usdk.rfid.aidl.IRfidCallback;
 import com.ubx.usdk.rfid.aidl.RfidDate;
-import com.ubx.usdk.rfid.util.CMDCode;
-import com.ubx.usdk.rfid.util.ErrorCode;
 
 import io.dcloud.feature.uniapp.common.UniModule;
 
@@ -31,11 +26,8 @@ public class RFIDModule extends UniModule {
     @JSMethod(uiThread = true)
     public void startScan(JSCallback jsCallBack){
         this.uniCallBack = jsCallBack;
-        System.out.println("====================start scan");
         setCallback();
-        System.out.println("*************************5");
         RFIDProxy.rfidManager.customizedSessionTargetInventory(RFIDProxy.rfidManager.getReadId(), (byte) 0, (byte) 0, (byte) 1);
-        System.out.println("*************************6"+RFIDProxy.rfidManager.getReadId());
     }
 
     @JSMethod(uiThread = true)
@@ -44,19 +36,15 @@ public class RFIDModule extends UniModule {
     }
 
     private void setCallback(){
-        System.out.println("*************************1:"+RFIDProxy.rfidManager);
         if (RFIDProxy.rfidManager!=null) {
-            System.out.println("*************************2");
             if (callback == null){
-                System.out.println("*************************3");
                 callback = new ScanCallback();
             }
-            System.out.println("*************************4");
             RFIDProxy.rfidManager.registerCallback(callback);
         }
     }
 
-
+    //内部类实现回调
     class ScanCallback extends IRfidCallback.Stub {
 
         /**

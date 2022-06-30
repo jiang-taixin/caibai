@@ -97,7 +97,6 @@
 
 			},
 			confirm() {
-				this.$refs.uToast.success(`confirm`);
 				if (this.selectDepartment === '' || this.selectDepartment === undefined) {
 					this.$toast.showToast("请选择发货部门并重试");
 					

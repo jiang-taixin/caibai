@@ -1,25 +1,12 @@
 package com.caibai.rfidlib;
 
 import android.app.Application;
-import android.content.Context;
-import android.os.RemoteException;
-
-import com.taobao.weex.annotation.JSMethod;
-import com.taobao.weex.bridge.JSCallback;
 import com.ubx.usdk.USDKManager;
 import com.ubx.usdk.rfid.RfidManager;
-import com.ubx.usdk.USDKManager;
-import com.ubx.usdk.rfid.RfidManager;
-import com.ubx.usdk.rfid.aidl.IRfidCallback;
-import com.ubx.usdk.rfid.aidl.RfidDate;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import io.dcloud.feature.uniapp.UniAppHookProxy;
-import io.dcloud.feature.uniapp.common.UniModule;
 
 public class RFIDProxy implements UniAppHookProxy {
+    //将rfidManager创建为静态实例
     static public RfidManager rfidManager;
 
     @Override
@@ -41,9 +28,7 @@ public class RFIDProxy implements UniAppHookProxy {
                     }
                 }
                 catch (Exception e){
-                    System.out.println("=====================exception init rfid :"+e);
                 }
-
             }
             else{
                 System.out.println("=====================featureType :"+featureType+", status :"+status);

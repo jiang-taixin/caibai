@@ -348,7 +348,7 @@ var _default =
       selectedList: [], //选中行数组
       showCreatePage: false, //显示创建页面
       inspectionCode: "", //送检单号
-      totalNum: 2, //总件数
+      totalNum: "", //总件数
       inspectionName: "", //送检人
       remarks: "", //备注
       inspectionCategory: "", //送检类型
@@ -385,7 +385,7 @@ var _default =
 
       var vm = this;
       var param = {
-        "interface_num": "MOBSCMD0001",
+        "interface_num": "MOBSCMD0010",
         "serial_no": "123456789",
         "access_token": "abc",
         "bus_data": {
@@ -407,6 +407,7 @@ var _default =
             }
           }
           _this.tableData = res.data.data;
+          //this.$refs.table.selectionAll();
         } else {
           _this.$toast.showToast("获取数据失败，请重试");
 
@@ -429,8 +430,9 @@ var _default =
         } });
 
     },
-    selectionChange: function selectionChange() {
+    selectionChange: function selectionChange(res) {
       this.selectedList = res.detail.index;
+      this.totalNum = this.selectedList.length;
     },
     create: function create() {
       this.showCreatePage = true;
@@ -438,22 +440,18 @@ var _default =
     confirmCreate: function confirmCreate() {var _this2 = this;
       if (this.inspectionName === '' || this.inspectionName === undefined) {
         this.$toast.showToast("请先输入送检人姓名");
-
         return;
       }
       if (this.inspectionDate === '' || this.inspectionDate === undefined) {
         this.$toast.showToast("请选择送检时间");
-
         return;
       }
       if (this.inspectionCategory === '' || this.inspectionCategory === undefined) {
         this.$toast.showToast("请选择送检类别");
-
         return;
       }
       if (this.inspectionAngecy === '' || this.inspectionAngecy === undefined) {
         this.$toast.showToast("请选择送检机构");
-
         return;
       }
 
@@ -466,17 +464,28 @@ var _default =
       for (var i = 0; i < this.selectedList.length; i++) {
         bodyList.push(this.tableData[this.selectedList[i]]);
       }
+      var header = {
+        "inspectStatus": "1",
+        "inspectOrgan": this.inspectionAngecy,
+        "inspectDate": this.inspectionDate,
+        "remarks": this.remarks,
+        "inspectBy": this.inspectionName };
+
+      var body = {
+        "details": bodyList,
+        "header": header };
 
       var param = {
-        "interface_num": "MOBSCMD0002",
+        "interface_num": "MOBSCMD0011",
         "serial_no": "123456789",
         "access_token": "abc",
-        "bus_data": bodyList };
+        "bus_data": body };
 
       uni.showLoading({
         title: '加载中...' });
 
       this.$http.httpRequest(opts, param).then(function (res) {
+        console.log("*************res:", res);
         uni.hideLoading();
         _this2.showCreatePage = false;
         if (res.data.code === "200") {

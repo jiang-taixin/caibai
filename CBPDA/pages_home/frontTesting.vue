@@ -33,7 +33,7 @@
 			<view class="desc-text">
 				<u--text type="primary" text="前置单号" size=13></u--text>
 			</view>
-			<u--input font-size=13 v-model="supplier" border="surround" disabled=true>
+			<u--input font-size=13 v-model="bookCode" border="surround" disabled=true>
 			</u--input>
 		</div>
 		<u-row>
@@ -91,7 +91,7 @@
 						<u--text type="primary" text="出货件数" size=13></u--text>
 					</view>
 
-					<u--input font-size=13 border="surround" type="number" disabled=true>
+					<u--input font-size=13 v-model="shipmentNumber" border="surround" type="number" disabled=true>
 					</u--input>
 				</div>
 			</u-col>
@@ -100,7 +100,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="出货克重" size=13></u--text>
 					</view>
-					<u--input font-size=13 border="surround" disabled=true>
+					<u--input font-size=13 v-model="shipmentWeight" border="surround" disabled=true>
 					</u--input>
 				</div>
 			</u-col>
@@ -111,7 +111,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="质检件数" size=13></u--text>
 					</view>
-					<u--input font-size=13 border="surround" disabled=true>
+					<u--input font-size=13 v-model="testNum" border="surround" disabled=true>
 					</u--input>
 				</div>
 			</u-col>
@@ -120,7 +120,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="质检克重" size=13></u--text>
 					</view>
-					<u--input font-size=13 border="surround" disabled=true>
+					<u--input font-size=13 v-model="testWeight" border="surround" disabled=true>
 					</u--input>
 				</div>
 			</u-col>
@@ -218,13 +218,16 @@
 		data() {
 			return {
 				codeNumber: "", //条形码或二维码
-				qualityInspector: "26314", //质检人
-				damageNum: "10", //有损件数
-				undamagedNum: "5", //无损件数
-				supplier: "supplier1", //供应商
-				modelNum: "model12345", //款号
-				purchaseNum: "100", //采购件数
-				material: "贵金属", //贵金属材质
+				qualityInspector: "", //质检人
+				bookCode: "",      //前置单号
+				shipmentNumber:"", //出货件数
+				shipmentWeight:"", //出货克重
+				supplier: "", //供应商
+				modelNum: "", //款号
+				purchaseNum: "", //采购件数
+				testNum:0,   //质检件数
+				testWeight:"",//质检克重
+				material: "", //贵金属材质
 				total: 0, //不合格总计
 				selectCategory: "", //质检类别
 				qualifiedNum: "", //合格件数
@@ -232,6 +235,8 @@
 				tableData: [],
 				reason: [],
 				category:[],
+				
+				detailMessage :"",//用于保存扫码后获取的信息
 			}
 		},
 		mounted() {
@@ -255,9 +260,49 @@
 			startSearch() {
 				if (this.codeNumber === '' || this.codeNumber === undefined) {
 					this.$toast.showToast("请先扫描包码");
-					
 					return;
 				};
+				var opts = {
+					url: ``,
+					method: 'post'
+				};
+				uni.showLoading({
+					title: '加载中...'
+				});
+				var param = {
+					"interface_num": "MOBSCMD0008",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": {
+						"barCode": this.codeNumber
+					},
+				};
+				this.$http.httpRequest(opts, param).then((res) => {
+					uni.hideLoading();
+					if (res.data.code === "200") {
+						this.detailMessage = res.data.data;
+						this.bookCode = this.detailMessage.preCode;
+						this.supplier = this.detailMessage.supName;
+						this.modelNum = this.detailMessage.materielCode;
+						this.material = this.detailMessage.goodsMetalMaterial;
+						this.purchaseNum = this.detailMessage.goodsPurchaseNum;
+						this.shipmentNumber = this.detailMessage.sendCount;//出货件数
+						this.shipmentWeight = this.detailMessage.sendTotalGram;//出货克重
+						//initalReviewNum是否初检参数
+						if(this.detailMessage.initalReviewNum === 0 || this.detailMessage.initalReviewNum === null){
+							this.testNum = this.detailMessage.sendCount;
+							this.testWeight = this.detailMessage.sendTotalGram;
+						}
+						else{
+							var number = parseInt(this.detailMessage.sendCount/10);
+							number === 0?this.testNum = 1:this.testNum = number;
+							this.testWeight = this.detailMessage.sendTotalGram/10;
+						}
+						
+					} else {
+						this.$toast.showToast("获取数据失败，请重试");
+					}
+				});
 			},
 			startScan() {
 				let vm = this;
@@ -268,8 +313,7 @@
 								vm.codeNumber = res.result;
 							});
 						} else {
-							this.$toast.showToast("扫码失败，请重试");
-							
+							this.$toast.showToast("扫码失败，请重试");	
 						}
 
 					}
@@ -282,7 +326,60 @@
 				console.log("change reason :", e);
 			},
 			commit() {
-
+				if (this.qualifiedNum === '' || this.qualifiedNum === undefined) {
+					this.$toast.showToast("请输入合格件数");
+					return;
+				};
+				if (this.qualifiedWeight === '' || this.qualifiedWeight === undefined) {
+					this.$toast.showToast("请输入合格克重");
+					return;
+				};
+				var opts = {
+					url: ``,
+					method: 'post'
+				};
+				
+				var bodyList = [];
+				for (var i = 0; i < this.tableData.length; i++) {
+					var argument = {
+						"unqualifiedReason":this.tableData[i].reason,
+						"unqualifiedQuantity":this.tableData[i].number,
+					}
+					bodyList.push(argument);
+				};
+				this.detailMessage["comeGood"] = this.testNum;//质检件数
+				this.detailMessage["comeGram"] = this.testWeight;//质检克重
+				this.detailMessage["qualifiedGram"] = this.qualifiedWeight;//合格克重
+				this.detailMessage["qualifiedQuantity"] = this.qualifiedNum;//合格件数
+				this.detailMessage["checkCategory"] = this.selectCategory;//质检类别
+				this.detailMessage["temprecType"] = "1";//质检类型
+				this.detailMessage["temprecStatus"] = "1";//质检状态
+				this.detailMessage["remarks"] = "20220630";//质检状态
+				
+				var body = {
+					"faws":bodyList,
+					"detail":this.detailMessage
+				};
+				var param = {
+					"interface_num": "MOBSCMD0009",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": body,
+				};
+				uni.showLoading({
+					title: '加载中...'
+				});
+				this.$http.httpRequest(opts, param).then((res) => {
+					console.log("*****************response:",res);
+					uni.hideLoading();
+					if (res.data.code === "200") {
+						this.$toast.showToast("提交成功");
+						
+					} else {
+						this.$toast.showToast("提交失败");
+						
+					}
+				});
 			},
 			toDamage() {
 				uni.navigateTo({

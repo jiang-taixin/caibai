@@ -220,16 +220,6 @@ var _default =
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
-        name: 'car',
-        title: '逐条拣货配货',
-        platform: ["APP", "WEIXIN", "H5"] },
-
-      {
-        name: 'car-fill',
-        title: '整单配货',
-        platform: ["APP", "WEIXIN", "H5"] },
-
-      {
         name: 'edit-pen',
         title: '回货暂收',
         platform: ["APP", "WEIXIN", "H5"] },
@@ -247,6 +237,16 @@ var _default =
       {
         name: 'list',
         title: '取检确认',
+        platform: ["APP", "WEIXIN", "H5"] },
+
+      {
+        name: 'car',
+        title: '逐条拣货配货',
+        platform: ["APP", "WEIXIN", "H5"] },
+
+      {
+        name: 'car-fill',
+        title: '整单配货',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
@@ -313,34 +313,35 @@ var _default =
             url: '/pages_home/damageTesting' });
 
           break;
+
         case 3:
-          uni.navigateTo({
-            url: '/pages_home/pickingManagement' });
-
-          break;
-        case 4:
-          uni.navigateTo({
-            url: '/pages_home/wholeOrderDistribution' });
-
-          break;
-        case 5:
           uni.navigateTo({
             url: '/pages_home/provisionalReceipt' });
 
           break;
-        case 6:
+        case 4:
           uni.navigateTo({
             url: '/pages_home/createInspection' });
 
           break;
-        case 7:
+        case 5:
           uni.navigateTo({
             url: '/pages_home/inspectionDetail' });
 
           break;
-        case 8:
+        case 6:
           uni.navigateTo({
             url: '/pages_home/inspectionConfirm' });
+
+          break;
+        case 7:
+          uni.navigateTo({
+            url: '/pages_home/pickingManagement' });
+
+          break;
+        case 8:
+          uni.navigateTo({
+            url: '/pages_home/wholeOrderDistribution' });
 
           break;
         case 9:
@@ -348,6 +349,7 @@ var _default =
             url: '/pages_home/RFIDDemo' });
 
           break;
+
         default:
           uni.navigateTo({
             url: '/pages_home/qualityTesting' });}

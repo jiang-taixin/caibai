@@ -179,6 +179,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 var rfidModule = uni.requireNativePlugin("RFIDLib");var _default =
 {
@@ -189,14 +190,17 @@ var rfidModule = uni.requireNativePlugin("RFIDLib");var _default =
 
   },
   methods: {
-    click: function click() {var _this = this;
-      rfidModule.getRFID("call rfid function ,and get rfid message", function (res) {
+    start: function start() {var _this = this;
+      rfidModule.startScan(function (res) {
         console.log("************res:", res);
         var s = JSON.stringify(res);
         _this.text = s;
 
         _this.tableData = res.rfidList;
       });
+    },
+    stop: function stop() {
+      rfidModule.stopScan();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

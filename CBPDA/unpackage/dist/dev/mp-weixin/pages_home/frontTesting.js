@@ -401,21 +401,26 @@ var _default =
   data: function data() {
     return {
       codeNumber: "", //条形码或二维码
-      qualityInspector: "26314", //质检人
-      damageNum: "10", //有损件数
-      undamagedNum: "5", //无损件数
-      supplier: "supplier1", //供应商
-      modelNum: "model12345", //款号
-      purchaseNum: "100", //采购件数
-      material: "贵金属", //贵金属材质
+      qualityInspector: "", //质检人
+      bookCode: "", //前置单号
+      shipmentNumber: "", //出货件数
+      shipmentWeight: "", //出货克重
+      supplier: "", //供应商
+      modelNum: "", //款号
+      purchaseNum: "", //采购件数
+      testNum: 0, //质检件数
+      testWeight: "", //质检克重
+      material: "", //贵金属材质
       total: 0, //不合格总计
       selectCategory: "", //质检类别
       qualifiedNum: "", //合格件数
       qualifiedWeight: "", //合格克重
       tableData: [],
       reason: [],
-      category: [] };
+      category: [],
 
+      detailMessage: "" //用于保存扫码后获取的信息
+    };
   },
   mounted: function mounted() {
     //页面加载完成之后的操作
@@ -435,12 +440,52 @@ var _default =
 
   },
   methods: {
-    startSearch: function startSearch() {
+    startSearch: function startSearch() {var _this = this;
       if (this.codeNumber === '' || this.codeNumber === undefined) {
         this.$toast.showToast("请先扫描包码");
-
         return;
       };
+      var opts = {
+        url: "",
+        method: 'post' };
+
+      uni.showLoading({
+        title: '加载中...' });
+
+      var param = {
+        "interface_num": "MOBSCMD0008",
+        "serial_no": "123456789",
+        "access_token": "abc",
+        "bus_data": {
+          "barCode": this.codeNumber } };
+
+
+      this.$http.httpRequest(opts, param).then(function (res) {
+        uni.hideLoading();
+        if (res.data.code === "200") {
+          _this.detailMessage = res.data.data;
+          _this.bookCode = _this.detailMessage.preCode;
+          _this.supplier = _this.detailMessage.supName;
+          _this.modelNum = _this.detailMessage.materielCode;
+          _this.material = _this.detailMessage.goodsMetalMaterial;
+          _this.purchaseNum = _this.detailMessage.goodsPurchaseNum;
+          _this.shipmentNumber = _this.detailMessage.sendCount; //出货件数
+          _this.shipmentWeight = _this.detailMessage.sendTotalGram; //出货克重
+          //initalReviewNum是否初检参数
+          if (_this.detailMessage.initalReviewNum === 0 || _this.detailMessage.initalReviewNum === null) {
+            _this.testNum = _this.detailMessage.sendCount;
+            _this.testWeight = _this.detailMessage.sendTotalGram;
+          } else
+          {
+            var number = parseInt(_this.detailMessage.sendCount / 10);
+            number === 0 ? _this.testNum = 1 : _this.testNum = number;
+            _this.testWeight = _this.detailMessage.sendTotalGram / 10;
+          }
+
+        } else {
+          _this.$toast.showToast("获取数据失败，请重试");
+        }
+      });
     },
     startScan: function startScan() {
       var vm = this;
@@ -452,7 +497,6 @@ var _default =
             });
           } else {
             this.$toast.showToast("扫码失败，请重试");
-
           }
 
         } });
@@ -464,8 +508,61 @@ var _default =
     changeReason: function changeReason(e) {
       console.log("change reason :", e);
     },
-    commit: function commit() {
+    commit: function commit() {var _this2 = this;
+      if (this.qualifiedNum === '' || this.qualifiedNum === undefined) {
+        this.$toast.showToast("请输入合格件数");
+        return;
+      };
+      if (this.qualifiedWeight === '' || this.qualifiedWeight === undefined) {
+        this.$toast.showToast("请输入合格克重");
+        return;
+      };
+      var opts = {
+        url: "",
+        method: 'post' };
 
+
+      var bodyList = [];
+      for (var i = 0; i < this.tableData.length; i++) {
+        var argument = {
+          "unqualifiedReason": this.tableData[i].reason,
+          "unqualifiedQuantity": this.tableData[i].number };
+
+        bodyList.push(argument);
+      };
+      this.detailMessage["comeGood"] = this.testNum; //质检件数
+      this.detailMessage["comeGram"] = this.testWeight; //质检克重
+      this.detailMessage["qualifiedGram"] = this.qualifiedWeight; //合格克重
+      this.detailMessage["qualifiedQuantity"] = this.qualifiedNum; //合格件数
+      this.detailMessage["checkCategory"] = this.selectCategory; //质检类别
+      this.detailMessage["temprecType"] = "1"; //质检类型
+      this.detailMessage["temprecStatus"] = "1"; //质检状态
+      this.detailMessage["remarks"] = "20220630"; //质检状态
+
+      var body = {
+        "faws": bodyList,
+        "detail": this.detailMessage };
+
+      var param = {
+        "interface_num": "MOBSCMD0009",
+        "serial_no": "123456789",
+        "access_token": "abc",
+        "bus_data": body };
+
+      uni.showLoading({
+        title: '加载中...' });
+
+      this.$http.httpRequest(opts, param).then(function (res) {
+        console.log("*****************response:", res);
+        uni.hideLoading();
+        if (res.data.code === "200") {
+          _this2.$toast.showToast("提交成功");
+
+        } else {
+          _this2.$toast.showToast("提交失败");
+
+        }
+      });
     },
     toDamage: function toDamage() {
       uni.navigateTo({
@@ -488,11 +585,11 @@ var _default =
     numberConfirm: function numberConfirm() {
       this.getTotal();
     },
-    getTotal: function getTotal() {var _this = this;
+    getTotal: function getTotal() {var _this3 = this;
       this.total = 0;
       this.tableData.forEach(function (element) {
         if (element.number !== '' && element.number.toString() !== 'NaN') {
-          _this.total += parseInt(element.number);
+          _this3.total += parseInt(element.number);
         }
       });
     } } };exports.default = _default;
