@@ -128,7 +128,7 @@
 				})
 			},
 			cancel() {
-				this.$refs.uToast.success(`cancel`);
+				
 				uni.navigateBack({
 
 				});

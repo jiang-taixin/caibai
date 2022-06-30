@@ -1,13 +1,13 @@
 {
 	"app-plus": {
-		"softinputMode": "adjustResize"    //键盘弹出时窗体上推
+		"softinputMode": "adjustResize" //键盘弹出时窗体上推
 	},
 	"easycom": {
 		"autoscan": true,
 		"custom": {
 			"^u-(.*)": "@/uni_modules/uview-ui/components/u-$1/u-$1.vue"
 		}
-	    
+
 	},
 	"pages": [ //pages数组中第一项表示应用启动页
 		{
@@ -15,196 +15,187 @@
 			"style": {
 				"navigationStyle": "custom"
 			}
+		}, {
+			"path": "pages/application/application",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/mine/mine",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/spare/spare",
+			"style": {
+				"navigationStyle": "custom"
+			}
 		}
-        ,{
-            "path" : "pages/application/application",
-            "style" :                                                                                    
-            {
-                "navigationStyle": "custom"
-            }
-        }
-        ,{
-            "path" : "pages/mine/mine",
-            "style" :                                                                                    
-            {
-                "navigationStyle": "custom"
-            }
-        }
-        ,{
-            "path" : "pages/spare/spare",
-            "style" :                                                                                    
-            {
-                "navigationStyle": "custom"
-            }
-        }
 
-    ],
-	"subPackages": [
-		{
-			"root": "pages_home",
-			"pages": [
-				{
-				    "path" : "qualityTesting",
-				    "style" :                                                                                    
-				    {
-				        "navigationBarTitleText": "初检信息录入",
-				        "enablePullDownRefresh": false
-				    } 
-				}
-				,{
-				    "path" : "frontTesting",
-				    "style" :                                                                                    
-				    {
-				        "navigationBarTitleText": "入库前质检",
-				        "enablePullDownRefresh": false
-				    }
-				}
-				,{
-				    "path" : "damageTesting",
-				    "style" :                                                                                    
-				    {
-				        "navigationBarTitleText": "有损检验",
-				        "enablePullDownRefresh": false
-				    }  
-				}
-				,{
-				    "path" : "pickingManagement",
-				    "style" :                                                                                    
-				    {
-				        "navigationBarTitleText": "逐条拣货配货",
-				        "enablePullDownRefresh": false
-				    }
-				}
-				,{
-				    "path" : "picking/picking",
-				    "style" :                                                                                    
-				    {
-				        "navigationBarTitleText": "逐条拣货配货",
-				        "enablePullDownRefresh": false,
-						"app-plus": {
-							"titleNView": {
-								"buttons": [
-									{
-										"text": ">",
-										"float": "right"
-									},
-									{
-										"text": "<",
-										"float": "right"
-									}
-								]
-							}
-						}
-				    }
-				}
-				,{
-				    "path" : "wholeOrderDistribution",
-				    "style" :                                                                                    
-				    {
-				        "navigationBarTitleText": "整单拣货配货",
-				        "enablePullDownRefresh": false
-				    }
-				}
-				,{
-				    "path" : "wholePicking/wholePicking",
-				    "style" :                                                                                    
-				    {
-				        "navigationBarTitleText": "整单拣货配货",
-				        "enablePullDownRefresh": false
-				    } 
-				}
-				,{
-				    "path" : "createInspection",
-				    "style" :                                                                                    
-				    {
-				        "navigationBarTitleText": "创建送检单",
-				        "enablePullDownRefresh": false
-				    }
-				    
-				}
-				,{
-				    "path" : "provisionalReceipt",
-				    "style" :                                                                                    
-				    {
-				        "navigationBarTitleText": "回货暂收",
-				        "enablePullDownRefresh": false
-				    }
-				    
-				}
-				,{
-				    "path" : "inspectionDetail",
-				    "style" :                                                                                    
-				    {
-				        "navigationBarTitleText": "送检单明细",
-				        "enablePullDownRefresh": false
-				    }
-				    
-				}
-				,{
-				    "path" : "inspectionConfirm",
-				    "style" :                                                                                    
-				    {
-				        "navigationBarTitleText": "取检确认",
-				        "enablePullDownRefresh": false
-				    }
-				    
-				}
-			    ,{
-                    "path" : "RFIDDemo",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "RFID测试",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-            ]
-		}
 	],
+	"subPackages": [{
+		"root": "pages_home",
+		"pages": [{
+			"path": "qualityTesting",
+			"style": {
+				"navigationBarTitleText": "初检信息录入",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "frontTesting",
+			"style": {
+				"navigationBarTitleText": "入库前质检",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "damageTesting",
+			"style": {
+				"navigationBarTitleText": "有损检验",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pickingManagement",
+			"style": {
+				"navigationBarTitleText": "逐条拣货配货",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "picking/picking",
+			"style": {
+				"navigationBarTitleText": "逐条拣货配货",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+								"text": ">",
+								"float": "right"
+							},
+							{
+								"text": "<",
+								"float": "right"
+							}
+						]
+					}
+				}
+			}
+		}, {
+			"path": "wholeOrderDistribution",
+			"style": {
+				"navigationBarTitleText": "整单拣货配货",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "wholePicking/wholePicking",
+			"style": {
+				"navigationBarTitleText": "整单拣货配货",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "createInspection",
+			"style": {
+				"navigationBarTitleText": "创建送检单",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "provisionalReceipt",
+			"style": {
+				"navigationBarTitleText": "回货暂收",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "inspectionDetail",
+			"style": {
+				"navigationBarTitleText": "送检单明细",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "inspectionConfirm",
+			"style": {
+				"navigationBarTitleText": "取检确认",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "RFIDDemo",
+			"style": {
+				"navigationBarTitleText": "RFID测试",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "handover",
+			"style": {
+				"navigationBarTitleText": "交接",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "launch",
+			"style": {
+				"navigationBarTitleText": "上架",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "stockLaunch",
+			"style": {
+				"navigationBarTitleText": "库存上架",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "implementLaunch/implementLaunch",
+			"style": {
+				"navigationBarTitleText": "库存上架",
+				"enablePullDownRefresh": false
+			}
+
+		}]
+	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#009029",
 		"backgroundColor": "#F8F8F8"
 	},
-	"tabBar":{
-			"list":[
-				{
-					"text":"首页",
-					"pagePath":"pages/home/home",
-					"iconPath":"static/home.png",
-					"selectedIconPath":"static/homeed.png"
-				},
-				{
-						"text":"应用",
-						"pagePath":"pages/application/application",
-						"iconPath":"static/app.png",
-						"selectedIconPath":"static/apped.png"
-				},
-				{
-						"text":"备用",
-						"pagePath":"pages/spare/spare",
-						"iconPath":"static/spare.png",
-						"selectedIconPath":"static/spared.png"
-				},
-				{
-						"text":"我的",
-						"pagePath":"pages/mine/mine",
-						"iconPath":"static/me.png",
-						"selectedIconPath":"static/meed.png"	
-				}
-			]
-		},
-	"condition" : { //模式配置，仅开发期间生效
-		"current": 0, //当前激活的模式(list 的索引项)
-		"list": [
+	"tabBar": {
+		"list": [{
+				"text": "首页",
+				"pagePath": "pages/home/home",
+				"iconPath": "static/home.png",
+				"selectedIconPath": "static/homeed.png"
+			},
 			{
-				"name": "", //模式名称
-				"path": "", //启动页面，必选
-				"query": "" //启动参数，在页面的onLoad函数里面得到
+				"text": "应用",
+				"pagePath": "pages/application/application",
+				"iconPath": "static/app.png",
+				"selectedIconPath": "static/apped.png"
+			},
+			{
+				"text": "备用",
+				"pagePath": "pages/spare/spare",
+				"iconPath": "static/spare.png",
+				"selectedIconPath": "static/spared.png"
+			},
+			{
+				"text": "我的",
+				"pagePath": "pages/mine/mine",
+				"iconPath": "static/me.png",
+				"selectedIconPath": "static/meed.png"
 			}
 		]
+	},
+	"condition": { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [{
+			"name": "", //模式名称
+			"path": "", //启动页面，必选
+			"query": "" //启动参数，在页面的onLoad函数里面得到
+		}]
 	}
-	
+
 
 }

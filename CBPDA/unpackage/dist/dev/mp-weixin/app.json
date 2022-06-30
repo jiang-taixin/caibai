@@ -20,7 +20,11 @@
         "provisionalReceipt",
         "inspectionDetail",
         "inspectionConfirm",
-        "RFIDDemo"
+        "RFIDDemo",
+        "handover",
+        "launch",
+        "stockLaunch",
+        "implementLaunch/implementLaunch"
       ]
     }
   ],

@@ -63,6 +63,21 @@
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
+						name: 'grid',
+						title: '交接',
+						platform: ["APP", "WEIXIN", "H5"],
+					},
+					{
+						name: 'coupon',
+						title: '上架',
+						platform: ["APP", "WEIXIN", "H5"],
+					},
+					{
+						name: 'coupon-fill',
+						title: '库存上架',
+						platform: ["APP", "WEIXIN", "H5"],
+					},
+					{
 						name: 'star',
 						title: 'RFID',
 						platform: ["APP"],
@@ -158,6 +173,21 @@
 						});
 						break;
 					case 9:
+						uni.navigateTo({
+							url: '/pages_home/handover'
+						})
+						break;
+					case 10:
+						uni.navigateTo({
+							url: '/pages_home/launch'
+						});
+						break;
+					case 11:
+						uni.navigateTo({
+							url: '/pages_home/stockLaunch'
+						});
+						break;
+					case 12:
 						uni.navigateTo({
 							url: '/pages_home/RFIDDemo'
 						});

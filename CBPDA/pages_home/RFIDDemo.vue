@@ -30,9 +30,8 @@
 		methods: {
 			start(){
 				rfidModule.startScan((res) => {
-					console.log("************res:",res);
-					var s = JSON.stringify(res)
-					this.text = s;
+					
+					this.text = res.rfidList.length;
 					
 					this.tableData = res.rfidList;
 				})

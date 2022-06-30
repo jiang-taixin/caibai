@@ -71,9 +71,9 @@
 		<uni-table border stripe emptyText="暂无更多数据" class="custom-list">
 			<!-- 表头行 -->
 			<uni-tr>
-				<uni-th align="left">标签名称</uni-th>
-				<uni-th align="left">仓位</uni-th>
-				<uni-th align="left">数量</uni-th>
+				<uni-th align="center">标签名称</uni-th>
+				<uni-th align="center">仓位</uni-th>
+				<uni-th align="center">数量</uni-th>
 				<uni-th align="center">SOU</uni-th>
 				<uni-th align="center">商品条码</uni-th>
 				<uni-th align="center">商品包码</uni-th>

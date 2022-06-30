@@ -125,13 +125,13 @@
 			<!-- 表头行 -->
 			<uni-tr>
 				<uni-th align="center">标签名称</uni-th>
-				<uni-th align="left">仓位</uni-th>
-				<uni-th align="left">数量/克重</uni-th>
+				<uni-th align="center">仓位</uni-th>
+				<uni-th align="center">数量/克重</uni-th>
 				<uni-th align="center">商品条码</uni-th>
 				<uni-th align="center">商品包码</uni-th>
-				<uni-th align="left">次要数量</uni-th>
-				<uni-th align="left">物料名称</uni-th>
-				<uni-th align="left">款号</uni-th>
+				<uni-th align="center">次要数量</uni-th>
+				<uni-th align="center">物料名称</uni-th>
+				<uni-th align="center">款号</uni-th>
 			</uni-tr>
 			<!-- 表格数据行 -->
 			<uni-tr v-for="(item, index) in tableData" @row-click="rowClick(item,index)">

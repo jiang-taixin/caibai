@@ -123,7 +123,6 @@
 				console.log("---------date :", this.date);
 				uni.navigateTo({
 					url: `picking/picking?selectDepartment=${this.selectDepartment}&selectWarehouse=${this.selectWarehouse}&date=${this.date}`
-					//url:`picking/picking?test=1`
 				})
 			},
 			cancel() {
