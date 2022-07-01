@@ -78,6 +78,11 @@
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
+						name: 'integral',
+						title: '盘点',
+						platform: ["APP", "WEIXIN", "H5"],
+					},
+					{
 						name: 'star',
 						title: 'RFID',
 						platform: ["APP"],
@@ -189,9 +194,14 @@
 						break;
 					case 12:
 						uni.navigateTo({
-							url: '/pages_home/RFIDDemo'
+							url: '/pages_home/stockCheck'
 						});
 						break;
+						case 13:
+							uni.navigateTo({
+								url: '/pages_home/RFIDDemo'
+							});
+							break;
 
 					default:
 						uni.navigateTo({

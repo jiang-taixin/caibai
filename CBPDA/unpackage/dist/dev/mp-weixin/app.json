@@ -24,14 +24,16 @@
         "handover",
         "launch",
         "stockLaunch",
-        "implementLaunch/implementLaunch"
+        "implementLaunch/implementLaunch",
+        "stockCheck",
+        "implementStockCheck/implementStockCheck"
       ]
     }
   ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#009029",
+    "navigationBarBackgroundColor": "#54639c",
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {

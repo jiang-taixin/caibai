@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "RFID测试",
   "enablePullDownRefresh": false,
+  "disableScroll": true,
   "usingComponents": {
     "uni-table": "/uni_modules/uni-table/components/uni-table/uni-table",
     "uni-tr": "/uni_modules/uni-table/components/uni-tr/uni-tr",
