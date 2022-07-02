@@ -29,7 +29,7 @@
 					<view class="desc-text-edit">
 						<u--text type="primary" text="扫码" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="barCode" placeholder="包码" border="surround" clearable>
+					<u--input font-size=13 v-model="barCode" placeholder="包码" border="surround" clearable @blur="blur">
 					</u--input>
 				</u-col>
 				<u-col span="1">
@@ -145,8 +145,7 @@
 						//收到数据将暂收时间转为日期格式   状态转换为文字描述
 						if (res.data.data.length != 0) {
 							for (let i in res.data.data) {
-								res.data.data[i].temprecDate = this.$dateTrans.formatMsToDate(res.data.data[i]
-									.temprecDate);
+								res.data.data[i].temprecDate = this.$dateTrans.formatMsToDate(res.data.data[i].temprecDate);
 								switch (res.data.data[i].itemStatus) {
 									case "0":
 										res.data.data[i].itemStatus = "";
@@ -158,14 +157,12 @@
 										res.data.data[i].itemStatus = "已确认暂收";
 										break;
 									default:
-
 								}
 							}
 						}
 						this.tableData = res.data.data;
 					} else {
 						this.$toast.showToast("获取数据失败，请重试");
-						
 					}
 				});
 			},
@@ -178,12 +175,13 @@
 								vm.codeNumber = res.result;
 							});
 						} else {
-							this.$toast.showToast("扫码失败，请重试");
-							
+							this.$toast.showToast("扫码失败，请重试");	
 						}
-
 					}
 				});
+			},
+			blur(){
+				console.log("==========================blur");
 			},
 			addPackage() {
 				if (this.barCode === '' || this.barCode === undefined) {
@@ -206,6 +204,7 @@
 						if (res.errMsg == "scanCode:ok") {
 							vm.$nextTick(() => {
 								vm.barCode = res.result;
+								//this.addPackage();
 							});
 						} else {
 							this.$toast.showToast("扫码失败，请重试");
@@ -231,6 +230,7 @@
 				let vm = this;
 				var bodyList = [];
 				for (var i = 0; i < this.selectedList.length; i++) {
+					this.tableData[this.selectedList[i]].itemStatus = "2";
 					bodyList.push(this.tableData[this.selectedList[i]]);
 				}
 

@@ -9,9 +9,11 @@
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 5);
+
+
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 4));
-var _frontTesting = _interopRequireDefault(__webpack_require__(/*! ./pages_home/frontTesting.vue */ 173));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;
-createPage(_frontTesting.default);
+var _frontTesting = _interopRequireDefault(__webpack_require__(/*! ./pages_home/frontTesting.vue */ 173));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // @ts-ignore
+wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;createPage(_frontTesting.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
@@ -418,7 +420,7 @@ var _default =
       tableData: [],
       reason: [],
       category: [],
-
+      disabled: false, //提交按钮是否可点击
       detailMessage: "" //用于保存扫码后获取的信息
     };
   },
@@ -552,13 +554,14 @@ var _default =
       uni.showLoading({
         title: '加载中...' });
 
+      this.disabled = true;
       this.$http.httpRequest(opts, param).then(function (res) {
         console.log("*****************response:", res);
         uni.hideLoading();
         if (res.data.code === "200") {
           _this2.$toast.showToast("提交成功");
-
         } else {
+          _this2.disabled = false;
           _this2.$toast.showToast("提交失败");
 
         }

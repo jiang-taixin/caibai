@@ -1,7 +1,6 @@
 {
   "navigationBarTitleText": "整单拣货配货",
   "enablePullDownRefresh": false,
-  "disableScroll": true,
   "usingComponents": {
     "u-row": "/uni_modules/uview-ui/components/u-row/u-row",
     "u-col": "/uni_modules/uview-ui/components/u-col/u-col",

@@ -96,6 +96,7 @@
 				codeNumber:"",
 				mainNumber:"",    //合计数量
 				secondaryNumber:"",//合计次要数量
+				tableData:[],
 			}
 		},
 		methods: {

@@ -9,9 +9,11 @@
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 5);
+
+
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 4));
-var _implementStockCheck = _interopRequireDefault(__webpack_require__(/*! ./pages_home/implementStockCheck/implementStockCheck.vue */ 269));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;
-createPage(_implementStockCheck.default);
+var _implementStockCheck = _interopRequireDefault(__webpack_require__(/*! ./pages_home/implementStockCheck/implementStockCheck.vue */ 269));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // @ts-ignore
+wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;createPage(_implementStockCheck.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
@@ -342,6 +344,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 var _default =
+
+
 {
   data: function data() {
     return {
@@ -355,16 +359,23 @@ var _default =
       secondary_subtotal: "", //小计次要数量
       grandtotal: "", //累计数
       secondary_grandtotal: "", //累计次要数量
-      isRecheck: false };
+      isRecheck: false,
+      Focus: false,
+      tableData: [] };
 
-
+  },
+  mounted: function mounted() {
+    var myDate = new Date();
+    var time = myDate.toLocaleDateString().split('/').join('-');
+    this.date = time;
   },
   methods: {
     clear: function clear() {var _this = this;
-
+      //将包码输入框聚焦
+      uni.hideKeyboard();
+      this.Focus = false;
       this.$nextTick(function () {
-        console.log("******************:", _this.$refs.input.focus);
-        _this.$refs.input.focus = true;
+        _this.Focus = true;
       });
     },
     confirm: function confirm() {

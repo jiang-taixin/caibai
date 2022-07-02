@@ -9,9 +9,11 @@
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 5);
+
+
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 4));
-var _provisionalReceipt = _interopRequireDefault(__webpack_require__(/*! ./pages_home/provisionalReceipt.vue */ 215));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;
-createPage(_provisionalReceipt.default);
+var _provisionalReceipt = _interopRequireDefault(__webpack_require__(/*! ./pages_home/provisionalReceipt.vue */ 215));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // @ts-ignore
+wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;createPage(_provisionalReceipt.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
@@ -322,8 +324,7 @@ var _default =
           //收到数据将暂收时间转为日期格式   状态转换为文字描述
           if (res.data.data.length != 0) {
             for (var i in res.data.data) {
-              res.data.data[i].temprecDate = _this.$dateTrans.formatMsToDate(res.data.data[i].
-              temprecDate);
+              res.data.data[i].temprecDate = _this.$dateTrans.formatMsToDate(res.data.data[i].temprecDate);
               switch (res.data.data[i].itemStatus) {
                 case "0":
                   res.data.data[i].itemStatus = "";
@@ -336,13 +337,11 @@ var _default =
                   break;
                 default:}
 
-
             }
           }
           _this.tableData = res.data.data;
         } else {
           _this.$toast.showToast("获取数据失败，请重试");
-
         }
       });
     },
@@ -356,11 +355,12 @@ var _default =
             });
           } else {
             this.$toast.showToast("扫码失败，请重试");
-
           }
-
         } });
 
+    },
+    blur: function blur() {
+      console.log("==========================blur");
     },
     addPackage: function addPackage() {
       if (this.barCode === '' || this.barCode === undefined) {
@@ -383,6 +383,7 @@ var _default =
           if (res.errMsg == "scanCode:ok") {
             vm.$nextTick(function () {
               vm.barCode = res.result;
+              //this.addPackage();
             });
           } else {
             this.$toast.showToast("扫码失败，请重试");
@@ -408,6 +409,7 @@ var _default =
       var vm = this;
       var bodyList = [];
       for (var i = 0; i < this.selectedList.length; i++) {
+        this.tableData[this.selectedList[i]].itemStatus = "2";
         bodyList.push(this.tableData[this.selectedList[i]]);
       }
 

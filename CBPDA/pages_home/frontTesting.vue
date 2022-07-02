@@ -131,7 +131,7 @@
 					<view class="desc-text-edit">
 						<u--text type="primary" text="合格件数" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="qualifiedNum" border="surround" clearable>
+					<u--input type="number" font-size=13 v-model="qualifiedNum" border="surround" clearable>
 					</u--input>
 
 				</div>
@@ -141,7 +141,7 @@
 					<view class="desc-text-edit">
 						<u--text type="primary" text="合格克重" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="qualifiedWeight" border="surround" clearable>
+					<u--input type="number" font-size=13 v-model="qualifiedWeight" border="surround" clearable>
 					</u--input>
 
 				</div>
@@ -196,7 +196,7 @@
 			<u-row>
 				<u-col span="6">
 					<div class="col-layout">
-						<u-button type="primary" @click="commit" text="提交"
+						<u-button v-bind:disabled="disabled" type="primary" @click="commit" text="提交"
 							style="width: 80%;margin-left: 10%;margin-bottom: 10px;"></u-button>
 					</div>
 				</u-col>
@@ -235,7 +235,7 @@
 				tableData: [],
 				reason: [],
 				category:[],
-				
+				disabled:false,    //提交按钮是否可点击
 				detailMessage :"",//用于保存扫码后获取的信息
 			}
 		},
@@ -369,13 +369,14 @@
 				uni.showLoading({
 					title: '加载中...'
 				});
+				this.disabled = true;
 				this.$http.httpRequest(opts, param).then((res) => {
 					console.log("*****************response:",res);
 					uni.hideLoading();
 					if (res.data.code === "200") {
 						this.$toast.showToast("提交成功");
-						
 					} else {
+						this.disabled = false;
 						this.$toast.showToast("提交失败");
 						
 					}

@@ -9,9 +9,11 @@
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 5);
+
+
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 4));
-var _stockLaunch = _interopRequireDefault(__webpack_require__(/*! ./pages_home/stockLaunch.vue */ 251));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;
-createPage(_stockLaunch.default);
+var _stockLaunch = _interopRequireDefault(__webpack_require__(/*! ./pages_home/stockLaunch.vue */ 251));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // @ts-ignore
+wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;createPage(_stockLaunch.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
@@ -232,7 +234,7 @@ var _default =
         text: "DC81" }],
 
 
-      launchDepartment: 0, //选中发货部门
+      launchDepartment: "", //上架部门
       warehouse: [{ //库位
         value: 0,
         text: "仓库1" },
@@ -242,7 +244,7 @@ var _default =
         text: "仓库2" }],
 
 
-      launchWarehouse: "", //选中库位
+      launchWarehouse: "", //上架库位
       employeeNumber: "", //工号
       date: "" //日期
     };
@@ -263,10 +265,10 @@ var _default =
     changeDate: function changeDate(e) {
       this.date = e;
     },
-    confirm: function confirm() {
+    confirm: function confirm() {var _this = this;
       if (this.launchDepartment === '' || this.launchDepartment === undefined) {
-        this.$toast.showToast("请选择上架部门并重试");
-        return;
+        // this.$toast.showToast("请选择上架部门并重试");
+        // return;
       }
       if (this.launchWarehouse === '' || this.launchWarehouse === undefined) {
         // this.$toast.showToast("请选择库位并重试");
@@ -280,6 +282,7 @@ var _default =
         this.$toast.showToast("请选择时间并重试");
         return;
       }
+      console.log("---------select department :", this.department.find(function (item) {return item.value === _this.launchDepartment;}).text);
       uni.navigateTo({
         url: "implementLaunch/implementLaunch?launchDepartment=".concat(this.launchDepartment, "&launchWarehouse=").concat(this.launchWarehouse, "&date=").concat(this.date) });
 

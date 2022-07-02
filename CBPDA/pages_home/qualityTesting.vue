@@ -187,7 +187,7 @@
 			<u-row style="margin-bottom: 10px;">
 				<u-col span="6">
 					<div class="col-layout">
-						<u-button type="primary" @click="commit" text="提交"
+						<u-button v-bind:disabled="disabled" type="primary" @click="commit" text="提交"
 							style="width: 80%;margin-left: 10%;margin-bottom: 10px;"></u-button>
 					</div>
 				</u-col>
@@ -223,7 +223,7 @@
 				total: 0, //不合格总计
 				tableData: [],
 				reason: [],
-				
+				disabled:false,    //提交按钮是否可点击
 				headerMessage :"",//用于保存扫码后获取的信息
 			}
 
@@ -330,6 +330,7 @@
 					"access_token": "abc",
 					"bus_data": body,
 				};
+				this.disabled = true;
 				uni.showLoading({
 					title: '加载中...'
 				});
@@ -340,6 +341,7 @@
 						this.$toast.showToast("提交成功");
 						
 					} else {
+						this.disabled = false;
 						this.$toast.showToast("提交失败");
 						
 					}

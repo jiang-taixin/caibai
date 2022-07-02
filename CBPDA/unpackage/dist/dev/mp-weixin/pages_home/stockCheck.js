@@ -9,9 +9,11 @@
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 5);
+
+
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 4));
-var _stockCheck = _interopRequireDefault(__webpack_require__(/*! ./pages_home/stockCheck.vue */ 263));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;
-createPage(_stockCheck.default);
+var _stockCheck = _interopRequireDefault(__webpack_require__(/*! ./pages_home/stockCheck.vue */ 263));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // @ts-ignore
+wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;createPage(_stockCheck.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
@@ -236,6 +238,20 @@ var _default =
       reviewer: "", //复核人
       check_gun: "" //盘点枪
     };
+  },
+  mounted: function mounted() {
+    uni.getSystemInfo({
+      complete: function complete() {
+
+      },
+      fail: function fail() {
+
+      },
+      success: function success(res) {
+        console.log("**************************system info:", res);
+      } });
+
+
   },
   methods: {
     confirm: function confirm() {

@@ -90,7 +90,7 @@
 			<view class="desc-text-edit">
 				<u--text type="primary" text="备注" size=13></u--text>
 			</view>
-			<textarea placeholder="输入备注信息" style="width: 100%;margin-top: 5px;background-color: aliceblue;" v-model="remarks"></textarea>
+			<textarea placeholder="输入备注信息" style="width: 100%;margin-top: 5px;background-color: aliceblue;font-size: 13px;" v-model="remarks" maxlength="-1"></textarea>
 		</div>
 		
 		<view style="margin-top: 30px;">
@@ -147,7 +147,7 @@
 				
 			},
 			confirm(){
-				
+				console.log("****************remarks:",this.remarks);
 			},
 			cancel(){
 				uni.navigateBack({

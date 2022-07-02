@@ -69,6 +69,20 @@
 				check_gun:"",                //盘点枪
 			}
 		},
+		mounted() {
+			uni.getSystemInfo({
+				complete() {
+					
+				},
+				fail() {
+					
+				},
+				success(res) {
+					console.log("**************************system info:",res);
+				}
+			})
+			
+		},
 		methods: {
 			confirm() {
 				uni.navigateTo({

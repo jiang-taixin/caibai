@@ -15,10 +15,10 @@
 			</uni-data-select>
 		</div>
 		<div class="divContainer">
-			<view class="desc-text-edit">
+			<view class="desc-text">
 				<u--text type="primary" text="证章号/工号" size=13></u--text>
 			</view>
-			<u--input font-size=13 v-model="employeeNumber" border="surround" clearable>
+			<u--input font-size=13 v-model="employeeNumber" border="surround" clearable disabled=true>
 			</u--input>
 		</div>
 		<div class="divContainer">
@@ -61,7 +61,7 @@
 						text: "DC81"
 					},
 				],
-				launchDepartment: 0, //选中发货部门
+				launchDepartment: "", //上架部门
 				warehouse: [{ //库位
 						value: 0,
 						text: "仓库1"
@@ -71,7 +71,7 @@
 						text: "仓库2"
 					},
 				],
-				launchWarehouse: "", //选中库位
+				launchWarehouse: "", //上架库位
 				employeeNumber: "", //工号
 				date: "", //日期
 			}
@@ -94,8 +94,8 @@
 			},
 			confirm() {
 				if (this.launchDepartment === '' || this.launchDepartment === undefined) {
-					this.$toast.showToast("请选择上架部门并重试");
-					return;
+					// this.$toast.showToast("请选择上架部门并重试");
+					// return;
 				}
 				if (this.launchWarehouse === '' || this.launchWarehouse === undefined) {
 					// this.$toast.showToast("请选择库位并重试");
@@ -109,6 +109,7 @@
 					this.$toast.showToast("请选择时间并重试");
 					return;
 				}
+				console.log("---------select department :", this.department.find(item => item.value === this.launchDepartment).text);
 				uni.navigateTo({
 					url: `implementLaunch/implementLaunch?launchDepartment=${this.launchDepartment}&launchWarehouse=${this.launchWarehouse}&date=${this.date}`
 				})

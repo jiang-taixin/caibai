@@ -56,7 +56,7 @@
 					<view class="desc-text-edit">
 						<u--text type="primary" text="条码/包码/分配号" size=13></u--text>
 					</view>
-					<u--input ref="input" font-size=13 v-model="barCode" placeholder="请扫码" border="surround" clearable>
+					<u--input ref="input" font-size=13 v-model="barCode" placeholder="请扫码" border="surround" clearable :focus="Focus" >
 					</u--input>
 				</u-col>
 				<u-col span="1">
@@ -162,6 +162,8 @@
 </template>
 
 <script>
+	
+	
 	export default {
 		data() {
 			return {
@@ -176,15 +178,22 @@
 				grandtotal: "", //累计数
 				secondary_grandtotal: "", //累计次要数量
 				isRecheck: false,
-
+				Focus:false,
+				tableData:[],
 			}
+		},
+		mounted() {
+			var myDate = new Date();
+			var time = myDate.toLocaleDateString().split('/').join('-');
+			this.date = time;
 		},
 		methods: {
 			clear() {
-				
+				//将包码输入框聚焦
+				uni.hideKeyboard();		
+				this.Focus = false;
 				this.$nextTick(()=>{ 
-					console.log("******************:",this.$refs.input.focus);
-					this.$refs.input.focus = true;
+					this.Focus = true;
 				});
 			},
 			confirm() {

@@ -39,36 +39,31 @@
 			"path": "qualityTesting",
 			"style": {
 				"navigationBarTitleText": "初检信息录入",
-				"enablePullDownRefresh": false,
-				"disableScroll": true
+				"enablePullDownRefresh": false
 			}
 		}, {
 			"path": "frontTesting",
 			"style": {
 				"navigationBarTitleText": "入库前质检",
-				"enablePullDownRefresh": false,
-				"disableScroll": true
+				"enablePullDownRefresh": false
 			}
 		}, {
 			"path": "damageTesting",
 			"style": {
 				"navigationBarTitleText": "有损检验",
-				"enablePullDownRefresh": false,
-				"disableScroll": true
+				"enablePullDownRefresh": false
 			}
 		}, {
 			"path": "pickingManagement",
 			"style": {
 				"navigationBarTitleText": "逐条拣货配货",
-				"enablePullDownRefresh": false,
-				"disableScroll": true
+				"enablePullDownRefresh": false
 			}
 		}, {
 			"path": "picking/picking",
 			"style": {
 				"navigationBarTitleText": "逐条拣货配货",
 				"enablePullDownRefresh": false,
-				"disableScroll": true,
 				"app-plus": {
 					"titleNView": {
 						"buttons": [{
@@ -87,102 +82,89 @@
 			"path": "wholeOrderDistribution",
 			"style": {
 				"navigationBarTitleText": "整单拣货配货",
-				"enablePullDownRefresh": false,
-				"disableScroll": true
+				"enablePullDownRefresh": false
 			}
 		}, {
 			"path": "wholePicking/wholePicking",
 			"style": {
 				"navigationBarTitleText": "整单拣货配货",
-				"enablePullDownRefresh": false,
-				"disableScroll": true
+				"enablePullDownRefresh": false
 			}
 		}, {
 			"path": "createInspection",
 			"style": {
 				"navigationBarTitleText": "创建送检单",
-				"enablePullDownRefresh": false,
-				"disableScroll": true
+				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "provisionalReceipt",
 			"style": {
 				"navigationBarTitleText": "回货暂收",
-				"enablePullDownRefresh": false,
-				"disableScroll": true
+				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "inspectionDetail",
 			"style": {
 				"navigationBarTitleText": "送检单明细",
-				"enablePullDownRefresh": false,
-				"disableScroll": true
+				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "inspectionConfirm",
 			"style": {
 				"navigationBarTitleText": "取检确认",
-				"enablePullDownRefresh": false,
-				"disableScroll": true
+				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "RFIDDemo",
 			"style": {
 				"navigationBarTitleText": "RFID测试",
-				"enablePullDownRefresh": false,
-				"disableScroll": true
+				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "handover",
 			"style": {
 				"navigationBarTitleText": "交接",
-				"enablePullDownRefresh": false,
-				"disableScroll": true
+				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "launch",
 			"style": {
 				"navigationBarTitleText": "上架",
-				"enablePullDownRefresh": false,
-				"disableScroll": true
+				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "stockLaunch",
 			"style": {
 				"navigationBarTitleText": "库存上架",
-				"enablePullDownRefresh": false,
-				"disableScroll": true
+				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "implementLaunch/implementLaunch",
 			"style": {
 				"navigationBarTitleText": "库存上架",
-				"enablePullDownRefresh": false,
-				"disableScroll": true
+				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "stockCheck",
 			"style": {
 				"navigationBarTitleText": "盘点",
-				"enablePullDownRefresh": false,
-				"disableScroll": true
+				"enablePullDownRefresh": false
 			}
 
 		}, {
 			"path": "implementStockCheck/implementStockCheck",
 			"style": {
 				"navigationBarTitleText": "盘点",
-				"enablePullDownRefresh": false,
-				"disableScroll": true
+				"enablePullDownRefresh": false
 			}
 
 		}]

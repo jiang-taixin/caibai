@@ -155,7 +155,7 @@ if (typeof uni !== 'undefined' && uni && uni.requireGlobal) {
   BigUint64Array = global.BigUint64Array;
 }
 
-window.__uniConfig = { "window": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#009029", "backgroundColor": "#F8F8F8" } };
+window.__uniConfig = { "window": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#54639c", "backgroundColor": "#F8F8F8" } };
 if (uni.restoreGlobal) {
   uni.restoreGlobal(weex, plus, setTimeout, clearTimeout, setInterval, clearInterval);
 }
@@ -18151,9 +18151,10 @@ var render = function() {
             staticStyle: {
               width: "100%",
               "margin-top": "5px",
-              "background-color": "aliceblue"
+              "background-color": "aliceblue",
+              "font-size": "13px"
             },
-            attrs: { placeholder: "输入备注信息", _i: 49 },
+            attrs: { placeholder: "输入备注信息", maxlength: "-1", _i: 49 },
             model: {
               value: _vm._$g(49, "v-model"),
               callback: function($$v) {
@@ -19955,7 +19956,7 @@ var render = function() {
             model: {
               value: _vm._$g(12, "v-model"),
               callback: function() {},
-              expression: "employeeNumber"
+              expression: "checker"
             }
           })
         ],
@@ -19976,7 +19977,7 @@ var render = function() {
             model: {
               value: _vm._$g(16, "v-model"),
               callback: function() {},
-              expression: "employeeNumber"
+              expression: "reviewer"
             }
           })
         ],
@@ -19997,7 +19998,7 @@ var render = function() {
             model: {
               value: _vm._$g(20, "v-model"),
               callback: function() {},
-              expression: "employeeNumber"
+              expression: "check_gun"
             }
           })
         ],
@@ -20253,7 +20254,7 @@ var render = function() {
             model: {
               value: _vm._$g(4, "v-model"),
               callback: function() {},
-              expression: "bookCode"
+              expression: "checkCode"
             }
           })
         ],
@@ -20307,7 +20308,7 @@ var render = function() {
             model: {
               value: _vm._$g(12, "v-model"),
               callback: function() {},
-              expression: "bookCode"
+              expression: "checkWarehousePosition"
             }
           })
         ],
@@ -20331,7 +20332,14 @@ var render = function() {
                     [
                       _c(
                         "v-uni-checkbox-group",
-                        { attrs: { _i: 17 } },
+                        {
+                          attrs: { _i: 17 },
+                          on: {
+                            change: function($event) {
+                              return _vm.$handleViewEvent($event)
+                            }
+                          }
+                        },
                         [
                           _c(
                             "v-uni-label",
@@ -20433,11 +20441,12 @@ var render = function() {
                     1
                   ),
                   _c("u--input", {
+                    ref: "input",
                     attrs: { _i: 31 },
                     model: {
                       value: _vm._$g(31, "v-model"),
                       callback: function() {},
-                      expression: "warehousePosition"
+                      expression: "barCode"
                     }
                   })
                 ],
@@ -20471,272 +20480,272 @@ var render = function() {
               )
             ],
             1
-          ),
+          )
+        ],
+        1
+      ),
+      _c(
+        "u-row",
+        { attrs: { _i: 35 } },
+        [
           _c(
-            "u-row",
-            { attrs: { _i: 35 } },
+            "u-col",
+            { attrs: { _i: 36 } },
             [
               _c(
-                "u-col",
-                { attrs: { _i: 36 } },
+                "div",
+                { staticClass: _vm._$g(37, "sc"), attrs: { _i: 37 } },
                 [
                   _c(
-                    "div",
-                    { staticClass: _vm._$g(37, "sc"), attrs: { _i: 37 } },
-                    [
-                      _c(
-                        "uni-view",
-                        { staticClass: _vm._$g(38, "sc"), attrs: { _i: 38 } },
-                        [_c("u--text", { attrs: { _i: 39 } })],
-                        1
-                      ),
-                      _c("u--input", {
-                        attrs: { _i: 40 },
-                        on: {
-                          blur: function($event) {
-                            return _vm.$handleViewEvent($event)
-                          }
-                        },
-                        model: {
-                          value: _vm._$g(40, "v-model"),
-                          callback: function() {},
-                          expression: "qualifiedNumber"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _c(
-                "u-col",
-                { attrs: { _i: 41 } },
-                [
-                  _c(
-                    "div",
-                    { staticClass: _vm._$g(42, "sc"), attrs: { _i: 42 } },
-                    [
-                      _c(
-                        "uni-view",
-                        { staticClass: _vm._$g(43, "sc"), attrs: { _i: 43 } },
-                        [_c("u--text", { attrs: { _i: 44 } })],
-                        1
-                      ),
-                      _c("u--input", {
-                        attrs: { _i: 45 },
-                        model: {
-                          value: _vm._$g(45, "v-model"),
-                          callback: function() {},
-                          expression: "qualifiedWeight"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _c(
-            "u-row",
-            { attrs: { _i: 46 } },
-            [
-              _c(
-                "u-col",
-                { attrs: { _i: 47 } },
-                [
-                  _c(
-                    "div",
-                    { staticClass: _vm._$g(48, "sc"), attrs: { _i: 48 } },
-                    [
-                      _c(
-                        "uni-view",
-                        { staticClass: _vm._$g(49, "sc"), attrs: { _i: 49 } },
-                        [_c("u--text", { attrs: { _i: 50 } })],
-                        1
-                      ),
-                      _c("u--input", {
-                        attrs: { _i: 51 },
-                        model: {
-                          value: _vm._$g(51, "v-model"),
-                          callback: function() {},
-                          expression: "material"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _c(
-                "u-col",
-                { attrs: { _i: 52 } },
-                [
-                  _c(
-                    "div",
-                    { staticClass: _vm._$g(53, "sc"), attrs: { _i: 53 } },
-                    [
-                      _c(
-                        "uni-view",
-                        { staticClass: _vm._$g(54, "sc"), attrs: { _i: 54 } },
-                        [_c("u--text", { attrs: { _i: 55 } })],
-                        1
-                      ),
-                      _c("u--input", {
-                        attrs: { _i: 56 },
-                        model: {
-                          value: _vm._$g(56, "v-model"),
-                          callback: function() {},
-                          expression: "testNum"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _c(
-            "u-row",
-            { attrs: { _i: 57 } },
-            [
-              _c(
-                "u-col",
-                { attrs: { _i: 58 } },
-                [
-                  _c(
-                    "div",
-                    { staticClass: _vm._$g(59, "sc"), attrs: { _i: 59 } },
-                    [
-                      _c(
-                        "uni-view",
-                        { staticClass: _vm._$g(60, "sc"), attrs: { _i: 60 } },
-                        [_c("u--text", { attrs: { _i: 61 } })],
-                        1
-                      ),
-                      _c("u--input", {
-                        attrs: { _i: 62 },
-                        model: {
-                          value: _vm._$g(62, "v-model"),
-                          callback: function() {},
-                          expression: "material"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _c(
-                "u-col",
-                { attrs: { _i: 63 } },
-                [
-                  _c(
-                    "div",
-                    { staticClass: _vm._$g(64, "sc"), attrs: { _i: 64 } },
-                    [
-                      _c(
-                        "uni-view",
-                        { staticClass: _vm._$g(65, "sc"), attrs: { _i: 65 } },
-                        [_c("u--text", { attrs: { _i: 66 } })],
-                        1
-                      ),
-                      _c("u--input", {
-                        attrs: { _i: 67 },
-                        model: {
-                          value: _vm._$g(67, "v-model"),
-                          callback: function() {},
-                          expression: "testNum"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _c(
-            "uni-view",
-            { staticStyle: { "margin-top": "30px" }, attrs: { _i: 68 } },
-            [
-              _c(
-                "uni-table",
-                { staticClass: _vm._$g(69, "sc"), attrs: { _i: 69 } },
-                [
-                  _c(
-                    "uni-tr",
-                    { attrs: { _i: 70 } },
-                    [
-                      _c("uni-th", { attrs: { _i: 71 } }, [_vm._v("款号")]),
-                      _c("uni-th", { attrs: { _i: 72 } }, [_vm._v("商品条码")]),
-                      _c("uni-th", { attrs: { _i: 73 } }, [
-                        _vm._v("标签名称/款式描述")
-                      ]),
-                      _c("uni-th", { attrs: { _i: 74 } }, [
-                        _vm._v("账面数量/克重")
-                      ]),
-                      _c("uni-th", { attrs: { _i: 75 } }, [_vm._v("账面数量")]),
-                      _c("uni-th", { attrs: { _i: 76 } }, [
-                        _vm._v("实际数量/克重")
-                      ]),
-                      _c("uni-th", { attrs: { _i: 77 } }, [_vm._v("实际数量")])
-                    ],
+                    "uni-view",
+                    { staticClass: _vm._$g(38, "sc"), attrs: { _i: 38 } },
+                    [_c("u--text", { attrs: { _i: 39 } })],
                     1
                   ),
-                  _vm._l(_vm._$g(78, "f"), function(item, index, $20, $30) {
-                    return _c(
-                      "uni-tr",
-                      {
-                        key: item,
-                        attrs: { _i: "78-" + $30 },
-                        on: {
-                          "row-click": function($event) {
-                            return _vm.$handleViewEvent($event)
-                          }
-                        }
-                      },
-                      [
-                        _c("uni-td", { attrs: { _i: "79-" + $30 } }, [
-                          _vm._v(_vm._$g("79-" + $30, "t0-0"))
-                        ]),
-                        _c("uni-td", { attrs: { _i: "80-" + $30 } }, [
-                          _vm._v(_vm._$g("80-" + $30, "t0-0"))
-                        ]),
-                        _c("uni-td", { attrs: { _i: "81-" + $30 } }, [
-                          _vm._v(_vm._$g("81-" + $30, "t0-0"))
-                        ]),
-                        _c("uni-td", { attrs: { _i: "82-" + $30 } }, [
-                          _vm._v(_vm._$g("82-" + $30, "t0-0"))
-                        ]),
-                        _c("uni-td", { attrs: { _i: "83-" + $30 } }, [
-                          _vm._v(_vm._$g("83-" + $30, "t0-0"))
-                        ]),
-                        _c("uni-td", { attrs: { _i: "84-" + $30 } }, [
-                          _vm._v(_vm._$g("84-" + $30, "t0-0"))
-                        ]),
-                        _c("uni-td", { attrs: { _i: "85-" + $30 } }, [
-                          _vm._v(_vm._$g("85-" + $30, "t0-0"))
-                        ])
-                      ],
-                      1
-                    )
+                  _c("u--input", {
+                    attrs: { _i: 40 },
+                    on: {
+                      blur: function($event) {
+                        return _vm.$handleViewEvent($event)
+                      }
+                    },
+                    model: {
+                      value: _vm._$g(40, "v-model"),
+                      callback: function() {},
+                      expression: "number_weight"
+                    }
                   })
                 ],
-                2
+                1
               )
             ],
             1
+          ),
+          _c(
+            "u-col",
+            { attrs: { _i: 41 } },
+            [
+              _c(
+                "div",
+                { staticClass: _vm._$g(42, "sc"), attrs: { _i: 42 } },
+                [
+                  _c(
+                    "uni-view",
+                    { staticClass: _vm._$g(43, "sc"), attrs: { _i: 43 } },
+                    [_c("u--text", { attrs: { _i: 44 } })],
+                    1
+                  ),
+                  _c("u--input", {
+                    attrs: { _i: 45 },
+                    model: {
+                      value: _vm._$g(45, "v-model"),
+                      callback: function() {},
+                      expression: "secondaryNumber"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _c(
+        "u-row",
+        { attrs: { _i: 46 } },
+        [
+          _c(
+            "u-col",
+            { attrs: { _i: 47 } },
+            [
+              _c(
+                "div",
+                { staticClass: _vm._$g(48, "sc"), attrs: { _i: 48 } },
+                [
+                  _c(
+                    "uni-view",
+                    { staticClass: _vm._$g(49, "sc"), attrs: { _i: 49 } },
+                    [_c("u--text", { attrs: { _i: 50 } })],
+                    1
+                  ),
+                  _c("u--input", {
+                    attrs: { _i: 51 },
+                    model: {
+                      value: _vm._$g(51, "v-model"),
+                      callback: function() {},
+                      expression: "subtotal"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _c(
+            "u-col",
+            { attrs: { _i: 52 } },
+            [
+              _c(
+                "div",
+                { staticClass: _vm._$g(53, "sc"), attrs: { _i: 53 } },
+                [
+                  _c(
+                    "uni-view",
+                    { staticClass: _vm._$g(54, "sc"), attrs: { _i: 54 } },
+                    [_c("u--text", { attrs: { _i: 55 } })],
+                    1
+                  ),
+                  _c("u--input", {
+                    attrs: { _i: 56 },
+                    model: {
+                      value: _vm._$g(56, "v-model"),
+                      callback: function() {},
+                      expression: "secondary_subtotal"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _c(
+        "u-row",
+        { attrs: { _i: 57 } },
+        [
+          _c(
+            "u-col",
+            { attrs: { _i: 58 } },
+            [
+              _c(
+                "div",
+                { staticClass: _vm._$g(59, "sc"), attrs: { _i: 59 } },
+                [
+                  _c(
+                    "uni-view",
+                    { staticClass: _vm._$g(60, "sc"), attrs: { _i: 60 } },
+                    [_c("u--text", { attrs: { _i: 61 } })],
+                    1
+                  ),
+                  _c("u--input", {
+                    attrs: { _i: 62 },
+                    model: {
+                      value: _vm._$g(62, "v-model"),
+                      callback: function() {},
+                      expression: "grandtotal"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _c(
+            "u-col",
+            { attrs: { _i: 63 } },
+            [
+              _c(
+                "div",
+                { staticClass: _vm._$g(64, "sc"), attrs: { _i: 64 } },
+                [
+                  _c(
+                    "uni-view",
+                    { staticClass: _vm._$g(65, "sc"), attrs: { _i: 65 } },
+                    [_c("u--text", { attrs: { _i: 66 } })],
+                    1
+                  ),
+                  _c("u--input", {
+                    attrs: { _i: 67 },
+                    model: {
+                      value: _vm._$g(67, "v-model"),
+                      callback: function() {},
+                      expression: "secondary_grandtotal"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _c(
+        "uni-view",
+        { staticStyle: { "margin-top": "30px" }, attrs: { _i: 68 } },
+        [
+          _c(
+            "uni-table",
+            { staticClass: _vm._$g(69, "sc"), attrs: { _i: 69 } },
+            [
+              _c(
+                "uni-tr",
+                { attrs: { _i: 70 } },
+                [
+                  _c("uni-th", { attrs: { _i: 71 } }, [_vm._v("款号")]),
+                  _c("uni-th", { attrs: { _i: 72 } }, [_vm._v("商品条码")]),
+                  _c("uni-th", { attrs: { _i: 73 } }, [
+                    _vm._v("标签名称/款式描述")
+                  ]),
+                  _c("uni-th", { attrs: { _i: 74 } }, [
+                    _vm._v("账面数量/克重")
+                  ]),
+                  _c("uni-th", { attrs: { _i: 75 } }, [_vm._v("账面数量")]),
+                  _c("uni-th", { attrs: { _i: 76 } }, [
+                    _vm._v("实际数量/克重")
+                  ]),
+                  _c("uni-th", { attrs: { _i: 77 } }, [_vm._v("实际数量")])
+                ],
+                1
+              ),
+              _vm._l(_vm._$g(78, "f"), function(item, index, $20, $30) {
+                return _c(
+                  "uni-tr",
+                  {
+                    key: item,
+                    attrs: { _i: "78-" + $30 },
+                    on: {
+                      "row-click": function($event) {
+                        return _vm.$handleViewEvent($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("uni-td", { attrs: { _i: "79-" + $30 } }, [
+                      _vm._v(_vm._$g("79-" + $30, "t0-0"))
+                    ]),
+                    _c("uni-td", { attrs: { _i: "80-" + $30 } }, [
+                      _vm._v(_vm._$g("80-" + $30, "t0-0"))
+                    ]),
+                    _c("uni-td", { attrs: { _i: "81-" + $30 } }, [
+                      _vm._v(_vm._$g("81-" + $30, "t0-0"))
+                    ]),
+                    _c("uni-td", { attrs: { _i: "82-" + $30 } }, [
+                      _vm._v(_vm._$g("82-" + $30, "t0-0"))
+                    ]),
+                    _c("uni-td", { attrs: { _i: "83-" + $30 } }, [
+                      _vm._v(_vm._$g("83-" + $30, "t0-0"))
+                    ]),
+                    _c("uni-td", { attrs: { _i: "84-" + $30 } }, [
+                      _vm._v(_vm._$g("84-" + $30, "t0-0"))
+                    ]),
+                    _c("uni-td", { attrs: { _i: "85-" + $30 } }, [
+                      _vm._v(_vm._$g("85-" + $30, "t0-0"))
+                    ])
+                  ],
+                  1
+                )
+              })
+            ],
+            2
           )
         ],
         1
