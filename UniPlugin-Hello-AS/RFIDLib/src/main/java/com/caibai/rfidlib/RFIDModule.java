@@ -26,9 +26,8 @@ public class RFIDModule extends UniModule {
 
     @JSMethod(uiThread = false)
     public void startScan(JSCallback jsCallBack){
+        this.uniCallBack = jsCallBack;
         if (RFIDProxy.RFID_INIT_STATUS){
-            System.out.println("====================manager status:"+RFIDProxy.rfidManager);
-            this.uniCallBack = jsCallBack;
             setCallback();
             RFIDProxy.rfidManager.customizedSessionTargetInventory(RFIDProxy.rfidManager.getReadId(), (byte) 0, (byte) 0, (byte) 1);
         }
@@ -42,6 +41,7 @@ public class RFIDModule extends UniModule {
 
     @JSMethod(uiThread = false)
     public void stopScan(){
+        this.rfidList.clear();
         RFIDProxy.rfidManager.stopInventory();
     }
 
