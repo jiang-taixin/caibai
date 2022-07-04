@@ -8,7 +8,7 @@
 			</uni-data-select>
 		</div>
 		<div class="divContainer">
-			<view class="desc-text-edit""">
+			<view class="desc-text-edit">
 				<u--text type="primary" text="上架库位" size=13></u--text>
 			</view>
 			<uni-data-select v-model="launchWarehouse" :localdata="warehouse" @change="changeWarehouse">

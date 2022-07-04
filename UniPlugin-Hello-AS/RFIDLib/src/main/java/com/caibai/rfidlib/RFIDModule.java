@@ -24,7 +24,7 @@ public class RFIDModule extends UniModule {
     List rfidList = new ArrayList();
     private com.alibaba.fastjson.JSONObject object = new com.alibaba.fastjson.JSONObject();
 
-    @JSMethod(uiThread = true)
+    @JSMethod(uiThread = false)
     public void startScan(JSCallback jsCallBack){
         if (RFIDProxy.RFID_INIT_STATUS){
             System.out.println("====================manager status:"+RFIDProxy.rfidManager);
@@ -35,12 +35,12 @@ public class RFIDModule extends UniModule {
         else{
             object.put("code","201");
             object.put("message","RFID未初始化");
-            jsCallBack.invoke(object);
+            this.uniCallBack.invokeAndKeepAlive(object);
         }
 
     }
 
-    @JSMethod(uiThread = true)
+    @JSMethod(uiThread = false)
     public void stopScan(){
         RFIDProxy.rfidManager.stopInventory();
     }
@@ -74,17 +74,17 @@ public class RFIDModule extends UniModule {
          */
         @Override
         public void onInventoryTag(byte b, String s, String s1, String s2, byte b1, String s3, String s4, int i, int i1, String s5) throws RemoteException {
+            object.put("code","200");
+            object.put("message","success");
             if (rfidList.contains(s2)){
             }
             else{
                 rfidList.add(s2);
-                System.out.println("======================= list:"+rfidList);
+                object.put("rfidList",rfidList);
+                object.put("count",rfidList.size());
+                uniCallBack.invokeAndKeepAlive(object);
             }
-            object.put("code","200");
-            object.put("message","success");
-            object.put("rfidList",rfidList);
 
-            uniCallBack.invoke(object);
         }
 
         /**

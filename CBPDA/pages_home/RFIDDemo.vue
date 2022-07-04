@@ -23,7 +23,7 @@
 	export default {
 		data() {
 			return {
-				text:"default message",
+				text:"RFID number",
 				tableData:[],
 			}
 		},
@@ -31,7 +31,11 @@
 			start(){
 				rfidModule.startScan((res) => {
 					
-					this.text = res.rfidList.length;
+					if(res.code === "201"){
+						console.log("RFID init fail");
+						return;
+					};
+					this.text = `number :${res.count}`;
 					
 					this.tableData = res.rfidList;
 				})

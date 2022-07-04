@@ -335,6 +335,7 @@ var _default =
                 case "2":
                   res.data.data[i].itemStatus = "已确认暂收";
                   break;
+
                 default:}
 
             }
@@ -360,7 +361,6 @@ var _default =
 
     },
     blur: function blur() {
-      console.log("==========================blur");
     },
     addPackage: function addPackage() {
       if (this.barCode === '' || this.barCode === undefined) {

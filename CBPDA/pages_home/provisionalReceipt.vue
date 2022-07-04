@@ -29,7 +29,7 @@
 					<view class="desc-text-edit">
 						<u--text type="primary" text="扫码" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="barCode" placeholder="包码" border="surround" clearable @blur="blur">
+					<u--input font-size=13 v-model="barCode" placeholder="包码" border="surround" clearable>
 					</u--input>
 				</u-col>
 				<u-col span="1">
@@ -156,6 +156,7 @@
 									case "2":
 										res.data.data[i].itemStatus = "已确认暂收";
 										break;
+										
 									default:
 								}
 							}
@@ -181,7 +182,6 @@
 				});
 			},
 			blur(){
-				console.log("==========================blur");
 			},
 			addPackage() {
 				if (this.barCode === '' || this.barCode === undefined) {
