@@ -3,6 +3,7 @@
 		<button type="default" @click="start">开始扫描</button>
 		<button type="default" @click="stop">停止扫描</button>
 		<text>{{text}}</text>
+		<text>{{message}}</text>
 		<uni-table border stripe emptyText="暂无更多数据" style="margin-left: 5px;margin-top: 5px;">
 			<!-- 表头行 -->
 			<uni-tr>
@@ -24,19 +25,19 @@
 		data() {
 			return {
 				text:"RFID number",
+				message:"",
 				tableData:[],
 			}
 		},
 		methods: {
 			start(){
 				rfidModule.startScan((res) => {
-					
 					if(res.code === "201"){
 						console.log("RFID init fail");
 						return;
 					};
 					this.text = `number :${res.count}`;
-					
+					this.message = res.message;
 					this.tableData = res.rfidList;
 				})
 			},

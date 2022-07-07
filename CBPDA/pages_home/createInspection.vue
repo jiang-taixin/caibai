@@ -210,7 +210,6 @@
 					title: '加载中...'
 				});
 				this.$http.httpRequest(opts, param).then((res) => {
-					console.log("*******response:", res);
 					uni.hideLoading();
 					if (res.data.code === "200") {
 						//收到数据将暂收时间转为日期格式   状态转换为文字描述
@@ -221,7 +220,6 @@
 							}
 						}
 						this.tableData = res.data.data;
-						//this.$refs.table.selectionAll();
 					} else {
 						this.$toast.showToast("获取数据失败，请重试");
 						
@@ -284,6 +282,8 @@
 					"inspectDate":this.inspectionDate,
 					"remarks":this.remarks,
 					"inspectBy":this.inspectionName,
+					"inspectType":this.inspectionCategory,
+					"totalPiece":this.totalNum,
 				};
 				var body = {
 					"details":bodyList,
@@ -299,7 +299,6 @@
 					title: '加载中...'
 				});
 				this.$http.httpRequest(opts, param).then((res) => {
-					console.log("*************res:",res);
 					uni.hideLoading();
 					this.showCreatePage = false;
 					if (res.data.code === "200") {
@@ -308,12 +307,6 @@
 						this.$toast.showToast("提交失败，请重试");
 					}
 				});
-				
-				this.category.find((item) => {
-				   if(item.value === parseInt(this.inspectionCategory)){
-				     console.log("category:",item.text);
-				   }
-				 });
 			},
 			cancelCreate() {
 				this.showCreatePage = false;

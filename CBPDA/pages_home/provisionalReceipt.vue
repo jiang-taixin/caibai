@@ -186,7 +186,6 @@
 			addPackage() {
 				if (this.barCode === '' || this.barCode === undefined) {
 					this.$toast.showToast("请先扫描包码");
-					
 					return;
 				}
 				//点击添加扫描到的包码与列表中包码一致则选中当前行
@@ -207,10 +206,8 @@
 								//this.addPackage();
 							});
 						} else {
-							this.$toast.showToast("扫码失败，请重试");
-							
+							this.$toast.showToast("扫码失败，请重试");	
 						}
-
 					}
 				});
 			},

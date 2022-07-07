@@ -142,9 +142,13 @@
 		mounted() {
 			//页面加载完成之后的操作
 			this.qualityInspector = "当前用户";
-			var myDate = new Date();
-			var time = myDate.toLocaleDateString().split('/').join('-');
-			this.inspectionTime = time;
+			
+			var nowDate = new Date();
+			var year = nowDate.getFullYear();
+			var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1):nowDate.getMonth() + 1;
+			var day = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
+			var dateStr = year + "-" + month + "-" + day;
+			this.inspectionTime = dateStr;
 			
 			let vm = this;
 			uni.getStorage({

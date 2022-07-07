@@ -7,6 +7,12 @@
   ],
   "subPackages": [
     {
+      "root": "pages_login",
+      "pages": [
+        "login"
+      ]
+    },
+    {
       "root": "pages_home",
       "pages": [
         "qualityTesting",

@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<u-swiper :list="list1" @change="change" :radius="0" @click="click" indicator></u-swiper>
+		<u-swiper :list="list1" :radius="0" @click="click" indicator></u-swiper>
 		<u-grid :border="false" col="3" @click="click">
 			<u-grid-item v-for="(listItem,listIndex) in list" :key="listIndex"
 				v-if="listItem.platform.indexOf(platfrom) !== -1">
@@ -99,7 +99,10 @@
 
 		},
 		beforeCreate() {
-
+			//如果没登录    去登录页面
+			// uni.redirectTo({
+			// 	url:"/pages_login/login"
+			// })
 		},
 		mounted() {
 			//页面加载完成获取枚举值并缓存在本地

@@ -33,6 +33,7 @@ public class RFIDProxy implements UniAppHookProxy {
                 }
             }
             else{
+                RFID_INIT_STATUS = false;
                 System.out.println("=====================featureType :"+featureType+", status :"+status);
             }
         });

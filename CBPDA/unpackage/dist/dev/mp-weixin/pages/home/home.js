@@ -96,16 +96,16 @@ var components
 try {
   components = {
     uSwiper: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 274))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 280))
     },
     uGrid: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid/u-grid */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid/u-grid")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid/u-grid.vue */ 282))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid/u-grid */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid/u-grid")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid/u-grid.vue */ 288))
     },
     uGridItem: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid-item/u-grid-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid-item/u-grid-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid-item/u-grid-item.vue */ 290))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid-item/u-grid-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid-item/u-grid-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid-item/u-grid-item.vue */ 296))
     },
     uIcon: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 298))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 304))
     }
   }
 } catch (e) {
@@ -288,7 +288,10 @@ var _default =
 
   },
   beforeCreate: function beforeCreate() {
-
+    //如果没登录    去登录页面
+    // uni.redirectTo({
+    // 	url:"/pages_login/login"
+    // })
   },
   mounted: function mounted() {
     //页面加载完成获取枚举值并缓存在本地

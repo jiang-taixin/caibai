@@ -41,8 +41,8 @@ public class RFIDModule extends UniModule {
 
     @JSMethod(uiThread = false)
     public void stopScan(){
-        this.rfidList.clear();
         RFIDProxy.rfidManager.stopInventory();
+        this.rfidList.clear();
     }
 
     private void setCallback(){
