@@ -205,7 +205,6 @@ var _default =
   data: function data() {
     return {
       platfrom: "",
-      value: 0,
       list: [{
         name: 'search',
         title: '初检信息录入',
@@ -269,12 +268,7 @@ var _default =
       {
         name: 'integral',
         title: '盘点',
-        platform: ["APP", "WEIXIN", "H5"] },
-
-      {
-        name: 'star',
-        title: 'RFID',
-        platform: ["APP"] }],
+        platform: ["APP", "WEIXIN", "H5"] }],
 
 
       list1: [
@@ -387,11 +381,6 @@ var _default =
         case 12:
           uni.navigateTo({
             url: '/pages_home/stockCheck' });
-
-          break;
-        case 13:
-          uni.navigateTo({
-            url: '/pages_home/RFIDDemo' });
 
           break;
 

@@ -59,7 +59,7 @@
 					{
 						value: 1,
 						text: "DC81"
-					},
+					}
 				],
 				selectDepartment: 0, //选中发货部门
 				warehouse: [{ //库位

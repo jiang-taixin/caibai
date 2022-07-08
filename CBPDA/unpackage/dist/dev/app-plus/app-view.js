@@ -2360,11 +2360,82 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    uGrid: __webpack_require__(/*! @/uni_modules/uview-ui/components/u-grid/u-grid.vue */ 33)
+      .default,
+    uGridItem: __webpack_require__(/*! @/uni_modules/uview-ui/components/u-grid-item/u-grid-item.vue */ 41)
+      .default,
+    uIcon: __webpack_require__(/*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 49)
+      .default
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("uni-view", { attrs: { _i: 0 } })
+  return _c(
+    "uni-view",
+    { attrs: { _i: 0 } },
+    [
+      _c(
+        "uni-view",
+        { staticStyle: { "margin-top": "50px" }, attrs: { _i: 1 } },
+        [
+          _c(
+            "u-grid",
+            {
+              attrs: { _i: 2 },
+              on: {
+                click: function($event) {
+                  return _vm.$handleViewEvent($event)
+                }
+              }
+            },
+            _vm._l(_vm._$g(3, "f"), function(listItem, listIndex, $20, $30) {
+              return _vm._$g("3-" + $30, "i")
+                ? _c(
+                    "u-grid-item",
+                    { key: listItem, attrs: { _i: "3-" + $30 } },
+                    [
+                      _c("u-icon", { attrs: { _i: "4-" + $30 } }),
+                      _c(
+                        "v-uni-text",
+                        {
+                          staticClass: _vm._$g("5-" + $30, "sc"),
+                          attrs: { _i: "5-" + $30 }
+                        },
+                        [_vm._v(_vm._$g("5-" + $30, "t0-0"))]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e()
+            }),
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []

@@ -16,7 +16,6 @@
 		data() {
 			return {
 				platfrom: "",
-				value: 0,
 				list: [{
 						name: 'search',
 						title: '初检信息录入',
@@ -81,11 +80,6 @@
 						name: 'integral',
 						title: '盘点',
 						platform: ["APP", "WEIXIN", "H5"],
-					},
-					{
-						name: 'star',
-						title: 'RFID',
-						platform: ["APP"],
 					},
 				],
 				list1: [
@@ -200,11 +194,6 @@
 							url: '/pages_home/stockCheck'
 						});
 						break;
-						case 13:
-							uni.navigateTo({
-								url: '/pages_home/RFIDDemo'
-							});
-							break;
 
 					default:
 						uni.navigateTo({
