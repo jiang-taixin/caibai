@@ -96,16 +96,16 @@ var components
 try {
   components = {
     uSwiper: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 280))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 298))
     },
     uGrid: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid/u-grid */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid/u-grid")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid/u-grid.vue */ 288))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid/u-grid */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid/u-grid")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid/u-grid.vue */ 306))
     },
     uGridItem: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid-item/u-grid-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid-item/u-grid-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid-item/u-grid-item.vue */ 296))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid-item/u-grid-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid-item/u-grid-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid-item/u-grid-item.vue */ 314))
     },
     uIcon: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 304))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 322))
     }
   }
 } catch (e) {
@@ -268,6 +268,21 @@ var _default =
       {
         name: 'integral',
         title: '盘点',
+        platform: ["APP", "WEIXIN", "H5"] },
+
+      {
+        name: 'map',
+        title: '仓位调整',
+        platform: ["APP", "WEIXIN", "H5"] },
+
+      {
+        name: 'map-fill',
+        title: '库位调整',
+        platform: ["APP", "WEIXIN", "H5"] },
+
+      {
+        name: 'gift',
+        title: '装箱',
         platform: ["APP", "WEIXIN", "H5"] }],
 
 
@@ -381,6 +396,21 @@ var _default =
         case 12:
           uni.navigateTo({
             url: '/pages_home/stockCheck' });
+
+          break;
+        case 13:
+          uni.navigateTo({
+            url: '/pages_home/positionAdjustment' });
+
+          break;
+        case 14:
+          uni.navigateTo({
+            url: '/pages_home/locationAdjustment' });
+
+          break;
+        case 15:
+          uni.navigateTo({
+            url: '/pages_home/packing' });
 
           break;
 

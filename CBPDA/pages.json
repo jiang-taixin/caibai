@@ -176,6 +176,27 @@
 					"enablePullDownRefresh": false
 				}
 
+			}, {
+				"path": "positionAdjustment",
+				"style": {
+					"navigationBarTitleText": "仓位调整",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "locationAdjustment",
+				"style": {
+					"navigationBarTitleText": "库位调整",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "packing",
+				"style": {
+					"navigationBarTitleText": "装箱",
+					"enablePullDownRefresh": false
+				}
+
 			}]
 		}
 	],

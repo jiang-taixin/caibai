@@ -32,7 +32,10 @@
         "stockLaunch",
         "implementLaunch/implementLaunch",
         "stockCheck",
-        "implementStockCheck/implementStockCheck"
+        "implementStockCheck/implementStockCheck",
+        "positionAdjustment",
+        "locationAdjustment",
+        "packing"
       ]
     }
   ],

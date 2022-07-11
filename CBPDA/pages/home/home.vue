@@ -81,6 +81,21 @@
 						title: '盘点',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
+					{
+						name: 'map',
+						title: '仓位调整',
+						platform: ["APP", "WEIXIN", "H5"],
+					},
+					{
+						name: 'map-fill',
+						title: '库位调整',
+						platform: ["APP", "WEIXIN", "H5"],
+					},
+					{
+						name: 'gift',
+						title: '装箱',
+						platform: ["APP", "WEIXIN", "H5"],
+					},
 				],
 				list1: [
 					'/static/1.png',
@@ -192,6 +207,21 @@
 					case 12:
 						uni.navigateTo({
 							url: '/pages_home/stockCheck'
+						});
+						break;
+					case 13:
+						uni.navigateTo({
+							url: '/pages_home/positionAdjustment'
+						});
+						break;
+					case 14:
+						uni.navigateTo({
+							url: '/pages_home/locationAdjustment'
+						});
+						break;
+					case 15:
+						uni.navigateTo({
+							url: '/pages_home/packing'
 						});
 						break;
 
