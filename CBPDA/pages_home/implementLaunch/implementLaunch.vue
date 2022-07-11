@@ -6,7 +6,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="类型" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="type" border="surround" disabled=true>
+					<u--input font-size=13 v-model="type" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -15,7 +15,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="部门" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="department" border="surround" disabled=true>
+					<u--input font-size=13 v-model="department" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -26,7 +26,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="库位" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="storagePosition" border="surround" disabled=true>
+					<u--input font-size=13 v-model="storagePosition" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -35,7 +35,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="证章号/工号" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="employeeNumber" border="surround" disabled=true>
+					<u--input font-size=13 v-model="employeeNumber" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -100,7 +100,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="数量/克重" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="number_weight" border="surround" disabled=true>
+					<u--input font-size=13 v-model="number_weight" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -109,7 +109,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="合计" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="total" border="surround" disabled=true>
+					<u--input font-size=13 v-model="total" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -120,7 +120,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="次要数量" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="secondaryNumber" border="surround" disabled=true>
+					<u--input font-size=13 v-model="secondaryNumber" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -129,7 +129,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="次要合计" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="secondaryTotal" border="surround" disabled=true>
+					<u--input font-size=13 v-model="secondaryTotal" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -195,13 +195,7 @@
 		},
 		mounted() {
 			this.employeeNumber = "NO0001";
-			
-			var nowDate = new Date();
-			var year = nowDate.getFullYear();
-			var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1):nowDate.getMonth() + 1;
-			var day = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
-			var dateStr = year + "-" + month + "-" + day;
-			this.date = dateStr;
+			this.date = this.$dateTrans.getDateString();
 		},
 		methods: {
 			startScanWarehouse(){

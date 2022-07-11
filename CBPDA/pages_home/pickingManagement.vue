@@ -8,7 +8,7 @@
 			</uni-data-select>
 		</div>
 		<div class="divContainer">
-			<view class="desc-text-edit""">
+			<view class="desc-text-edit">
 				<u--text type="primary" text="发货库位" size=13></u--text>
 			</view>
 			<uni-data-select v-model="selectWarehouse" :localdata="warehouse" @change="changeWarehouse">
@@ -78,13 +78,7 @@
 		},
 		mounted() {
 			this.employeeNumber = "NO0001";
-			
-			var nowDate = new Date();
-			var year = nowDate.getFullYear();
-			var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1):nowDate.getMonth() + 1;
-			var day = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
-			var dateStr = year + "-" + month + "-" + day;
-			this.date = dateStr;
+			this.date = this.$dateTrans.getDateString();
 		},
 		methods: {
 			changeDepartment(e) {

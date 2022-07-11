@@ -4,7 +4,7 @@
 			<view class="desc-text">
 				<u--text type="primary" text="装箱单号" size=13></u--text>
 			</view>
-			<u--input font-size=13 v-model="SOU" border="surround" disabled=true>
+			<u--input font-size=13 v-model="SOU" border="surround" :disabled="true">
 			</u--input>
 		</div>
 		<div class="divContainer">
@@ -55,7 +55,7 @@
 			<view class="desc-text">
 				<u--text type="primary" text="证章号/工号" size=13></u--text>
 			</view>
-			<u--input font-size=13 v-model="SOU" border="surround" disabled=true>
+			<u--input font-size=13 v-model="SOU" border="surround" :disabled="true">
 			</u--input>
 		</div>
 		<div class="divContainer">

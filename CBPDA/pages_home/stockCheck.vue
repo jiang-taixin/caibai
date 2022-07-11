@@ -32,7 +32,7 @@
 			<view class="desc-text">
 				<u--text type="primary" text="盘点枪" size=13></u--text>
 			</view>
-			<u--input font-size=13 v-model="check_gun" border="surround" disabled=true>
+			<u--input font-size=13 v-model="check_gun" border="surround" :disabled="true">
 			</u--input>
 		</div>
 		

@@ -28,7 +28,7 @@
 				<u--text type="primary" text="质检人" size=13></u--text>
 			</view>
 
-			<u--input font-size=13 v-model="qualityInspector" border="surround" disabled=true>
+			<u--input font-size=13 v-model="qualityInspector" border="surround" :disabled="true">
 			</u--input>
 		</div>
 		<uni-table ref="table" border stripe emptyText="暂无更多数据" class="custom-list" type="selection"

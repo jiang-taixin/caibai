@@ -4,7 +4,7 @@
 			<view class="desc-text">
 				<u--text type="primary" class="desc-text" text="盘点单号" size=13></u--text>
 			</view>
-			<u--input font-size=13 v-model="checkCode" border="surround" disabled=true>
+			<u--input font-size=13 v-model="checkCode" border="surround" :disabled="true">
 			</u--input>
 		</div>
 		<div class="divContainer">
@@ -18,7 +18,7 @@
 			<view class="desc-text">
 				<u--text type="primary" class="desc-text" text="盘点库位" size=13></u--text>
 			</view>
-			<u--input font-size=13 v-model="checkWarehousePosition" border="surround" disabled=true>
+			<u--input font-size=13 v-model="checkWarehousePosition" border="surround" :disabled="true">
 			</u--input>
 		</div>
 
@@ -96,7 +96,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="小计" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="subtotal" border="surround" disabled=true>
+					<u--input font-size=13 v-model="subtotal" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -105,7 +105,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="小计次要数量" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="secondary_subtotal" border="surround" disabled=true>
+					<u--input font-size=13 v-model="secondary_subtotal" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -117,7 +117,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="累计数" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="grandtotal" border="surround" disabled=true>
+					<u--input font-size=13 v-model="grandtotal" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -126,7 +126,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="累计次要数量" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="secondary_grandtotal" border="surround" disabled=true>
+					<u--input font-size=13 v-model="secondary_grandtotal" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -183,12 +183,7 @@
 			}
 		},
 		mounted() {
-			var nowDate = new Date();
-			var year = nowDate.getFullYear();
-			var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1):nowDate.getMonth() + 1;
-			var day = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
-			var dateStr = year + "-" + month + "-" + day;
-			this.date = dateStr;
+			this.date = this.$dateTrans.getDateString();
 		},
 		methods: {
 			clear() {

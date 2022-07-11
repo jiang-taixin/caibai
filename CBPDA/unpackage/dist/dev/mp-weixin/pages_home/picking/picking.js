@@ -183,10 +183,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -457,7 +454,7 @@ var _default =
       warehouse: "", //传入的发货库位
       number: "", //
       recommend: "", //推荐库位
-      steps: "", //进度步数
+      steps: "2/10", //进度步数
       modelNum: "", //款号
       name: "", //名称
       distributeNum: "", //分配数量
@@ -518,6 +515,24 @@ var _default =
     console.log(option.date);
   },
   methods: {
+    startScan: function startScan() {
+      var vm = this;
+      uni.scanCode({
+        success: function success(res) {
+          if (res.errMsg == "scanCode:ok") {
+            vm.$nextTick(function () {
+              vm.codeNumber = res.result;
+            });
+          } else {
+            this.$toast.showToast("扫码失败，请重试");
+
+          }
+        } });
+
+    },
+    startSearch: function startSearch() {
+
+    },
     rowClick: function rowClick(item, index) {
       console.log("*******************:", item);
       this.selectedIndex = index;
@@ -549,6 +564,7 @@ var _default =
       //扫码结束获取信息并更新进列表
       console.log("blur :", e.target.value);
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

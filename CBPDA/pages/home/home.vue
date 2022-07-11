@@ -120,6 +120,7 @@
 			this.getInspectionCategory(); //送检单类型
 			this.getReason(); //不合格原因
 			this.getTestingCategory(); //质检类别
+			
 
 		},
 		created() {

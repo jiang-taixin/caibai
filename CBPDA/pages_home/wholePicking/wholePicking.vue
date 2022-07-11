@@ -27,7 +27,7 @@
 			</view>
 			<u-row justify="space-between" gutter="1">
 				<u-col span="4">
-					<u--input font-size=13 v-model="department" border="surround" disabled=true>
+					<u--input font-size=13 v-model="department" border="surround" :disabled="true">
 					</u--input>
 				</u-col>
 				<u-col span="4">
@@ -35,7 +35,7 @@
 					</u--input>
 				</u-col>
 				<u-col span="4">
-					<u--input font-size=13 v-model="number" border="surround" disabled=true>
+					<u--input font-size=13 v-model="number" border="surround" :disabled="true">
 					</u--input>
 				</u-col>
 			</u-row>
@@ -44,7 +44,7 @@
 			<view class="desc-text">
 				<u--text type="primary" text="计划总数" size=13></u--text>
 			</view>
-			<u--input font-size=13 v-model="total" placeholder="" border="surround" disabled=true>
+			<u--input font-size=13 v-model="total" placeholder="" border="surround" :disabled="true">
 			</u--input>
 		</div>
 		<u-row>
@@ -53,7 +53,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="合计数量" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="totalNum" border="surround" disabled=true>
+					<u--input font-size=13 v-model="totalNum" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>

@@ -27,7 +27,7 @@
 			</view>
 			<u-row justify="space-between" gutter="1">
 				<u-col span="4">
-					<u--input font-size=13 v-model="department" border="surround" disabled=true>
+					<u--input font-size=13 v-model="department" border="surround" :disabled="true">
 					</u--input>
 				</u-col>
 				<u-col span="4">
@@ -35,7 +35,7 @@
 					</u--input>
 				</u-col>
 				<u-col span="4">
-					<u--input font-size=13 v-model="number" border="surround" disabled=true>
+					<u--input font-size=13 v-model="number" border="surround" :disabled="true">
 					</u--input>
 				</u-col>
 			</u-row>
@@ -46,11 +46,11 @@
 			</view>
 			<u-row>
 				<u-col span="6">
-					<u--input font-size=13 v-model="recommend" placeholder="" border="surround" disabled=true>
+					<u--input font-size=13 v-model="recommend" placeholder="" border="surround" :disabled="true">
 					</u--input>
 				</u-col>
 				<u-col span="6">
-					<u--input font-size=13 v-model="steps" placeholder="" border="surround" disabled=true>
+					<u--input font-size=13 v-model="steps" placeholder="" border="surround" :disabled="true">
 					</u--input>
 				</u-col>
 			</u-row>
@@ -61,7 +61,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="款号" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="modelNum" border="surround" disabled=true>
+					<u--input font-size=13 v-model="modelNum" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -70,7 +70,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="名称" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="name" border="surround" disabled=true>
+					<u--input font-size=13 v-model="name" border="surround" :disabled="true">
 					</u--input>
 				</div>
 
@@ -82,7 +82,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="分配数量" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="distributeNum" border="surround" disabled=true>
+					<u--input font-size=13 v-model="distributeNum" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -91,7 +91,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="SOU" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="SOU" border="surround" disabled=true>
+					<u--input font-size=13 v-model="SOU" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -102,7 +102,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="合计数量" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="totalNum" border="surround" disabled=true>
+					<u--input font-size=13 v-model="totalNum" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -111,9 +111,6 @@
 					<view class="desc-text-edit">
 						<u--text type="primary" text="扫码输入" size=13></u--text>
 					</view>
-					<!-- <u--input font-size=13 v-model="inputNum" border="surround" @blur="blured" @change="change" clearable>
-					</u--input> 
-					u-input控件有问题 blur取不到值-->
 					<uni-easyinput v-model="inputNum" placeholder="扫码输入" @blur="blur">
 					</uni-easyinput>
 				</div>
@@ -156,7 +153,7 @@
 				</u-col>
 				<u-col span="6">
 					<div class="col-layout">
-						<u-button type="primary" @click="toDamage" text="暂存" style="width: 80%;margin-left: 10%;">
+						<u-button type="primary" @click="tempStorage" text="暂存" style="width: 80%;margin-left: 10%;">
 						</u-button>
 					</div>
 				</u-col>
@@ -272,7 +269,8 @@
 				warehouse: "", //传入的发货库位
 				number: "", //
 				recommend: "", //推荐库位
-				steps: "", //进度步数
+				steps: "2/10", //进度步数
+				nowStep:0,
 				modelNum: "", //款号
 				name: "", //名称
 				distributeNum: "", //分配数量
@@ -324,8 +322,17 @@
 			console.log("------- click nav button:", val);
 			if (val.index === 0) {
 				console.log("下一步");
+				if(this.nowStep < 10){
+					this.nowStep = this.nowStep +1;
+					this.steps = `${this.nowStep}/10`;
+				}
+				
 			} else {
 				console.log("上一步");
+				if(this.nowStep > 1){
+					this.nowStep = this.nowStep -1;
+					this.steps = `${this.nowStep}/10`;
+				}
 			}
 		},
 		onLoad: function(option) {
@@ -333,6 +340,24 @@
 			console.log(option.date);
 		},
 		methods: {
+			startScan(){
+				let vm = this;
+				uni.scanCode({
+					success: function(res) {
+						if (res.errMsg == "scanCode:ok") {
+							vm.$nextTick(() => {
+								vm.codeNumber = res.result;
+							});
+						} else {
+							this.$toast.showToast("扫码失败，请重试");
+							
+						}
+					}
+				});
+			},
+			startSearch(){
+				
+			},
 			rowClick(item, index) {
 				console.log("*******************:", item);
 				this.selectedIndex = index;
@@ -363,6 +388,12 @@
 			blur(e) {
 				//扫码结束获取信息并更新进列表
 				console.log("blur :", e.target.value);
+			},
+			commit(){
+				
+			},
+			tempStorage(){
+				
 			}
 		}
 	}

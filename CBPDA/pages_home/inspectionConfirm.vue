@@ -28,7 +28,7 @@
 				<u--text type="primary" text="送检单号" size=13></u--text>
 			</view>
 
-			<u--input font-size=13 v-model="inspectionNumber" border="surround" disabled=true>
+			<u--input font-size=13 v-model="inspectionNumber" border="surround" :disabled="true">
 			</u--input>
 		</div>
 		<u-row>
@@ -38,7 +38,7 @@
 						<u--text type="primary" text="质检人" size=13></u--text>
 					</view>
 
-					<u--input font-size=13 v-model="modelNum" border="surround" disabled=true>
+					<u--input font-size=13 v-model="modelNum" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -47,7 +47,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="送检单类型" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="inspectionType" border="surround" disabled=true>
+					<u--input font-size=13 v-model="inspectionType" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -59,7 +59,7 @@
 						<u--text type="primary" text="送检时间" size=13></u--text>
 					</view>
 
-					<u--input font-size=13 v-model="inspectionTime" border="surround" disabled=true>
+					<u--input font-size=13 v-model="inspectionTime" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -68,7 +68,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="送检机构" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="inspectionAngecy" border="surround" disabled=true>
+					<u--input font-size=13 v-model="inspectionAngecy" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>

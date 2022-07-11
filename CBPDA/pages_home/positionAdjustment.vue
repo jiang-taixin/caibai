@@ -6,7 +6,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="类型" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="type" border="surround" disabled=true>
+					<u--input font-size=13 v-model="type" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -15,7 +15,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="部门" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="department" border="surround" disabled=true>
+					<u--input font-size=13 v-model="department" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -26,7 +26,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="库位" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="storagePosition" border="surround" disabled=true>
+					<u--input font-size=13 v-model="storagePosition" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -35,7 +35,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="证章号/工号" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="employeeNumber" border="surround" disabled=true>
+					<u--input font-size=13 v-model="employeeNumber" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>

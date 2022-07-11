@@ -29,7 +29,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="合计次要数量" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="secondaryNumber" border="surround" disabled=true>
+					<u--input font-size=13 v-model="secondaryNumber" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -38,7 +38,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="合计数量/克重" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="mainNumber" border="surround" disabled=true>
+					<u--input font-size=13 v-model="mainNumber" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>

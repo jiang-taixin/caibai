@@ -1,11 +1,12 @@
 <script>
 	export default {
 		onLaunch: function() {
-			console.log('App Launch');
+			// #ifdef MP-WEIXIN
 			wx.cloud.init({
 				env:"caibai-dev-8gi415mp2b8cd338",
 				traceUser:true,
 			})
+			// #endif
 		},
 		onShow: function() {
 			console.log('App Show')

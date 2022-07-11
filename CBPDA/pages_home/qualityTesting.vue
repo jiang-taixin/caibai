@@ -29,7 +29,7 @@
 				<u--text type="primary" class="desc-text" text="前置单号" size=13></u--text>
 			</view>
 
-			<u--input font-size=13 v-model="bookCode" border="surround" disabled=true>
+			<u--input font-size=13 v-model="bookCode" border="surround" :disabled="true">
 			</u--input>
 		</div>
 		<u-row>
@@ -39,7 +39,7 @@
 						<u--text type="primary" text="质检人" size=13></u--text>
 					</view>
 
-					<u--input font-size=13 v-model="qualityInspector" border="surround" disabled=true>
+					<u--input font-size=13 v-model="qualityInspector" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -48,7 +48,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="供应商" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="supplier" border="surround" disabled=true>
+					<u--input font-size=13 v-model="supplier" border="surround" :disabled="true">
 					</u--input>
 				</div>
 
@@ -60,7 +60,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="无损件数" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="undamagedNum" border="surround" disabled=true>
+					<u--input font-size=13 v-model="undamagedNum" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -70,7 +70,7 @@
 						<u--text type="primary" text="有损件数" size=13></u--text>
 					</view>
 
-					<u--input font-size=13 v-model="damageNum" border="surround" disabled=true>
+					<u--input font-size=13 v-model="damageNum" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -82,7 +82,7 @@
 						<u--text type="primary" text="款号" size=13></u--text>
 					</view>
 
-					<u--input font-size=13 v-model="modelNum" border="surround" disabled=true>
+					<u--input font-size=13 v-model="modelNum" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -91,7 +91,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="采购件数" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="purchaseNum" border="surround" disabled=true>
+					<u--input font-size=13 v-model="purchaseNum" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -102,7 +102,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="贵金属材质" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="material" border="surround" disabled=true>
+					<u--input font-size=13 v-model="material" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -111,7 +111,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="质检件数" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="testNum" border="surround" disabled=true>
+					<u--input font-size=13 v-model="testNum" border="surround" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>

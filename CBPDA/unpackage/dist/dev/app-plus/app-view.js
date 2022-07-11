@@ -21097,6 +21097,8 @@ try {
     uniTh: __webpack_require__(/*! @/uni_modules/uni-table/components/uni-th/uni-th.vue */ 164)
       .default,
     uniTd: __webpack_require__(/*! @/uni_modules/uni-table/components/uni-td/uni-td.vue */ 222)
+      .default,
+    uPopup: __webpack_require__(/*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 266)
       .default
   }
 } catch (e) {
@@ -21270,7 +21272,7 @@ var render = function() {
             model: {
               value: _vm._$g(26, "v-model"),
               callback: function() {},
-              expression: "launchWarehouse"
+              expression: "moveReason"
             }
           })
         ],
@@ -21330,7 +21332,7 @@ var render = function() {
                     model: {
                       value: _vm._$g(36, "v-model"),
                       callback: function() {},
-                      expression: "warehousePosition"
+                      expression: "toPosition"
                     }
                   })
                 ],
@@ -21517,6 +21519,219 @@ var render = function() {
           )
         ],
         1
+      ),
+      _c(
+        "uni-view",
+        { staticStyle: { "margin-top": "30px" }, attrs: { _i: 69 } },
+        [
+          _c(
+            "u-row",
+            { attrs: { _i: 70 } },
+            [
+              _c(
+                "u-col",
+                { attrs: { _i: 71 } },
+                [
+                  _c(
+                    "div",
+                    { staticClass: _vm._$g(72, "sc"), attrs: { _i: 72 } },
+                    [
+                      _c("u-button", {
+                        staticStyle: {
+                          width: "80%",
+                          "margin-left": "10%",
+                          "margin-bottom": "10px"
+                        },
+                        attrs: { _i: 73 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _c(
+                "u-col",
+                { attrs: { _i: 74 } },
+                [
+                  _c(
+                    "div",
+                    { staticClass: _vm._$g(75, "sc"), attrs: { _i: 75 } },
+                    [
+                      _c("u-button", {
+                        staticStyle: {
+                          width: "80%",
+                          "margin-left": "10%",
+                          "margin-bottom": "10px"
+                        },
+                        attrs: { _i: 76 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _c(
+        "u-popup",
+        {
+          attrs: { _i: 77 },
+          on: {
+            close: function($event) {
+              return _vm.$handleViewEvent($event)
+            }
+          }
+        },
+        [
+          _c(
+            "uni-view",
+            { attrs: { _i: 78 } },
+            [
+              _c(
+                "div",
+                {
+                  staticStyle: { width: "100%", display: "inline-block" },
+                  attrs: { _i: 79 }
+                },
+                [
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: { float: "left", width: "70px" },
+                      attrs: { _i: 80 }
+                    },
+                    [
+                      _c(
+                        "v-uni-text",
+                        {
+                          staticStyle: { "font-size": "13px" },
+                          attrs: { _i: 81 }
+                        },
+                        [_vm._v("备注:")]
+                      )
+                    ],
+                    1
+                  ),
+                  _c("u--input", {
+                    attrs: { _i: 82 },
+                    model: {
+                      value: _vm._$g(82, "v-model"),
+                      callback: function() {},
+                      expression: "remarks"
+                    }
+                  })
+                ],
+                1
+              ),
+              _c(
+                "u-row",
+                { attrs: { _i: 83 } },
+                [
+                  _c(
+                    "u-col",
+                    { attrs: { _i: 84 } },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: _vm._$g(85, "sc"), attrs: { _i: 85 } },
+                        [
+                          _c("u-button", {
+                            staticStyle: {
+                              width: "80%",
+                              "margin-left": "10%",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { _i: 86 },
+                            on: {
+                              click: function($event) {
+                                return _vm.$handleViewEvent($event)
+                              }
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _c(
+                    "u-col",
+                    { attrs: { _i: 87 } },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: _vm._$g(88, "sc"), attrs: { _i: 88 } },
+                        [
+                          _c("u-button", {
+                            staticStyle: {
+                              width: "80%",
+                              "margin-left": "10%",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { _i: 89 },
+                            on: {
+                              click: function($event) {
+                                return _vm.$handleViewEvent($event)
+                              }
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _c(
+                    "u-col",
+                    { attrs: { _i: 90 } },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: _vm._$g(91, "sc"), attrs: { _i: 91 } },
+                        [
+                          _c("u-button", {
+                            staticStyle: {
+                              width: "80%",
+                              "margin-left": "10%",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { _i: 92 },
+                            on: {
+                              click: function($event) {
+                                return _vm.$handleViewEvent($event)
+                              }
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
       )
     ],
     1
@@ -21658,6 +21873,8 @@ try {
     uniTh: __webpack_require__(/*! @/uni_modules/uni-table/components/uni-th/uni-th.vue */ 164)
       .default,
     uniTd: __webpack_require__(/*! @/uni_modules/uni-table/components/uni-td/uni-td.vue */ 222)
+      .default,
+    uPopup: __webpack_require__(/*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 266)
       .default
   }
 } catch (e) {
@@ -22117,6 +22334,219 @@ var render = function() {
           )
         ],
         1
+      ),
+      _c(
+        "uni-view",
+        { staticStyle: { "margin-top": "30px" }, attrs: { _i: 77 } },
+        [
+          _c(
+            "u-row",
+            { attrs: { _i: 78 } },
+            [
+              _c(
+                "u-col",
+                { attrs: { _i: 79 } },
+                [
+                  _c(
+                    "div",
+                    { staticClass: _vm._$g(80, "sc"), attrs: { _i: 80 } },
+                    [
+                      _c("u-button", {
+                        staticStyle: {
+                          width: "80%",
+                          "margin-left": "10%",
+                          "margin-bottom": "10px"
+                        },
+                        attrs: { _i: 81 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _c(
+                "u-col",
+                { attrs: { _i: 82 } },
+                [
+                  _c(
+                    "div",
+                    { staticClass: _vm._$g(83, "sc"), attrs: { _i: 83 } },
+                    [
+                      _c("u-button", {
+                        staticStyle: {
+                          width: "80%",
+                          "margin-left": "10%",
+                          "margin-bottom": "10px"
+                        },
+                        attrs: { _i: 84 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _c(
+        "u-popup",
+        {
+          attrs: { _i: 85 },
+          on: {
+            close: function($event) {
+              return _vm.$handleViewEvent($event)
+            }
+          }
+        },
+        [
+          _c(
+            "uni-view",
+            { attrs: { _i: 86 } },
+            [
+              _c(
+                "div",
+                {
+                  staticStyle: { width: "100%", display: "inline-block" },
+                  attrs: { _i: 87 }
+                },
+                [
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: { float: "left", width: "70px" },
+                      attrs: { _i: 88 }
+                    },
+                    [
+                      _c(
+                        "v-uni-text",
+                        {
+                          staticStyle: { "font-size": "13px" },
+                          attrs: { _i: 89 }
+                        },
+                        [_vm._v("备注:")]
+                      )
+                    ],
+                    1
+                  ),
+                  _c("u--input", {
+                    attrs: { _i: 90 },
+                    model: {
+                      value: _vm._$g(90, "v-model"),
+                      callback: function() {},
+                      expression: "remarks"
+                    }
+                  })
+                ],
+                1
+              ),
+              _c(
+                "u-row",
+                { attrs: { _i: 91 } },
+                [
+                  _c(
+                    "u-col",
+                    { attrs: { _i: 92 } },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: _vm._$g(93, "sc"), attrs: { _i: 93 } },
+                        [
+                          _c("u-button", {
+                            staticStyle: {
+                              width: "80%",
+                              "margin-left": "10%",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { _i: 94 },
+                            on: {
+                              click: function($event) {
+                                return _vm.$handleViewEvent($event)
+                              }
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _c(
+                    "u-col",
+                    { attrs: { _i: 95 } },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: _vm._$g(96, "sc"), attrs: { _i: 96 } },
+                        [
+                          _c("u-button", {
+                            staticStyle: {
+                              width: "80%",
+                              "margin-left": "10%",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { _i: 97 },
+                            on: {
+                              click: function($event) {
+                                return _vm.$handleViewEvent($event)
+                              }
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _c(
+                    "u-col",
+                    { attrs: { _i: 98 } },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: _vm._$g(99, "sc"), attrs: { _i: 99 } },
+                        [
+                          _c("u-button", {
+                            staticStyle: {
+                              width: "80%",
+                              "margin-left": "10%",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { _i: 100 },
+                            on: {
+                              click: function($event) {
+                                return _vm.$handleViewEvent($event)
+                              }
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
       )
     ],
     1
@@ -22237,11 +22667,569 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    "u-Text": __webpack_require__(/*! @/uni_modules/uview-ui/components/u--text/u--text.vue */ 98)
+      .default,
+    "u-Input": __webpack_require__(/*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 119)
+      .default,
+    uniDataSelect: __webpack_require__(/*! @/uni_modules/uni-data-select/components/uni-data-select/uni-data-select.vue */ 230)
+      .default,
+    uRow: __webpack_require__(/*! @/uni_modules/uview-ui/components/u-row/u-row.vue */ 82).default,
+    uCol: __webpack_require__(/*! @/uni_modules/uview-ui/components/u-col/u-col.vue */ 90).default,
+    uButton: __webpack_require__(/*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 132)
+      .default,
+    uniDatetimePicker: __webpack_require__(/*! @/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker.vue */ 172)
+      .default,
+    uniTable: __webpack_require__(/*! @/uni_modules/uni-table/components/uni-table/uni-table.vue */ 140)
+      .default,
+    uniTr: __webpack_require__(/*! @/uni_modules/uni-table/components/uni-tr/uni-tr.vue */ 148)
+      .default,
+    uniTh: __webpack_require__(/*! @/uni_modules/uni-table/components/uni-th/uni-th.vue */ 164)
+      .default,
+    uniTd: __webpack_require__(/*! @/uni_modules/uni-table/components/uni-td/uni-td.vue */ 222)
+      .default,
+    uPopup: __webpack_require__(/*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 266)
+      .default
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("uni-view", { attrs: { _i: 0 } })
+  return _c(
+    "uni-view",
+    { attrs: { _i: 0 } },
+    [
+      _c(
+        "div",
+        { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } },
+        [
+          _c(
+            "uni-view",
+            { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
+            [_c("u--text", { attrs: { _i: 3 } })],
+            1
+          ),
+          _c("u--input", {
+            attrs: { _i: 4 },
+            model: {
+              value: _vm._$g(4, "v-model"),
+              callback: function() {},
+              expression: "SOU"
+            }
+          })
+        ],
+        1
+      ),
+      _c(
+        "div",
+        { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } },
+        [
+          _c(
+            "uni-view",
+            { staticClass: _vm._$g(6, "sc"), attrs: { _i: 6 } },
+            [_c("u--text", { attrs: { _i: 7 } })],
+            1
+          ),
+          _c("uni-data-select", {
+            attrs: { _i: 8 },
+            on: {
+              change: function($event) {
+                return _vm.$handleViewEvent($event)
+              }
+            },
+            model: {
+              value: _vm._$g(8, "v-model"),
+              callback: function() {},
+              expression: "launchWarehouse"
+            }
+          })
+        ],
+        1
+      ),
+      _c(
+        "div",
+        { staticClass: _vm._$g(9, "sc"), attrs: { _i: 9 } },
+        [
+          _c(
+            "uni-view",
+            { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
+            [_c("u--text", { attrs: { _i: 11 } })],
+            1
+          ),
+          _c("uni-data-select", {
+            attrs: { _i: 12 },
+            on: {
+              change: function($event) {
+                return _vm.$handleViewEvent($event)
+              }
+            },
+            model: {
+              value: _vm._$g(12, "v-model"),
+              callback: function() {},
+              expression: "launchWarehouse"
+            }
+          })
+        ],
+        1
+      ),
+      _c(
+        "div",
+        { staticClass: _vm._$g(13, "sc"), attrs: { _i: 13 } },
+        [
+          _c(
+            "u-row",
+            { attrs: { _i: 14 } },
+            [
+              _c(
+                "u-col",
+                { attrs: { _i: 15 } },
+                [
+                  _c(
+                    "uni-view",
+                    { staticClass: _vm._$g(16, "sc"), attrs: { _i: 16 } },
+                    [_c("u--text", { attrs: { _i: 17 } })],
+                    1
+                  ),
+                  _c("u--input", {
+                    attrs: { _i: 18 },
+                    model: {
+                      value: _vm._$g(18, "v-model"),
+                      callback: function() {},
+                      expression: "warehousePosition"
+                    }
+                  })
+                ],
+                1
+              ),
+              _c(
+                "u-col",
+                { attrs: { _i: 19 } },
+                [
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: { width: "30px", height: "30px" },
+                      attrs: { _i: 20 }
+                    },
+                    [
+                      _c("u-button", {
+                        staticStyle: { width: "30px", height: "30px" },
+                        attrs: { _i: 21 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _c("u-col", { attrs: { _i: 22 } })
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _c(
+        "div",
+        { staticClass: _vm._$g(23, "sc"), attrs: { _i: 23 } },
+        [
+          _c(
+            "uni-view",
+            { staticClass: _vm._$g(24, "sc"), attrs: { _i: 24 } },
+            [_c("u--text", { attrs: { _i: 25 } })],
+            1
+          ),
+          _c("u--input", {
+            attrs: { _i: 26 },
+            model: {
+              value: _vm._$g(26, "v-model"),
+              callback: function() {},
+              expression: "SOU"
+            }
+          })
+        ],
+        1
+      ),
+      _c(
+        "div",
+        { staticClass: _vm._$g(27, "sc"), attrs: { _i: 27 } },
+        [
+          _c(
+            "uni-view",
+            { staticClass: _vm._$g(28, "sc"), attrs: { _i: 28 } },
+            [_c("u--text", { attrs: { _i: 29 } })],
+            1
+          ),
+          _c("u--input", {
+            attrs: { _i: 30 },
+            model: {
+              value: _vm._$g(30, "v-model"),
+              callback: function() {},
+              expression: "SOU"
+            }
+          })
+        ],
+        1
+      ),
+      _c(
+        "div",
+        { staticClass: _vm._$g(31, "sc"), attrs: { _i: 31 } },
+        [
+          _c(
+            "uni-view",
+            { staticClass: _vm._$g(32, "sc"), attrs: { _i: 32 } },
+            [
+              _c("u--text", {
+                staticClass: _vm._$g(33, "sc"),
+                attrs: { _i: 33 }
+              })
+            ],
+            1
+          ),
+          _c("uni-datetime-picker", {
+            attrs: { _i: 34 },
+            on: {
+              change: function($event) {
+                return _vm.$handleViewEvent($event)
+              }
+            },
+            model: {
+              value: _vm._$g(34, "v-model"),
+              callback: function() {},
+              expression: "date"
+            }
+          })
+        ],
+        1
+      ),
+      _c(
+        "uni-view",
+        { staticStyle: { "margin-top": "30px" }, attrs: { _i: 35 } },
+        [
+          _c(
+            "uni-table",
+            { staticClass: _vm._$g(36, "sc"), attrs: { _i: 36 } },
+            [
+              _c(
+                "uni-tr",
+                { attrs: { _i: 37 } },
+                [
+                  _c("uni-th", { attrs: { _i: 38 } }, [_vm._v("序号")]),
+                  _c("uni-th", { attrs: { _i: 39 } }, [_vm._v("配货单号")]),
+                  _c("uni-th", { attrs: { _i: 40 } }, [_vm._v("收货门店")]),
+                  _c("uni-th", { attrs: { _i: 41 } }, [_vm._v("专柜")]),
+                  _c("uni-th", { attrs: { _i: 42 } }, [_vm._v("总件数")]),
+                  _c("uni-th", { attrs: { _i: 43 } }, [_vm._v("品种一级")])
+                ],
+                1
+              ),
+              _vm._l(_vm._$g(44, "f"), function(item, index, $20, $30) {
+                return _c(
+                  "uni-tr",
+                  {
+                    key: item,
+                    attrs: { _i: "44-" + $30 },
+                    on: {
+                      "row-click": function($event) {
+                        return _vm.$handleViewEvent($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("uni-td", { attrs: { _i: "45-" + $30 } }, [
+                      _vm._v(_vm._$g("45-" + $30, "t0-0"))
+                    ]),
+                    _c("uni-td", { attrs: { _i: "46-" + $30 } }, [
+                      _vm._v(_vm._$g("46-" + $30, "t0-0"))
+                    ]),
+                    _c("uni-td", { attrs: { _i: "47-" + $30 } }, [
+                      _vm._v(_vm._$g("47-" + $30, "t0-0"))
+                    ]),
+                    _c("uni-td", { attrs: { _i: "48-" + $30 } }, [
+                      _vm._v(_vm._$g("48-" + $30, "t0-0"))
+                    ]),
+                    _c("uni-td", { attrs: { _i: "49-" + $30 } }, [
+                      _vm._v(_vm._$g("49-" + $30, "t0-0"))
+                    ]),
+                    _c("uni-td", { attrs: { _i: "50-" + $30 } }, [
+                      _vm._v(_vm._$g("50-" + $30, "t0-0"))
+                    ])
+                  ],
+                  1
+                )
+              })
+            ],
+            2
+          )
+        ],
+        1
+      ),
+      _c(
+        "uni-view",
+        { staticStyle: { "margin-top": "30px" }, attrs: { _i: 51 } },
+        [
+          _c(
+            "u-row",
+            { attrs: { _i: 52 } },
+            [
+              _c(
+                "u-col",
+                { attrs: { _i: 53 } },
+                [
+                  _c(
+                    "div",
+                    { staticClass: _vm._$g(54, "sc"), attrs: { _i: 54 } },
+                    [
+                      _c("u-button", {
+                        staticStyle: {
+                          width: "80%",
+                          "margin-left": "10%",
+                          "margin-bottom": "10px"
+                        },
+                        attrs: { _i: 55 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _c(
+                "u-col",
+                { attrs: { _i: 56 } },
+                [
+                  _c(
+                    "div",
+                    { staticClass: _vm._$g(57, "sc"), attrs: { _i: 57 } },
+                    [
+                      _c("u-button", {
+                        staticStyle: {
+                          width: "80%",
+                          "margin-left": "10%",
+                          "margin-bottom": "10px"
+                        },
+                        attrs: { _i: 58 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _c(
+                "u-col",
+                { attrs: { _i: 59 } },
+                [
+                  _c(
+                    "div",
+                    { staticClass: _vm._$g(60, "sc"), attrs: { _i: 60 } },
+                    [
+                      _c("u-button", {
+                        staticStyle: {
+                          width: "80%",
+                          "margin-left": "10%",
+                          "margin-bottom": "10px"
+                        },
+                        attrs: { _i: 61 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _c(
+        "u-popup",
+        {
+          attrs: { _i: 62 },
+          on: {
+            close: function($event) {
+              return _vm.$handleViewEvent($event)
+            }
+          }
+        },
+        [
+          _c(
+            "uni-view",
+            { attrs: { _i: 63 } },
+            [
+              _c(
+                "div",
+                {
+                  staticStyle: { width: "100%", display: "inline-block" },
+                  attrs: { _i: 64 }
+                },
+                [
+                  _c(
+                    "uni-view",
+                    {
+                      staticStyle: { float: "left", width: "70px" },
+                      attrs: { _i: 65 }
+                    },
+                    [
+                      _c(
+                        "v-uni-text",
+                        {
+                          staticStyle: { "font-size": "13px" },
+                          attrs: { _i: 66 }
+                        },
+                        [_vm._v("备注:")]
+                      )
+                    ],
+                    1
+                  ),
+                  _c("u--input", {
+                    attrs: { _i: 67 },
+                    model: {
+                      value: _vm._$g(67, "v-model"),
+                      callback: function() {},
+                      expression: "remarks"
+                    }
+                  })
+                ],
+                1
+              ),
+              _c(
+                "u-row",
+                { attrs: { _i: 68 } },
+                [
+                  _c(
+                    "u-col",
+                    { attrs: { _i: 69 } },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: _vm._$g(70, "sc"), attrs: { _i: 70 } },
+                        [
+                          _c("u-button", {
+                            staticStyle: {
+                              width: "80%",
+                              "margin-left": "10%",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { _i: 71 },
+                            on: {
+                              click: function($event) {
+                                return _vm.$handleViewEvent($event)
+                              }
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _c(
+                    "u-col",
+                    { attrs: { _i: 72 } },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: _vm._$g(73, "sc"), attrs: { _i: 73 } },
+                        [
+                          _c("u-button", {
+                            staticStyle: {
+                              width: "80%",
+                              "margin-left": "10%",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { _i: 74 },
+                            on: {
+                              click: function($event) {
+                                return _vm.$handleViewEvent($event)
+                              }
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _c(
+                    "u-col",
+                    { attrs: { _i: 75 } },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: _vm._$g(76, "sc"), attrs: { _i: 76 } },
+                        [
+                          _c("u-button", {
+                            staticStyle: {
+                              width: "80%",
+                              "margin-left": "10%",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { _i: 77 },
+                            on: {
+                              click: function($event) {
+                                return _vm.$handleViewEvent($event)
+                              }
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -22331,7 +23319,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 16);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*每个页面公共css */\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*每个页面公共css */\n", ""]);
 // Exports
 module.exports = exports;
 

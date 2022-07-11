@@ -18,7 +18,7 @@
 			<view class="desc-text">
 				<u--text type="primary" text="证章号/工号" size=13></u--text>
 			</view>
-			<u--input font-size=13 v-model="employeeNumber" border="surround" clearable disabled=true>
+			<u--input font-size=13 v-model="employeeNumber" border="surround" clearable :disabled="true">
 			</u--input>
 		</div>
 		<div class="divContainer">
@@ -78,12 +78,7 @@
 		},
 		mounted() {
 			this.employeeNumber = "NO0001";
-			var nowDate = new Date();
-			var year = nowDate.getFullYear();
-			var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1):nowDate.getMonth() + 1;
-			var day = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
-			var dateStr = year + "-" + month + "-" + day;
-			this.date = dateStr;
+			this.date = this.$dateTrans.getDateString();
 		},
 		methods: {
 			changeDepartment(e) {

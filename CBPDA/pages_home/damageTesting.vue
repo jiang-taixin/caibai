@@ -27,7 +27,7 @@
 			<view class="desc-text">
 				<u--text type="primary" text="SOU码" size=13></u--text>
 			</view>
-			<u--input font-size=13 v-model="SOU" border="surround" disabled=true>
+			<u--input font-size=13 v-model="SOU" border="surround" :disabled="true">
 			</u--input>
 		</div>
 		<u-row>
@@ -36,7 +36,7 @@
 					<view class="desc-text">
 						<u--text type="primary" text="送检人" size=13></u--text>
 					</view>
-					<u--input font-size=13 border="surround" v-model="qualityInspector" disabled=true>
+					<u--input font-size=13 border="surround" v-model="qualityInspector" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -46,7 +46,7 @@
 						<u--text type="primary" text="有损检测件数" size=13></u--text>
 					</view>
 					</u--input>
-					<u--input font-size=13 border="surround" v-model="damageNum" disabled=true>
+					<u--input font-size=13 border="surround" v-model="damageNum" :disabled="true">
 					</u--input>
 				</div>
 			</u-col>
@@ -142,13 +142,7 @@
 		mounted() {
 			//页面加载完成之后的操作
 			this.qualityInspector = "当前用户";
-			
-			var nowDate = new Date();
-			var year = nowDate.getFullYear();
-			var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1):nowDate.getMonth() + 1;
-			var day = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
-			var dateStr = year + "-" + month + "-" + day;
-			this.inspectionTime = dateStr;
+			this.inspectionTime = this.$dateTrans.getDateString();
 			
 			let vm = this;
 			uni.getStorage({
