@@ -11,7 +11,6 @@
     "uni-table": "/uni_modules/uni-table/components/uni-table/uni-table",
     "uni-tr": "/uni_modules/uni-table/components/uni-tr/uni-tr",
     "uni-th": "/uni_modules/uni-table/components/uni-th/uni-th",
-    "uni-td": "/uni_modules/uni-table/components/uni-td/uni-td",
-    "u-popup": "/uni_modules/uview-ui/components/u-popup/u-popup"
+    "uni-td": "/uni_modules/uni-table/components/uni-td/uni-td"
   }
 }

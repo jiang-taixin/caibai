@@ -77,35 +77,28 @@
 				<uni-th align="center">SOU</uni-th>
 				<uni-th align="center">商品条码</uni-th>
 				<uni-th align="center">商品包码</uni-th>
-				
 				<uni-th align="left">款号</uni-th>
 			</uni-tr>
 			<!-- 表格数据行 -->
 			<uni-tr v-for="(item, index) in tableData" @row-click="rowClick(item,index)">
 				<uni-td>{{item.tagName}}</uni-td>
-				<uni-td>{{item.location}}</uni-td>
-				<uni-td>{{item.mainNum}}</uni-td>
+				<uni-td>{{item.position}}</uni-td>
+				<uni-td>{{item.totalAmount}}</uni-td>
 				<uni-td>{{item.SOU}}</uni-td>
 				<uni-td>{{item.barCode}}</uni-td>
 				<uni-td>{{item.packageCode}}</uni-td>
-				<uni-td>{{item.modelNum}}</uni-td>
+				<uni-td>{{item.materielCode}}</uni-td>
 			</uni-tr>
 		</uni-table>
 		<div style="position: fixed;bottom: 0px;width: 100%;background-color:aquamarine;">
 			<u-row>
-				<u-col span="4">
+				<u-col span="6">
 					<div class="col-layout">
 						<u-button type="primary" @click="commit" text="确认" style="width: 80%;margin-left: 10%;">
 						</u-button>
 					</div>
 				</u-col>
-				<u-col span="4">
-					<div class="col-layout">
-						<u-button type="primary" @click="toDamage" text="暂存" style="width: 80%;margin-left: 10%;">
-						</u-button>
-					</div>
-				</u-col>
-				<u-col span="4">
+				<u-col span="6">
 					<div class="col-layout">
 						<u-button type="primary" @click="toDamage" text="保存" style="width: 80%;margin-left: 10%;">
 						</u-button>
@@ -120,7 +113,7 @@
 						<text style="font-size: 13px;">SOU:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData[selectedIndex].SOU" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].SOU:''" style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -128,7 +121,7 @@
 						<text style="font-size: 13px;">标签名称:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData[selectedIndex].tagName" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].tagName:''" style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -136,7 +129,7 @@
 						<text style="font-size: 13px;">商品条码:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData[selectedIndex].barCode" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].barCode:''" style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -144,7 +137,7 @@
 						<text style="font-size: 13px;">商品包码:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData[selectedIndex].packageCode" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].packageCode:''" style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -152,7 +145,7 @@
 						<text style="font-size: 13px;">仓位:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData[selectedIndex].location" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].position:''" style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -160,7 +153,7 @@
 						<text style="font-size: 13px;">物料名称:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData[selectedIndex].materialName" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].materielDesc:''" style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -168,7 +161,7 @@
 						<text style="font-size: 13px;">款号:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData[selectedIndex].modelNum" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].materielCode:''" style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -219,79 +212,92 @@
 				codeNumber: "", //条形码或二维码
 				department: "", //传入的发货部门
 				warehouse: "", //传入的发货库位
-				number: "", //
+				number: "100", //数量
 				total: "", //计划总数
 				totalNum: "", //合计数量
 				inputNum: "", //扫码输入号码
-				tableData: [{
-						tagName: "tag1",
-						barCode: "1111111111111111111111",
-						packageCode: "PACK123434556665555",
-						mainNum: "120",
-						SOU: "SOU111111",
-						location: "ABV1111",
-						modelNum: "KUAN111",
-                        materialName:"namename",
-						remarks: "备注信息1，备注信息",
-					},
-					{
-						tagName: "tag123",
-						barCode: "33212111111111111111",
-						packageCode: "PACK1232332226665555",
-						mainNum: "10",
-						SOU: "SOU22222",
-						location: "ABV2222",
-						modelNum: "KUAN222",
-						materialName:"namename",
-						remarks: "备注信息2，备注信息",
-					},
-					{
-						tagName: "tag3",
-						barCode: "33333333333333333333",
-						packageCode: "PACK444444444444444444444",
-						mainNum: "110",
-						SOU: "SOU33333",
-						location: "ABV3333",
-						modelNum: "KUAN333",
-						materialName:"namename",
-						remarks: "备注信息3，备注信息",
-					}
-				],
+				tableData: [],
 				showEditPage: false, //是否显示编辑页面
 				selectedIndex: 0, //当前选中的数据行
 				mainNum: "", //数量、克重    用于当前行的信息编辑
 				remarks: "", //备注   用于当前行的信息编辑
+				masterData:[],
 			}
 		},
 		onLoad: function(option) {
 			//获取url中传入的参数
+			this.department = option.selectDepartment;
+			this.warehouse = option.selectWarehouse;
 			console.log(option.date);
 		},
 		methods: {
+			startScan() {
+				let vm = this;
+				uni.scanCode({
+					success: function(res) {
+						if (res.errMsg == "scanCode:ok") {
+							vm.$nextTick(() => {
+								vm.codeNumber = res.result;
+							});
+						} else {
+							this.$toast.showToast("扫码失败，请重试");
+			
+						}
+					}
+				});
+			},
+			startSearch(){
+				if (this.codeNumber === '' || this.codeNumber === undefined) {
+					this.$toast.showToast("请先扫描包码");
+					return;
+				}
+				var opts = {
+					url: ``,
+					method: 'post'
+				};
+				uni.showLoading({
+					title: '加载中...'
+				});
+				var param = {
+					"interface_num": "MOBSCMD0014",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": {
+						"poCode": this.codeNumber
+					},
+				};
+				this.$http.httpRequest(opts, param).then((res) => {
+					uni.hideLoading();
+					console.log("*****************res:", res);
+					if (res.statusCode === 200) {
+						
+				
+					} else {
+						this.$toast.showToast("获取数据失败，请重试");
+					}
+				});
+			},
 			clickItem(e) {
 				this.selectedIndex = e;
 				console.log("click item :", e);
 				this.showEditPage = true;
-				console.log("*******************:", this.tableData[this.selectedIndex].tagName);
-
-				//
-				this.mainNum = this.tableData[this.selectedIndex].mainNum;
-				this.remarks = this.tableData[this.selectedIndex].remarks;
+				this.mainNum = this.tableData[this.selectedIndex].totalAmount;
+				this.remarks = this.tableData[this.selectedIndex].remark;
 			},
 			rowClick(item, index){
 				this.selectedIndex = index;
 				this.showEditPage = true;
 				
 				//
-				this.mainNum = this.tableData[this.selectedIndex].mainNum;
-				this.remarks = this.tableData[this.selectedIndex].remarks;
+				this.mainNum = this.tableData[this.selectedIndex].totalAmount;
+				this.remarks = this.tableData[this.selectedIndex].remark;
 			},
 			close() {
 				this.showEditPage = false;
 			},
 			confirmEdit() {
-				this.tableData[this.selectedIndex].mainNum = this.mainNum;
-				this.tableData[this.selectedIndex].remarks = this.remarks;
+				this.tableData[this.selectedIndex].totalAmount = this.mainNum;
+				this.tableData[this.selectedIndex].remark = this.remarks;
 
 				this.showEditPage = false;
 			},

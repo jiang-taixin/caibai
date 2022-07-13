@@ -96,6 +96,11 @@
 						title: '装箱',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
+					{
+						name: 'scan',
+						title: '库存查询',
+						platform: ["APP", "WEIXIN", "H5"],
+					},
 				],
 				list1: [
 					'/static/1.png',
@@ -115,13 +120,11 @@
 		},
 		mounted() {
 			//页面加载完成获取枚举值并缓存在本地
-
 			this.getAngecy(); //送检机构
 			this.getInspectionCategory(); //送检单类型
 			this.getReason(); //不合格原因
 			this.getTestingCategory(); //质检类别
-			
-
+			this.getDepartment(); //获取发货部门和库位
 		},
 		created() {
 			//判断平台类型    设置模块是否显示
@@ -223,6 +226,11 @@
 					case 15:
 						uni.navigateTo({
 							url: '/pages_home/packing'
+						});
+						break;
+					case 16:
+						uni.navigateTo({
+							url: '/pages_home/stockSearch'
 						});
 						break;
 
@@ -376,6 +384,57 @@
 					}
 				});
 			},
+			getDepartment() {
+				//获取发货部门和库位信息
+				var opts = {
+					url: ``,
+					method: 'post'
+				};
+				var param = {
+					"interface_num": "MOBSCMD0012",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": {},
+				};
+				this.$http.httpRequest(opts, param).then((res) => {
+					if (res.statusCode === 200) {
+						var departmentList = [];
+						var dataList = [];
+						if (res.data.length != 0) {
+							for (var i = 0; i < res.data.length; i++) {
+								if (departmentList.indexOf(res.data[i].shopCode) == -1) {
+									departmentList.push(res.data[i].shopCode);
+								}
+							};
+							departmentList.forEach(element => {
+								var deparment = {
+									"text": element,
+									"value": element,
+									"warehouseList": [],
+								};
+								dataList.push(deparment);
+								res.data.forEach(element => {
+									if (element.shopCode == deparment.value) {
+										var warehouse = {
+											"text": element.stockPalceName,
+											"value": element.stockPalce,
+										};
+										deparment.warehouseList.push(warehouse);
+									}
+								})
+
+							})
+						}
+						uni.setStorage({
+							key: 'departmentList',
+							data: dataList,
+							success: function() {}
+						});
+					} else {
+						//this.$toast.showToast("获取质检类别失败，请刷新页面");
+					}
+				});
+			}
 		}
 	}
 </script>

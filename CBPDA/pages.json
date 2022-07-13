@@ -197,6 +197,13 @@
 					"enablePullDownRefresh": false
 				}
 
+			}, {
+				"path": "stockSearch",
+				"style": {
+					"navigationBarTitleText": "库存查询",
+					"enablePullDownRefresh": false
+				}
+
 			}]
 		}
 	],

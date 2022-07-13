@@ -225,25 +225,9 @@ var _default =
 {
   data: function data() {
     return {
-      department: [{ //发货部门
-        value: 0,
-        text: "DC80" },
-
-      {
-        value: 1,
-        text: "DC81" }],
-
-
-      selectDepartment: 0, //选中发货部门
-      warehouse: [{ //库位
-        value: 0,
-        text: "仓库1" },
-
-      {
-        value: 1,
-        text: "仓库2" }],
-
-
+      department: [], //发货部门
+      selectDepartment: "DC80", //选中发货部门
+      warehouse: [], //库位
       selectWarehouse: "", //选中库位
       employeeNumber: "", //工号
       date: "" //日期
@@ -251,18 +235,24 @@ var _default =
   },
   mounted: function mounted() {
     this.employeeNumber = "NO0001";
+    this.date = this.$dateTrans.getDateString();
 
-    var nowDate = new Date();
-    var year = nowDate.getFullYear();
-    var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1) : nowDate.getMonth() + 1;
-    var day = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
-    var dateStr = year + "-" + month + "-" + day;
-    this.date = dateStr;
+    var vm = this;
+    uni.getStorage({
+      key: "departmentList",
+      success: function success(res) {
+        vm.department = res.data;
+        vm.warehouse = res.data.find(function (item) {return item.value == vm.selectDepartment;}).warehouseList;
+      },
+      fail: function fail(e) {
+      } });
+
+
   },
   methods: {
-    changeDepartment: function changeDepartment(e) {
+    changeDepartment: function changeDepartment(e) {var _this = this;
       this.selectDepartment = e;
-
+      this.warehouse = this.department.find(function (item) {return item.value == _this.selectDepartment;}).warehouseList;
     },
     changeWarehouse: function changeWarehouse(e) {
       this.selectWarehouse = e;
@@ -272,16 +262,16 @@ var _default =
       this.date = e;
 
     },
-    confirm: function confirm() {var _this = this;
+    confirm: function confirm() {var _this2 = this;
       if (this.selectDepartment === '' || this.selectDepartment === undefined) {
         this.$toast.showToast("请选择发货部门并重试");
 
         return;
       }
       if (this.selectWarehouse === '' || this.selectWarehouse === undefined) {
-        // this.$toast.showToast("请选择库位并重试");
+        this.$toast.showToast("请选择库位并重试");
 
-        // return;
+        return;
       }
       if (this.employeeNumber === '' || this.employeeNumber === undefined) {
         this.$toast.showToast("请填写工号并重试");
@@ -293,10 +283,8 @@ var _default =
 
         return;
       }
-      console.log("---------select department :", this.department.find(function (item) {return item.value === _this.
-        selectDepartment;}).text);
-      console.log("---------select warehouse :", this.warehouse.find(function (item) {return item.value === _this.
-        selectDepartment;}).text);
+      console.log("====================:", this.department.find(function (item) {return item.value == _this2.selectDepartment;}).text);
+      console.log("====================:", this.warehouse.find(function (item) {return item.value == _this2.selectWarehouse;}).text);
       console.log("---------date :", this.date);
       uni.navigateTo({
         url: "picking/picking?selectDepartment=".concat(this.selectDepartment, "&selectWarehouse=").concat(this.selectWarehouse, "&date=").concat(this.date) });

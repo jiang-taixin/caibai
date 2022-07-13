@@ -18362,7 +18362,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.API_BASE_P
 // export const API_BASE_DEVELOPMENT = 'http://2f44-2409-8a1e-a993-9d40-3915-5c85-dcc-586e.ngrok.io/cb/outside/mobile/v1';
 
 //测试环境API地址
-var API_BASE_DEVELOPMENT = 'http://111.198.86.229:18352/cb/outside/mobile/v1';
+var API_BASE_DEVELOPMENT = 'http://172.18.0.203:8080/cb/outside/mobile/v1';
 
 //正式环境API地址
 exports.API_BASE_DEVELOPMENT = API_BASE_DEVELOPMENT;var API_BASE_PRODUCTION = 'http://111.198.86.229:18352/cb/outside/mobile/v1';exports.API_BASE_PRODUCTION = API_BASE_PRODUCTION;
@@ -18404,10 +18404,20 @@ var formatMsToDate = function formatMsToDate(ms) {
   }
 };
 
+var getDateString = function getDateString() {
+  var nowDate = new Date();
+  var year = nowDate.getFullYear();
+  var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1) : nowDate.getMonth() + 1;
+  var day = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
+  var dateStr = year + "-" + month + "-" + day;
+  return dateStr;
+};
+
 function _default(Vue) {
   //添加全局API
   Vue.prototype.$dateTrans = {
-    formatMsToDate: formatMsToDate };
+    formatMsToDate: formatMsToDate,
+    getDateString: getDateString };
 
 }
 

@@ -52,25 +52,9 @@
 	export default {
 		data() {
 			return {
-				department: [{ //发货部门
-						value: 0,
-						text: "DC80"
-					},
-					{
-						value: 1,
-						text: "DC81"
-					}
-				],
-				selectDepartment: 0, //选中发货部门
-				warehouse: [{ //库位
-						value: 0,
-						text: "仓库1"
-					},
-					{
-						value: 1,
-						text: "仓库2"
-					},
-				],
+				department: [],//发货部门
+				selectDepartment: "DC80", //选中发货部门
+				warehouse: [],//库位
 				selectWarehouse: "", //选中库位
 				employeeNumber: "", //工号
 				date: "", //日期
@@ -79,11 +63,23 @@
 		mounted() {
 			this.employeeNumber = "NO0001";
 			this.date = this.$dateTrans.getDateString();
+			
+			let vm = this;
+			uni.getStorage({
+				key:"departmentList",
+				success(res) {
+					vm.department = res.data;
+					vm.warehouse = res.data.find(item => item.value == vm.selectDepartment).warehouseList;
+				},
+				fail(e) {
+				}
+			});
+			
 		},
 		methods: {
 			changeDepartment(e) {
 				this.selectDepartment = e;
-
+				this.warehouse = this.department.find(item => item.value == this.selectDepartment).warehouseList;
 			},
 			changeWarehouse(e) {
 				this.selectWarehouse = e;
@@ -100,9 +96,9 @@
 					return;
 				}
 				if (this.selectWarehouse === '' || this.selectWarehouse === undefined) {
-					// this.$toast.showToast("请选择库位并重试");
+					this.$toast.showToast("请选择库位并重试");
 					
-					// return;
+					return;
 				}
 				if (this.employeeNumber === '' || this.employeeNumber === undefined) {
 					this.$toast.showToast("请填写工号并重试");
@@ -114,10 +110,8 @@
 					
 					return;
 				}
-				console.log("---------select department :", this.department.find(item => item.value === this
-					.selectDepartment).text);
-				console.log("---------select warehouse :", this.warehouse.find(item => item.value === this
-					.selectDepartment).text);
+				console.log("====================:",this.department.find(item => item.value == this.selectDepartment).text);
+				console.log("====================:",this.warehouse.find(item => item.value == this.selectWarehouse).text);
 				console.log("---------date :", this.date);
 				uni.navigateTo({
 					url: `picking/picking?selectDepartment=${this.selectDepartment}&selectWarehouse=${this.selectWarehouse}&date=${this.date}`

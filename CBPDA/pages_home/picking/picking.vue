@@ -11,12 +11,14 @@
 				</u-col>
 				<u-col span="1">
 					<view style="width: 30px;height: 30px;">
-						<u-button type="primary" :plain="true" icon="scan" @click="startScan" style="width: 30px;height: 30px;"></u-button>
+						<u-button type="primary" :plain="true" icon="scan" @click="startScan"
+							style="width: 30px;height: 30px;"></u-button>
 					</view>
 				</u-col>
 				<u-col span="1">
 					<view style="width: 30px;height: 30px;">
-						<u-button type="primary" :plain="true" icon="search" @click="startSearch" style="width: 30px;height: 30px;"></u-button>
+						<u-button type="primary" :plain="true" icon="search" @click="startSearch"
+							style="width: 30px;height: 30px;"></u-button>
 					</view>
 				</u-col>
 			</u-row>
@@ -111,7 +113,7 @@
 					<view class="desc-text-edit">
 						<u--text type="primary" text="扫码输入" size=13></u--text>
 					</view>
-					<uni-easyinput v-model="inputNum" placeholder="扫码输入" @blur="blur">
+					<uni-easyinput v-model="inputNum" placeholder="扫码输入" @blur="blur" clearable>
 					</uni-easyinput>
 				</div>
 
@@ -133,13 +135,13 @@
 			<!-- 表格数据行 -->
 			<uni-tr v-for="(item, index) in tableData" @row-click="rowClick(item,index)">
 				<uni-td>{{item.tagName}}</uni-td>
-				<uni-td>{{item.location}}</uni-td>
-				<uni-td>{{item.mainNum}}</uni-td>
+				<uni-td>{{item.position}}</uni-td>
+				<uni-td>{{item.totalAmount}}</uni-td>
 				<uni-td>{{item.barCode}}</uni-td>
 				<uni-td>{{item.packageCode}}</uni-td>
-				<uni-td>{{item.secondaryNum}}</uni-td>
-				<uni-td>{{item.materialName}}</uni-td>
-				<uni-td>{{item.modelNum}}</uni-td>
+				<uni-td>{{item.postingNum}}</uni-td>
+				<uni-td>{{item.materielDesc}}</uni-td>
+				<uni-td>{{item.materielCode}}</uni-td>
 			</uni-tr>
 		</uni-table>
 
@@ -153,7 +155,7 @@
 				</u-col>
 				<u-col span="6">
 					<div class="col-layout">
-						<u-button type="primary" @click="tempStorage" text="暂存" style="width: 80%;margin-left: 10%;">
+						<u-button type="primary" @click="save" text="保存" style="width: 80%;margin-left: 10%;">
 						</u-button>
 					</div>
 				</u-col>
@@ -167,7 +169,7 @@
 					</view>
 					<view style="float:left;width: 220px;">
 						<!--u--text改text u--text在微信小程序中v-text无效-->
-						<text v-text="tableData[selectedIndex].tagName" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?[selectedIndex].tagName:''" style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -175,7 +177,8 @@
 						<text style="font-size: 13px;">商品条码:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData[selectedIndex].barCode" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].barCode:''"
+							style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -183,7 +186,8 @@
 						<text style="font-size: 13px;">商品包码:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData[selectedIndex].packageCode" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].packageCode:''"
+							style="font-size: 13px;" />
 					</view>
 
 				</div>
@@ -192,7 +196,8 @@
 						<text style="font-size: 13px;">仓位:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData[selectedIndex].location" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].position:''"
+							style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -200,7 +205,8 @@
 						<text style="font-size: 13px;">物料名称:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData[selectedIndex].materialName" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].materielDesc:''"
+							style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -208,7 +214,8 @@
 						<text style="font-size: 13px;">款号:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData[selectedIndex].modelNum" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].materielCode:''"
+							style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -267,80 +274,54 @@
 				codeNumber: "", //条形码或二维码
 				department: "", //传入的发货部门
 				warehouse: "", //传入的发货库位
-				number: "", //
+				number: "100", //数量
 				recommend: "", //推荐库位
-				steps: "2/10", //进度步数
-				nowStep:0,
+				steps: "0/0", //进度步数
+				nowStep: 0, //当前进度
+				sumStep: 0, //进度总数
 				modelNum: "", //款号
 				name: "", //名称
 				distributeNum: "", //分配数量
 				SOU: "", //SOU
 				totalNum: "", //合计数量
 				inputNum: "", //扫码输入号码
-				tableData: [{
-						tagName: "tag1",
-						barCode: "1111111111111111111111",
-						packageCode: "PACK123434556665555",
-						mainNum: "120",
-						secondaryNum: "100",
-						location: "ABV1111",
-						modelNum: "KUAN111",
-						materialName: "物料111",
-						remarks: "备注信息1，备注信息",
-					},
-					{
-						tagName: "tag123",
-						barCode: "33212111111111111111",
-						packageCode: "PACK1232332226665555",
-						mainNum: "10",
-						secondaryNum: "80",
-						location: "ABV2222",
-						modelNum: "KUAN222",
-						materialName: "物料222",
-						remarks: "备注信息2，备注信息",
-					},
-					{
-						tagName: "tag3",
-						barCode: "33333333333333333333",
-						packageCode: "PACK444444444444444444444",
-						mainNum: "110",
-						secondaryNum: "90",
-						location: "ABV3333",
-						modelNum: "KUAN333",
-						materialName: "物料333",
-						remarks: "备注信息3，备注信息",
-					}
-				],
+				tableData: [],
 				showEditPage: false, //是否显示编辑页面
 				selectedIndex: 0, //当前选中的数据行
 				mainNum: "", //数量、克重    用于当前行的信息编辑
 				secondaryNum: "", //次要数量    用于当前行的信息编辑
 				remarks: "", //备注   用于当前行的信息编辑
+				masterData: [],
 			}
 		},
 		onNavigationBarButtonTap(val) {
-			console.log("------- click nav button:", val);
 			if (val.index === 0) {
 				console.log("下一步");
-				if(this.nowStep < 10){
-					this.nowStep = this.nowStep +1;
-					this.steps = `${this.nowStep}/10`;
+				if (this.nowStep < this.sumStep) {
+					this.masterData.detail[this.nowStep - 1].itemList = this.tableData;
+					this.nowStep = this.nowStep + 1;
+					this.steps = `${this.nowStep}/${this.sumStep}`;
+					this.reload();
 				}
-				
+
 			} else {
 				console.log("上一步");
-				if(this.nowStep > 1){
-					this.nowStep = this.nowStep -1;
-					this.steps = `${this.nowStep}/10`;
+				if (this.nowStep > 1) {
+					this.masterData.detail[this.nowStep - 1].itemList = this.tableData;
+					this.nowStep = this.nowStep - 1;
+					this.steps = `${this.nowStep}/${this.sumStep}`;
+					this.reload();
 				}
 			}
 		},
 		onLoad: function(option) {
 			//获取url中传入的参数
 			console.log(option.date);
+			this.department = option.selectDepartment;
+			this.warehouse = option.selectWarehouse;
 		},
 		methods: {
-			startScan(){
+			startScan() {
 				let vm = this;
 				uni.scanCode({
 					success: function(res) {
@@ -350,32 +331,68 @@
 							});
 						} else {
 							this.$toast.showToast("扫码失败，请重试");
-							
+
 						}
 					}
 				});
 			},
-			startSearch(){
-				
+			startSearch() {
+				if (this.codeNumber === '' || this.codeNumber === undefined) {
+					this.$toast.showToast("请先扫描包码");
+					return;
+				}
+				var opts = {
+					url: ``,
+					method: 'post'
+				};
+				uni.showLoading({
+					title: '加载中...'
+				});
+				var param = {
+					"interface_num": "MOBSCMD0014",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": {
+						"poCode": this.codeNumber
+					},
+				};
+				this.$http.httpRequest(opts, param).then((res) => {
+					uni.hideLoading();
+					console.log("*****************res:", res);
+					if (res.statusCode === 200) {
+						this.masterData = res.data;
+						this.sumStep = res.data.detail.length;
+						this.nowStep = 1;
+						this.steps = `${this.nowStep}/${this.sumStep}`;
+						this.modelNum = res.data.detail[0].materielCode;
+						this.name = res.data.detail[0].materielDesc;
+						this.SOU = res.data.detail[0].sou;
+						this.distributeNum = res.data.detail[0].planPackingNum;
+						this.num = res.data.detail[0].allotNum;
+						this.recommend = res.data.detail[0].shopCode;
+						this.tableData = res.data.detail[0].itemList;
+						this.totalNum = this.tableData.length;
+
+					} else {
+						this.$toast.showToast("获取数据失败，请重试");
+					}
+				});
 			},
 			rowClick(item, index) {
 				console.log("*******************:", item);
 				this.selectedIndex = index;
-
 				this.showEditPage = true;
-				//
-				this.mainNum = this.tableData[this.selectedIndex].mainNum;
-				this.secondaryNum = this.tableData[this.selectedIndex].secondaryNum;
-				this.remarks = this.tableData[this.selectedIndex].remarks;
+				this.mainNum = this.tableData[this.selectedIndex].totalAmount;
+				this.secondaryNum = this.tableData[this.selectedIndex].postingNum;
+				this.remarks = this.tableData[this.selectedIndex].remark;
 			},
 			close() {
 				this.showEditPage = false;
 			},
 			confirmEdit() {
-				this.tableData[this.selectedIndex].mainNum = this.mainNum;
-				this.tableData[this.selectedIndex].secondaryNum = this.secondaryNum;
-				this.tableData[this.selectedIndex].remarks = this.remarks;
-
+				this.tableData[this.selectedIndex].totalAmount = this.mainNum;
+				this.tableData[this.selectedIndex].postingNum = this.secondaryNum;
+				this.tableData[this.selectedIndex].remark = this.remarks;
 				this.showEditPage = false;
 			},
 			cancelEdit() {
@@ -387,13 +404,60 @@
 			},
 			blur(e) {
 				//扫码结束获取信息并更新进列表
-				console.log("blur :", e.target.value);
-			},
-			commit(){
+				if (e.target.value == '') {
+					return;
+				};
+				var opts = {
+					url: ``,
+					method: 'post'
+				};
+				uni.showLoading({
+					title: '加载中...'
+				});
+				var param = {
+					"interface_num": "MOBSCMD0015",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": {
+						"codeNumber": e.target.value,
+						"sou": this.SOU,
+					},
+				};
 				
+				this.$http.httpRequest(opts, param).then((res) => {
+					uni.hideLoading();
+					this.inputNum = "";
+					console.log("*****************res:", res);
+					if (res.statusCode === 200) {
+						res.data.forEach(element => {
+							//给每条数据添加item号
+							element.itemCode = `${this.nowStep}${this.prefixInteger(this.tableData.length+1,3)}`;
+							this.tableData.push(element);
+						});
+						this.totalNum = this.tableData.length;
+					} else {
+						this.$toast.showToast("获取数据失败，请重试");
+					}
+				});
 			},
-			tempStorage(){
-				
+			commit() {
+				console.log("===========commit data:",this.masterData);
+			},
+			save() {
+
+			},
+			prefixInteger(num, n) {
+				return (Array(n).join(0) + num).slice(-n);
+			},
+			reload() {
+				this.modelNum = this.masterData.detail[this.nowStep - 1].materielCode;
+				this.name = this.masterData.detail[this.nowStep - 1].materielDesc;
+				this.SOU = this.masterData.detail[this.nowStep - 1].sou;
+				this.distributeNum = this.masterData.detail[this.nowStep - 1].planPackingNum;
+				this.num = this.masterData.detail[this.nowStep - 1].allotNum;
+				this.recommend = this.masterData.detail[this.nowStep - 1].shopCode;
+				this.tableData = this.masterData.detail[this.nowStep - 1].itemList;
+				this.totalNum = this.tableData.length;
 			}
 		}
 	}

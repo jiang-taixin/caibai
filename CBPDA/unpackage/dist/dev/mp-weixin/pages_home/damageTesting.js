@@ -330,13 +330,7 @@ var _default =
   mounted: function mounted() {
     //页面加载完成之后的操作
     this.qualityInspector = "当前用户";
-
-    var nowDate = new Date();
-    var year = nowDate.getFullYear();
-    var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1) : nowDate.getMonth() + 1;
-    var day = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
-    var dateStr = year + "-" + month + "-" + day;
-    this.inspectionTime = dateStr;
+    this.inspectionTime = this.$dateTrans.getDateString();
 
     var vm = this;
     uni.getStorage({

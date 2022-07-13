@@ -124,9 +124,6 @@ try {
     },
     uniTd: function() {
       return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-td/uni-td */ "uni_modules/uni-table/components/uni-td/uni-td").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-td/uni-td.vue */ 390))
-    },
-    uPopup: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 424))
     }
   }
 } catch (e) {
@@ -350,101 +347,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
@@ -454,65 +356,50 @@ var _default =
       warehouse: "", //传入的发货库位
       number: "", //
       recommend: "", //推荐库位
-      steps: "2/10", //进度步数
+      steps: "*/*", //进度步数
+      nowStep: 0, //当前进度
+      sumStep: 0, //进度总数
       modelNum: "", //款号
       name: "", //名称
       distributeNum: "", //分配数量
       SOU: "", //SOU
       totalNum: "", //合计数量
       inputNum: "", //扫码输入号码
-      tableData: [{
-        tagName: "tag1",
-        barCode: "1111111111111111111111",
-        packageCode: "PACK123434556665555",
-        mainNum: "120",
-        secondaryNum: "100",
-        location: "ABV1111",
-        modelNum: "KUAN111",
-        materialName: "物料111",
-        remarks: "备注信息1，备注信息" },
-
-      {
-        tagName: "tag123",
-        barCode: "33212111111111111111",
-        packageCode: "PACK1232332226665555",
-        mainNum: "10",
-        secondaryNum: "80",
-        location: "ABV2222",
-        modelNum: "KUAN222",
-        materialName: "物料222",
-        remarks: "备注信息2，备注信息" },
-
-      {
-        tagName: "tag3",
-        barCode: "33333333333333333333",
-        packageCode: "PACK444444444444444444444",
-        mainNum: "110",
-        secondaryNum: "90",
-        location: "ABV3333",
-        modelNum: "KUAN333",
-        materialName: "物料333",
-        remarks: "备注信息3，备注信息" }],
-
-
+      tableData: [],
       showEditPage: false, //是否显示编辑页面
       selectedIndex: 0, //当前选中的数据行
       mainNum: "", //数量、克重    用于当前行的信息编辑
       secondaryNum: "", //次要数量    用于当前行的信息编辑
-      remarks: "" //备注   用于当前行的信息编辑
-    };
+      remarks: "", //备注   用于当前行的信息编辑
+      masterData: [] };
+
   },
   onNavigationBarButtonTap: function onNavigationBarButtonTap(val) {
     console.log("------- click nav button:", val);
     if (val.index === 0) {
       console.log("下一步");
+      if (this.nowStep < this.sumStep) {
+        this.nowStep = this.nowStep + 1;
+        this.steps = "".concat(this.nowStep, "/").concat(this.sumStep);
+        this.reload();
+      }
+
     } else {
       console.log("上一步");
+      if (this.nowStep > 1) {
+        this.nowStep = this.nowStep - 1;
+        this.steps = "".concat(this.nowStep, "/").concat(this.sumStep);
+        this.reload();
+      }
     }
   },
   onLoad: function onLoad(option) {
     //获取url中传入的参数
     console.log(option.date);
+    this.department = option.selectDepartment;
+    this.warehouse = option.selectWarehouse;
+    this.recommend = option.selectWarehouse;
+    console.log("1".concat(this.prefixInteger(13, 3)));
   },
   methods: {
     startScan: function startScan() {
@@ -530,15 +417,49 @@ var _default =
         } });
 
     },
-    startSearch: function startSearch() {
+    startSearch: function startSearch() {var _this = this;
+      if (this.codeNumber === '' || this.codeNumber === undefined) {
+        this.$toast.showToast("请先扫描包码");
+        return;
+      }
+      var opts = {
+        url: "",
+        method: 'post' };
 
+      uni.showLoading({
+        title: '加载中...' });
+
+      var param = {
+        "interface_num": "MOBSCMD0014",
+        "serial_no": "123456789",
+        "access_token": "abc",
+        "bus_data": {
+          "poCode": this.codeNumber } };
+
+
+      this.$http.httpRequest(opts, param).then(function (res) {
+        uni.hideLoading();
+        console.log("*****************res:", res);
+        if (res.statusCode === 200) {
+          _this.masterData = res.data;
+          _this.sumStep = res.data.detail.length;
+          _this.nowStep = 1;
+          _this.steps = "".concat(_this.nowStep, "/").concat(_this.sumStep);
+          _this.modelNum = res.data.detail[0].materielCode;
+          _this.name = res.data.detail[0].materielDesc;
+          _this.SOU = res.data.detail[0].sou;
+          _this.distributeNum = res.data.detail[0].planPackingNum;
+          _this.num = res.data.detail[0].allotNum;
+
+        } else {
+          _this.$toast.showToast("获取数据失败，请重试");
+        }
+      });
     },
     rowClick: function rowClick(item, index) {
       console.log("*******************:", item);
       this.selectedIndex = index;
-
       this.showEditPage = true;
-      //
       this.mainNum = this.tableData[this.selectedIndex].mainNum;
       this.secondaryNum = this.tableData[this.selectedIndex].secondaryNum;
       this.remarks = this.tableData[this.selectedIndex].remarks;
@@ -550,7 +471,6 @@ var _default =
       this.tableData[this.selectedIndex].mainNum = this.mainNum;
       this.tableData[this.selectedIndex].secondaryNum = this.secondaryNum;
       this.tableData[this.selectedIndex].remarks = this.remarks;
-
       this.showEditPage = false;
     },
     cancelEdit: function cancelEdit() {
@@ -563,6 +483,22 @@ var _default =
     blur: function blur(e) {
       //扫码结束获取信息并更新进列表
       console.log("blur :", e.target.value);
+    },
+    commit: function commit() {
+
+    },
+    tempStorage: function tempStorage() {
+
+    },
+    prefixInteger: function prefixInteger(num, n) {
+      return (Array(n).join(0) + num).slice(-n);
+    },
+    reload: function reload() {
+      this.modelNum = this.masterData.detail[this.nowStep - 1].materielCode;
+      this.name = this.masterData.detail[this.nowStep - 1].materielDesc;
+      this.SOU = this.masterData.detail[this.nowStep - 1].sou;
+      this.distributeNum = this.masterData.detail[this.nowStep - 1].planPackingNum;
+      this.num = this.masterData.detail[this.nowStep - 1].allotNum;
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
