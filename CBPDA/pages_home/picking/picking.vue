@@ -113,7 +113,7 @@
 					<view class="desc-text-edit">
 						<u--text type="primary" text="扫码输入" size=13></u--text>
 					</view>
-					<uni-easyinput v-model="inputNum" placeholder="扫码输入" @blur="blur" clearable>
+					<uni-easyinput v-model="inputNum" placeholder="扫码输入" @blur="blur" :disabled="disabled" clearable>
 					</uni-easyinput>
 				</div>
 
@@ -136,10 +136,10 @@
 			<uni-tr v-for="(item, index) in tableData" @row-click="rowClick(item,index)">
 				<uni-td>{{item.tagName}}</uni-td>
 				<uni-td>{{item.position}}</uni-td>
-				<uni-td>{{item.totalAmount}}</uni-td>
+				<uni-td>{{item.qualityPiece}}</uni-td>
 				<uni-td>{{item.barCode}}</uni-td>
 				<uni-td>{{item.packageCode}}</uni-td>
-				<uni-td>{{item.postingNum}}</uni-td>
+				<uni-td>{{item.subQualityPiece}}</uni-td>
 				<uni-td>{{item.materielDesc}}</uni-td>
 				<uni-td>{{item.materielCode}}</uni-td>
 			</uni-tr>
@@ -149,13 +149,13 @@
 			<u-row>
 				<u-col span="6">
 					<div class="col-layout">
-						<u-button type="primary" @click="commit" text="确认" style="width: 80%;margin-left: 10%;">
+						<u-button type="primary" @click="commit" text="确认" style="width: 80%;margin-left: 10%;" :disabled="disabled">
 						</u-button>
 					</div>
 				</u-col>
 				<u-col span="6">
 					<div class="col-layout">
-						<u-button type="primary" @click="save" text="保存" style="width: 80%;margin-left: 10%;">
+						<u-button type="primary" @click="save" text="保存" style="width: 80%;margin-left: 10%;" :disabled="disabled">
 						</u-button>
 					</div>
 				</u-col>
@@ -264,6 +264,9 @@
 				</u-row>
 			</view>
 		</u-popup>
+		<u-modal :show="show" title="提示" :showCancelButton="true" @confirm="confirm" @cancel="close" :asyncClose="true">
+			<text>确认过账？</text>
+		</u-modal>
 	</view>
 </template>
 
@@ -292,22 +295,22 @@
 				secondaryNum: "", //次要数量    用于当前行的信息编辑
 				remarks: "", //备注   用于当前行的信息编辑
 				masterData: [],
+				disabled:false,   //控制过账后数据是否可编辑
+				show:false,       //弹出模态窗
 			}
 		},
 		onNavigationBarButtonTap(val) {
 			if (val.index === 0) {
-				console.log("下一步");
+				//下一步
 				if (this.nowStep < this.sumStep) {
-					this.masterData.detail[this.nowStep - 1].itemList = this.tableData;
 					this.nowStep = this.nowStep + 1;
 					this.steps = `${this.nowStep}/${this.sumStep}`;
 					this.reload();
 				}
 
 			} else {
-				console.log("上一步");
+				//上一步
 				if (this.nowStep > 1) {
-					this.masterData.detail[this.nowStep - 1].itemList = this.tableData;
 					this.nowStep = this.nowStep - 1;
 					this.steps = `${this.nowStep}/${this.sumStep}`;
 					this.reload();
@@ -316,7 +319,6 @@
 		},
 		onLoad: function(option) {
 			//获取url中传入的参数
-			console.log(option.date);
 			this.department = option.selectDepartment;
 			this.warehouse = option.selectWarehouse;
 		},
@@ -331,7 +333,6 @@
 							});
 						} else {
 							this.$toast.showToast("扫码失败，请重试");
-
 						}
 					}
 				});
@@ -367,11 +368,16 @@
 						this.modelNum = res.data.detail[0].materielCode;
 						this.name = res.data.detail[0].materielDesc;
 						this.SOU = res.data.detail[0].sou;
-						this.distributeNum = res.data.detail[0].planPackingNum;
-						this.num = res.data.detail[0].allotNum;
+						this.distributeNum = res.data.detail[0].allotNum;
 						this.recommend = res.data.detail[0].shopCode;
 						this.tableData = res.data.detail[0].itemList;
 						this.totalNum = this.tableData.length;
+						if(res.data.header.orderStatus !== "2" && res.data.header.orderStatus !== "3"){
+							this.disabled = false;
+						}
+						else{
+							this.disabled = true;
+						}
 
 					} else {
 						this.$toast.showToast("获取数据失败，请重试");
@@ -379,20 +385,19 @@
 				});
 			},
 			rowClick(item, index) {
-				console.log("*******************:", item);
 				this.selectedIndex = index;
 				this.showEditPage = true;
-				this.mainNum = this.tableData[this.selectedIndex].totalAmount;
-				this.secondaryNum = this.tableData[this.selectedIndex].postingNum;
-				this.remarks = this.tableData[this.selectedIndex].remark;
+				this.mainNum = this.tableData[this.selectedIndex].qualityPiece;
+				this.secondaryNum = this.tableData[this.selectedIndex].subQualityPiece;
+				this.remarks = this.tableData[this.selectedIndex].reamrk;
 			},
 			close() {
 				this.showEditPage = false;
 			},
 			confirmEdit() {
-				this.tableData[this.selectedIndex].totalAmount = this.mainNum;
-				this.tableData[this.selectedIndex].postingNum = this.secondaryNum;
-				this.tableData[this.selectedIndex].remark = this.remarks;
+				this.tableData[this.selectedIndex].qualityPiece = this.mainNum;
+				this.tableData[this.selectedIndex].subQualityPiece = this.secondaryNum;
+				this.tableData[this.selectedIndex].reamrk = this.remarks;
 				this.showEditPage = false;
 			},
 			cancelEdit() {
@@ -401,6 +406,7 @@
 			deleteItem() {
 				this.tableData.splice(this.selectedIndex, 1);
 				this.showEditPage = false;
+				this.totalNum = this.tableData.length;
 			},
 			blur(e) {
 				//扫码结束获取信息并更新进列表
@@ -430,9 +436,22 @@
 					console.log("*****************res:", res);
 					if (res.statusCode === 200) {
 						res.data.forEach(element => {
-							//给每条数据添加item号
-							element.itemCode = `${this.nowStep}${this.prefixInteger(this.tableData.length+1,3)}`;
-							this.tableData.push(element);
+							if(this.tableData.length < this.distributeNum){
+								var dataBody = {};
+								dataBody.tagName = element.tagName;
+								dataBody.position = element.position;
+								dataBody.qualityPiece = element.qualityPiece;
+								dataBody.barCode = element.barCode;
+								dataBody.packageCode = element.packageCode;
+								dataBody.subQualityPiece = element.subQualityPiece;
+								dataBody.materielDesc = element.materialDesc;
+								dataBody.materielCode = element.materialCode;
+								dataBody.poItemCode = this.nowStep;
+								this.tableData.push(dataBody);
+							}
+							else{
+								this.$toast.showToast("已达最大量");
+							}
 						});
 						this.totalNum = this.tableData.length;
 					} else {
@@ -441,20 +460,56 @@
 				});
 			},
 			commit() {
+				if (this.nowStep < this.sumStep) {
+					this.nowStep = this.nowStep + 1;
+					this.steps = `${this.nowStep}/${this.sumStep}`;
+					this.reload();
+				}
+				else{
+					this.show = true;
+				}
+			},
+			close(){
+				this.show = false;
+			},
+			confirm(){
+				//提交数据
+				this.show = false;
+				if(this.masterData.detail.length != 0){
+					this.setItemCode();
+				}
+				else{
+					this.$toast.showToast("请先添加数据再提交");
+					return;
+				}
 				console.log("===========commit data:",this.masterData);
 			},
 			save() {
-
+				this.show = false;
+				if(this.masterData.detail.length != 0){
+					this.setItemCode();
+				}
+				else{
+					this.$toast.showToast("请先添加数据再提交");
+					return;
+				}
 			},
 			prefixInteger(num, n) {
 				return (Array(n).join(0) + num).slice(-n);
+			},
+			setItemCode(){
+				//给每条数据添加item号 提交前添加防止删除操作时出现重复item号
+				for (var i = 0; i < this.masterData.detail.length; i++) {
+					for (var j = 0; j < this.masterData.detail[i].itemList.length; j++) {
+						this.masterData.detail[i].itemList[j].itemCode = `${i+1}${this.prefixInteger(j+1,3)}`;
+					};
+				};
 			},
 			reload() {
 				this.modelNum = this.masterData.detail[this.nowStep - 1].materielCode;
 				this.name = this.masterData.detail[this.nowStep - 1].materielDesc;
 				this.SOU = this.masterData.detail[this.nowStep - 1].sou;
-				this.distributeNum = this.masterData.detail[this.nowStep - 1].planPackingNum;
-				this.num = this.masterData.detail[this.nowStep - 1].allotNum;
+				this.distributeNum = this.masterData.detail[this.nowStep - 1].allotNum;
 				this.recommend = this.masterData.detail[this.nowStep - 1].shopCode;
 				this.tableData = this.masterData.detail[this.nowStep - 1].itemList;
 				this.totalNum = this.tableData.length;

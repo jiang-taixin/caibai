@@ -40,23 +40,22 @@
 				<uni-th align="center">次要单位</uni-th>
 				<uni-th align="center">工厂</uni-th>
 				<uni-th align="center">库位/仓位</uni-th>
-				
 			</uni-tr>
 			<!-- 表格数据行 -->
 			<uni-tr v-for="(item, index) in tableData" @row-click="rowClick(item,index)">
+				<uni-td>{{item.materialCode}}</uni-td>
 				<uni-td>{{item.tagName}}</uni-td>
-				<uni-td>{{item.position}}</uni-td>
-				<uni-td>{{item.totalAmount}}</uni-td>
+				<uni-td>{{item.supName}}</uni-td>
 				<uni-td>{{item.barCode}}</uni-td>
-				<uni-td>{{item.packageCode}}</uni-td>
-				<uni-td>{{item.postingNum}}</uni-td>
-				<uni-td>{{item.materielDesc}}</uni-td>
-				<uni-td>{{item.materielCode}}</uni-td>
-				<uni-td>{{item.materielCode}}</uni-td>
-				<uni-td>{{item.materielCode}}</uni-td>
-				<uni-td>{{item.materielCode}}</uni-td>
-				<uni-td>{{item.materielCode}}</uni-td>
-				<uni-td>{{item.materielCode}}</uni-td>
+				<uni-td>{{item.materialDesc}}</uni-td>
+				<uni-td>{{item.qualityPiece}}</uni-td>
+				<uni-td>{{item.limitQualityPiece}}</uni-td>
+				<uni-td>{{item.subQualityPiece}}</uni-td>
+				<uni-td>{{item.subLimitQualityPiece}}</uni-td>
+				<uni-td>{{item.baseUnit}}</uni-td>
+				<uni-td>{{item.subUnit}}</uni-td>
+				<uni-td>{{item.shopCode}}</uni-td>
+				<uni-td>{{item.stockPalce}}</uni-td>
 			</uni-tr>
 		</uni-table>
 	</view>
@@ -99,18 +98,20 @@
 					title: '加载中...'
 				});
 				var param = {
-					"interface_num": "MOBSCMD0015",
+					"interface_num": "MOBSCMD0016",
 					"serial_no": "123456789",
 					"access_token": "abc",
 					"bus_data": {
 						"codeNumber": this.codeNumber,
 					},
 				};
+				
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
+					this.inputNum = "";
 					console.log("*****************res:", res);
 					if (res.statusCode === 200) {
-						
+						this.tableData = res.data;
 					} else {
 						this.$toast.showToast("获取数据失败，请重试");
 					}
