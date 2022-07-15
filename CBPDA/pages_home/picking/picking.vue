@@ -363,7 +363,9 @@
 					if (res.statusCode === 200) {
 						this.masterData = res.data;
 						this.sumStep = res.data.detail.length;
-						this.nowStep = 1;
+						if(this.sumStep != 0){
+							this.nowStep = 1;
+						}
 						this.steps = `${this.nowStep}/${this.sumStep}`;
 						this.modelNum = res.data.detail[0].materielCode;
 						this.name = res.data.detail[0].materielDesc;
@@ -438,6 +440,20 @@
 						res.data.forEach(element => {
 							if(this.tableData.length < this.distributeNum){
 								var dataBody = {};
+								dataBody.poCode = this.masterData.header.poCode;
+								dataBody.factoryCode = element.shopCode;
+								dataBody.stockPalce = element.stockPlace;
+								dataBody.batch = element.batch;
+								//次要数量
+								dataBody.prepareGoodsNum = element.subQualityPiece;
+								dataBody.subUnit = element.subUnit;
+								dataBody.waraHouse = element.waraHouse;
+								dataBody.goodsArea = element.goodsArea;
+								//移动类型
+								dataBody.moveType = this.masterData.header.moveType;
+								//单品金重
+								dataBody.glodWeight = element.gramWeight;
+								dataBody.baseUnit = element.baseUnit;
 								dataBody.tagName = element.tagName;
 								dataBody.position = element.position;
 								dataBody.qualityPiece = element.qualityPiece;
@@ -446,7 +462,8 @@
 								dataBody.subQualityPiece = element.subQualityPiece;
 								dataBody.materielDesc = element.materialDesc;
 								dataBody.materielCode = element.materialCode;
-								dataBody.poItemCode = this.nowStep;
+								dataBody.sou = element.sou;
+								dataBody.poItemCode = this.masterData.detail[this.nowStep-1].itemCode;
 								this.tableData.push(dataBody);
 							}
 							else{
@@ -475,7 +492,7 @@
 			confirm(){
 				//提交数据
 				this.show = false;
-				if(this.masterData.detail.length != 0){
+				if(this.masterData.detail != undefined && this.masterData.detail.length != 0){
 					this.setItemCode();
 				}
 				else{
@@ -485,8 +502,7 @@
 				console.log("===========commit data:",this.masterData);
 			},
 			save() {
-				this.show = false;
-				if(this.masterData.detail.length != 0){
+				if(this.masterData.detail != undefined && this.masterData.detail.length != 0){
 					this.setItemCode();
 				}
 				else{
@@ -501,7 +517,7 @@
 				//给每条数据添加item号 提交前添加防止删除操作时出现重复item号
 				for (var i = 0; i < this.masterData.detail.length; i++) {
 					for (var j = 0; j < this.masterData.detail[i].itemList.length; j++) {
-						this.masterData.detail[i].itemList[j].itemCode = `${i+1}${this.prefixInteger(j+1,3)}`;
+						this.masterData.detail[i].itemList[j].itemCode = `${this.masterData.detail[i].itemCode}${this.prefixInteger(j+1,3)}`;
 					};
 				};
 			},

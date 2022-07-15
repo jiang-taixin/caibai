@@ -84,10 +84,10 @@
 				<uni-td>{{item.tagName}}</uni-td>
 				<uni-td>{{item.position}}</uni-td>
 				<uni-td>{{item.qualityPiece}}</uni-td>
-				<uni-td>{{item.SOU}}</uni-td>
+				<uni-td>{{item.sou}}</uni-td>
 				<uni-td>{{item.barCode}}</uni-td>
 				<uni-td>{{item.packageCode}}</uni-td>
-				<uni-td>{{item.materialCode}}</uni-td>
+				<uni-td>{{item.materielCode}}</uni-td>
 			</uni-tr>
 		</uni-table>
 		<div style="position: fixed;bottom: 0px;width: 100%;background-color:aquamarine;">
@@ -113,7 +113,7 @@
 						<text style="font-size: 13px;">SOU:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData.length > 0?tableData[selectedIndex].SOU:''" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].sou:''" style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -161,7 +161,7 @@
 						<text style="font-size: 13px;">款号:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData.length > 0?tableData[selectedIndex].materialCode:''" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].materielCode:''" style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -292,18 +292,15 @@
 			rowClick(item, index){
 				this.selectedIndex = index;
 				this.showEditPage = true;
-				
-				//
 				this.mainNum = this.tableData[this.selectedIndex].qualityPiece;
-				this.remarks = this.tableData[this.selectedIndex].remark;
+				this.remarks = this.tableData[this.selectedIndex].reamrk;
 			},
 			close() {
 				this.showEditPage = false;
 			},
 			confirmEdit() {
 				this.tableData[this.selectedIndex].qualityPiece = this.mainNum;
-				this.tableData[this.selectedIndex].remark = this.remarks;
-
+				this.tableData[this.selectedIndex].reamrk = this.remarks;
 				this.showEditPage = false;
 			},
 			cancelEdit() {
@@ -316,7 +313,6 @@
 			},
 			blur(e) {
 				//扫码结束获取信息并更新进列表
-				console.log("blur :", this.inputNum);
 				if (e.target.value == '') {
 					return;
 				};
@@ -342,7 +338,28 @@
 					console.log("*****************res:", res);
 					if (res.statusCode === 200) {
 						res.data.forEach(element => {
-							this.tableData.push(element);
+							var dataBody = {};
+							dataBody.poCode = this.masterData.header.poCode;
+							dataBody.factoryCode = element.shopCode;
+							dataBody.stockPalce = element.stockPlace;
+							dataBody.batch = element.batch;
+							dataBody.prepareGoodsNum = element.subQualityPiece;
+							dataBody.subUnit = element.subUnit;
+							dataBody.waraHouse = element.waraHouse;
+							dataBody.goodsArea = element.goodsArea;
+							dataBody.moveType = this.masterData.header.moveType;
+							dataBody.glodWeight = element.gramWeight;
+							dataBody.baseUnit = element.baseUnit;
+							dataBody.tagName = element.tagName;
+							dataBody.position = element.position;
+							dataBody.qualityPiece = element.qualityPiece;
+							dataBody.barCode = element.barCode;
+							dataBody.packageCode = element.packageCode;
+							dataBody.subQualityPiece = element.subQualityPiece;
+							dataBody.materielDesc = element.materialDesc;
+							dataBody.materielCode = element.materialCode;
+							dataBody.sou = element.sou; 
+							this.tableData.push(dataBody);
 						});
 						this.totalNum = this.tableData.length;
 					} else {
@@ -352,7 +369,6 @@
 			},
 			commit(){
 				this.show = true;
-				
 			},
 			close(){
 				this.show = false;
@@ -360,7 +376,7 @@
 			confirm(){
 				//提交数据
 				this.show = false;
-				if(this.masterData.item.length != 0){
+				if(this.masterData.item != undefined&&this.masterData.item.length != 0){
 					this.setItemCode();
 				}
 				else{
@@ -370,7 +386,14 @@
 				console.log("==============masterData:",this.masterData);
 			},
 			save(){
-				
+				if(this.masterData.item != undefined&&this.masterData.item.length != 0){
+					this.setItemCode();
+				}
+				else{
+					this.$toast.showToast("请先添加数据再提交");
+					return;
+				}
+				console.log("==============masterData:",this.masterData);
 			},
 			setItemCode(){
 				//给每条数据添加item号 提交前添加防止删除操作时出现重复item号

@@ -35,7 +35,8 @@
         "implementStockCheck/implementStockCheck",
         "positionAdjustment",
         "locationAdjustment",
-        "packing"
+        "packing",
+        "stockSearch"
       ]
     }
   ],

@@ -261,6 +261,7 @@
 					},
 				};
 				this.$http.httpRequest(opts, param).then((res) => {
+					console.log("*************res:",res);
 					uni.hideLoading();
 					if (res.data.code === "200") {
 						this.headerMessage = res.data.data;

@@ -13,6 +13,7 @@
     "uni-td": "/uni_modules/uni-table/components/uni-td/uni-td",
     "u-popup": "/uni_modules/uview-ui/components/u-popup/u-popup",
     "uni-data-select": "/uni_modules/uni-data-select/components/uni-data-select/uni-data-select",
-    "uni-datetime-picker": "/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker"
+    "uni-datetime-picker": "/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker",
+    "u-modal": "/uni_modules/uview-ui/components/u-modal/u-modal"
   }
 }

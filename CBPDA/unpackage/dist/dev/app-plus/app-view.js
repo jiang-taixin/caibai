@@ -16121,6 +16121,8 @@ try {
     uniDataSelect: __webpack_require__(/*! @/uni_modules/uni-data-select/components/uni-data-select/uni-data-select.vue */ 230)
       .default,
     uniDatetimePicker: __webpack_require__(/*! @/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker.vue */ 172)
+      .default,
+    uModal: __webpack_require__(/*! @/uni_modules/uview-ui/components/u-modal/u-modal.vue */ 306)
       .default
   }
 } catch (e) {
@@ -16778,6 +16780,24 @@ var render = function() {
             ],
             1
           )
+        ],
+        1
+      ),
+      _c(
+        "u-modal",
+        {
+          attrs: { _i: 85 },
+          on: {
+            confirm: function($event) {
+              return _vm.$handleViewEvent($event)
+            }
+          }
+        },
+        [
+          _c("v-uni-text", {
+            attrs: { _i: 86 },
+            domProps: { textContent: _vm._s(_vm._$g(86, "v-text")) }
+          })
         ],
         1
       )

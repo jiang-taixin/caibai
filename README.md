@@ -28,6 +28,7 @@ RFIDLib为RFID库，编译成aar后作为uniapp插件使用
 
 adb调试：RFID模块初始化时会断开usb连接，需要adb调试
 adb start-server
+adb kill-server
 adb shell ifconfig | grep Mask
 adb tcpip 5555
 adb connect ip:port 

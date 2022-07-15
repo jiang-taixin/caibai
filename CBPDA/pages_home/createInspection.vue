@@ -149,6 +149,9 @@
 			</view>
 		</u-popup>
 
+		<u-modal :show="show" title="送检单号" @confirm="confirm" :asyncClose="true">
+			<text v-text="inspectNo"></text>
+		</u-modal>
 	</view>
 </template>
 
@@ -159,7 +162,7 @@
 				codeNumber: "", //出货汇总单单号
 				qualityInspector: "", //质检人
 				tableData: [],
-				selectedList:[],      //选中行数组
+				selectedList: [], //选中行数组
 				showCreatePage: false, //显示创建页面
 				inspectionCode: "", //送检单号
 				totalNum: "", //总件数
@@ -170,18 +173,20 @@
 				inspectionAngecy: "", //送检机构
 				angecy: [],
 				category: [],
+				inspectNo: "",
+				show: false, //弹出模态窗
 			}
 		},
 		mounted() {
 			let vm = this;
 			uni.getStorage({
-				key:"organList",
+				key: "organList",
 				success(res) {
 					vm.angecy = res.data;
 				}
 			});
 			uni.getStorage({
-				key:"categoryList",
+				key: "categoryList",
 				success(res) {
 					vm.category = res.data;
 				}
@@ -222,7 +227,7 @@
 						this.tableData = res.data.data;
 					} else {
 						this.$toast.showToast("获取数据失败，请重试");
-						
+
 					}
 				});
 			},
@@ -236,13 +241,13 @@
 							});
 						} else {
 							this.$toast.showToast("扫码失败，请重试");
-							
+
 						}
 
 					}
 				});
 			},
-			selectionChange(res){
+			selectionChange(res) {
 				this.selectedList = res.detail.index;
 				this.totalNum = this.selectedList.length;
 			},
@@ -266,7 +271,7 @@
 					this.$toast.showToast("请选择送检机构");
 					return;
 				}
-				
+
 				var opts = {
 					url: ``,
 					method: 'post'
@@ -277,17 +282,17 @@
 					bodyList.push(this.tableData[this.selectedList[i]]);
 				}
 				var header = {
-					"inspectStatus":"1",
-					"inspectOrgan":this.inspectionAngecy,
-					"inspectDate":this.inspectionDate,
-					"remarks":this.remarks,
-					"inspectBy":this.inspectionName,
-					"inspectType":this.inspectionCategory,
-					"totalPiece":this.totalNum,
+					"inspectStatus": "1",
+					"inspectOrgan": this.inspectionAngecy,
+					"inspectDate": this.inspectionDate,
+					"remarks": this.remarks,
+					"inspectBy": this.inspectionName,
+					"inspectType": this.inspectionCategory,
+					"totalPiece": this.totalNum,
 				};
 				var body = {
-					"details":bodyList,
-					"header":header
+					"details": bodyList,
+					"header": header
 				};
 				var param = {
 					"interface_num": "MOBSCMD0011",
@@ -303,6 +308,10 @@
 					this.showCreatePage = false;
 					if (res.data.code === "200") {
 						this.$toast.showToast("提交成功");
+						console.log("********************res:", res.data.data.header.inspectNo);
+						this.show = true;
+						this.inspectNo = res.data.data.header.inspectNo;
+
 					} else {
 						this.$toast.showToast("提交失败，请重试");
 					}
@@ -310,6 +319,9 @@
 			},
 			cancelCreate() {
 				this.showCreatePage = false;
+			},
+			confirm() {
+				this.show = false;
 			}
 		}
 	}

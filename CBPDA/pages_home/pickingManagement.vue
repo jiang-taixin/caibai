@@ -25,7 +25,7 @@
 			<view class="desc-text-edit">
 				<u--text type="primary" class="desc-text-edit" text="日期" size=13></u--text>
 			</view>
-			<uni-datetime-picker v-model="date" type="date" :value="single" start="2021-3-20" end="2099-6-20"
+			<uni-datetime-picker v-model="date" type="date" start="2021-3-20" end="2099-6-20"
 				@change="changeDate" />
 		</div>
 		<view style="margin-top: 30px;">
