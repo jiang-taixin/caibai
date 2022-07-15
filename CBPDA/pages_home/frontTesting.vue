@@ -280,6 +280,7 @@
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
 					if (res.data.code === "200") {
+						this.disabled = false;
 						this.detailMessage = res.data.data;
 						this.bookCode = this.detailMessage.preCode;
 						this.supplier = this.detailMessage.supName;
@@ -352,7 +353,7 @@
 				this.detailMessage["qualifiedGram"] = this.qualifiedWeight;//合格克重
 				this.detailMessage["qualifiedQuantity"] = this.qualifiedNum;//合格件数
 				this.detailMessage["checkCategory"] = this.selectCategory;//质检类别
-				this.detailMessage["temprecType"] = "1";//质检类型
+				this.detailMessage["temprecType"] = "2";//质检类型
 				this.detailMessage["temprecStatus"] = "1";//质检状态
 				this.detailMessage["remarks"] = "20220630";//质检状态
 				

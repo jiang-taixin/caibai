@@ -264,6 +264,7 @@
 					console.log("*************res:",res);
 					uni.hideLoading();
 					if (res.data.code === "200") {
+						this.disabled = false;
 						this.headerMessage = res.data.data;
 						this.bookCode = this.headerMessage.bookCode;
 						this.supplier = this.headerMessage.supName;

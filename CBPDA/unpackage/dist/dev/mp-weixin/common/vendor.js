@@ -18363,7 +18363,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.API_BASE_P
 
 
 //测试环境API地址
-var API_BASE_DEVELOPMENT = 'http://172.18.0.203:8080/cb/outside/mobile/v1';
+var API_BASE_DEVELOPMENT = 'http://172.18.0.17:8080/cb/outside/mobile/v1';
 
 //正式环境API地址
 exports.API_BASE_DEVELOPMENT = API_BASE_DEVELOPMENT;var API_BASE_PRODUCTION = 'http://172.18.0.203:8080/cb/outside/mobile/v1';
