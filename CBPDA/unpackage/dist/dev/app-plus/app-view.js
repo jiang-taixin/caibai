@@ -22926,7 +22926,7 @@ try {
     uCol: __webpack_require__(/*! @/uni_modules/uview-ui/components/u-col/u-col.vue */ 90).default,
     "u-Text": __webpack_require__(/*! @/uni_modules/uview-ui/components/u--text/u--text.vue */ 98)
       .default,
-    "u-Input": __webpack_require__(/*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 119)
+    uniEasyinput: __webpack_require__(/*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 243)
       .default,
     uButton: __webpack_require__(/*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 132)
       .default,
@@ -22982,8 +22982,13 @@ var render = function() {
                     [_c("u--text", { attrs: { _i: 5 } })],
                     1
                   ),
-                  _c("u--input", {
+                  _c("uni-easyinput", {
                     attrs: { _i: 6 },
+                    on: {
+                      blur: function($event) {
+                        return _vm.$handleViewEvent($event)
+                      }
+                    },
                     model: {
                       value: _vm._$g(6, "v-model"),
                       callback: function() {},

@@ -4,10 +4,10 @@
 			<u-row justify="space-between" gutter="1">
 				<u-col span="9">
 					<view class="desc-text-edit">
-						<u--text type="primary" text="条码/包码" size=13></u--text>
+						<u--text type="primary" text="条码/包码/分配号" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="codeNumber" placeholder="扫描或输入条码/包码" border="surround" clearable>
-					</u--input>
+					<uni-easyinput v-model="codeNumber" placeholder="扫描或输入条码/包码" @blur="blur" clearable>
+					</uni-easyinput>
 				</u-col>
 				<u-col span="1">
 					<view style="width: 30px;height: 30px;">
@@ -116,7 +116,38 @@
 						this.$toast.showToast("获取数据失败，请重试");
 					}
 				});
-			}
+			},
+			blur(e) {
+				if (e.target.value == '') {
+					return;
+				};
+				var opts = {
+					url: ``,
+					method: 'post'
+				};
+				uni.showLoading({
+					title: '加载中...'
+				});
+				var param = {
+					"interface_num": "MOBSCMD0016",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": {
+						"codeNumber": e.target.value,
+					},
+				};
+				
+				this.$http.httpRequest(opts, param).then((res) => {
+					uni.hideLoading();
+					this.codeNumber = "";
+					console.log("*****************res:", res);
+					if (res.statusCode === 200) {
+						this.tableData = res.data;
+					} else {
+						this.$toast.showToast("获取数据失败，请重试");
+					}
+				});
+			},
 		}
 	}
 </script>

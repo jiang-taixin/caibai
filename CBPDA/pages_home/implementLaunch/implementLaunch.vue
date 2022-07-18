@@ -145,7 +145,7 @@
 				</u-col>
 				<u-col span="6">
 					<div class="col-layout">
-						<u-button type="primary" @click="cancel" text="取消"
+						<u-button type="error" @click="cancel" text="取消"
 							style="width: 80%;margin-left: 10%;margin-bottom: 10px;">
 						</u-button>
 					</div>
@@ -196,6 +196,10 @@
 		mounted() {
 			this.employeeNumber = "NO0001";
 			this.date = this.$dateTrans.getDateString();
+		},
+		onLoad(option) {
+			this.department = option.launchDepartment;
+			this.storagePosition = option.launchWarehouse;
 		},
 		methods: {
 			startScanWarehouse(){

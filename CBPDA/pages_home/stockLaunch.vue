@@ -25,7 +25,7 @@
 			<view class="desc-text-edit">
 				<u--text type="primary" class="desc-text-edit" text="日期" size=13></u--text>
 			</view>
-			<uni-datetime-picker v-model="date" type="date" :value="single" start="2021-3-20" end="2099-6-20"
+			<uni-datetime-picker v-model="date" type="date" start="2021-3-20" end="2099-6-20"
 				@change="changeDate" />
 		</div>
 		<view style="margin-top: 30px;">
@@ -52,25 +52,9 @@
 	export default {
 		data() {
 			return {
-				department: [{ //发货部门
-						value: 0,
-						text: "DC80"
-					},
-					{
-						value: 1,
-						text: "DC81"
-					},
-				],
-				launchDepartment: "", //上架部门
-				warehouse: [{ //库位
-						value: 0,
-						text: "仓库1"
-					},
-					{
-						value: 1,
-						text: "仓库2"
-					},
-				],
+				department: [],
+				launchDepartment: "DC80", //上架部门
+				warehouse: [],
 				launchWarehouse: "", //上架库位
 				employeeNumber: "", //工号
 				date: "", //日期
@@ -79,10 +63,22 @@
 		mounted() {
 			this.employeeNumber = "NO0001";
 			this.date = this.$dateTrans.getDateString();
+			let vm = this;
+			uni.getStorage({
+				key:"departmentList",
+				success(res) {
+					console.log("==============department list:",res);
+					vm.department = res.data;
+					vm.warehouse = res.data.find(item => item.value == vm.launchDepartment).warehouseList;
+				},
+				fail(e) {
+				}
+			});
 		},
 		methods: {
 			changeDepartment(e) {
 				this.launchDepartment = e;
+				this.warehouse = this.department.find(item => item.value == this.launchDepartment).warehouseList;
 			},
 			changeWarehouse(e) {
 				this.launchWarehouse = e;
@@ -92,12 +88,12 @@
 			},
 			confirm() {
 				if (this.launchDepartment === '' || this.launchDepartment === undefined) {
-					// this.$toast.showToast("请选择上架部门并重试");
-					// return;
+					this.$toast.showToast("请选择上架部门并重试");
+					return;
 				}
 				if (this.launchWarehouse === '' || this.launchWarehouse === undefined) {
-					// this.$toast.showToast("请选择库位并重试");
-					// return;
+					this.$toast.showToast("请选择库位并重试");
+					return;
 				}
 				if (this.employeeNumber === '' || this.employeeNumber === undefined) {
 					this.$toast.showToast("请填写工号并重试");
