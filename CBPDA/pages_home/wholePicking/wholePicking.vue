@@ -378,22 +378,49 @@
 				this.show = false;
 				if(this.masterData.item != undefined&&this.masterData.item.length != 0){
 					this.setItemCode();
+					this.masterData.type = "1";
 				}
 				else{
 					this.$toast.showToast("请先添加数据再提交");
 					return;
 				}
-				console.log("==============masterData:",this.masterData);
+				this.commitData();
 			},
 			save(){
 				if(this.masterData.item != undefined&&this.masterData.item.length != 0){
 					this.setItemCode();
+					this.masterData.type = "2";
 				}
 				else{
 					this.$toast.showToast("请先添加数据再提交");
 					return;
 				}
+				this.commitData();
+			},
+			commitData(){
 				console.log("==============masterData:",this.masterData);
+				var opts = {
+					url: ``,
+					method: 'post'
+				};
+				uni.showLoading({
+					title: '加载中...'
+				});
+				var param = {
+					"interface_num": "MOBSCMD0019",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": this.masterData,
+				};
+				this.$http.httpRequest(opts, param).then((res) => {
+					uni.hideLoading();
+					console.log("*****************res:", res);
+					if (res.statusCode === 200) {
+						
+					} else {
+						this.$toast.showToast("提交失败");
+					}
+				});
 			},
 			setItemCode(){
 				//给每条数据添加item号 提交前添加防止删除操作时出现重复item号

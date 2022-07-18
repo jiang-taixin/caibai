@@ -359,7 +359,7 @@
 				};
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
-					console.log("*****************res:", res);
+					console.log("****************res:",res);
 					if (res.statusCode === 200) {
 						this.masterData = res.data;
 						this.sumStep = res.data.detail.length;
@@ -435,7 +435,6 @@
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
 					this.inputNum = "";
-					console.log("*****************res:", res);
 					if (res.statusCode === 200) {
 						res.data.forEach(element => {
 							if(this.tableData.length < this.distributeNum){
@@ -493,12 +492,27 @@
 				//提交数据
 				this.show = false;
 				if(this.masterData.detail != undefined && this.masterData.detail.length != 0){
+					this.masterData.type = "1";
 					this.setItemCode();
 				}
 				else{
 					this.$toast.showToast("请先添加数据再提交");
 					return;
 				}
+				this.commitData();
+			},
+			save() {
+				if(this.masterData.detail != undefined && this.masterData.detail.length != 0){
+					this.setItemCode();
+					this.masterData.type = "2";
+				}
+				else{
+					this.$toast.showToast("请先添加数据再提交");
+					return;
+				}
+				this.commitData();
+			},
+			commitData(){
 				console.log("===========commit data:",this.masterData);
 				var opts = {
 					url: ``,
@@ -517,21 +531,11 @@
 					uni.hideLoading();
 					console.log("*****************res:", res);
 					if (res.statusCode === 200) {
-						
+						this.$toast.showToast("提交成功");
 					} else {
 						this.$toast.showToast("提交失败");
 					}
 				});
-			},
-			save() {
-				if(this.masterData.detail != undefined && this.masterData.detail.length != 0){
-					this.setItemCode();
-				}
-				else{
-					this.$toast.showToast("请先添加数据再提交");
-					return;
-				}
-				
 			},
 			prefixInteger(num, n) {
 				return (Array(n).join(0) + num).slice(-n);
