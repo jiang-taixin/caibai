@@ -500,6 +500,28 @@
 					return;
 				}
 				console.log("===========commit data:",this.masterData);
+				var opts = {
+					url: ``,
+					method: 'post'
+				};
+				uni.showLoading({
+					title: '加载中...'
+				});
+				var param = {
+					"interface_num": "MOBSCMD0018",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": this.masterData,
+				};
+				this.$http.httpRequest(opts, param).then((res) => {
+					uni.hideLoading();
+					console.log("*****************res:", res);
+					if (res.statusCode === 200) {
+						
+					} else {
+						this.$toast.showToast("提交失败");
+					}
+				});
 			},
 			save() {
 				if(this.masterData.detail != undefined && this.masterData.detail.length != 0){
@@ -509,6 +531,7 @@
 					this.$toast.showToast("请先添加数据再提交");
 					return;
 				}
+				
 			},
 			prefixInteger(num, n) {
 				return (Array(n).join(0) + num).slice(-n);

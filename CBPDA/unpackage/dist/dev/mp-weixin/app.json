@@ -24,8 +24,6 @@
         "wholePicking/wholePicking",
         "createInspection",
         "provisionalReceipt",
-        "inspectionDetail",
-        "inspectionConfirm",
         "RFIDDemo",
         "handover",
         "launch",

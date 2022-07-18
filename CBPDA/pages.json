@@ -190,6 +190,13 @@
 					"enablePullDownRefresh": false
 				}
 
+			}, {
+				"path": "deliveryConfirm",
+				"style": {
+					"navigationBarTitleText": "配送出库确认",
+					"enablePullDownRefresh": false
+				}
+
 			}]
 		}
 	],

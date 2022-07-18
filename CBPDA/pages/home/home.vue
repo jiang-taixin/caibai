@@ -91,6 +91,11 @@
 						title: '库存查询',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
+					{
+						name: 'scan',
+						title: '配送出库确认',
+						platform: ["APP", "WEIXIN", "H5"],
+					},
 				],
 				list1: [
 					'/static/1.png',
@@ -211,6 +216,11 @@
 					case 14:
 						uni.navigateTo({
 							url: '/pages_home/stockSearch'
+						});
+						break;
+					case 15:
+						uni.navigateTo({
+							url: '/pages_home/deliveryConfirm'
 						});
 						break;
 

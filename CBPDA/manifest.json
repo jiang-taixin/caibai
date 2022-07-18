@@ -81,7 +81,6 @@
     /* 小程序特有相关 */
     "mp-weixin" : {
         "appid" : "wxfd7f275ef7216a4c",
-        "cloudfunctionRoot" : "cloudfunctions/",
         "setting" : {
             "urlCheck" : false,
             "es6" : true,

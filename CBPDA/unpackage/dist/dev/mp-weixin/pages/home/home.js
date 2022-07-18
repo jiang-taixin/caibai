@@ -96,16 +96,16 @@ var components
 try {
   components = {
     uSwiper: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 304))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 292))
     },
     uGrid: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid/u-grid */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid/u-grid")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid/u-grid.vue */ 312))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid/u-grid */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid/u-grid")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid/u-grid.vue */ 300))
     },
     uGridItem: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid-item/u-grid-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid-item/u-grid-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid-item/u-grid-item.vue */ 320))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid-item/u-grid-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid-item/u-grid-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid-item/u-grid-item.vue */ 308))
     },
     uIcon: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 328))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 316))
     }
   }
 } catch (e) {
@@ -228,16 +228,6 @@ var _default =
       {
         name: 'order',
         title: '创建送检单',
-        platform: ["APP", "WEIXIN", "H5"] },
-
-      {
-        name: 'list-dot',
-        title: '送检单明细',
-        platform: ["APP", "WEIXIN", "H5"] },
-
-      {
-        name: 'list',
-        title: '取检确认',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
@@ -364,60 +354,50 @@ var _default =
           break;
         case 5:
           uni.navigateTo({
-            url: '/pages_home/inspectionDetail' });
+            url: '/pages_home/pickingManagement' });
 
           break;
         case 6:
           uni.navigateTo({
-            url: '/pages_home/inspectionConfirm' });
+            url: '/pages_home/wholeOrderDistribution' });
 
           break;
         case 7:
           uni.navigateTo({
-            url: '/pages_home/pickingManagement' });
+            url: '/pages_home/handover' });
 
           break;
         case 8:
           uni.navigateTo({
-            url: '/pages_home/wholeOrderDistribution' });
+            url: '/pages_home/launch' });
 
           break;
         case 9:
           uni.navigateTo({
-            url: '/pages_home/handover' });
+            url: '/pages_home/stockLaunch' });
 
           break;
         case 10:
           uni.navigateTo({
-            url: '/pages_home/launch' });
+            url: '/pages_home/stockCheck' });
 
           break;
         case 11:
           uni.navigateTo({
-            url: '/pages_home/stockLaunch' });
+            url: '/pages_home/positionAdjustment' });
 
           break;
         case 12:
           uni.navigateTo({
-            url: '/pages_home/stockCheck' });
+            url: '/pages_home/locationAdjustment' });
 
           break;
         case 13:
           uni.navigateTo({
-            url: '/pages_home/positionAdjustment' });
-
-          break;
-        case 14:
-          uni.navigateTo({
-            url: '/pages_home/locationAdjustment' });
-
-          break;
-        case 15:
-          uni.navigateTo({
             url: '/pages_home/packing' });
 
           break;
-        case 16:
+        case 14:
           uni.navigateTo({
             url: '/pages_home/stockSearch' });
 
