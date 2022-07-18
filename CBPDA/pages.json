@@ -114,20 +114,6 @@
 				}
 
 			}, {
-				"path": "inspectionDetail",
-				"style": {
-					"navigationBarTitleText": "送检单明细",
-					"enablePullDownRefresh": false
-				}
-
-			}, {
-				"path": "inspectionConfirm",
-				"style": {
-					"navigationBarTitleText": "取检确认",
-					"enablePullDownRefresh": false
-				}
-
-			}, {
 				"path": "RFIDDemo",
 				"style": {
 					"navigationBarTitleText": "RFID测试",

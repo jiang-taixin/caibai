@@ -61,7 +61,7 @@
 			<u-button type="primary" @click="create" text="创建送检单">
 			</u-button>
 		</view>
-		<u-popup :show="showCreatePage" mode="bottom" @close="close">
+		<u-popup :show="showCreatePage" mode="bottom">
 			<view>
 				<div style="width: 100%;display:inline-block">
 					<view style="float:left;width: 70px;">
@@ -101,7 +101,7 @@
 						<text style="font-size: 13px;">送检单类型:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<uni-data-select v-model="inspectionCategory" :localdata="category" @change="changeAngecy">
+						<uni-data-select v-model="inspectionCategory" :localdata="category">
 						</uni-data-select>
 					</view>
 				</div>
@@ -110,7 +110,7 @@
 						<text style="font-size: 13px;">送检机构:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<uni-data-select v-model="inspectionAngecy" :localdata="angecy" @change="changeAngecy">
+						<uni-data-select v-model="inspectionAngecy" :localdata="angecy">
 						</uni-data-select>
 					</view>
 				</div>
@@ -119,8 +119,8 @@
 						<text style="font-size: 13px;">送检日期:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<uni-datetime-picker v-model="inspectionDate" type="date" :value="single" start="2021-3-20"
-							end="2099-6-20" @change="changeDate" />
+						<uni-datetime-picker v-model="inspectionDate" type="date" start="2021-3-20"
+							end="2099-6-20"/>
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -165,7 +165,7 @@
 				selectedList: [], //选中行数组
 				showCreatePage: false, //显示创建页面
 				inspectionCode: "", //送检单号
-				totalNum: "", //总件数
+				totalNum: 0, //总件数
 				inspectionName: "", //送检人
 				remarks: "", //备注
 				inspectionCategory: "", //送检类型
@@ -215,6 +215,7 @@
 					title: '加载中...'
 				});
 				this.$http.httpRequest(opts, param).then((res) => {
+					console.log("======================res:",res);
 					uni.hideLoading();
 					if (res.data.code === "200") {
 						//收到数据将暂收时间转为日期格式   状态转换为文字描述
@@ -249,7 +250,12 @@
 			},
 			selectionChange(res) {
 				this.selectedList = res.detail.index;
-				this.totalNum = this.selectedList.length;
+				this.totalNum = 0;
+				for (var i = 0; i < this.selectedList.length; i++) {
+					console.log("*********************num:",this.totalNum);
+					this.totalNum += parseInt(this.tableData[this.selectedList[i]].quatity);
+					console.log("*********************num:",this.totalNum);
+				};
 			},
 			create() {
 				this.showCreatePage = true;

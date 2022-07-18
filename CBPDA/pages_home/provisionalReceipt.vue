@@ -145,6 +145,7 @@
 						//收到数据将暂收时间转为日期格式   状态转换为文字描述
 						if (res.data.data.length != 0) {
 							for (let i in res.data.data) {
+								console.log("======================res:",res);
 								res.data.data[i].temprecDate = this.$dateTrans.formatMsToDate(res.data.data[i].temprecDate);
 								switch (res.data.data[i].itemStatus) {
 									case "0":
@@ -218,6 +219,7 @@
 			},
 			selectionChange(res) {
 				this.selectedList = res.detail.index;
+				
 			},
 			receiveConfirm() {
 				var opts = {
@@ -242,6 +244,7 @@
 				});
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
+					console.log("************res:",res);
 					if (res.data.code === "200") {
 						this.$toast.showToast("提交成功");
 						

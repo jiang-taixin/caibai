@@ -3,7 +3,7 @@
 
 
 //测试环境API地址
-export const API_BASE_DEVELOPMENT = 'http://172.18.0.17:8080/cb/outside/mobile/v1';
+export const API_BASE_DEVELOPMENT = 'http://10.10.2.130:8080/cb/outside/mobile/v1';
 
 //正式环境API地址
 export const API_BASE_PRODUCTION = 'http://172.18.0.203:8080/cb/outside/mobile/v1';

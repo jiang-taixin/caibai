@@ -42,16 +42,6 @@
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						name: 'list-dot',
-						title: '送检单明细',
-						platform: ["APP", "WEIXIN", "H5"],
-					},
-					{
-						name: 'list',
-						title: '取检确认',
-						platform: ["APP", "WEIXIN", "H5"],
-					},
-					{
 						name: 'car',
 						title: '逐条拣货配货',
 						platform: ["APP", "WEIXIN", "H5"],
@@ -175,60 +165,50 @@
 						break;
 					case 5:
 						uni.navigateTo({
-							url: '/pages_home/inspectionDetail'
+							url: '/pages_home/pickingManagement'
 						});
 						break;
 					case 6:
 						uni.navigateTo({
-							url: '/pages_home/inspectionConfirm'
+							url: '/pages_home/wholeOrderDistribution'
 						});
 						break;
 					case 7:
 						uni.navigateTo({
-							url: '/pages_home/pickingManagement'
-						});
-						break;
-					case 8:
-						uni.navigateTo({
-							url: '/pages_home/wholeOrderDistribution'
-						});
-						break;
-					case 9:
-						uni.navigateTo({
 							url: '/pages_home/handover'
 						})
 						break;
-					case 10:
+					case 8:
 						uni.navigateTo({
 							url: '/pages_home/launch'
 						});
 						break;
-					case 11:
+					case 9:
 						uni.navigateTo({
 							url: '/pages_home/stockLaunch'
 						});
 						break;
-					case 12:
+					case 10:
 						uni.navigateTo({
 							url: '/pages_home/stockCheck'
 						});
 						break;
-					case 13:
+					case 11:
 						uni.navigateTo({
 							url: '/pages_home/positionAdjustment'
 						});
 						break;
-					case 14:
+					case 12:
 						uni.navigateTo({
 							url: '/pages_home/locationAdjustment'
 						});
 						break;
-					case 15:
+					case 13:
 						uni.navigateTo({
 							url: '/pages_home/packing'
 						});
 						break;
-					case 16:
+					case 14:
 						uni.navigateTo({
 							url: '/pages_home/stockSearch'
 						});
