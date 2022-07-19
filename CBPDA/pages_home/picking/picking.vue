@@ -28,17 +28,26 @@
 				<u--text type="primary" text="P/S/W" size=13></u--text>
 			</view>
 			<u-row justify="space-between" gutter="1">
-				<u-col span="4">
+				<u-col span="3">
 					<u--input font-size=13 v-model="department" border="surround" :disabled="true">
 					</u--input>
 				</u-col>
-				<u-col span="4">
+				<u-col span="3">
 					<u--input font-size=13 v-model="warehouse" border="surround" clearable>
 					</u--input>
 				</u-col>
-				<u-col span="4">
+				<u-col span="3">
 					<u--input font-size=13 v-model="number" border="surround" :disabled="true">
 					</u--input>
+				</u-col>
+				<u-col span="3">
+					<view>
+						<checkbox-group @change="selectRecheck">
+							<label>
+								<checkbox value="cb" color="#000000" style="transform:scale(0.7)" />自取
+							</label>
+						</checkbox-group>
+					</view>
 				</u-col>
 			</u-row>
 		</div>
@@ -126,9 +135,9 @@
 				<uni-th align="center">标签名称</uni-th>
 				<uni-th align="center">仓位</uni-th>
 				<uni-th align="center">数量/克重</uni-th>
+				<uni-th align="center">次要数量</uni-th>
 				<uni-th align="center">商品条码</uni-th>
 				<uni-th align="center">商品包码</uni-th>
-				<uni-th align="center">次要数量</uni-th>
 				<uni-th align="center">物料名称</uni-th>
 				<uni-th align="center">款号</uni-th>
 			</uni-tr>
@@ -137,9 +146,9 @@
 				<uni-td>{{item.tagName}}</uni-td>
 				<uni-td>{{item.position}}</uni-td>
 				<uni-td>{{item.qualityPiece}}</uni-td>
+				<uni-td>{{item.subQualityPiece}}</uni-td>
 				<uni-td>{{item.barCode}}</uni-td>
 				<uni-td>{{item.packageCode}}</uni-td>
-				<uni-td>{{item.subQualityPiece}}</uni-td>
 				<uni-td>{{item.materielDesc}}</uni-td>
 				<uni-td>{{item.materielCode}}</uni-td>
 			</uni-tr>
@@ -297,6 +306,7 @@
 				masterData: [],
 				disabled:false,   //控制过账后数据是否可编辑
 				show:false,       //弹出模态窗
+				isRecheck: false,//是否自取
 			}
 		},
 		onNavigationBarButtonTap(val) {
@@ -359,7 +369,6 @@
 				};
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
-					console.log("****************res:",res);
 					if (res.statusCode === 200) {
 						this.masterData = res.data;
 						this.sumStep = res.data.detail.length;
@@ -437,33 +446,57 @@
 					this.inputNum = "";
 					if (res.statusCode === 200) {
 						res.data.forEach(element => {
+							console.log("==============warehouse:",element);
 							if(this.tableData.length < this.distributeNum){
-								var dataBody = {};
-								dataBody.poCode = this.masterData.header.poCode;
-								dataBody.factoryCode = element.shopCode;
-								dataBody.stockPalce = element.stockPlace;
-								dataBody.batch = element.batch;
-								//次要数量
-								dataBody.prepareGoodsNum = element.subQualityPiece;
-								dataBody.subUnit = element.subUnit;
-								dataBody.waraHouse = element.waraHouse;
-								dataBody.goodsArea = element.goodsArea;
-								//移动类型
-								dataBody.moveType = this.masterData.header.moveType;
-								//单品金重
-								dataBody.glodWeight = element.gramWeight;
-								dataBody.baseUnit = element.baseUnit;
-								dataBody.tagName = element.tagName;
-								dataBody.position = element.position;
-								dataBody.qualityPiece = element.qualityPiece;
-								dataBody.barCode = element.barCode;
-								dataBody.packageCode = element.packageCode;
-								dataBody.subQualityPiece = element.subQualityPiece;
-								dataBody.materielDesc = element.materialDesc;
-								dataBody.materielCode = element.materialCode;
-								dataBody.sou = element.sou;
-								dataBody.poItemCode = this.masterData.detail[this.nowStep-1].itemCode;
-								this.tableData.push(dataBody);
+								console.log("==============warehouse:",this.warehouse);
+								if(element.qualityPiece > 0 && element.stockPalce == this.warehouse){
+									var dataBody = {};
+									dataBody.poCode = this.masterData.header.poCode;
+									dataBody.factoryCode = element.shopCode;
+									dataBody.stockPalce = element.stockPalce;
+									dataBody.batch = element.batch;
+									//次要数量
+									dataBody.prepareGoodsNum = element.subQualityPiece;
+									dataBody.subUnit = element.subUnit;
+									dataBody.waraHouse = element.waraHouse;
+									dataBody.goodsArea = element.goodsArea;
+									//移动类型
+									dataBody.moveType = this.masterData.header.moveType;
+									//单品金重
+									dataBody.glodWeight = element.gramWeight;
+									dataBody.baseUnit = element.baseUnit;
+									dataBody.tagName = element.tagName;
+									dataBody.position = element.position;
+									//主要数量计算规则
+									if(element.baseUnit == "KG"||element.baseUnit == "G"){
+										if(element.gramWeight == null){
+											if(parseInt(element.djl) === 1){
+												dataBody.qualityPiece = element.djl*element.subQualityPiece;
+											}
+											else{
+												dataBody.qualityPiece = 0;
+											}
+										}
+										else{
+
+											dataBody.qualityPiece = element.gramWeight*element.subQualityPiece;
+										}
+									}
+									else{
+										dataBody.qualityPiece = element.subQualityPiece;
+									}
+									
+									dataBody.barCode = element.barCode;
+									dataBody.packageCode = element.packageCode;
+									dataBody.subQualityPiece = element.subQualityPiece;
+									dataBody.materielDesc = element.materialDesc;
+									dataBody.materielCode = element.materialCode;
+									dataBody.sou = element.sou;
+									dataBody.djl = element.djl;
+									dataBody.poItemCode = this.masterData.detail[this.nowStep-1].itemCode;
+									this.tableData.push(dataBody);
+								}
+								
 							}
 							else{
 								this.$toast.showToast("已达最大量");
@@ -513,7 +546,19 @@
 				this.commitData();
 			},
 			commitData(){
-				console.log("===========commit data:",this.masterData);
+				console.log("==========data:",this.masterData);
+				var containZero = false;
+				this.masterData.detail.forEach(element => {
+					element.itemList.forEach(element => {
+						if(parseInt(element.qualityPiece) === 0 ||element.qualityPiece === "0"){
+							containZero = true;
+						}
+					})
+				});
+				if(containZero){
+					this.$toast.showToast("主要数量不允许为0,请检查数据");
+					return;
+				}
 				var opts = {
 					url: ``,
 					method: 'post'
@@ -529,9 +574,11 @@
 				};
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
-					console.log("*****************res:", res);
 					if (res.statusCode === 200) {
 						this.$toast.showToast("提交成功");
+						uni.navigateBack({
+						
+						});
 					} else {
 						this.$toast.showToast("提交失败");
 					}
@@ -547,6 +594,8 @@
 						this.masterData.detail[i].itemList[j].itemCode = `${this.masterData.detail[i].itemCode}${this.prefixInteger(j+1,3)}`;
 					};
 				};
+				this.masterData.header.deliverStockPlace = this.warehouse;
+				this.masterData.header.pickingSelf = this.isRecheck?"1":"0";
 			},
 			reload() {
 				this.modelNum = this.masterData.detail[this.nowStep - 1].materielCode;
@@ -556,7 +605,11 @@
 				this.recommend = this.masterData.detail[this.nowStep - 1].shopCode;
 				this.tableData = this.masterData.detail[this.nowStep - 1].itemList;
 				this.totalNum = this.tableData.length;
-			}
+			},
+			selectRecheck() {
+				this.isRecheck = !this.isRecheck;
+				console.log("===========================:",this.isRecheck);
+			},
 		}
 	}
 </script>

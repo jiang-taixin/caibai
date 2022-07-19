@@ -337,7 +337,6 @@
 					title: '加载中...'
 				});
 				this.$http.httpRequest(opts, param).then((res) => {
-					console.log("*****************response:",res);
 					uni.hideLoading();
 					if (res.data.code === "200") {
 						this.$toast.showToast("提交成功");

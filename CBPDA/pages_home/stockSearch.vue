@@ -39,7 +39,8 @@
 				<uni-th align="center">基本单位</uni-th>
 				<uni-th align="center">次要单位</uni-th>
 				<uni-th align="center">工厂</uni-th>
-				<uni-th align="center">库位/仓位</uni-th>
+				<uni-th align="center">库位</uni-th>
+				<uni-th align="center">仓位</uni-th>
 			</uni-tr>
 			<!-- 表格数据行 -->
 			<uni-tr v-for="(item, index) in tableData" @row-click="rowClick(item,index)">
@@ -56,6 +57,7 @@
 				<uni-td>{{item.subUnit}}</uni-td>
 				<uni-td>{{item.shopCode}}</uni-td>
 				<uni-td>{{item.stockPalce}}</uni-td>
+				<uni-td>{{item.position}}</uni-td>
 			</uni-tr>
 		</uni-table>
 	</view>
@@ -109,7 +111,6 @@
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
 					this.inputNum = "";
-					console.log("*****************res:", res);
 					if (res.statusCode === 200) {
 						this.tableData = res.data;
 					} else {
@@ -140,7 +141,6 @@
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
 					this.codeNumber = "";
-					console.log("*****************res:", res);
 					if (res.statusCode === 200) {
 						this.tableData = res.data;
 					} else {

@@ -68,6 +68,7 @@
 			uni.getStorage({
 				key:"departmentList",
 				success(res) {
+					console.log("===========res:",res);
 					vm.department = res.data;
 					vm.warehouse = res.data.find(item => item.value == vm.selectDepartment).warehouseList;
 				},

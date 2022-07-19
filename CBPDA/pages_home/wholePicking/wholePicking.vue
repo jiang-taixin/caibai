@@ -11,12 +11,14 @@
 				</u-col>
 				<u-col span="1">
 					<view style="width: 30px;height: 30px;">
-						<u-button type="primary" :plain="true" icon="scan" @click="startScan" style="width: 30px;height: 30px;"></u-button>
+						<u-button type="primary" :plain="true" icon="scan" @click="startScan"
+							style="width: 30px;height: 30px;"></u-button>
 					</view>
 				</u-col>
 				<u-col span="1">
 					<view style="width: 30px;height: 30px;">
-						<u-button type="primary" :plain="true" icon="search" @click="startSearch" style="width: 30px;height: 30px;"></u-button>
+						<u-button type="primary" :plain="true" icon="search" @click="startSearch"
+							style="width: 30px;height: 30px;"></u-button>
 					</view>
 				</u-col>
 			</u-row>
@@ -26,17 +28,26 @@
 				<u--text type="primary" text="P/S/W" size=13></u--text>
 			</view>
 			<u-row justify="space-between" gutter="1">
-				<u-col span="4">
+				<u-col span="3">
 					<u--input font-size=13 v-model="department" border="surround" :disabled="true">
 					</u--input>
 				</u-col>
-				<u-col span="4">
+				<u-col span="3">
 					<u--input font-size=13 v-model="warehouse" border="surround" clearable>
 					</u--input>
 				</u-col>
-				<u-col span="4">
+				<u-col span="3">
 					<u--input font-size=13 v-model="number" border="surround" :disabled="true">
 					</u--input>
+				</u-col>
+				<u-col span="3">
+					<view>
+						<checkbox-group @change="selectRecheck">
+							<label>
+								<checkbox value="cb" color="#000000" style="transform:scale(0.7)" />自取
+							</label>
+						</checkbox-group>
+					</view>
 				</u-col>
 			</u-row>
 		</div>
@@ -94,13 +105,15 @@
 			<u-row>
 				<u-col span="6">
 					<div class="col-layout">
-						<u-button type="primary" @click="commit" text="确认" style="width: 80%;margin-left: 10%;" :disabled="disabled">
+						<u-button type="primary" @click="commit" text="确认" style="width: 80%;margin-left: 10%;"
+							:disabled="disabled">
 						</u-button>
 					</div>
 				</u-col>
 				<u-col span="6">
 					<div class="col-layout">
-						<u-button type="primary" @click="save" text="保存" style="width: 80%;margin-left: 10%;" :disabled="disabled">
+						<u-button type="primary" @click="save" text="保存" style="width: 80%;margin-left: 10%;"
+							:disabled="disabled">
 						</u-button>
 					</div>
 				</u-col>
@@ -121,7 +134,8 @@
 						<text style="font-size: 13px;">标签名称:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData.length > 0?tableData[selectedIndex].tagName:''" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].tagName:''"
+							style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -129,7 +143,8 @@
 						<text style="font-size: 13px;">商品条码:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData.length > 0?tableData[selectedIndex].barCode:''" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].barCode:''"
+							style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -137,7 +152,8 @@
 						<text style="font-size: 13px;">商品包码:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData.length > 0?tableData[selectedIndex].packageCode:''" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].packageCode:''"
+							style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -145,7 +161,8 @@
 						<text style="font-size: 13px;">仓位:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData.length > 0?tableData[selectedIndex].position:''" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].position:''"
+							style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -153,7 +170,8 @@
 						<text style="font-size: 13px;">物料名称:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData.length > 0?tableData[selectedIndex].materielDesc:''" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].materielDesc:''"
+							style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -161,19 +179,22 @@
 						<text style="font-size: 13px;">款号:</text>
 					</view>
 					<view style="float:left;width: 220px;">
-						<text v-text="tableData.length > 0?tableData[selectedIndex].materielCode:''" style="font-size: 13px;" />
+						<text v-text="tableData.length > 0?tableData[selectedIndex].materielCode:''"
+							style="font-size: 13px;" />
 					</view>
 				</div>
 				<div style="width: 100%;display:inline-block">
 					<view style="float:left;width: 70px;">
-					<text style="font-size: 13px;">数量:</text></view>
+						<text style="font-size: 13px;">数量:</text>
+					</view>
 					<u--input font-size=13 v-model="mainNum" border="surround" clearable>
 					</u--input>
 				</div>
 
 				<div style="width: 100%;display:inline-block">
 					<view style="float:left;width: 70px;">
-					<text style="font-size: 13px;">备注:</text></view>
+						<text style="font-size: 13px;">备注:</text>
+					</view>
 					<u--input font-size=13 v-model="remarks" border="surround" clearable>
 					</u--input>
 				</div>
@@ -224,9 +245,10 @@
 				selectedIndex: 0, //当前选中的数据行
 				mainNum: "", //数量、克重    用于当前行的信息编辑
 				remarks: "", //备注   用于当前行的信息编辑
-				masterData:[],
-				disabled:false,
-				show:false,       //弹出模态窗
+				masterData: [],
+				disabled: false,
+				show: false, //弹出模态窗
+				isRecheck: false, //是否自取
 			}
 		},
 		onLoad: function(option) {
@@ -245,12 +267,12 @@
 							});
 						} else {
 							this.$toast.showToast("扫码失败，请重试");
-			
+
 						}
 					}
 				});
 			},
-			startSearch(){
+			startSearch() {
 				if (this.codeNumber === '' || this.codeNumber === undefined) {
 					this.$toast.showToast("请先扫描包码");
 					return;
@@ -272,24 +294,22 @@
 				};
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
-					console.log("*****************res:", res);
 					if (res.statusCode === 200) {
 						this.masterData = res.data;
 						this.tableData = res.data.item;
 						this.totalNum = this.tableData.length;
-						if(res.data.header.orderStatus !== "2" && res.data.header.orderStatus !== "3"){
+						if (res.data.header.orderStatus !== "2" && res.data.header.orderStatus !== "3") {
 							this.disabled = false;
-						}
-						else{
+						} else {
 							this.disabled = true;
 						}
-				
+
 					} else {
 						this.$toast.showToast("获取数据失败，请重试");
 					}
 				});
 			},
-			rowClick(item, index){
+			rowClick(item, index) {
 				this.selectedIndex = index;
 				this.showEditPage = true;
 				this.mainNum = this.tableData[this.selectedIndex].qualityPiece;
@@ -331,35 +351,54 @@
 						"codeNumber": e.target.value,
 					},
 				};
-				
+
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
 					this.inputNum = "";
-					console.log("*****************res:", res);
+					console.log("+==============res:", res);
 					if (res.statusCode === 200) {
 						res.data.forEach(element => {
-							var dataBody = {};
-							dataBody.poCode = this.masterData.header.poCode;
-							dataBody.factoryCode = element.shopCode;
-							dataBody.stockPalce = element.stockPlace;
-							dataBody.batch = element.batch;
-							dataBody.prepareGoodsNum = element.subQualityPiece;
-							dataBody.subUnit = element.subUnit;
-							dataBody.waraHouse = element.waraHouse;
-							dataBody.goodsArea = element.goodsArea;
-							dataBody.moveType = this.masterData.header.moveType;
-							dataBody.glodWeight = element.gramWeight;
-							dataBody.baseUnit = element.baseUnit;
-							dataBody.tagName = element.tagName;
-							dataBody.position = element.position;
-							dataBody.qualityPiece = element.qualityPiece;
-							dataBody.barCode = element.barCode;
-							dataBody.packageCode = element.packageCode;
-							dataBody.subQualityPiece = element.subQualityPiece;
-							dataBody.materielDesc = element.materialDesc;
-							dataBody.materielCode = element.materialCode;
-							dataBody.sou = element.sou; 
-							this.tableData.push(dataBody);
+							if (element.qualityPiece > 0 && element.stockPalce == this.warehouse) {
+								var dataBody = {};
+								dataBody.poCode = this.masterData.header.poCode;
+								dataBody.factoryCode = element.shopCode;
+								dataBody.stockPalce = element.stockPalce;
+								dataBody.batch = element.batch;
+								dataBody.prepareGoodsNum = element.subQualityPiece;
+								dataBody.subUnit = element.subUnit;
+								dataBody.waraHouse = element.waraHouse;
+								dataBody.goodsArea = element.goodsArea;
+								dataBody.moveType = this.masterData.header.moveType;
+								dataBody.glodWeight = element.gramWeight;
+								dataBody.baseUnit = element.baseUnit;
+								dataBody.tagName = element.tagName;
+								dataBody.position = element.position;
+								//主要数量计算规则
+								if (element.baseUnit == "KG" || element.baseUnit == "G") {
+									if (element.gramWeight == null) {
+										if (parseInt(element.djl) === 1) {
+											dataBody.qualityPiece = element.djl * element.subQualityPiece;
+										} else {
+											dataBody.qualityPiece = 0;
+										}
+									} else {
+
+										dataBody.qualityPiece = element.gramWeight * element
+											.subQualityPiece;
+									}
+								} else {
+									dataBody.qualityPiece = element.subQualityPiece;
+								}
+								dataBody.barCode = element.barCode;
+								dataBody.packageCode = element.packageCode;
+								dataBody.subQualityPiece = element.subQualityPiece;
+								dataBody.materielDesc = element.materialDesc;
+								dataBody.materielCode = element.materialCode;
+								dataBody.sou = element.sou;
+								dataBody.djl = element.djl;
+								this.tableData.push(dataBody);
+							}
+
 						});
 						this.totalNum = this.tableData.length;
 					} else {
@@ -367,38 +406,46 @@
 					}
 				});
 			},
-			commit(){
+			commit() {
 				this.show = true;
 			},
-			close(){
+			close() {
 				this.show = false;
 			},
-			confirm(){
+			confirm() {
 				//提交数据
 				this.show = false;
-				if(this.masterData.item != undefined&&this.masterData.item.length != 0){
+				if (this.masterData.item != undefined && this.masterData.item.length != 0) {
 					this.setItemCode();
 					this.masterData.type = "1";
-				}
-				else{
+				} else {
 					this.$toast.showToast("请先添加数据再提交");
 					return;
 				}
 				this.commitData();
 			},
-			save(){
-				if(this.masterData.item != undefined&&this.masterData.item.length != 0){
+			save() {
+				if (this.masterData.item != undefined && this.masterData.item.length != 0) {
 					this.setItemCode();
 					this.masterData.type = "2";
-				}
-				else{
+				} else {
 					this.$toast.showToast("请先添加数据再提交");
 					return;
 				}
 				this.commitData();
 			},
-			commitData(){
-				console.log("==============masterData:",this.masterData);
+			commitData() {
+				console.log("==========data:", this.masterData);
+				var containZero = false;
+				this.masterData.item.forEach(element => {
+					if (parseInt(element.qualityPiece) === 0 ||element.qualityPiece === "0") {
+						containZero = true;
+					}
+				});
+				if(containZero){
+					this.$toast.showToast("主要数量不允许为0,请检查数据");
+					return;
+				}
 				var opts = {
 					url: ``,
 					method: 'post'
@@ -414,19 +461,27 @@
 				};
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
-					console.log("*****************res:", res);
 					if (res.statusCode === 200) {
-						
+						this.$toast.showToast("提交成功");
+						uni.navigateBack({
+
+						});
 					} else {
 						this.$toast.showToast("提交失败");
 					}
 				});
 			},
-			setItemCode(){
+			setItemCode() {
 				//给每条数据添加item号 提交前添加防止删除操作时出现重复item号
 				for (var i = 0; i < this.masterData.item.length; i++) {
 					this.masterData.item[i].itemCode = `${i+1}`;
+					this.masterData.header.deliverStockPlace = this.warehouse;
+					this.masterData.header.pickingSelf = this.isRecheck ? "1" : "0";
 				};
+			},
+			selectRecheck() {
+				this.isRecheck = !this.isRecheck;
+				console.log("===========================:", this.isRecheck);
 			},
 		}
 	}

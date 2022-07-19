@@ -43,7 +43,7 @@
 				</div>
 			</u-col>
 		</u-row>
-		
+
 		<uni-table border stripe emptyText="暂无更多数据" class="custom-list">
 			<!-- 表头行 -->
 			<uni-tr>
@@ -52,7 +52,7 @@
 				<uni-th align="center">小计次要数量</uni-th>
 				<uni-th align="center">库位</uni-th>
 				<uni-th align="center">仓位</uni-th>
-				<uni-th align="center">凭证日期</uni-th>
+				<uni-th align="center">过账日期</uni-th>
 				<uni-th align="center">小计数量/克重</uni-th>
 				<uni-th align="center">状态</uni-th>
 			</uni-tr>
@@ -68,7 +68,7 @@
 				<uni-td>{{item.modelNum}}</uni-td>
 			</uni-tr>
 		</uni-table>
-		
+
 		<view style="margin-top: 30px;">
 			<u-row style="margin-bottom: 10px;">
 				<u-col span="6">
@@ -79,7 +79,7 @@
 				</u-col>
 				<u-col span="6">
 					<div class="col-layout">
-						<u-button type="primary" @click="cancel" text="取消"
+						<u-button type="error" @click="cancel" text="取消"
 							style="width: 80%;margin-left: 10%;margin-bottom: 10px;">
 						</u-button>
 					</div>
@@ -93,10 +93,11 @@
 	export default {
 		data() {
 			return {
-				codeNumber:"",
-				mainNumber:"",    //合计数量
-				secondaryNumber:"",//合计次要数量
-				tableData:[],
+				codeNumber: "",
+				mainNumber: "", //合计数量
+				secondaryNumber: "", //合计次要数量
+				tableData: [],
+				data:"",
 			}
 		},
 		methods: {
@@ -111,19 +112,70 @@
 						} else {
 							this.$toast.showToast("扫码失败，请重试");
 						}
-			
+
 					}
 				});
 			},
-			startSearch(){
-				
+			startSearch() {
+				if (this.codeNumber === '' || this.codeNumber === undefined) {
+					this.$toast.showToast("请先扫描分配号");
+					return;
+				}
+				var opts = {
+					url: ``,
+					method: 'post'
+				};
+				uni.showLoading({
+					title: '加载中...'
+				});
+				var param = {
+					"interface_num": "MOBSCMD0020",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": {
+						"materialDecStatus":"4",
+						"codeNumber": this.codeNumber
+					},
+				};
+				this.$http.httpRequest(opts, param).then((res) => {
+					console.log("============res:",res);
+					uni.hideLoading();
+					if (res.statusCode === 200) {
+						this.mainNumber = res.data.totalQuality;
+						this.secondaryNumber = res.data.totalSubQualityPiece;
+					} else {
+						this.$toast.showToast("获取数据失败，请重试");
+					}
+				});
 			},
-			confirm(){
-				
+			confirm() {
+				var opts = {
+					url: ``,
+					method: 'post'
+				};
+				uni.showLoading({
+					title: '加载中...'
+				});
+				var param = {
+					"interface_num": "MOBSCMD0021",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": {
+						"poCode": this.codeNumber
+					},
+				};
+				this.$http.httpRequest(opts, param).then((res) => {
+					uni.hideLoading();
+					if (res.statusCode === 200) {
+
+					} else {
+						this.$toast.showToast("获取数据失败，请重试");
+					}
+				});
 			},
-			cancel(){
+			cancel() {
 				uni.navigateBack({
-				
+
 				});
 			},
 		}
