@@ -6,8 +6,8 @@
 					<view class="desc-text-edit">
 						<u--text type="primary" text="扫码" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="codeNumber" placeholder="扫码或填写分配号" border="surround" clearable>
-					</u--input>
+					<uni-easyinput v-model="codeNumber" placeholder="扫码或填写分配号" @blur="blur" clearable>
+					</uni-easyinput>
 				</u-col>
 				<u-col span="1">
 					<view style="width: 30px;height: 30px;">
@@ -118,6 +118,13 @@
 					}
 				});
 			},
+			blur(e){
+				if (e.target.value == '') {
+					return;
+				};
+				this.codeNumber = e.target.value;
+				this.startSearch();
+			},
 			startSearch() {
 				if (this.codeNumber === '' || this.codeNumber === undefined) {
 					this.$toast.showToast("请先扫描分配号");
@@ -153,8 +160,12 @@
 								this.secondaryNumber = 0;
 								this.mainNumber += element.subQualityTotal;
 								this.secondaryNumber += element.qualityTotal;
+								element.subQualityTotal = (element.subQualityTotal/2).toFixed(2);
+								element.qualityTotal = (element.qualityTotal/2).toFixed(2);
 							});
 						}
+						this.mainNumber = (this.mainNumber/2).toFixed(2);
+						this.secondaryNumber = (this.secondaryNumber/2).toFixed(2);
 						
 					} else {
 						this.$toast.showToast("获取数据失败，请重试");
@@ -199,6 +210,8 @@
 							for (var i = 0; i < this.selectedList.length; i++) {
 								this.tableData.splice(this.selectedList[i],1);
 							};
+							this.mainNumber = 0;
+							this.secondaryNumber = 0;
 						}
 						
 					} else {

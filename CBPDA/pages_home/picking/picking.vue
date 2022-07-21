@@ -6,8 +6,10 @@
 					<view class="desc-text-edit">
 						<u--text type="primary" text="配货单" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="codeNumber" placeholder="扫描或输入配货单" border="surround" clearable>
-					</u--input>
+
+					<uni-easyinput v-model="codeNumber" placeholder="扫描或输入配货单" @blur="startSearchBlur"
+						:disabled="disabled" clearable>
+					</uni-easyinput>
 				</u-col>
 				<u-col span="1">
 					<view style="width: 30px;height: 30px;">
@@ -122,7 +124,8 @@
 					<view class="desc-text-edit">
 						<u--text type="primary" text="扫码输入" size=13></u--text>
 					</view>
-					<uni-easyinput v-model="inputNum" placeholder="扫码输入" @blur="blur" :disabled="disabled" clearable>
+					<uni-easyinput :focus="focus" v-model="inputNum" placeholder="扫码输入" @blur="blur"
+						:disabled="disabled" clearable>
 					</uni-easyinput>
 				</div>
 
@@ -158,13 +161,15 @@
 			<u-row>
 				<u-col span="6">
 					<div class="col-layout">
-						<u-button type="primary" @click="commit" text="确认" style="width: 80%;margin-left: 10%;" :disabled="disabled">
+						<u-button type="primary" @click="commit" text="确认" style="width: 80%;margin-left: 10%;"
+							:disabled="disabled">
 						</u-button>
 					</div>
 				</u-col>
 				<u-col span="6">
 					<div class="col-layout">
-						<u-button type="primary" @click="save" text="保存" style="width: 80%;margin-left: 10%;" :disabled="disabled">
+						<u-button type="primary" @click="save" text="保存" style="width: 80%;margin-left: 10%;"
+							:disabled="disabled">
 						</u-button>
 					</div>
 				</u-col>
@@ -238,7 +243,7 @@
 					<view style="float:left;width: 70px;">
 						<text style="font-size: 13px;">次要数量:</text>
 					</view>
-					<u--input font-size=13 v-model="secondaryNum" border="surround" clearable>
+					<u--input font-size=13 v-model="secondaryNum" border="surround" @change="change" clearable>
 					</u--input>
 				</div>
 				<div style="width: 100%;display:inline-block">
@@ -300,13 +305,14 @@
 				tableData: [],
 				showEditPage: false, //是否显示编辑页面
 				selectedIndex: 0, //当前选中的数据行
-				mainNum: "", //数量、克重    用于当前行的信息编辑
-				secondaryNum: "", //次要数量    用于当前行的信息编辑
+				mainNum: 0, //数量、克重    用于当前行的信息编辑
+				secondaryNum: 0, //次要数量    用于当前行的信息编辑
 				remarks: "", //备注   用于当前行的信息编辑
 				masterData: [],
-				disabled:false,   //控制过账后数据是否可编辑
-				show:false,       //弹出模态窗
-				isRecheck: false,//是否自取
+				disabled: false, //控制过账后数据是否可编辑
+				show: false, //弹出模态窗
+				isRecheck: false, //是否自取
+				focus: false,
 			}
 		},
 		onNavigationBarButtonTap(val) {
@@ -347,6 +353,13 @@
 					}
 				});
 			},
+			startSearchBlur(e) {
+				if (e.target.value == '') {
+					return;
+				};
+				this.codeNumber = e.target.value;
+				this.startSearch();
+			},
 			startSearch() {
 				if (this.codeNumber === '' || this.codeNumber === undefined) {
 					this.$toast.showToast("请先扫描包码");
@@ -372,7 +385,7 @@
 					if (res.statusCode === 200) {
 						this.masterData = res.data;
 						this.sumStep = res.data.detail.length;
-						if(this.sumStep != 0){
+						if (this.sumStep != 0) {
 							this.nowStep = 1;
 						}
 						this.steps = `${this.nowStep}/${this.sumStep}`;
@@ -383,10 +396,9 @@
 						this.recommend = res.data.detail[0].shopCode;
 						this.tableData = res.data.detail[0].itemList;
 						this.totalNum = this.tableData.length;
-						if(res.data.header.orderStatus !== "2" && res.data.header.orderStatus !== "3"){
+						if (res.data.header.orderStatus !== "2" && res.data.header.orderStatus !== "3") {
 							this.disabled = false;
-						}
-						else{
+						} else {
 							this.disabled = true;
 						}
 
@@ -404,6 +416,22 @@
 			},
 			close() {
 				this.showEditPage = false;
+			},
+			change(res) {
+				if (this.tableData[this.selectedIndex].baseUnit == "KG" || this.tableData[this.selectedIndex].baseUnit ==
+					"G") {
+					if (this.tableData[this.selectedIndex].gramWeight == null) {
+						if (parseInt(this.tableData[this.selectedIndex].djl) === 1) {
+							this.mainNum = this.tableData[this.selectedIndex].djl * res;
+						} else {
+							this.mainNum = 0;
+						}
+					} else {
+						this.mainNum = this.tableData[this.selectedIndex].gramWeight * res;
+					}
+				} else {
+					this.mainNum = res;
+				}
 			},
 			confirmEdit() {
 				this.tableData[this.selectedIndex].qualityPiece = this.mainNum;
@@ -431,6 +459,7 @@
 				uni.showLoading({
 					title: '加载中...'
 				});
+				this.focus = false;
 				var param = {
 					"interface_num": "MOBSCMD0015",
 					"serial_no": "123456789",
@@ -440,16 +469,23 @@
 						"sou": this.SOU,
 					},
 				};
-				
+
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
+
 					this.inputNum = "";
+					this.$nextTick(function() {
+						this.focus = true;
+					});
 					if (res.statusCode === 200) {
 						res.data.forEach(element => {
-							console.log("==============warehouse:",element);
-							if(this.tableData.length < this.distributeNum){
-								console.log("==============warehouse:",this.warehouse);
-								if(element.qualityPiece > 0 && element.stockPalce == this.warehouse){
+							if (this.tableData.length < this.distributeNum) {
+								if (element.qualityPiece > 0 && element.stockPalce == this.warehouse) {
+									let result = this.tableData.findIndex(ele => ele.barCode === element
+										.barCode);
+									if (result > -1) {
+										return;
+									}
 									var dataBody = {};
 									dataBody.poCode = this.masterData.header.poCode;
 									dataBody.factoryCode = element.shopCode;
@@ -468,24 +504,7 @@
 									dataBody.tagName = element.tagName;
 									dataBody.position = element.position;
 									//主要数量计算规则
-									if(element.baseUnit == "KG"||element.baseUnit == "G"){
-										if(element.gramWeight == null){
-											if(parseInt(element.djl) === 1){
-												dataBody.qualityPiece = element.djl*element.subQualityPiece;
-											}
-											else{
-												dataBody.qualityPiece = 0;
-											}
-										}
-										else{
-
-											dataBody.qualityPiece = element.gramWeight*element.subQualityPiece;
-										}
-									}
-									else{
-										dataBody.qualityPiece = element.subQualityPiece;
-									}
-									
+									dataBody.qualityPiece = element.qualityPiece;
 									dataBody.barCode = element.barCode;
 									dataBody.packageCode = element.packageCode;
 									dataBody.subQualityPiece = element.subQualityPiece;
@@ -493,12 +512,13 @@
 									dataBody.materielCode = element.materialCode;
 									dataBody.sou = element.sou;
 									dataBody.djl = element.djl;
-									dataBody.poItemCode = this.masterData.detail[this.nowStep-1].itemCode;
+									dataBody.fph = element.fph;
+									dataBody.poItemCode = this.masterData.detail[this.nowStep - 1]
+									.itemCode;
 									this.tableData.push(dataBody);
 								}
-								
-							}
-							else{
+
+							} else {
 								this.$toast.showToast("已达最大量");
 							}
 						});
@@ -513,49 +533,46 @@
 					this.nowStep = this.nowStep + 1;
 					this.steps = `${this.nowStep}/${this.sumStep}`;
 					this.reload();
-				}
-				else{
+				} else {
 					this.show = true;
 				}
 			},
-			close(){
+			close() {
 				this.show = false;
 			},
-			confirm(){
+			confirm() {
 				//提交数据
 				this.show = false;
-				if(this.masterData.detail != undefined && this.masterData.detail.length != 0){
+				if (this.masterData.detail != undefined && this.masterData.detail.length != 0) {
 					this.masterData.type = "1";
 					this.setItemCode();
-				}
-				else{
+				} else {
 					this.$toast.showToast("请先添加数据再提交");
 					return;
 				}
 				this.commitData();
 			},
 			save() {
-				if(this.masterData.detail != undefined && this.masterData.detail.length != 0){
+				if (this.masterData.detail != undefined && this.masterData.detail.length != 0) {
 					this.setItemCode();
 					this.masterData.type = "2";
-				}
-				else{
+				} else {
 					this.$toast.showToast("请先添加数据再提交");
 					return;
 				}
 				this.commitData();
 			},
-			commitData(){
-				console.log("==========data:",this.masterData);
+			commitData() {
+
 				var containZero = false;
 				this.masterData.detail.forEach(element => {
 					element.itemList.forEach(element => {
-						if(parseInt(element.qualityPiece) === 0 ||element.qualityPiece === "0"){
+						if (parseInt(element.qualityPiece) === 0 || element.qualityPiece === "0") {
 							containZero = true;
 						}
 					})
 				});
-				if(containZero){
+				if (containZero) {
 					this.$toast.showToast("主要数量不允许为0,请检查数据");
 					return;
 				}
@@ -577,7 +594,7 @@
 					if (res.statusCode === 200) {
 						this.$toast.showToast("提交成功");
 						uni.navigateBack({
-						
+
 						});
 					} else {
 						this.$toast.showToast("提交失败");
@@ -587,15 +604,17 @@
 			prefixInteger(num, n) {
 				return (Array(n).join(0) + num).slice(-n);
 			},
-			setItemCode(){
+			setItemCode() {
 				//给每条数据添加item号 提交前添加防止删除操作时出现重复item号
 				for (var i = 0; i < this.masterData.detail.length; i++) {
 					for (var j = 0; j < this.masterData.detail[i].itemList.length; j++) {
-						this.masterData.detail[i].itemList[j].itemCode = `${this.masterData.detail[i].itemCode}${this.prefixInteger(j+1,3)}`;
+						this.masterData.detail[i].itemList[j].itemCode =
+							`${this.masterData.detail[i].itemCode}${this.prefixInteger(j+1,3)}`;
+
 					};
 				};
 				this.masterData.header.deliverStockPlace = this.warehouse;
-				this.masterData.header.pickingSelf = this.isRecheck?"1":"0";
+				this.masterData.header.pickingSelf = this.isRecheck ? "1" : "0";
 			},
 			reload() {
 				this.modelNum = this.masterData.detail[this.nowStep - 1].materielCode;
@@ -608,7 +627,7 @@
 			},
 			selectRecheck() {
 				this.isRecheck = !this.isRecheck;
-				console.log("===========================:",this.isRecheck);
+
 			},
 		}
 	}

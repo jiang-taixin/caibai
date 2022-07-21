@@ -48,6 +48,35 @@ const httpRequest = (opts, data) => {
 		)
 	})
 };
+
+
+const getTokenRequest = (opts, data) => {
+	let httpDefaultOpts = {
+		url: opts.url,
+		data: data,
+		method: opts.method,
+		header:{
+			'X-Requested-With': 'XMLHttpRequest',
+			'Content-Type': 'application/x-www-form-urlencoded',
+		},
+	}
+	console.log(`----------start get token request with url :${httpDefaultOpts.url}`);
+	console.log('----------start get token request with data :', httpDefaultOpts.data);
+
+	return new Promise((resolve, reject) => {
+		uni.request(httpDefaultOpts).then(
+			(res) => {
+				resolve(res[1])
+			}
+		).catch(
+			(response) => {
+				reject(response)
+			}
+		)
+	})
+};
+
+
 var format = function(time, format) {
 	var t = new Date(time);
 	var tf = function(i) {
@@ -79,5 +108,6 @@ var format = function(time, format) {
 
 export default {
 	baseUrl,
-	httpRequest
+	httpRequest,
+	getTokenRequest
 }

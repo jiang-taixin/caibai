@@ -6,8 +6,8 @@
 					<view class="desc-text-edit">
 						<u--text type="primary" text="配货单" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="codeNumber" placeholder="扫描或输入配货单" border="surround" clearable>
-					</u--input>
+					<uni-easyinput v-model="codeNumber" placeholder="扫描或输入配货单" @blur="startSearchBlur" :disabled="disabled" clearable>
+					</uni-easyinput>
 				</u-col>
 				<u-col span="1">
 					<view style="width: 30px;height: 30px;">
@@ -73,7 +73,7 @@
 					<view class="desc-text-edit">
 						<u--text type="primary" text="扫码输入" size=13></u--text>
 					</view>
-					<uni-easyinput v-model="inputNum" placeholder="扫码输入" @blur="blur" :disabled="disabled">
+					<uni-easyinput v-model="inputNum" :focus="focus" placeholder="扫码输入" @blur="blur" :disabled="disabled">
 					</uni-easyinput>
 				</div>
 
@@ -85,6 +85,7 @@
 				<uni-th align="center">标签名称</uni-th>
 				<uni-th align="center">仓位</uni-th>
 				<uni-th align="center">数量</uni-th>
+				<uni-th align="center">次要数量</uni-th>
 				<uni-th align="center">SOU</uni-th>
 				<uni-th align="center">商品条码</uni-th>
 				<uni-th align="center">商品包码</uni-th>
@@ -95,6 +96,7 @@
 				<uni-td>{{item.tagName}}</uni-td>
 				<uni-td>{{item.position}}</uni-td>
 				<uni-td>{{item.qualityPiece}}</uni-td>
+				<uni-td>{{item.subQualityPiece}}</uni-td>
 				<uni-td>{{item.sou}}</uni-td>
 				<uni-td>{{item.barCode}}</uni-td>
 				<uni-td>{{item.packageCode}}</uni-td>
@@ -190,6 +192,13 @@
 					<u--input font-size=13 v-model="mainNum" border="surround" clearable>
 					</u--input>
 				</div>
+				<div style="width: 100%;display:inline-block">
+					<view style="float:left;width: 70px;">
+						<text style="font-size: 13px;">次要数量:</text>
+					</view>
+					<u--input font-size=13 v-model="secondaryNum"  border="surround" @change="change" clearable>
+					</u--input>
+				</div>
 
 				<div style="width: 100%;display:inline-block">
 					<view style="float:left;width: 70px;">
@@ -243,12 +252,14 @@
 				tableData: [],
 				showEditPage: false, //是否显示编辑页面
 				selectedIndex: 0, //当前选中的数据行
-				mainNum: "", //数量、克重    用于当前行的信息编辑
+				mainNum: 0, //数量、克重    用于当前行的信息编辑
+				secondaryNum:0,//次要数量
 				remarks: "", //备注   用于当前行的信息编辑
 				masterData: [],
 				disabled: false,
 				show: false, //弹出模态窗
 				isRecheck: false, //是否自取
+				focus:false,
 			}
 		},
 		onLoad: function(option) {
@@ -271,6 +282,13 @@
 						}
 					}
 				});
+			},
+			startSearchBlur(e){
+				if (e.target.value == '') {
+					return;
+				};
+				this.codeNumber = e.target.value;
+				this.startSearch();
 			},
 			startSearch() {
 				if (this.codeNumber === '' || this.codeNumber === undefined) {
@@ -313,13 +331,36 @@
 				this.selectedIndex = index;
 				this.showEditPage = true;
 				this.mainNum = this.tableData[this.selectedIndex].qualityPiece;
+				this.secondaryNum = this.tableData[this.selectedIndex].subQualityPiece;
 				this.remarks = this.tableData[this.selectedIndex].reamrk;
 			},
 			close() {
 				this.showEditPage = false;
 			},
+			change(res){
+				
+			},
+			change(res){
+				if(this.tableData[this.selectedIndex].baseUnit == "KG"||this.tableData[this.selectedIndex].baseUnit == "G"){
+					if(this.tableData[this.selectedIndex].gramWeight == null){
+						if(parseInt(this.tableData[this.selectedIndex].djl) === 1){
+							this.mainNum = this.tableData[this.selectedIndex].djl*res;
+						}
+						else{
+							this.mainNum = 0;
+						}
+					}
+					else{
+						this.mainNum = this.tableData[this.selectedIndex].gramWeight*res;
+					}
+				}
+				else{
+					this.mainNum = res;
+				}
+			},
 			confirmEdit() {
 				this.tableData[this.selectedIndex].qualityPiece = this.mainNum;
+				this.tableData[this.selectedIndex].subQualityPiece = this.secondaryNum;
 				this.tableData[this.selectedIndex].reamrk = this.remarks;
 				this.showEditPage = false;
 			},
@@ -343,6 +384,7 @@
 				uni.showLoading({
 					title: '加载中...'
 				});
+				this.focus = false;
 				var param = {
 					"interface_num": "MOBSCMD0016",
 					"serial_no": "123456789",
@@ -355,10 +397,16 @@
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
 					this.inputNum = "";
-					console.log("+==============res:", res);
+					this.$nextTick(function() {
+						this.focus = true;
+					});
 					if (res.statusCode === 200) {
 						res.data.forEach(element => {
 							if (element.qualityPiece > 0 && element.stockPalce == this.warehouse) {
+								let result = this.tableData.findIndex(ele => ele.barCode === element.barCode);
+								if(result > -1){
+									return;
+								}
 								var dataBody = {};
 								dataBody.poCode = this.masterData.header.poCode;
 								dataBody.factoryCode = element.shopCode;
@@ -373,22 +421,8 @@
 								dataBody.baseUnit = element.baseUnit;
 								dataBody.tagName = element.tagName;
 								dataBody.position = element.position;
-								//主要数量计算规则
-								if (element.baseUnit == "KG" || element.baseUnit == "G") {
-									if (element.gramWeight == null) {
-										if (parseInt(element.djl) === 1) {
-											dataBody.qualityPiece = element.djl * element.subQualityPiece;
-										} else {
-											dataBody.qualityPiece = 0;
-										}
-									} else {
-
-										dataBody.qualityPiece = element.gramWeight * element
-											.subQualityPiece;
-									}
-								} else {
-									dataBody.qualityPiece = element.subQualityPiece;
-								}
+								dataBody.qualityPiece = element.qualityPiece;
+								
 								dataBody.barCode = element.barCode;
 								dataBody.packageCode = element.packageCode;
 								dataBody.subQualityPiece = element.subQualityPiece;
@@ -396,6 +430,7 @@
 								dataBody.materielCode = element.materialCode;
 								dataBody.sou = element.sou;
 								dataBody.djl = element.djl;
+								dataBody.fph = element.fph;
 								this.tableData.push(dataBody);
 							}
 
@@ -435,7 +470,7 @@
 				this.commitData();
 			},
 			commitData() {
-				console.log("==========data:", this.masterData);
+				
 				var containZero = false;
 				this.masterData.item.forEach(element => {
 					if (parseInt(element.qualityPiece) === 0 ||element.qualityPiece === "0") {
@@ -481,7 +516,7 @@
 			},
 			selectRecheck() {
 				this.isRecheck = !this.isRecheck;
-				console.log("===========================:", this.isRecheck);
+				
 			},
 		}
 	}

@@ -234,6 +234,7 @@
 				endTime:"",//截止时间
 				showEditPage: false, //是否显示编辑页面
 				selectedIndex:0,//当前选中行
+				remarks:"",//备注   用于当前行的信息编辑
 				tableData:[{
 					"boxName":"BOX111",
 					"handover":"H0009",

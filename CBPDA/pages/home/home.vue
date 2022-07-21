@@ -119,9 +119,12 @@
 		},
 		beforeCreate() {
 			//如果没登录    去登录页面
+			
 			// uni.redirectTo({
-			// 	url:"/pages_login/login"
-			// })
+			// 	url:"/pages_login/login",
+			// 	animationType: 'pop-in',
+			// 	animationDuration: 200
+			// }),
 		},
 		mounted() {
 			//页面加载完成获取枚举值并缓存在本地

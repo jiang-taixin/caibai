@@ -6,8 +6,10 @@
 					<view class="desc-text-edit">
 						<u--text type="primary" text="扫码" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="codeNumber" placeholder="扫码或填写分配号" border="surround" clearable>
-					</u--input>
+					<!-- <u--input font-size=13 v-model="codeNumber" placeholder="扫码或填写分配号" border="surround" clearable>
+					</u--input> -->
+					<uni-easyinput v-model="codeNumber" placeholder="扫码或填写分配号" @blur="blur" clearable>
+					</uni-easyinput>
 				</u-col>
 				<u-col span="1">
 					<view style="width: 30px;height: 30px;">
@@ -137,6 +139,13 @@
 					}
 				});
 			},
+			blur(e){
+				if (e.target.value == '') {
+					return;
+				};
+				this.codeNumber = e.target.value;
+				this.startSearch();
+			},
 			startSearch() {
 				if (this.codeNumber === '' || this.codeNumber === undefined) {
 					this.$toast.showToast("请先扫描分配号");
@@ -162,34 +171,36 @@
 					console.log("============res:", res);
 					uni.hideLoading();
 					if (res.statusCode === 200) {
-
-						this.data = res.data;
-						this.voucher = res.data.materialDecCode;
-						this.mainNumber = res.data.totalQuality;
-						this.secondaryNumber = res.data.totalSubQualityPiece;
-						this.remarks = res.data.remarks;
-						switch (res.data.materialDecStatus) {
-							case "1":
-								this.status = "新建状态";
-								break;
-							case "2":
-								this.status = "已入库过账";
-								break;
-							case "3":
-								this.status = "待交接";
-								break;
-							case "4":
-								this.status = "待上架";
-								break;
-							case "5":
-								this.status = "已冲销";
-								break;
-
-							default:
-								this.status = res.data.materialDecStatus;
+						if(res.data.s_flag == "F"){
+							this.$toast.showToast(`${res.data.m_ess}`);
 						}
-
-
+						else{
+							this.data = res.data;
+							this.voucher = res.data.materialDecCode;
+							this.mainNumber = (res.data.totalQuality/2).toFixed(2);
+							this.secondaryNumber = (res.data.totalSubQualityPiece/2).toFixed(2);
+							this.remarks = res.data.remarks;
+							switch (res.data.materialDecStatus) {
+								case "1":
+									this.status = "新建状态";
+									break;
+								case "2":
+									this.status = "已入库过账";
+									break;
+								case "3":
+									this.status = "待交接";
+									break;
+								case "4":
+									this.status = "待上架";
+									break;
+								case "5":
+									this.status = "已冲销";
+									break;
+							
+								default:
+									this.status = res.data.materialDecStatus;
+							}
+						}
 					} else {
 						this.$toast.showToast("获取数据失败，请重试");
 					}
@@ -227,7 +238,19 @@
 					uni.hideLoading();
 					console.log("****************res:", res);
 					if (res.statusCode === 200) {
-						this.$toast.showToast("提交成功");
+						if(res.data.s_flag == "F"){
+							this.$toast.showToast(`${res.data.m_ess}`);
+						}
+						else{
+							this.$toast.showToast("提交成功");
+							this.codeNumber = "";
+							this.voucher = "";
+							this.mainNumber = "";
+							this.secondaryNumber = "";
+							this.remarks = "";
+							this.status = "";
+						}
+						
 					} else {
 						this.$toast.showToast("提交失败");
 					}
