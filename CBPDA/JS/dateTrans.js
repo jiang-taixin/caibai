@@ -8,7 +8,7 @@ var addZero = function(num) {
 	return num
 }
 
-
+//毫秒转为日期格式
 const formatMsToDate = (ms) => {
 	if (ms) {
 		var oDate = new Date(ms),

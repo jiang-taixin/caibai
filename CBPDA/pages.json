@@ -28,7 +28,8 @@
 		}, {
 			"path": "pages/spare/spare",
 			"style": {
-				"navigationStyle": "custom"
+				"navigationBarTitleText": "库存查询",
+				"enablePullDownRefresh": false
 			}
 		}
 	],
@@ -183,14 +184,7 @@
 					"enablePullDownRefresh": false
 				}
 
-			}, {
-				"path": "stockSearch",
-				"style": {
-					"navigationBarTitleText": "库存查询",
-					"enablePullDownRefresh": false
-				}
-
-			}, {
+			},  {
 				"path": "deliveryConfirm",
 				"style": {
 					"navigationBarTitleText": "配送出库确认",

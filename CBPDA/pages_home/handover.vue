@@ -98,7 +98,7 @@
 			</u-row>
 		</view>
 		<u-modal :show="show" title="提示" :showCancelButton="true" @confirm="commit" @cancel="close" :asyncClose="true">
-			<text>确认过账？</text>
+			<text>本次过账时是否自动产生901上架单</text>
 		</u-modal>
 	</view>
 </template>
@@ -232,7 +232,7 @@
 						this.$toast.showToast("提交失败");
 					}
 				});
-			}
+			},
 			cancel() {
 				uni.navigateBack({
 

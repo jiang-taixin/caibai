@@ -61,6 +61,9 @@
 				<uni-th align="center">序号</uni-th>
 				<uni-th align="center">暂收时间</uni-th>
 				<uni-th align="center">暂收确认状态</uni-th>
+				<uni-th align="center">出货数量</uni-th>
+				<uni-th align="center">出货克重</uni-th>
+				<uni-th align="center">出货毛重</uni-th>
 				<uni-th align="center">采购订单号</uni-th>
 				<uni-th align="center">订单行项目号</uni-th>
 				<uni-th align="center">商品编号</uni-th>
@@ -73,6 +76,9 @@
 				<uni-td>{{index}}</uni-td>
 				<uni-td>{{item.temprecDate}}</uni-td>
 				<uni-td>{{item.itemStatus}}</uni-td>
+				<uni-td>{{item.sendCount}}</uni-td>
+				<uni-td>{{item.sendTotalGram}}</uni-td>
+				<uni-td>{{item.grossWeight}}</uni-td>
 				<uni-td>{{item.poCode}}</uni-td>
 				<uni-td>{{item.poItemCode}}</uni-td>
 				<uni-td>{{item.materielCode}}</uni-td>
@@ -141,11 +147,11 @@
 				});
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
+					console.log("======================res:",res);
 					if (res.data.code === "200") {
 						//收到数据将暂收时间转为日期格式   状态转换为文字描述
 						if (res.data.data.length != 0) {
 							for (let i in res.data.data) {
-								console.log("======================res:",res);
 								res.data.data[i].temprecDate = this.$dateTrans.formatMsToDate(res.data.data[i].temprecDate);
 								switch (res.data.data[i].itemStatus) {
 									case "0":

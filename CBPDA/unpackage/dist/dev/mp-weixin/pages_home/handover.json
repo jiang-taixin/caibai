@@ -6,6 +6,8 @@
     "u-col": "/uni_modules/uview-ui/components/u-col/u-col",
     "u--text": "/uni_modules/uview-ui/components/u--text/u--text",
     "u--input": "/uni_modules/uview-ui/components/u--input/u--input",
-    "u-button": "/uni_modules/uview-ui/components/u-button/u-button"
+    "u-button": "/uni_modules/uview-ui/components/u-button/u-button",
+    "uni-datetime-picker": "/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker",
+    "u-modal": "/uni_modules/uview-ui/components/u-modal/u-modal"
   }
 }

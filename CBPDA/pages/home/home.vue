@@ -1,9 +1,9 @@
 <template>
 	<view>
-		<u-swiper :list="list1" :radius="0" @click="click" indicator></u-swiper>
-		<u-grid :border="false" col="3" @click="click">
+		<u-swiper :list="list1" :radius="0" indicator></u-swiper>
+		<u-grid :border="false" col="3">
 			<u-grid-item v-for="(listItem,listIndex) in list" :key="listIndex"
-				v-if="listItem.platform.indexOf(platfrom) !== -1">
+				v-if="listItem.platform.indexOf(platfrom) !== -1" @click="click(listItem)">
 				<u-icon :customStyle="{paddingTop:20+'rpx'}" :name="listItem.name" :size="60" color="#2a439c"></u-icon>
 				<text class="grid-text">{{listItem.title}}</text>
 			</u-grid-item>
@@ -17,81 +17,91 @@
 			return {
 				platfrom: "",
 				list: [{
+						tag:'0',
 						name: 'search',
 						title: '初检信息录入',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
+						tag:'1',
 						name: 'bell',
 						title: '入库前质检',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
+						tag:'2',
 						name: 'bell-fill',
 						title: '有损检验',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
+						tag:'3',
 						name: 'edit-pen',
 						title: '回货暂收',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
+						tag:'4',
 						name: 'order',
 						title: '创建送检单',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
+						tag:'5',
 						name: 'car',
 						title: '逐条拣货配货',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
+						tag:'6',
 						name: 'car-fill',
 						title: '整单配货',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
+						tag:'7',
 						name: 'grid',
 						title: '交接',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
+						tag:'8',
 						name: 'coupon',
 						title: '上架',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
+						tag:'9',
 						name: 'coupon-fill',
 						title: '库存上架',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
+						tag:'10',
 						name: 'integral',
 						title: '盘点',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
+						tag:'11',
 						name: 'map',
 						title: '仓位调整',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
+						tag:'12',
 						name: 'map-fill',
 						title: '库位调整',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
+						tag:'13',
 						name: 'gift',
 						title: '装箱',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						name: 'scan',
-						title: '库存查询',
-						platform: ["APP", "WEIXIN", "H5"],
-					},
-					{
+						tag:'14',
 						name: 'scan',
 						title: '配送出库确认',
 						platform: ["APP", "WEIXIN", "H5"],
@@ -140,8 +150,8 @@
 			console.log("========================= platform :", this.platfrom);
 		},
 		methods: {
-			click(name) {
-				switch (name) {
+			click(item) {
+				switch (parseInt(item.tag)) {
 					case 0:
 						uni.navigateTo({
 							url: '/pages_home/qualityTesting'
@@ -214,11 +224,6 @@
 						});
 						break;
 					case 14:
-						uni.navigateTo({
-							url: '/pages_home/stockSearch'
-						});
-						break;
-					case 15:
 						uni.navigateTo({
 							url: '/pages_home/deliveryConfirm'
 						});

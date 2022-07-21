@@ -96,40 +96,40 @@ var components
 try {
   components = {
     uRow: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-row/u-row */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-row/u-row")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-row/u-row.vue */ 325))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-row/u-row */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-row/u-row")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-row/u-row.vue */ 333))
     },
     uCol: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-col/u-col */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-col/u-col")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-col/u-col.vue */ 333))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-col/u-col */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-col/u-col")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-col/u-col.vue */ 341))
     },
     "u-Text": function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--text/u--text */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--text/u--text")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--text/u--text.vue */ 341))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--text/u--text */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--text/u--text")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--text/u--text.vue */ 349))
     },
     "u-Input": function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 347))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 355))
     },
     uButton: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 353))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 361))
     },
     uniEasyinput: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 400))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 408))
     },
     uniTable: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-table/uni-table */ "uni_modules/uni-table/components/uni-table/uni-table").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-table/uni-table.vue */ 363))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-table/uni-table */ "uni_modules/uni-table/components/uni-table/uni-table").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-table/uni-table.vue */ 371))
     },
     uniTr: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-tr/uni-tr */ "uni_modules/uni-table/components/uni-tr/uni-tr").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-tr/uni-tr.vue */ 370))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-tr/uni-tr */ "uni_modules/uni-table/components/uni-tr/uni-tr").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-tr/uni-tr.vue */ 378))
     },
     uniTh: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-th/uni-th */ "uni_modules/uni-table/components/uni-th/uni-th").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-th/uni-th.vue */ 377))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-th/uni-th */ "uni_modules/uni-table/components/uni-th/uni-th").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-th/uni-th.vue */ 385))
     },
     uniTd: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-td/uni-td */ "uni_modules/uni-table/components/uni-td/uni-td").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-td/uni-td.vue */ 384))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-td/uni-td */ "uni_modules/uni-table/components/uni-td/uni-td").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-td/uni-td.vue */ 392))
     },
     uPopup: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 418))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 426))
     },
     uModal: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-modal/u-modal */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-modal/u-modal")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-modal/u-modal.vue */ 426))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-modal/u-modal */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-modal/u-modal")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-modal/u-modal.vue */ 434))
     }
   }
 } catch (e) {
@@ -458,6 +458,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -484,7 +493,8 @@ var _default =
       remarks: "", //备注   用于当前行的信息编辑
       masterData: [],
       disabled: false, //控制过账后数据是否可编辑
-      show: false //弹出模态窗
+      show: false, //弹出模态窗
+      isRecheck: false //是否自取
     };
   },
   onNavigationBarButtonTap: function onNavigationBarButtonTap(val) {
@@ -547,7 +557,6 @@ var _default =
 
       this.$http.httpRequest(opts, param).then(function (res) {
         uni.hideLoading();
-        console.log("*****************res:", res);
         if (res.statusCode === 200) {
           _this.masterData = res.data;
           _this.sumStep = res.data.detail.length;
@@ -623,36 +632,59 @@ var _default =
       this.$http.httpRequest(opts, param).then(function (res) {
         uni.hideLoading();
         _this2.inputNum = "";
-        console.log("*****************res:", res);
         if (res.statusCode === 200) {
           res.data.forEach(function (element) {
+            console.log("==============warehouse:", element);
             if (_this2.tableData.length < _this2.distributeNum) {
-              var dataBody = {};
-              dataBody.poCode = _this2.masterData.header.poCode;
-              dataBody.factoryCode = element.shopCode;
-              dataBody.stockPalce = element.stockPlace;
-              dataBody.batch = element.batch;
-              //次要数量
-              dataBody.prepareGoodsNum = element.subQualityPiece;
-              dataBody.subUnit = element.subUnit;
-              dataBody.waraHouse = element.waraHouse;
-              dataBody.goodsArea = element.goodsArea;
-              //移动类型
-              dataBody.moveType = _this2.masterData.header.moveType;
-              //单品金重
-              dataBody.glodWeight = element.gramWeight;
-              dataBody.baseUnit = element.baseUnit;
-              dataBody.tagName = element.tagName;
-              dataBody.position = element.position;
-              dataBody.qualityPiece = element.qualityPiece;
-              dataBody.barCode = element.barCode;
-              dataBody.packageCode = element.packageCode;
-              dataBody.subQualityPiece = element.subQualityPiece;
-              dataBody.materielDesc = element.materialDesc;
-              dataBody.materielCode = element.materialCode;
-              dataBody.sou = element.sou;
-              dataBody.poItemCode = _this2.masterData.detail[_this2.nowStep - 1].itemCode;
-              _this2.tableData.push(dataBody);
+              console.log("==============warehouse:", _this2.warehouse);
+              if (element.qualityPiece > 0 && element.stockPalce == _this2.warehouse) {
+                var dataBody = {};
+                dataBody.poCode = _this2.masterData.header.poCode;
+                dataBody.factoryCode = element.shopCode;
+                dataBody.stockPalce = element.stockPalce;
+                dataBody.batch = element.batch;
+                //次要数量
+                dataBody.prepareGoodsNum = element.subQualityPiece;
+                dataBody.subUnit = element.subUnit;
+                dataBody.waraHouse = element.waraHouse;
+                dataBody.goodsArea = element.goodsArea;
+                //移动类型
+                dataBody.moveType = _this2.masterData.header.moveType;
+                //单品金重
+                dataBody.glodWeight = element.gramWeight;
+                dataBody.baseUnit = element.baseUnit;
+                dataBody.tagName = element.tagName;
+                dataBody.position = element.position;
+                //主要数量计算规则
+                if (element.baseUnit == "KG" || element.baseUnit == "G") {
+                  if (element.gramWeight == null) {
+                    if (parseInt(element.djl) === 1) {
+                      dataBody.qualityPiece = element.djl * element.subQualityPiece;
+                    } else
+                    {
+                      dataBody.qualityPiece = 0;
+                    }
+                  } else
+                  {
+
+                    dataBody.qualityPiece = element.gramWeight * element.subQualityPiece;
+                  }
+                } else
+                {
+                  dataBody.qualityPiece = element.subQualityPiece;
+                }
+
+                dataBody.barCode = element.barCode;
+                dataBody.packageCode = element.packageCode;
+                dataBody.subQualityPiece = element.subQualityPiece;
+                dataBody.materielDesc = element.materialDesc;
+                dataBody.materielCode = element.materialCode;
+                dataBody.sou = element.sou;
+                dataBody.djl = element.djl;
+                dataBody.poItemCode = _this2.masterData.detail[_this2.nowStep - 1].itemCode;
+                _this2.tableData.push(dataBody);
+              }
+
             } else
             {
               _this2.$toast.showToast("已达最大量");
@@ -681,22 +713,64 @@ var _default =
     //提交数据
     this.show = false;
     if (this.masterData.detail != undefined && this.masterData.detail.length != 0) {
+      this.masterData.type = "1";
       this.setItemCode();
     } else
     {
       this.$toast.showToast("请先添加数据再提交");
       return;
     }
-    console.log("===========commit data:", this.masterData);
+    this.commitData();
   }), _defineProperty(_methods, "save", function save()
   {
     if (this.masterData.detail != undefined && this.masterData.detail.length != 0) {
       this.setItemCode();
+      this.masterData.type = "2";
     } else
     {
       this.$toast.showToast("请先添加数据再提交");
       return;
     }
+    this.commitData();
+  }), _defineProperty(_methods, "commitData", function commitData()
+  {var _this3 = this;
+    console.log("==========data:", this.masterData);
+    var containZero = false;
+    this.masterData.detail.forEach(function (element) {
+      element.itemList.forEach(function (element) {
+        if (parseInt(element.qualityPiece) === 0 || element.qualityPiece === "0") {
+          containZero = true;
+        }
+      });
+    });
+    if (containZero) {
+      this.$toast.showToast("主要数量不允许为0,请检查数据");
+      return;
+    }
+    var opts = {
+      url: "",
+      method: 'post' };
+
+    uni.showLoading({
+      title: '加载中...' });
+
+    var param = {
+      "interface_num": "MOBSCMD0018",
+      "serial_no": "123456789",
+      "access_token": "abc",
+      "bus_data": this.masterData };
+
+    this.$http.httpRequest(opts, param).then(function (res) {
+      uni.hideLoading();
+      if (res.statusCode === 200) {
+        _this3.$toast.showToast("提交成功");
+        uni.navigateBack({});
+
+
+      } else {
+        _this3.$toast.showToast("提交失败");
+      }
+    });
   }), _defineProperty(_methods, "prefixInteger", function prefixInteger(
   num, n) {
     return (Array(n).join(0) + num).slice(-n);
@@ -708,6 +782,8 @@ var _default =
         this.masterData.detail[i].itemList[j].itemCode = "".concat(this.masterData.detail[i].itemCode).concat(this.prefixInteger(j + 1, 3));
       };
     };
+    this.masterData.header.deliverStockPlace = this.warehouse;
+    this.masterData.header.pickingSelf = this.isRecheck ? "1" : "0";
   }), _defineProperty(_methods, "reload", function reload()
   {
     this.modelNum = this.masterData.detail[this.nowStep - 1].materielCode;
@@ -717,6 +793,10 @@ var _default =
     this.recommend = this.masterData.detail[this.nowStep - 1].shopCode;
     this.tableData = this.masterData.detail[this.nowStep - 1].itemList;
     this.totalNum = this.tableData.length;
+  }), _defineProperty(_methods, "selectRecheck", function selectRecheck()
+  {
+    this.isRecheck = !this.isRecheck;
+    console.log("===========================:", this.isRecheck);
   }), _methods) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

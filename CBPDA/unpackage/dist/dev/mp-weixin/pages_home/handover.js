@@ -96,19 +96,25 @@ var components
 try {
   components = {
     uRow: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-row/u-row */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-row/u-row")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-row/u-row.vue */ 325))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-row/u-row */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-row/u-row")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-row/u-row.vue */ 333))
     },
     uCol: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-col/u-col */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-col/u-col")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-col/u-col.vue */ 333))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-col/u-col */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-col/u-col")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-col/u-col.vue */ 341))
     },
     "u-Text": function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--text/u--text */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--text/u--text")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--text/u--text.vue */ 341))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--text/u--text */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--text/u--text")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--text/u--text.vue */ 349))
     },
     "u-Input": function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 347))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 355))
     },
     uButton: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 353))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 361))
+    },
+    uniDatetimePicker: function() {
+      return Promise.all(/*! import() | uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker.vue */ 415))
+    },
+    uModal: function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-modal/u-modal */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-modal/u-modal")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-modal/u-modal.vue */ 434))
     }
   }
 } catch (e) {
@@ -270,16 +276,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
@@ -288,11 +284,15 @@ var _default =
       voucher: "", //凭证
       mainNumber: "", //总数量
       secondaryNumber: "", //总次要数量
-      storagePosition: "", //库位
-      warehousePosition: "", //仓位
       remarks: "", //备注
-      status: "" //状态
-    };
+      status: "", //状态
+      date: "", //过账日期
+      show: false, //弹出模态窗
+      data: "" };
+
+  },
+  mounted: function mounted() {
+    this.date = this.$dateTrans.getDateString();
   },
   methods: {
     startScan: function startScan() {
@@ -310,11 +310,101 @@ var _default =
         } });
 
     },
-    startSearch: function startSearch() {
+    startSearch: function startSearch() {var _this = this;
+      if (this.codeNumber === '' || this.codeNumber === undefined) {
+        this.$toast.showToast("请先扫描分配号");
+        return;
+      }
+      var opts = {
+        url: "",
+        method: 'post' };
 
+      uni.showLoading({
+        title: '加载中...' });
+
+      var param = {
+        "interface_num": "MOBSCMD0020",
+        "serial_no": "123456789",
+        "access_token": "abc",
+        "bus_data": {
+          "materialDecStatus": "3",
+          "codeNumber": this.codeNumber } };
+
+
+      this.$http.httpRequest(opts, param).then(function (res) {
+        console.log("============res:", res);
+        uni.hideLoading();
+        if (res.statusCode === 200) {
+
+          _this.data = res.data;
+          _this.voucher = res.data.materialDecCode;
+          _this.mainNumber = res.data.totalQuality;
+          _this.secondaryNumber = res.data.totalSubQualityPiece;
+          _this.remarks = res.data.remarks;
+          switch (res.data.materialDecStatus) {
+            case "1":
+              _this.status = "新建状态";
+              break;
+            case "2":
+              _this.status = "已入库过账";
+              break;
+            case "3":
+              _this.status = "待交接";
+              break;
+            case "4":
+              _this.status = "待上架";
+              break;
+            case "5":
+              _this.status = "已冲销";
+              break;
+
+            default:
+              _this.status = res.data.materialDecStatus;}
+
+
+
+        } else {
+          _this.$toast.showToast("获取数据失败，请重试");
+        }
+      });
     },
     confirm: function confirm() {
-      console.log("****************remarks:", this.remarks);
+      this.show = true;
+    },
+    close: function close() {
+      this.data.preOpt = "0";
+      this.commitData();
+    },
+    commit: function commit() {
+      this.data.preOpt = "1";
+      this.commitData();
+    },
+    commitData: function commitData() {var _this2 = this;
+      this.show = false;
+      var opts = {
+        url: "",
+        method: 'post' };
+
+      uni.showLoading({
+        title: '加载中...' });
+
+      this.data.postingDate = this.date;
+      this.data.remarks = this.remarks;
+      var param = {
+        "interface_num": "MOBSCMD0021",
+        "serial_no": "123456789",
+        "access_token": "abc",
+        "bus_data": this.data };
+
+      this.$http.httpRequest(opts, param).then(function (res) {
+        uni.hideLoading();
+        console.log("****************res:", res);
+        if (res.statusCode === 200) {
+          _this2.$toast.showToast("提交成功");
+        } else {
+          _this2.$toast.showToast("提交失败");
+        }
+      });
     },
     cancel: function cancel() {
       uni.navigateBack({});

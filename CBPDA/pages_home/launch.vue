@@ -43,29 +43,31 @@
 				</div>
 			</u-col>
 		</u-row>
-
-		<uni-table border stripe emptyText="暂无更多数据" class="custom-list">
+		<uni-table border stripe emptyText="暂无更多数据" class="custom-list" type="selection"
+			@selection-change="selectionChange">
 			<!-- 表头行 -->
 			<uni-tr>
+				<uni-th align="center" width="90">分配号</uni-th>
+				<uni-th align="center" width="50">件数</uni-th>
+				<uni-th align="center" width="120">仓位</uni-th>
 				<uni-th align="center">凭证</uni-th>
-				<uni-th align="center">分配号</uni-th>
-				<uni-th align="center">小计次要数量</uni-th>
 				<uni-th align="center">库位</uni-th>
-				<uni-th align="center">仓位</uni-th>
-				<uni-th align="center">过账日期</uni-th>
-				<uni-th align="center">小计数量/克重</uni-th>
+				<uni-th align="center" width="120">小计数量/克重</uni-th>
 				<uni-th align="center">状态</uni-th>
 			</uni-tr>
 			<!-- 表格数据行 -->
-			<uni-tr v-for="(item, index) in tableData" @row-click="rowClick(item,index)">
-				<uni-td>{{item.tagName}}</uni-td>
-				<uni-td>{{item.location}}</uni-td>
-				<uni-td>{{item.mainNum}}</uni-td>
-				<uni-td>{{item.barCode}}</uni-td>
-				<uni-td>{{item.packageCode}}</uni-td>
-				<uni-td>{{item.secondaryNum}}</uni-td>
-				<uni-td>{{item.materialName}}</uni-td>
-				<uni-td>{{item.modelNum}}</uni-td>
+			<uni-tr v-for="(item, index) in tableData">
+				<uni-td>{{item.fph}}</uni-td>
+				<uni-td>{{item.qualityTotal}}</uni-td>
+				<uni-td><input type="text" style="width: 100px;border-style: dashed;font-size: 13px;" v-model="item.position" placeholder="输入仓位"/></uni-td>
+				<uni-td>{{item.materialDecCode}}</uni-td>
+				<uni-td>{{item.shopCode}}</uni-td>
+				<uni-td>{{item.subQualityTotal}}</uni-td>
+				<uni-td v-if="parseInt(item.materialDecStatus) === 1">新建状态</uni-td>
+				<uni-td v-else-if="parseInt(item.materialDecStatus) === 2">已入库过账</uni-td>
+				<uni-td v-else-if="parseInt(item.materialDecStatus) === 3">待交接</uni-td>
+				<uni-td v-else-if="parseInt(item.materialDecStatus) === 4">待上架</uni-td>
+				<uni-td v-else>已冲销</uni-td>
 			</uni-tr>
 		</uni-table>
 
@@ -94,10 +96,10 @@
 		data() {
 			return {
 				codeNumber: "",
-				mainNumber: "", //合计数量
-				secondaryNumber: "", //合计次要数量
+				mainNumber: 0, //合计数量
+				selectedList: [], //选中行数组
+				secondaryNumber: 0, //合计次要数量
 				tableData: [],
-				data:"",
 			}
 		},
 		methods: {
@@ -129,7 +131,7 @@
 					title: '加载中...'
 				});
 				var param = {
-					"interface_num": "MOBSCMD0020",
+					"interface_num": "MOBSCMD0022",
 					"serial_no": "123456789",
 					"access_token": "abc",
 					"bus_data": {
@@ -141,37 +143,71 @@
 					console.log("============res:",res);
 					uni.hideLoading();
 					if (res.statusCode === 200) {
-						this.mainNumber = res.data.totalQuality;
-						this.secondaryNumber = res.data.totalSubQualityPiece;
+						if(res.data.s_flag == "F"){
+							this.$toast.showToast(`${res.data.m_ess}`);
+						}
+						else{
+							this.tableData = res.data;
+							this.tableData.forEach(element => {
+								this.mainNumber = 0;
+								this.secondaryNumber = 0;
+								this.mainNumber += element.subQualityTotal;
+								this.secondaryNumber += element.qualityTotal;
+							});
+						}
+						
 					} else {
 						this.$toast.showToast("获取数据失败，请重试");
 					}
 				});
 			},
 			confirm() {
+				if (this.selectedList.length === 0) {
+					this.$toast.showToast("请先勾选数据");
+					return;
+				}
 				var opts = {
 					url: ``,
 					method: 'post'
 				};
+				
+				var bodyList = [];
+				for (var i = 0; i < this.selectedList.length; i++) {
+					var item = this.tableData[this.selectedList[i]];
+					item.postingDate = this.$dateTrans.getDateString();
+					bodyList.push(item);
+				};
+				console.log("===============selection change :",bodyList);
+				var param = {
+					"interface_num": "MOBSCMD0023",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": bodyList,
+				};
 				uni.showLoading({
 					title: '加载中...'
 				});
-				var param = {
-					"interface_num": "MOBSCMD0021",
-					"serial_no": "123456789",
-					"access_token": "abc",
-					"bus_data": {
-						"poCode": this.codeNumber
-					},
-				};
 				this.$http.httpRequest(opts, param).then((res) => {
+					console.log("-------------res:",res);
 					uni.hideLoading();
 					if (res.statusCode === 200) {
-
+						if(res.data.s_flag == "F"){
+							this.$toast.showToast(`${res.data.m_ess}`);
+						}
+						else{
+							this.$toast.showToast("提交成功");
+							for (var i = 0; i < this.selectedList.length; i++) {
+								this.tableData.splice(this.selectedList[i],1);
+							};
+						}
+						
 					} else {
-						this.$toast.showToast("获取数据失败，请重试");
+						this.$toast.showToast("提交失败");
 					}
 				});
+			},
+			selectionChange(res) {
+				this.selectedList = res.detail.index;
 			},
 			cancel() {
 				uni.navigateBack({
