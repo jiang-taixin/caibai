@@ -47,12 +47,6 @@
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'5',
-						name: 'car',
-						title: '逐条拣货配货',
-						platform: ["APP", "WEIXIN", "H5"],
-					},
-					{
 						tag:'6',
 						name: 'car-fill',
 						title: '整单配货',
@@ -77,12 +71,6 @@
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'10',
-						name: 'integral',
-						title: '盘点',
-						platform: ["APP", "WEIXIN", "H5"],
-					},
-					{
 						tag:'11',
 						name: 'map',
 						title: '仓位调整',
@@ -92,12 +80,6 @@
 						tag:'12',
 						name: 'map-fill',
 						title: '库位调整',
-						platform: ["APP", "WEIXIN", "H5"],
-					},
-					{
-						tag:'13',
-						name: 'gift',
-						title: '装箱',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{

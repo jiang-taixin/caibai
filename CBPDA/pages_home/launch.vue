@@ -155,9 +155,10 @@
 						}
 						else{
 							this.tableData = res.data;
+							this.mainNumber = 0;
+							this.secondaryNumber = 0;
 							this.tableData.forEach(element => {
-								this.mainNumber = 0;
-								this.secondaryNumber = 0;
+								
 								this.mainNumber += element.subQualityTotal;
 								this.secondaryNumber += element.qualityTotal;
 								element.subQualityTotal = (element.subQualityTotal/2).toFixed(2);

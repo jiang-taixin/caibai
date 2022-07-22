@@ -26,7 +26,7 @@
 				"navigationStyle": "custom"
 			}
 		}, {
-			"path": "pages/spare/spare",
+			"path": "pages/stock/stock",
 			"style": {
 				"navigationBarTitleText": "库存查询",
 				"enablePullDownRefresh": false
@@ -183,7 +183,6 @@
 					"navigationBarTitleText": "装箱",
 					"enablePullDownRefresh": false
 				}
-
 			},  {
 				"path": "deliveryConfirm",
 				"style": {
@@ -214,8 +213,8 @@
 				"selectedIconPath": "static/apped.png"
 			},
 			{
-				"text": "备用",
-				"pagePath": "pages/spare/spare",
+				"text": "库存",
+				"pagePath": "pages/stock/stock",
 				"iconPath": "static/spare.png",
 				"selectedIconPath": "static/spared.png"
 			},
