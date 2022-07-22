@@ -93,6 +93,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    "u-Image": function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--image/u--image */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--image/u--image")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--image/u--image.vue */ 394))
+    },
+    "u-Input": function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 400))
+    },
+    uButton: function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 356))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -130,7 +159,24 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -139,11 +185,61 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 var _default =
 {
   data: function data() {
-    return {};
-
+    return {
+      username: "",
+      password: "" };
 
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    login: function login() {
+      if (this.username === "" || this.password === "") {
+        this.$toast.showToast("请先输入账号和密码");
+        return;
+      }
+      var opts = {
+        url: "http://10.10.2.133:8080/auth/realms/caibai/protocol/openid-connect/token",
+        method: 'post' };
+
+      uni.showLoading({
+        title: '加载中...' });
+
+      var param = {
+        "client_id": "dorado_dev",
+        "grant_type": "password",
+        "username": this.username,
+        "password": this.password };
+
+      this.$http.getTokenRequest(opts, param).then(function (res) {
+        uni.hideLoading();
+        console.log("===========get token res:", res);
+
+        uni.setStorage({
+          key: 'typeList',
+          data: typeList,
+          success: function success() {} });
+
+
+        uni.switchTab({
+          url: '/pages/home/home',
+          animationType: 'pop-in',
+          animationDuration: 200 });
+
+        // 	if (res.statusCode === 200) {
+        // 		this.masterData = res.data;
+        // 		this.tableData = res.data.item;
+        // 		this.totalNum = this.tableData.length;
+        // 		if (res.data.header.orderStatus !== "2" && res.data.header.orderStatus !== "3") {
+        // 			this.disabled = false;
+        // 		} else {
+        // 			this.disabled = true;
+        // 		}
+
+        // 	} else {
+        // 		this.$toast.showToast("获取数据失败，请重试");
+        // 	}
+      });
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

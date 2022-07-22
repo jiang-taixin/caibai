@@ -96,16 +96,16 @@ var components
 try {
   components = {
     uSwiper: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 300))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 294))
     },
     uGrid: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid/u-grid */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid/u-grid")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid/u-grid.vue */ 308))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid/u-grid */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid/u-grid")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid/u-grid.vue */ 302))
     },
     uGridItem: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid-item/u-grid-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid-item/u-grid-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid-item/u-grid-item.vue */ 316))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid-item/u-grid-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid-item/u-grid-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid-item/u-grid-item.vue */ 310))
     },
     uIcon: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 324))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 318))
     }
   }
 } catch (e) {
@@ -206,81 +206,73 @@ var _default =
     return {
       platfrom: "",
       list: [{
+        tag: '0',
         name: 'search',
         title: '初检信息录入',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
+        tag: '1',
         name: 'bell',
         title: '入库前质检',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
+        tag: '2',
         name: 'bell-fill',
         title: '有损检验',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
+        tag: '3',
         name: 'edit-pen',
         title: '回货暂收',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
+        tag: '4',
         name: 'order',
         title: '创建送检单',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
-        name: 'car',
-        title: '逐条拣货配货',
-        platform: ["APP", "WEIXIN", "H5"] },
-
-      {
+        tag: '6',
         name: 'car-fill',
         title: '整单配货',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
+        tag: '7',
         name: 'grid',
         title: '交接',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
+        tag: '8',
         name: 'coupon',
         title: '上架',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
+        tag: '9',
         name: 'coupon-fill',
         title: '库存上架',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
-        name: 'integral',
-        title: '盘点',
-        platform: ["APP", "WEIXIN", "H5"] },
-
-      {
+        tag: '11',
         name: 'map',
         title: '仓位调整',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
+        tag: '12',
         name: 'map-fill',
         title: '库位调整',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
-        name: 'gift',
-        title: '装箱',
-        platform: ["APP", "WEIXIN", "H5"] },
-
-      {
-        name: 'scan',
-        title: '库存查询',
-        platform: ["APP", "WEIXIN", "H5"] },
-
-      {
+        tag: '14',
         name: 'scan',
         title: '配送出库确认',
         platform: ["APP", "WEIXIN", "H5"] }],
@@ -298,9 +290,12 @@ var _default =
   },
   beforeCreate: function beforeCreate() {
     //如果没登录    去登录页面
+
     // uni.redirectTo({
-    // 	url:"/pages_login/login"
-    // })
+    // 	url:"/pages_login/login",
+    // 	animationType: 'pop-in',
+    // 	animationDuration: 200
+    // }),
   },
   mounted: function mounted() {
     //页面加载完成获取枚举值并缓存在本地
@@ -329,9 +324,8 @@ var _default =
     console.log("========================= platform :", this.platfrom);
   },
   methods: {
-    click: function click(name) {
-      console.log("===========click:", name);
-      switch (name) {
+    click: function click(item) {
+      switch (parseInt(item.tag)) {
         case 0:
           uni.navigateTo({
             url: '/pages_home/qualityTesting' });
@@ -404,11 +398,6 @@ var _default =
 
           break;
         case 14:
-          uni.navigateTo({
-            url: '/pages_home/stockSearch' });
-
-          break;
-        case 15:
           uni.navigateTo({
             url: '/pages_home/deliveryConfirm' });
 

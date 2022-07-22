@@ -11,8 +11,8 @@
 						<view class="desc-text-edit">
 							<u--text type="primary" text="配送交接人" size=13></u--text>
 						</view>
-						<uni-data-select v-model="handoverPerson" :localdata="persons">
-						</uni-data-select>
+						<u--input style="height: 35px;" font-size=13 border="surround" v-model="handoverPerson">
+						</u--input>
 					</div>
 				</u-col>
 				<u-col span="6">
@@ -142,13 +142,15 @@
 			@selection-change="selectionChangeSec">
 				<!-- 表头行 -->
 				<uni-tr>
-					<uni-th align="center">箱子</uni-th>
-					<uni-th align="center">配送交接人</uni-th>
-					<uni-th align="center">装箱单</uni-th>
-					<uni-th align="center">状态</uni-th>
-					<uni-th align="center">装箱单类型</uni-th>
-					<uni-th align="center">主门店</uni-th>
+					<uni-th align="center">配货单号</uni-th>
+					<uni-th align="center">单据类型</uni-th>
+					<uni-th align="center">专柜</uni-th>
+					<uni-th align="center">收货门店</uni-th>
+					<uni-th align="center">商品大类</uni-th>
+					<uni-th align="center">总件数</uni-th>
 					<uni-th align="left">日期</uni-th>
+					<uni-th align="left">交接人</uni-th>
+					<uni-th align="left">状态</uni-th>
 				</uni-tr>
 				<!-- 表格数据行 -->
 				<uni-tr v-for="(item, index) in tableDataSec">
@@ -159,28 +161,28 @@
 					<uni-td>{{item.barCode}}</uni-td>
 					<uni-td>{{item.packageCode}}</uni-td>
 					<uni-td>{{item.materielCode}}</uni-td>
+					<uni-td>{{item.packageCode}}</uni-td>
+					<uni-td>{{item.materielCode}}</uni-td>
 				</uni-tr>
 			</uni-table>
 
 		</view>
-		<view style="margin-top: 30px;">
-			<u-row style="margin-top: 50px;">
+		<div style="position: fixed;bottom: 0px;width: 100%;background-color:aquamarine;">
+			<u-row>
 				<u-col span="6">
 					<div class="col-layout">
-						<u-button type="primary" @click="confirm" text="确认"
-							style="width: 80%;margin-left: 10%;margin-bottom: 10px;"></u-button>
+						<u-button type="primary" @click="confirm" text="确认" style="width: 80%;margin-left: 10%;">
+						</u-button>
 					</div>
 				</u-col>
 				<u-col span="6">
 					<div class="col-layout">
-						<u-button type="error" @click="cancel" text="取消"
-							style="width: 80%;margin-left: 10%;margin-bottom: 10px;">
+						<u-button type="error" @click="cancel" text="取消" style="width: 80%;margin-left: 10%;">
 						</u-button>
 					</div>
 				</u-col>
 			</u-row>
-		</view>
-		
+		</div>
 		<u-popup :show="showEditPage" mode="bottom">
 			<view>
 				
@@ -219,7 +221,6 @@
 			return {
 				tabCur: 0,
 				handoverPerson:"",//交接人
-				persons:[],//交接人列表
 				boxType:"",//箱子类型
 				types:[],//箱子类型列表
 				boxStatus:"",//箱子状态
@@ -246,6 +247,27 @@
 				}],
 				tableDataSec:[],
 			}
+		},
+		mounted() {
+			//获取箱子类型和箱子状态
+			let vm = this;
+			uni.getStorage({
+				key:"boxTypeList",
+				success(res) {
+					vm.types = res.data;
+				},
+				fail(e) {
+				}
+			});
+			uni.getStorage({
+				key:"boxStatusList",
+				success(res) {
+					vm.status = res.data;
+				},
+				fail(e) {
+				}
+			});
+			
 		},
 		methods: {
 			tabSelect(index) {
@@ -303,8 +325,7 @@
 				uni.navigateBack({
 				
 				});
-			}
-
+			},
 		}
 	}
 </script>

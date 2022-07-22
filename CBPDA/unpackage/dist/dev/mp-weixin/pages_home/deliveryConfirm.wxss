@@ -37,16 +37,16 @@
 }
 .tab_item.cur {
   position: relative;
-  color: #F62D5C;
+  color: #1e00ed;
 }
 .tab_item.cur::after {
   content: '';
-  width: 36rpx;
+  width: 100rpx;
   height: 6rpx;
   position: absolute;
   bottom: 20rpx;
   left: 50%;
-  margin-left: -18rpx;
-  background-color: #F62D5C;
+  margin-left: -50rpx;
+  background-color: #1e00ed;
 }
 

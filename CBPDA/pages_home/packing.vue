@@ -1,28 +1,25 @@
 <template>
 	<view>
-		<div class="divContainer">
-			<view class="desc-text">
-				<u--text type="primary" text="装箱单号" size=13></u--text>
-			</view>
-			<u--input font-size=13 v-model="SOU" border="surround" :disabled="true">
-			</u--input>
-		</div>
-		<div class="divContainer">
-			<view class="desc-text-edit">
-				<u--text type="primary" text="装箱单类型" size=13></u--text>
-			</view>
-			<uni-data-select v-model="launchWarehouse" :localdata="warehouse" @change="changeWarehouse">
-			</uni-data-select>
-		</div>
-
-		<div class="divContainer">
-			<view class="desc-text-edit">
-				<u--text type="primary" text="部门" size=13></u--text>
-			</view>
-			<uni-data-select v-model="launchWarehouse" :localdata="warehouse" @change="changeWarehouse">
-			</uni-data-select>
-		</div>
-
+		<u-row>
+			<u-col span="6">
+				<div class="col-layout">
+					<view class="desc-text-edit">
+						<u--text type="primary" text="装箱单类型" size=13></u--text>
+					</view>
+					<uni-data-select v-model="launchWarehouse" :localdata="warehouse" @change="changeWarehouse">
+					</uni-data-select>
+				</div>
+			</u-col>
+			<u-col span="6">
+				<div class="col-layout">
+					<view class="desc-text-edit">
+						<u--text type="primary" text="部门" size=13></u--text>
+					</view>
+					<uni-data-select v-model="launchWarehouse" :localdata="warehouse" @change="changeWarehouse">
+					</uni-data-select>
+				</div>
+			</u-col>
+		</u-row>
 		<div class="divContainer">
 			<u-row justify="space-between" gutter="1">
 				<u-col span="9">
@@ -43,21 +40,49 @@
 				</u-col>
 			</u-row>
 		</div>
-
 		<div class="divContainer">
-			<view class="desc-text-edit">
-				<u--text type="primary" text="主门店" size=13></u--text>
-			</view>
-			<u--input font-size=13 v-model="SOU" border="surround">
-			</u--input>
+			<u-row justify="space-between" gutter="1">
+				<u-col span="9">
+					<view class="desc-text-edit">
+						<u--text type="primary" text="配货单" size=13></u--text>
+					</view>
+					<u--input font-size=13 v-model="codeNumber" placeholder="扫码输入,手动输入" border="surround" clearable>
+					</u--input>
+				</u-col>
+				<u-col span="1">
+					<view style="width: 30px;height: 30px;">
+						<u-button type="primary" :plain="true" icon="scan" @click="startScan"
+							style="width: 30px;height: 30px;"></u-button>
+					</view>
+				</u-col>
+				<u-col span="1">
+					<view style="width: 30px;height: 30px;">
+						<u-button type="primary" :plain="true" icon="search" @click="startSearch"
+							style="width: 30px;height: 30px;"></u-button>
+					</view>
+				</u-col>
+			</u-row>
 		</div>
-		<div class="divContainer">
-			<view class="desc-text">
-				<u--text type="primary" text="证章号/工号" size=13></u--text>
-			</view>
-			<u--input font-size=13 v-model="SOU" border="surround" :disabled="true">
-			</u--input>
-		</div>
+		<u-row>
+			<u-col span="6">
+				<div class="col-layout">
+					<view class="desc-text-edit">
+						<u--text type="primary" text="主门店" size=13></u--text>
+					</view>
+					<u--input font-size=13 v-model="SOU" border="surround">
+					</u--input>
+				</div>
+			</u-col>
+			<u-col span="6">
+				<div class="col-layout">
+					<view class="desc-text">
+						<u--text type="primary" text="证章号/工号" size=13></u--text>
+					</view>
+					<u--input font-size=13 v-model="SOU" border="surround" :disabled="true">
+					</u--input>
+				</div>
+			</u-col>
+		</u-row>
 		<div class="divContainer">
 			<view class="desc-text-edit">
 				<u--text type="primary" class="desc-text-edit" text="日期" size=13></u--text>

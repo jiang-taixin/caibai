@@ -35,10 +35,17 @@ const getDateString = () => {
 	return dateStr;
 }
 
+const getYear = () => {
+	var nowDate = new Date();
+	var year = nowDate.getFullYear();
+	return year;
+}
+
 export default function(Vue) {
 	//添加全局API
 	Vue.prototype.$dateTrans = {
 		formatMsToDate,
-		getDateString
+		getDateString,
+		getYear
 	}
 }

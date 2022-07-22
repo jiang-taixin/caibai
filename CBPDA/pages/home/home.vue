@@ -115,6 +115,8 @@
 			this.getReason(); //不合格原因
 			this.getTestingCategory(); //质检类别
 			this.getDepartment(); //获取发货部门和库位
+			this.getBoxStatus();//获取箱子状态
+			this.getBoxType();//获取箱子类型
 		},
 		created() {
 			//判断平台类型    设置模块是否显示
@@ -412,6 +414,77 @@
 						});
 					} else {
 						//this.$toast.showToast("获取质检类别失败，请刷新页面");
+					}
+				});
+			},
+			getBoxType(){
+				var opts = {
+					url: ``,
+					method: 'post'
+				};
+				var param = {
+					"interface_num": "MOBSCMD0005",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": {
+						"enumCode": "BOX"
+					},
+				};
+				this.$http.httpRequest(opts, param).then((res) => {
+					if (res.data.code === "200") {
+						var typeList = [];
+						if (res.data.data.BOX.length != 0) {
+							for (let i in res.data.data.BOX) {
+								typeList.push({
+									"text": res.data.data.BOX[i].name,
+									"value": res.data.data.BOX[i].code,
+								});
+							}
+						}
+						uni.setStorage({
+							key: 'boxTypeList',
+							data: typeList,
+							success: function() {}
+						});
+						this.types = typeList;
+					} else {
+						this.$toast.showToast("获取检测机构失败，请刷新页面");
+				
+					}
+				});
+			},
+			getBoxStatus(){
+				var opts = {
+					url: ``,
+					method: 'post'
+				};
+				var param = {
+					"interface_num": "MOBSCMD0005",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": {
+						"enumCode": "MASTER_BOX_STATUS"
+					},
+				};
+				this.$http.httpRequest(opts, param).then((res) => {
+					if (res.data.code === "200") {
+						var statusList = [];
+						if (res.data.data.MASTER_BOX_STATUS.length != 0) {
+							for (let i in res.data.data.MASTER_BOX_STATUS) {
+								statusList.push({
+									"text": res.data.data.MASTER_BOX_STATUS[i].name,
+									"value": res.data.data.MASTER_BOX_STATUS[i].code,
+								});
+							}
+						}
+						uni.setStorage({
+							key: 'boxStatusList',
+							data: statusList,
+							success: function() {}
+						});
+						this.status = statusList;
+					} else {
+						this.$toast.showToast("获取检测机构失败，请刷新页面");
 					}
 				});
 			}

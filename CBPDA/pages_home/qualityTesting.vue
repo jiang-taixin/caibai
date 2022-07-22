@@ -150,13 +150,9 @@
 			<uni-tr v-for="(item, index) in tableData">
 				<uni-td>{{index}}</uni-td>
 				<uni-td>
-					<!-- <zb-dropdown v-model="item.reason" :data="reason">
-					</zb-dropdown> -->
 					<uni-data-select v-model="item.reason" :localdata="reason"></uni-data-select>
 				</uni-td>
 				<uni-td>
-					<!-- <uni-easyinput type="number" v-model="item.number" placeholder="输入数量" @blur="blur" @confirm="numberConfirm">
-					</uni-easyinput> -->
 					<input type="number" v-model="item.number" @blur="blur" @confirm="numberConfirm" placeholder="输入数量"/>
 				</uni-td>
 				<uni-td>
@@ -337,6 +333,7 @@
 					title: '加载中...'
 				});
 				this.$http.httpRequest(opts, param).then((res) => {
+					console.log("=======================res:",res);
 					uni.hideLoading();
 					if (res.data.code === "200") {
 						this.$toast.showToast("提交成功");

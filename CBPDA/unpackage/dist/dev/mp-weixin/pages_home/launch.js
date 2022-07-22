@@ -96,31 +96,34 @@ var components
 try {
   components = {
     uRow: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-row/u-row */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-row/u-row")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-row/u-row.vue */ 333))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-row/u-row */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-row/u-row")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-row/u-row.vue */ 327))
     },
     uCol: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-col/u-col */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-col/u-col")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-col/u-col.vue */ 341))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-col/u-col */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-col/u-col")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-col/u-col.vue */ 335))
     },
     "u-Text": function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--text/u--text */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--text/u--text")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--text/u--text.vue */ 349))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--text/u--text */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--text/u--text")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--text/u--text.vue */ 343))
     },
-    "u-Input": function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 355))
+    uniEasyinput: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 349))
     },
     uButton: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 361))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 356))
+    },
+    "u-Input": function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 400))
     },
     uniTable: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-table/uni-table */ "uni_modules/uni-table/components/uni-table/uni-table").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-table/uni-table.vue */ 371))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-table/uni-table */ "uni_modules/uni-table/components/uni-table/uni-table").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-table/uni-table.vue */ 366))
     },
     uniTr: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-tr/uni-tr */ "uni_modules/uni-table/components/uni-tr/uni-tr").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-tr/uni-tr.vue */ 378))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-tr/uni-tr */ "uni_modules/uni-table/components/uni-tr/uni-tr").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-tr/uni-tr.vue */ 373))
     },
     uniTh: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-th/uni-th */ "uni_modules/uni-table/components/uni-th/uni-th").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-th/uni-th.vue */ 385))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-th/uni-th */ "uni_modules/uni-table/components/uni-th/uni-th").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-th/uni-th.vue */ 380))
     },
     uniTd: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-td/uni-td */ "uni_modules/uni-table/components/uni-td/uni-td").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-td/uni-td.vue */ 392))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-td/uni-td */ "uni_modules/uni-table/components/uni-td/uni-td").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-td/uni-td.vue */ 387))
     }
   }
 } catch (e) {
@@ -303,9 +306,9 @@ var _default =
   data: function data() {
     return {
       codeNumber: "",
-      mainNumber: "", //合计数量
+      mainNumber: 0, //合计数量
       selectedList: [], //选中行数组
-      secondaryNumber: "", //合计次要数量
+      secondaryNumber: 0, //合计次要数量
       tableData: [] };
 
   },
@@ -324,6 +327,13 @@ var _default =
 
         } });
 
+    },
+    blur: function blur(e) {
+      if (e.target.value == '') {
+        return;
+      };
+      this.codeNumber = e.target.value;
+      this.startSearch();
     },
     startSearch: function startSearch() {var _this = this;
       if (this.codeNumber === '' || this.codeNumber === undefined) {
@@ -350,11 +360,24 @@ var _default =
         console.log("============res:", res);
         uni.hideLoading();
         if (res.statusCode === 200) {
-          _this.tableData = res.data;
-          _this.tableData.forEach(function (element) {
-            _this.mainNumber += element.qualityTotal;
-            _this.secondaryNumber += element.subQualityTotal;
-          });
+          if (res.data.s_flag == "F") {
+            _this.$toast.showToast("".concat(res.data.m_ess));
+          } else
+          {
+            _this.tableData = res.data;
+            _this.mainNumber = 0;
+            _this.secondaryNumber = 0;
+            _this.tableData.forEach(function (element) {
+
+              _this.mainNumber += element.subQualityTotal;
+              _this.secondaryNumber += element.qualityTotal;
+              element.subQualityTotal = (element.subQualityTotal / 2).toFixed(2);
+              element.qualityTotal = (element.qualityTotal / 2).toFixed(2);
+            });
+          }
+          _this.mainNumber = (_this.mainNumber / 2).toFixed(2);
+          _this.secondaryNumber = (_this.secondaryNumber / 2).toFixed(2);
+
         } else {
           _this.$toast.showToast("获取数据失败，请重试");
         }
@@ -378,21 +401,32 @@ var _default =
       };
       console.log("===============selection change :", bodyList);
       var param = {
-        "interface_num": "MOBSCMD0021",
+        "interface_num": "MOBSCMD0023",
         "serial_no": "123456789",
         "access_token": "abc",
         "bus_data": bodyList };
 
-      return;
       uni.showLoading({
         title: '加载中...' });
 
       this.$http.httpRequest(opts, param).then(function (res) {
+        console.log("-------------res:", res);
         uni.hideLoading();
         if (res.statusCode === 200) {
+          if (res.data.s_flag == "F") {
+            _this2.$toast.showToast("".concat(res.data.m_ess));
+          } else
+          {
+            _this2.$toast.showToast("提交成功");
+            for (var i = 0; i < _this2.selectedList.length; i++) {
+              _this2.tableData.splice(_this2.selectedList[i], 1);
+            };
+            _this2.mainNumber = 0;
+            _this2.secondaryNumber = 0;
+          }
 
         } else {
-          _this2.$toast.showToast("获取数据失败，请重试");
+          _this2.$toast.showToast("提交失败");
         }
       });
     },

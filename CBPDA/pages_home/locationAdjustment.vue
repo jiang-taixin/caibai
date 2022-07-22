@@ -12,10 +12,10 @@
 			</u-col>
 			<u-col span="6">
 				<div class="col-layout">
-					<view class="desc-text">
+					<view class="desc-text-edit">
 						<u--text type="primary" text="部门" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="department" border="surround" :disabled="true">
+					<u--input font-size=13 v-model="department" border="surround">
 					</u--input>
 				</div>
 			</u-col>
@@ -24,14 +24,21 @@
 		<u-row>
 			<u-col span="6">
 				<div class="col-layout">
-					<view class="desc-text">
+					<view class="desc-text-edit">
 						<u--text type="primary" text="证章号/工号" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="employeeNumber" border="surround" :disabled="true">
+					<u--input style="height: 35px;" font-size=13 v-model="employeeNumber" border="surround">
 					</u--input>
 				</div>
 			</u-col>
 			<u-col span="6">
+				<div class="col-layout">
+					<view class="desc-text-edit">
+						<u--text type="primary" text="移动原因" size=13></u--text>
+					</view>
+					<uni-data-select v-model="launchWarehouse" :localdata="warehouse" @change="changeWarehouse">
+					</uni-data-select>
+				</div>
 				
 			</u-col>
 		</u-row>
@@ -42,13 +49,6 @@
 			</view>
 			<uni-datetime-picker v-model="date" type="date" :value="single" start="2021-3-20" end="2099-6-20"
 				@change="changeDate" />
-		</div>
-		<div class="divContainer">
-			<view class="desc-text-edit">
-				<u--text type="primary" text="移动原因" size=13></u--text>
-			</view>
-			<uni-data-select v-model="launchWarehouse" :localdata="warehouse" @change="changeWarehouse">
-			</uni-data-select>
 		</div>
 		
 		<div class="divContainer">

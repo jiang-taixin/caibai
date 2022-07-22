@@ -3,7 +3,7 @@
     "pages/home/home",
     "pages/application/application",
     "pages/mine/mine",
-    "pages/spare/spare"
+    "pages/stock/stock"
   ],
   "subPackages": [
     {
@@ -34,7 +34,6 @@
         "positionAdjustment",
         "locationAdjustment",
         "packing",
-        "stockSearch",
         "deliveryConfirm"
       ]
     }
@@ -60,8 +59,8 @@
         "selectedIconPath": "static/apped.png"
       },
       {
-        "text": "备用",
-        "pagePath": "pages/spare/spare",
+        "text": "库存",
+        "pagePath": "pages/stock/stock",
         "iconPath": "static/spare.png",
         "selectedIconPath": "static/spared.png"
       },
@@ -74,5 +73,6 @@
     ]
   },
   "lazyCodeLoading": "requiredComponents",
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }
