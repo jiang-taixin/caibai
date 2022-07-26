@@ -35,6 +35,17 @@ const getDateString = () => {
 	return dateStr;
 }
 
+const getNextWeekDateString = () => {
+	var nowDate = new Date();
+	nowDate = nowDate.setDate(nowDate.getDate()+7);
+	nowDate = new Date(nowDate);
+	var year = nowDate.getFullYear();
+	var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1):nowDate.getMonth() + 1;
+	var day = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
+	var dateStr = year + "-" + month + "-" + day;
+	return dateStr;
+}
+
 const getYear = () => {
 	var nowDate = new Date();
 	var year = nowDate.getFullYear();
@@ -46,6 +57,7 @@ export default function(Vue) {
 	Vue.prototype.$dateTrans = {
 		formatMsToDate,
 		getDateString,
-		getYear
+		getYear,
+		getNextWeekDateString
 	}
 }

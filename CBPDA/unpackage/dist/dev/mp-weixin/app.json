@@ -39,10 +39,10 @@
     }
   ],
   "window": {
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "white",
     "navigationBarTitleText": "uni-app",
     "navigationBarBackgroundColor": "#54639c",
-    "backgroundColor": "#F8F8F8"
+    "backgroundColor": "#b50017"
   },
   "tabBar": {
     "list": [

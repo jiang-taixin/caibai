@@ -1,7 +1,6 @@
 import Vue from 'vue'
 
 const setUserInfo = (userInfo) => {
-	console.log("------------------set user info :",userInfo);
 	uni.setStorageSync("userInfo",userInfo);
 }
 

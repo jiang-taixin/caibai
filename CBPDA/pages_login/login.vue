@@ -38,7 +38,7 @@
 					return;
 				}
 				var opts = {
-					url: `http://10.10.2.133:8080/auth/realms/caibai/protocol/openid-connect/token`,
+					url: ``,
 					method: 'post'
 				};
 				uni.showLoading({

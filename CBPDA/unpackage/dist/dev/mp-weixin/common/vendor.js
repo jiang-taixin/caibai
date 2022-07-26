@@ -18272,9 +18272,11 @@ platform;exports.default = _default;
 
 
 var baseUrl = "";
+var keycloakUrl = "";
 
 if (true) {
   baseUrl = _config.API_BASE_DEVELOPMENT;
+  keycloakUrl = _config.KEYCLOAK_DEVELOPMENT;
 }
 if (false) {}
 
@@ -18319,7 +18321,7 @@ var httpRequest = function httpRequest(opts, data) {
 
 var getTokenRequest = function getTokenRequest(opts, data) {
   var httpDefaultOpts = {
-    url: opts.url,
+    url: keycloakUrl,
     data: data,
     method: opts.method,
     header: {
@@ -18375,6 +18377,7 @@ var format = function format(time, _format) {
 
 {
   baseUrl: baseUrl,
+  keycloakUrl: keycloakUrl,
   httpRequest: httpRequest,
   getTokenRequest: getTokenRequest };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
@@ -18388,19 +18391,20 @@ var format = function format(time, _format) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.API_BASE_PRODUCTION = exports.API_BASE_DEVELOPMENT = void 0; //测试环境API地址
-var API_BASE_DEVELOPMENT = 'http://10.10.2.130:8080/cb/outside/mobile/v1';
+Object.defineProperty(exports, "__esModule", { value: true });exports.KEYCLOAK_PRODUCTION = exports.API_BASE_PRODUCTION = exports.KEYCLOAK_DEVELOPMENT = exports.API_BASE_DEVELOPMENT = void 0; //测试环境API地址
+var API_BASE_DEVELOPMENT = 'http://10.10.2.130:8080/cb/outside/mobile/v1';exports.API_BASE_DEVELOPMENT = API_BASE_DEVELOPMENT;
+var KEYCLOAK_DEVELOPMENT = 'http://10.10.2.133:8080/auth/realms/caibai/protocol/openid-connect/token';
 
 //正式环境API地址
-exports.API_BASE_DEVELOPMENT = API_BASE_DEVELOPMENT;var API_BASE_PRODUCTION = 'http://172.18.0.203:8080/cb/outside/mobile/v1';
-
+exports.KEYCLOAK_DEVELOPMENT = KEYCLOAK_DEVELOPMENT;var API_BASE_PRODUCTION = 'http://172.18.0.203:8080/cb/outside/mobile/v1';exports.API_BASE_PRODUCTION = API_BASE_PRODUCTION;
+var KEYCLOAK_PRODUCTION = 'http://10.10.2.133:8080/auth/realms/caibai/protocol/openid-connect/token';
 
 
 //集成测试
 //http://10.10.2.130:8080/cb/outside/mobile/v1
 //开发环境
 //http://111.198.86.229:18352/cb/outside/mobile/v1
-exports.API_BASE_PRODUCTION = API_BASE_PRODUCTION;
+exports.KEYCLOAK_PRODUCTION = KEYCLOAK_PRODUCTION;
 
 /***/ }),
 /* 140 */
@@ -18501,12 +18505,7 @@ function _default(Vue) {
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = _default;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 4));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 var setUserInfo = function setUserInfo(userInfo) {
-  console.log("------------------set user info :", userInfo);
-  uni.setStorage({
-    key: 'userInfo',
-    data: userInfo,
-    success: function success() {} });
-
+  uni.setStorageSync("userInfo", userInfo);
 };
 
 var getUserInfo = function getUserInfo() {
@@ -19211,6 +19210,181 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* 331 */,
 /* 332 */,
 /* 333 */
+/*!**************************************************************************************************!*\
+  !*** /Users/taixin.jiang/Desktop/cb_github/CBPDA/uni_modules/uview-ui/components/u-row/props.js ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  props: {
+    // 给col添加间距，左右边距各占一半
+    gutter: {
+      type: [String, Number],
+      default: uni.$u.props.row.gutter },
+
+    // 水平排列方式，可选值为`start`(或`flex-start`)、`end`(或`flex-end`)、`center`、`around`(或`space-around`)、`between`(或`space-between`)
+    justify: {
+      type: String,
+      default: uni.$u.props.row.justify },
+
+    // 垂直对齐方式，可选值为top、center、bottom
+    align: {
+      type: String,
+      default: uni.$u.props.row.align } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */,
+/* 340 */,
+/* 341 */
+/*!**************************************************************************************************!*\
+  !*** /Users/taixin.jiang/Desktop/cb_github/CBPDA/uni_modules/uview-ui/components/u-col/props.js ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  props: {
+    // 占父容器宽度的多少等分，总分为12份
+    span: {
+      type: [String, Number],
+      default: uni.$u.props.col.span },
+
+    // 指定栅格左侧的间隔数(总12栏)
+    offset: {
+      type: [String, Number],
+      default: uni.$u.props.col.offset },
+
+    // 水平排列方式，可选值为`start`(或`flex-start`)、`end`(或`flex-end`)、`center`、`around`(或`space-around`)、`between`(或`space-between`)
+    justify: {
+      type: String,
+      default: uni.$u.props.col.justify },
+
+    // 垂直对齐方式，可选值为top、center、bottom、stretch
+    align: {
+      type: String,
+      default: uni.$u.props.col.align },
+
+    // 文字对齐方式
+    textAlign: {
+      type: String,
+      default: uni.$u.props.col.textAlign } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 342 */,
+/* 343 */,
+/* 344 */,
+/* 345 */,
+/* 346 */,
+/* 347 */,
+/* 348 */,
+/* 349 */
+/*!****************************************************************************************************!*\
+  !*** /Users/taixin.jiang/Desktop/cb_github/CBPDA/uni_modules/uview-ui/components/u-image/props.js ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  props: {
+    // 图片地址
+    src: {
+      type: String,
+      default: uni.$u.props.image.src },
+
+    // 裁剪模式
+    mode: {
+      type: String,
+      default: uni.$u.props.image.mode },
+
+    // 宽度，单位任意
+    width: {
+      type: [String, Number],
+      default: uni.$u.props.image.width },
+
+    // 高度，单位任意
+    height: {
+      type: [String, Number],
+      default: uni.$u.props.image.height },
+
+    // 图片形状，circle-圆形，square-方形
+    shape: {
+      type: String,
+      default: uni.$u.props.image.shape },
+
+    // 圆角，单位任意
+    radius: {
+      type: [String, Number],
+      default: uni.$u.props.image.radius },
+
+    // 是否懒加载，微信小程序、App、百度小程序、字节跳动小程序
+    lazyLoad: {
+      type: Boolean,
+      default: uni.$u.props.image.lazyLoad },
+
+    // 开启长按图片显示识别微信小程序码菜单
+    showMenuByLongpress: {
+      type: Boolean,
+      default: uni.$u.props.image.showMenuByLongpress },
+
+    // 加载中的图标，或者小图片
+    loadingIcon: {
+      type: String,
+      default: uni.$u.props.image.loadingIcon },
+
+    // 加载失败的图标，或者小图片
+    errorIcon: {
+      type: String,
+      default: uni.$u.props.image.errorIcon },
+
+    // 是否显示加载中的图标或者自定义的slot
+    showLoading: {
+      type: Boolean,
+      default: uni.$u.props.image.showLoading },
+
+    // 是否显示加载错误的图标或者自定义的slot
+    showError: {
+      type: Boolean,
+      default: uni.$u.props.image.showError },
+
+    // 是否需要淡入效果
+    fade: {
+      type: Boolean,
+      default: uni.$u.props.image.fade },
+
+    // 只支持网络资源，只对微信小程序有效
+    webp: {
+      type: Boolean,
+      default: uni.$u.props.image.webp },
+
+    // 过渡时间，单位ms
+    duration: {
+      type: [String, Number],
+      default: uni.$u.props.image.duration },
+
+    // 背景颜色，用于深色页面加载图片时，为了和背景色融合
+    bgColor: {
+      type: String,
+      default: uni.$u.props.image.bgColor } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */,
+/* 354 */,
+/* 355 */
 /*!***************************************************************************************************!*\
   !*** /Users/taixin.jiang/Desktop/cb_github/CBPDA/uni_modules/uview-ui/components/u-text/props.js ***!
   \***************************************************************************************************/
@@ -19328,12 +19502,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 334 */,
-/* 335 */,
-/* 336 */,
-/* 337 */,
-/* 338 */,
-/* 339 */
+/* 356 */,
+/* 357 */,
+/* 358 */,
+/* 359 */,
+/* 360 */,
+/* 361 */
 /*!****************************************************************************************************!*\
   !*** /Users/taixin.jiang/Desktop/cb_github/CBPDA/uni_modules/uview-ui/components/u-input/props.js ***!
   \****************************************************************************************************/
@@ -19523,12 +19697,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 340 */,
-/* 341 */,
-/* 342 */,
-/* 343 */,
-/* 344 */,
-/* 345 */
+/* 362 */,
+/* 363 */,
+/* 364 */,
+/* 365 */,
+/* 366 */,
+/* 367 */
 /*!*********************************************************************************************!*\
   !*** /Users/taixin.jiang/Desktop/cb_github/CBPDA/uni_modules/uview-ui/libs/mixin/button.js ***!
   \*********************************************************************************************/
@@ -19549,7 +19723,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     openType: String } };exports.default = _default;
 
 /***/ }),
-/* 346 */
+/* 368 */
 /*!***********************************************************************************************!*\
   !*** /Users/taixin.jiang/Desktop/cb_github/CBPDA/uni_modules/uview-ui/libs/mixin/openType.js ***!
   \***********************************************************************************************/
@@ -19582,7 +19756,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     } } };exports.default = _default;
 
 /***/ }),
-/* 347 */
+/* 369 */
 /*!*****************************************************************************************************!*\
   !*** /Users/taixin.jiang/Desktop/cb_github/CBPDA/uni_modules/uview-ui/components/u-button/props.js ***!
   \*****************************************************************************************************/
@@ -19751,90 +19925,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 348 */,
-/* 349 */,
-/* 350 */,
-/* 351 */,
-/* 352 */,
-/* 353 */,
-/* 354 */,
-/* 355 */
-/*!**************************************************************************************************!*\
-  !*** /Users/taixin.jiang/Desktop/cb_github/CBPDA/uni_modules/uview-ui/components/u-row/props.js ***!
-  \**************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  props: {
-    // 给col添加间距，左右边距各占一半
-    gutter: {
-      type: [String, Number],
-      default: uni.$u.props.row.gutter },
-
-    // 水平排列方式，可选值为`start`(或`flex-start`)、`end`(或`flex-end`)、`center`、`around`(或`space-around`)、`between`(或`space-between`)
-    justify: {
-      type: String,
-      default: uni.$u.props.row.justify },
-
-    // 垂直对齐方式，可选值为top、center、bottom
-    align: {
-      type: String,
-      default: uni.$u.props.row.align } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
-/* 356 */,
-/* 357 */,
-/* 358 */,
-/* 359 */,
-/* 360 */,
-/* 361 */,
-/* 362 */,
-/* 363 */
-/*!**************************************************************************************************!*\
-  !*** /Users/taixin.jiang/Desktop/cb_github/CBPDA/uni_modules/uview-ui/components/u-col/props.js ***!
-  \**************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  props: {
-    // 占父容器宽度的多少等分，总分为12份
-    span: {
-      type: [String, Number],
-      default: uni.$u.props.col.span },
-
-    // 指定栅格左侧的间隔数(总12栏)
-    offset: {
-      type: [String, Number],
-      default: uni.$u.props.col.offset },
-
-    // 水平排列方式，可选值为`start`(或`flex-start`)、`end`(或`flex-end`)、`center`、`around`(或`space-around`)、`between`(或`space-between`)
-    justify: {
-      type: String,
-      default: uni.$u.props.col.justify },
-
-    // 垂直对齐方式，可选值为top、center、bottom、stretch
-    align: {
-      type: String,
-      default: uni.$u.props.col.align },
-
-    // 文字对齐方式
-    textAlign: {
-      type: String,
-      default: uni.$u.props.col.textAlign } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
-/* 364 */,
-/* 365 */,
-/* 366 */,
-/* 367 */,
-/* 368 */,
-/* 369 */,
 /* 370 */,
 /* 371 */,
 /* 372 */,
@@ -19871,98 +19961,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* 403 */,
 /* 404 */,
 /* 405 */,
-/* 406 */
-/*!****************************************************************************************************!*\
-  !*** /Users/taixin.jiang/Desktop/cb_github/CBPDA/uni_modules/uview-ui/components/u-image/props.js ***!
-  \****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  props: {
-    // 图片地址
-    src: {
-      type: String,
-      default: uni.$u.props.image.src },
-
-    // 裁剪模式
-    mode: {
-      type: String,
-      default: uni.$u.props.image.mode },
-
-    // 宽度，单位任意
-    width: {
-      type: [String, Number],
-      default: uni.$u.props.image.width },
-
-    // 高度，单位任意
-    height: {
-      type: [String, Number],
-      default: uni.$u.props.image.height },
-
-    // 图片形状，circle-圆形，square-方形
-    shape: {
-      type: String,
-      default: uni.$u.props.image.shape },
-
-    // 圆角，单位任意
-    radius: {
-      type: [String, Number],
-      default: uni.$u.props.image.radius },
-
-    // 是否懒加载，微信小程序、App、百度小程序、字节跳动小程序
-    lazyLoad: {
-      type: Boolean,
-      default: uni.$u.props.image.lazyLoad },
-
-    // 开启长按图片显示识别微信小程序码菜单
-    showMenuByLongpress: {
-      type: Boolean,
-      default: uni.$u.props.image.showMenuByLongpress },
-
-    // 加载中的图标，或者小图片
-    loadingIcon: {
-      type: String,
-      default: uni.$u.props.image.loadingIcon },
-
-    // 加载失败的图标，或者小图片
-    errorIcon: {
-      type: String,
-      default: uni.$u.props.image.errorIcon },
-
-    // 是否显示加载中的图标或者自定义的slot
-    showLoading: {
-      type: Boolean,
-      default: uni.$u.props.image.showLoading },
-
-    // 是否显示加载错误的图标或者自定义的slot
-    showError: {
-      type: Boolean,
-      default: uni.$u.props.image.showError },
-
-    // 是否需要淡入效果
-    fade: {
-      type: Boolean,
-      default: uni.$u.props.image.fade },
-
-    // 只支持网络资源，只对微信小程序有效
-    webp: {
-      type: Boolean,
-      default: uni.$u.props.image.webp },
-
-    // 过渡时间，单位ms
-    duration: {
-      type: [String, Number],
-      default: uni.$u.props.image.duration },
-
-    // 背景颜色，用于深色页面加载图片时，为了和背景色融合
-    bgColor: {
-      type: String,
-      default: uni.$u.props.image.bgColor } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
+/* 406 */,
 /* 407 */,
 /* 408 */,
 /* 409 */,
@@ -20363,7 +20362,14 @@ module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"選擇日期\
 /* 461 */,
 /* 462 */,
 /* 463 */,
-/* 464 */
+/* 464 */,
+/* 465 */,
+/* 466 */,
+/* 467 */,
+/* 468 */,
+/* 469 */,
+/* 470 */,
+/* 471 */
 /*!***************************************************************************************************!*\
   !*** /Users/taixin.jiang/Desktop/cb_github/CBPDA/uni_modules/uview-ui/components/u-text/value.js ***!
   \***************************************************************************************************/
@@ -20457,13 +20463,6 @@ module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"選擇日期\
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 465 */,
-/* 466 */,
-/* 467 */,
-/* 468 */,
-/* 469 */,
-/* 470 */,
-/* 471 */,
 /* 472 */,
 /* 473 */,
 /* 474 */,
@@ -20471,7 +20470,14 @@ module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"選擇日期\
 /* 476 */,
 /* 477 */,
 /* 478 */,
-/* 479 */
+/* 479 */,
+/* 480 */,
+/* 481 */,
+/* 482 */,
+/* 483 */,
+/* 484 */,
+/* 485 */,
+/* 486 */
 /*!*******************************************************************************************************!*\
   !*** /Users/taixin.jiang/Desktop/cb_github/CBPDA/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \*******************************************************************************************************/
@@ -21647,13 +21653,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     "unicode_decimal": 58929 }] };exports.default = _default;
 
 /***/ }),
-/* 480 */,
-/* 481 */,
-/* 482 */,
-/* 483 */,
-/* 484 */,
-/* 485 */,
-/* 486 */,
 /* 487 */,
 /* 488 */,
 /* 489 */,

@@ -1,14 +1,17 @@
 import {
-	API_BASE_DEVELOPMENT,API_BASE_PRODUCTION
+	API_BASE_DEVELOPMENT,API_BASE_PRODUCTION,KEYCLOAK_DEVELOPMENT,KEYCLOAK_PRODUCTION
 } from '../http/config.js'
 
 var baseUrl = "";
+var keycloakUrl = "";
 
 if (process.env.NODE_ENV === 'development') {
 	baseUrl = API_BASE_DEVELOPMENT;
+	keycloakUrl = KEYCLOAK_DEVELOPMENT;
 }
 if (process.env.NODE_ENV === 'production') {
 	baseUrl = API_BASE_PRODUCTION;
+	keycloakUrl = KEYCLOAK_PRODUCTION;
 }
 
 const httpRequest = (opts, data) => {
@@ -52,7 +55,7 @@ const httpRequest = (opts, data) => {
 
 const getTokenRequest = (opts, data) => {
 	let httpDefaultOpts = {
-		url: opts.url,
+		url: keycloakUrl,
 		data: data,
 		method: opts.method,
 		header:{
@@ -108,6 +111,7 @@ var format = function(time, format) {
 
 export default {
 	baseUrl,
+	keycloakUrl,
 	httpRequest,
 	getTokenRequest
 }

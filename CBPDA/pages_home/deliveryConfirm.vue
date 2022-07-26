@@ -4,7 +4,7 @@
 			<view class="tab_item" :class="{cur:index === tabCur}" v-for="(item, index) in ['装箱配送确认模式', '自取确认模式']"
 				:key="index" @click="tabSelect(index)">{{ item }}</view>
 		</view>
-		<view v-if="tabCur === 0">
+		<view v-show="tabCur === 0">
 			<u-row>
 				<u-col span="6">
 					<div class="col-layout">
@@ -74,15 +74,15 @@
 			</uni-table>
 
 		</view>
-		<view v-else>
+		<view v-show="tabCur === 1">
 			<div class="divContainer">
 				<u-row justify="space-between" gutter="1">
 					<u-col span="9">
 						<view class="desc-text-edit">
 							<u--text type="primary" text="配货单" size=13></u--text>
 						</view>
-						<u--input font-size=13 v-model="codeNumber" placeholder="扫码输入,手动输入" border="surround" clearable>
-						</u--input>
+						<uni-easyinput :focus="focus" v-model="codeNumber" placeholder="扫码输入,手动输入" @blur="blur" clearable>
+						</uni-easyinput>
 					</u-col>
 					<u-col span="1">
 						<view style="width: 30px;height: 30px;">
@@ -149,20 +149,18 @@
 					<uni-th align="center">商品大类</uni-th>
 					<uni-th align="center">总件数</uni-th>
 					<uni-th align="left">日期</uni-th>
-					<uni-th align="left">交接人</uni-th>
 					<uni-th align="left">状态</uni-th>
 				</uni-tr>
 				<!-- 表格数据行 -->
 				<uni-tr v-for="(item, index) in tableDataSec">
-					<uni-td>{{item.tagName}}</uni-td>
-					<uni-td>{{item.position}}</uni-td>
-					<uni-td>{{item.qualityPiece}}</uni-td>
-					<uni-td>{{item.sou}}</uni-td>
-					<uni-td>{{item.barCode}}</uni-td>
-					<uni-td>{{item.packageCode}}</uni-td>
-					<uni-td>{{item.materielCode}}</uni-td>
-					<uni-td>{{item.packageCode}}</uni-td>
-					<uni-td>{{item.materielCode}}</uni-td>
+					<uni-td>{{item.packingCode}}</uni-td>
+					<uni-td>{{item.orderType}}</uni-td>
+					<uni-td>{{item.receiveCounterCode}}</uni-td>
+					<uni-td>{{item.receiveShopCode}}</uni-td>
+					<uni-td>{{item.category}}</uni-td>
+					<uni-td>{{item.totalNumber}}</uni-td>
+					<uni-td>{{item.createdDate}}</uni-td>
+					<uni-td>{{item.orderStatus2}}</uni-td>
 				</uni-tr>
 			</uni-table>
 
@@ -248,12 +246,13 @@
 				selectedList: [], //选中行数组
 				tableDataSec:[],
 				selectedListSec: [], //选中行数组
+				focus:false,
 			}
 		},
 		mounted() {
 			this.handoverPerson = "NO0001";
 			this.startTime = this.$dateTrans.getDateString();
-			this.endTime = this.$dateTrans.getDateString();
+			this.endTime = this.$dateTrans.getNextWeekDateString();
 			//获取箱子类型和箱子状态
 			let vm = this;
 			uni.getStorage({
@@ -313,10 +312,10 @@
 				if(e !== ""){
 					this.getCounters();
 				}
-				console.log("==================change store:",e);
+				//console.log("==================change store:",e);
 			},
 			getCounters(){
-				console.log("==================get counters");
+				//console.log("==================get counters");
 			},
 			startScan() {
 				let vm = this;
@@ -332,14 +331,66 @@
 					}
 				});
 			},
+			blur(e){
+				if (e.target.value == '') {
+					return;
+				};
+				this.codeNumber = e.target.value;
+				this.startSearch();
+			},
 			startSearch() {
 				if (this.codeNumber === '' || this.codeNumber === undefined) {
 					this.$toast.showToast("请先扫描配货单");
 					return;
 				}
 				
+				var opts = {
+					url: ``,
+					method: 'post'
+				};
+				uni.showLoading({
+					title: '加载中...'
+				});
+				var param = {
+					"interface_num": "MOBSCMD0017",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": {
+						"poCode": this.codeNumber
+					},
+				};
+				this.focus = false;
+				this.$http.httpRequest(opts, param).then((res) => {
+					uni.hideLoading();
+					if (res.statusCode === 200) {
+						if(res.data.header.pickingSelf == "0"){
+							var dataBody = {};
+							dataBody.packingCode = res.data.header.poCode;
+							dataBody.orderType = res.data.header.orderType;
+							dataBody.receiveCounterCode = res.data.header.receiveCounterCode;
+							dataBody.receiveShopCode = res.data.header.receiveShopCode;
+							dataBody.category = res.data.header.category;
+							dataBody.totalNumber = res.data.header.totalNumber;
+							dataBody.createdDate = this.$dateTrans.formatMsToDate(res.data.header.createdDate);
+							if(res.data.header.orderStatus2 === "4"){
+								dataBody.orderStatus2 = "待确认出库";
+							}
+							this.tableDataSec.push(dataBody);
+							this.codeNumber = "";
+							this.$nextTick(function() {
+								this.focus = true;
+							});
+						}
+					} else {
+						this.$toast.showToast("获取数据失败，请重试");
+					}
+				});
+				
 			},
 			confirm(){
+				console.log("===========click confirm ,tab :",this.tabCur);
+				console.log("===========click confirm ,list 1 :",this.selectedList);
+				console.log("===========click confirm ,list 2 :",this.selectedListSec);
 				
 			},
 			cancel(){

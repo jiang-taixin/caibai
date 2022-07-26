@@ -28,8 +28,7 @@
 		}, {
 			"path": "pages/stock/stock",
 			"style": {
-				"navigationBarTitleText": "库存查询",
-				"enablePullDownRefresh": false
+				"navigationBarTitleText": "库存查询"
 			}
 		}
 	],
@@ -194,10 +193,10 @@
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
+		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#54639c",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor": "#778de1",
+		"backgroundColor": "#ebf0df"
 	},
 	"tabBar": {
 		"list": [{

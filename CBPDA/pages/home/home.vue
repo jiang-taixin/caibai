@@ -108,11 +108,6 @@
 					animationDuration: 200
 				});
 			}
-			
-
-		},
-		beforeCreate() {
-			
 		},
 		mounted() {
 			//页面加载完成获取枚举值并缓存在本地

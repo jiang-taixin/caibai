@@ -286,10 +286,7 @@ var _default =
       userInfo: {} };
 
   },
-  onLoad: function onLoad() {
-
-  },
-  beforeCreate: function beforeCreate() {
+  onShow: function onShow() {
     // 如果没登录    去登录页面
     this.userInfo = this.$userInfo.getUserInfo();
     console.log("================user info :", this.userInfo);
@@ -300,7 +297,6 @@ var _default =
         animationDuration: 200 });
 
     }
-
   },
   mounted: function mounted() {
     //页面加载完成获取枚举值并缓存在本地
