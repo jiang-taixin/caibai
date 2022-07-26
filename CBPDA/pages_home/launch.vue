@@ -147,7 +147,6 @@
 					},
 				};
 				this.$http.httpRequest(opts, param).then((res) => {
-					console.log("============res:",res);
 					uni.hideLoading();
 					if (res.statusCode === 200) {
 						if(res.data.s_flag == "F"){
@@ -189,7 +188,6 @@
 					item.postingDate = this.$dateTrans.getDateString();
 					bodyList.push(item);
 				};
-				console.log("===============selection change :",bodyList);
 				var param = {
 					"interface_num": "MOBSCMD0023",
 					"serial_no": "123456789",
@@ -200,7 +198,6 @@
 					title: '加载中...'
 				});
 				this.$http.httpRequest(opts, param).then((res) => {
-					console.log("-------------res:",res);
 					uni.hideLoading();
 					if (res.statusCode === 200) {
 						if(res.data.s_flag == "F"){

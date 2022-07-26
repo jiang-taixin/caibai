@@ -68,7 +68,6 @@
 			uni.getStorage({
 				key:"departmentList",
 				success(res) {
-					console.log("===========res:",res);
 					vm.department = res.data;
 					vm.warehouse = res.data.find(item => item.value == vm.selectDepartment).warehouseList;
 				},
@@ -111,9 +110,7 @@
 					
 					return;
 				}
-				console.log("====================:",this.department.find(item => item.value == this.selectDepartment).text);
-				console.log("====================:",this.warehouse.find(item => item.value == this.selectWarehouse).text);
-				console.log("---------date :", this.date);
+				//console.log("====================:",this.department.find(item => item.value == this.selectDepartment).text);
 				uni.navigateTo({
 					url: `picking/picking?selectDepartment=${this.selectDepartment}&selectWarehouse=${this.selectWarehouse}&date=${this.date}`
 				})

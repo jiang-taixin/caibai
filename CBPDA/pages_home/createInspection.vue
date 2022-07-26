@@ -42,11 +42,11 @@
 				<uni-th align="center">商品编号</uni-th>
 				<uni-th align="center">商品描述</uni-th>
 				<uni-th align="center">包码</uni-th>
-				<uni-th align="center">订单数量</uni-th>
+				<uni-th align="center">出货数量</uni-th>
 			</uni-tr>
 			<!-- 表格数据行 -->
 			<uni-tr v-for="(item, index) in tableData">
-				<uni-td>{{index}}</uni-td>
+				<uni-td>{{index+1}}</uni-td>
 				<uni-td>{{item.temprecDate}}</uni-td>
 				<uni-td>{{item.scmPoCode}}</uni-td>
 				<uni-td>{{item.poItemNo}}</uni-td>
@@ -178,6 +178,7 @@
 			}
 		},
 		mounted() {
+			this.inspectionDate = this.$dateTrans.getDateString();
 			let vm = this;
 			uni.getStorage({
 				key: "organList",
@@ -252,9 +253,7 @@
 				this.selectedList = res.detail.index;
 				this.totalNum = 0;
 				for (var i = 0; i < this.selectedList.length; i++) {
-					console.log("*********************num:",this.totalNum);
 					this.totalNum += parseInt(this.tableData[this.selectedList[i]].quatity);
-					console.log("*********************num:",this.totalNum);
 				};
 			},
 			create() {
@@ -287,6 +286,7 @@
 				for (var i = 0; i < this.selectedList.length; i++) {
 					bodyList.push(this.tableData[this.selectedList[i]]);
 				}
+				this.inspectionName = this.inspectionName.replace(" ",",")
 				var header = {
 					"inspectStatus": "1",
 					"inspectOrgan": this.inspectionAngecy,
@@ -310,11 +310,12 @@
 					title: '加载中...'
 				});
 				this.$http.httpRequest(opts, param).then((res) => {
+					console.log("********************res:", res);
 					uni.hideLoading();
 					this.showCreatePage = false;
 					if (res.data.code === "200") {
 						this.$toast.showToast("提交成功");
-						console.log("********************res:", res.data.data.header.inspectNo);
+						
 						this.show = true;
 						this.inspectNo = res.data.data.header.inspectNo;
 

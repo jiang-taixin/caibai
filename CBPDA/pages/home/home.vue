@@ -17,73 +17,73 @@
 			return {
 				platfrom: "",
 				list: [{
-						tag:'0',
+						tag: '0',
 						name: 'search',
 						title: '初检信息录入',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'1',
+						tag: '1',
 						name: 'bell',
 						title: '入库前质检',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'2',
+						tag: '2',
 						name: 'bell-fill',
 						title: '有损检验',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'3',
+						tag: '3',
 						name: 'edit-pen',
 						title: '回货暂收',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'4',
+						tag: '4',
 						name: 'order',
 						title: '创建送检单',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'6',
+						tag: '6',
 						name: 'car-fill',
 						title: '整单配货',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'7',
+						tag: '7',
 						name: 'grid',
 						title: '交接',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'8',
+						tag: '8',
 						name: 'coupon',
 						title: '上架',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'9',
+						tag: '9',
 						name: 'coupon-fill',
 						title: '库存上架',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'11',
+						tag: '11',
 						name: 'map',
 						title: '仓位调整',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'12',
+						tag: '12',
 						name: 'map-fill',
 						title: '库位调整',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'14',
+						tag: '14',
 						name: 'scan',
 						title: '配送出库确认',
 						platform: ["APP", "WEIXIN", "H5"],
@@ -93,20 +93,26 @@
 					'/static/1.png',
 					'/static/2.png',
 					'/static/3.png',
-				]
+				],
+				userInfo:{},
 			}
 		},
-		onLoad() {
+		onShow() {
+			// 如果没登录    去登录页面
+			this.userInfo = this.$userInfo.getUserInfo();
+			console.log("================user info :",this.userInfo);
+			if (this.userInfo === undefined ||this.userInfo === '') {
+				uni.redirectTo({
+					url: "/pages_login/login",
+					animationType: 'pop-in',
+					animationDuration: 200
+				});
+			}
+			
 
 		},
 		beforeCreate() {
-			//如果没登录    去登录页面
 			
-			// uni.redirectTo({
-			// 	url:"/pages_login/login",
-			// 	animationType: 'pop-in',
-			// 	animationDuration: 200
-			// }),
 		},
 		mounted() {
 			//页面加载完成获取枚举值并缓存在本地
@@ -115,8 +121,8 @@
 			this.getReason(); //不合格原因
 			this.getTestingCategory(); //质检类别
 			this.getDepartment(); //获取发货部门和库位
-			this.getBoxStatus();//获取箱子状态
-			this.getBoxType();//获取箱子类型
+			this.getBoxStatus(); //获取箱子状态
+			this.getBoxType(); //获取箱子类型
 		},
 		created() {
 			//判断平台类型    设置模块是否显示
@@ -417,7 +423,7 @@
 					}
 				});
 			},
-			getBoxType(){
+			getBoxType() {
 				var opts = {
 					url: ``,
 					method: 'post'
@@ -449,11 +455,11 @@
 						this.types = typeList;
 					} else {
 						this.$toast.showToast("获取检测机构失败，请刷新页面");
-				
+
 					}
 				});
 			},
-			getBoxStatus(){
+			getBoxStatus() {
 				var opts = {
 					url: ``,
 					method: 'post'

@@ -16,8 +16,10 @@
 			</u--input>
 		</div>
 
-		<u-button type="primary" @click="login" text="登录" style="width: 80%;margin-left: 10%;margin-top: 30px;">
-		</u-button>
+		<view style="width: 80%;margin-left: 10%;margin-top: 30px;">
+			<u-button type="primary" @click="login" text="登录">
+			</u-button>
+		</view>
 	</view>
 </template>
 
@@ -51,31 +53,27 @@
 				this.$http.getTokenRequest(opts, param).then((res) => {
 					uni.hideLoading();
 					console.log("===========get token res:", res);
-					
-					uni.setStorage({
-						key: 'typeList',
-						data: typeList,
-						success: function() {}
-					});
+					if (res.statusCode == 200) {
+						this.getUserMessage(res.data.access_token);
+					} else {
+						this.$toast.showToast(`${res.data.error_description}`);
+					}
+				});
+			},
+			getUserMessage(token) {
+				console.log("============start get user information with token:", token);
 
-					uni.switchTab({
-						url: '/pages/home/home',
-						animationType: 'pop-in',
-						animationDuration: 200
-					});
-					// 	if (res.statusCode === 200) {
-					// 		this.masterData = res.data;
-					// 		this.tableData = res.data.item;
-					// 		this.totalNum = this.tableData.length;
-					// 		if (res.data.header.orderStatus !== "2" && res.data.header.orderStatus !== "3") {
-					// 			this.disabled = false;
-					// 		} else {
-					// 			this.disabled = true;
-					// 		}
+				var userData = {
+					"userName": "user1",
+					"employeeCode": "NO09090909",
+					"identity": "admin",
+				};
+				this.$userInfo.setUserInfo(userData);
 
-					// 	} else {
-					// 		this.$toast.showToast("获取数据失败，请重试");
-					// 	}
+				uni.switchTab({
+					url: '/pages/home/home',
+					animationType: 'pop-in',
+					animationDuration: 200
 				});
 			}
 		}

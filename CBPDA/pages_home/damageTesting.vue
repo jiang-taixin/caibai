@@ -86,7 +86,7 @@
 			</uni-tr>
 			<!-- 表格数据行 -->
 			<uni-tr v-for="(item, index) in tableData">
-				<uni-td>{{index}}</uni-td>
+				<uni-td>{{index+1}}</uni-td>
 				<uni-td>
 					<uni-easyinput v-model="item.checkWeight" placeholder="输入克重" style="90%">
 					</uni-easyinput>

@@ -6,8 +6,8 @@
 					<view class="desc-text-edit">
 						<u--text type="primary" text="扫码" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="codeNumber" placeholder="扫码或填写包码" border="surround" clearable>
-					</u--input>
+					<uni-easyinput v-model="codeNumber" placeholder="扫码或填写包码" @blur="codeBlur" clearable>
+					</uni-easyinput>
 				</u-col>
 				<u-col span="1">
 					<view style="width: 30px;height: 30px;">
@@ -158,7 +158,7 @@
 			</uni-tr>
 			<!-- 表格数据行 -->
 			<uni-tr v-for="(item, index) in tableData">
-				<uni-td>{{index}}</uni-td>
+				<uni-td>{{index+1}}</uni-td>
 				<uni-td>
 					<uni-data-select v-model="item.reason" :localdata="reason" @change="changeReason"></uni-data-select>
 				</uni-td>
@@ -257,6 +257,13 @@
 			});
 		},
 		methods: {
+			codeBlur(e){
+				if (e.target.value == '') {
+					return;
+				};
+				this.codeNumber = e.target.value;
+				this.startSearch();
+			},
 			startSearch() {
 				if (this.codeNumber === '' || this.codeNumber === undefined) {
 					this.$toast.showToast("请先扫描包码");
@@ -289,6 +296,9 @@
 						this.purchaseNum = this.detailMessage.goodsPurchaseNum;
 						this.shipmentNumber = this.detailMessage.sendCount;//出货件数
 						this.shipmentWeight = this.detailMessage.sendTotalGram;//出货克重
+						this.qualifiedNum = "";
+						this.qualifiedWeight = "";
+						this.tableData = [];
 						//initalReviewNum是否初检参数
 						if(this.detailMessage.initalReviewNum === 0 || this.detailMessage.initalReviewNum === null){
 							this.testNum = this.detailMessage.sendCount;
@@ -296,8 +306,18 @@
 						}
 						else{
 							var number = parseInt(this.detailMessage.sendCount/10);
-							number === 0?this.testNum = 1:this.testNum = number;
-							this.testWeight = this.detailMessage.sendTotalGram/10;
+							if(number === 0){
+								this.testNum = 1;
+							}
+							else{
+								if(this.detailMessage.sendCount%10 === 0){
+									this.testNum = number;
+								}
+								else{
+									this.testNum = number+1;
+								}
+							}
+							this.testWeight = (this.detailMessage.sendTotalGram/10).toFixed(2);
 						}
 						
 					} else {

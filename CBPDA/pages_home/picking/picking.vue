@@ -589,6 +589,7 @@
 					"access_token": "abc",
 					"bus_data": this.masterData,
 				};
+				
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
 					if (res.statusCode === 200) {

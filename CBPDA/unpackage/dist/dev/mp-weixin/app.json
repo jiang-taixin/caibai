@@ -73,6 +73,5 @@
     ]
   },
   "lazyCodeLoading": "requiredComponents",
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

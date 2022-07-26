@@ -73,7 +73,7 @@
 			</uni-tr>
 			<!-- 表格数据行 -->
 			<uni-tr v-for="(item, index) in tableData">
-				<uni-td>{{index}}</uni-td>
+				<uni-td>{{index+1}}</uni-td>
 				<uni-td>{{item.temprecDate}}</uni-td>
 				<uni-td>{{item.itemStatus}}</uni-td>
 				<uni-td>{{item.sendCount}}</uni-td>

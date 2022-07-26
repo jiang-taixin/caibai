@@ -6,8 +6,8 @@
 					<view class="desc-text-edit">
 						<u--text type="primary" text="扫码" size=13></u--text>
 					</view>
-					<u--input font-size=13 v-model="codeNumber" placeholder="扫码或填写包码" border="surround" clearable>
-					</u--input>
+					<uni-easyinput v-model="codeNumber" placeholder="扫码或填写包码" @blur="codeBlur" clearable>
+					</uni-easyinput>
 				</u-col>
 				<u-col span="1">
 					<view style="width: 30px;height: 30px;">
@@ -148,7 +148,7 @@
 			</uni-tr>
 			<!-- 表格数据行 -->
 			<uni-tr v-for="(item, index) in tableData">
-				<uni-td>{{index}}</uni-td>
+				<uni-td>{{index+1}}</uni-td>
 				<uni-td>
 					<uni-data-select v-model="item.reason" :localdata="reason"></uni-data-select>
 				</uni-td>
@@ -213,7 +213,7 @@
 				modelNum: "", //款号
 				purchaseNum: "", //采购件数
 				material: "", //贵金属材质
-				qualifiedNumber:0,   //合格件数
+				qualifiedNumber:"",   //合格件数
 				qualifiedWeight:"",   //合格克重
 				testNum: 0,
 				total: 0, //不合格总计
@@ -236,6 +236,13 @@
 			})
 		},
 		methods: {
+			codeBlur(e){
+				if (e.target.value == '') {
+					return;
+				};
+				this.codeNumber = e.target.value;
+				this.startSearch();
+			},
 			startSearch() {
 				if (this.codeNumber === '' || this.codeNumber === undefined) {
 					this.$toast.showToast("请先扫描包码");
@@ -269,6 +276,11 @@
 						this.modelNum = this.headerMessage.materielCode;
 						this.purchaseNum = this.headerMessage.goodsPurchaseNum;
 						this.material = this.headerMessage.goodsMetalMaterial;
+						this.qualifiedNumber = "";
+						this.qualifiedWeight = "";
+						this.tableData = [];
+						
+						
 					} else {
 						this.$toast.showToast("获取数据失败，请重试");
 						

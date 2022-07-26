@@ -104,7 +104,7 @@
 						<view class="desc-text-edit">
 							<u--text type="primary" text="收货门店" size=13></u--text>
 						</view>
-						<uni-data-select v-model="selectStore" :localdata="stores">
+						<uni-data-select v-model="selectStore" :localdata="stores" @change="changeStore">
 						</uni-data-select>
 					</div>
 				</u-col>
@@ -245,10 +245,15 @@
 					"shopName":"SHOP1111",
 					"date":"2022-07-21"
 				}],
+				selectedList: [], //选中行数组
 				tableDataSec:[],
+				selectedListSec: [], //选中行数组
 			}
 		},
 		mounted() {
+			this.handoverPerson = "NO0001";
+			this.startTime = this.$dateTrans.getDateString();
+			this.endTime = this.$dateTrans.getDateString();
 			//获取箱子类型和箱子状态
 			let vm = this;
 			uni.getStorage({
@@ -267,13 +272,20 @@
 				fail(e) {
 				}
 			});
+			uni.getStorage({
+				key:"departmentList",
+				success(res) {
+					vm.stores = res.data;
+				},
+				fail(e) {
+				}
+			});
 			
 		},
 		methods: {
 			tabSelect(index) {
-				console.log("*******************", index);
 				if (this.tabCur === index) return;
-				this.tabCur = index
+				this.tabCur = index;
 			},
 			search(){
 				//装箱配送确认模式搜索
@@ -292,10 +304,19 @@
 				this.showEditPage = false;
 			},
 			selectionChange(res){
-				
+				this.selectedList = res.detail.index;
 			},
 			selectionChangeSec(res){
-				
+				this.selectedListSec = res.detail.index;
+			},
+			changeStore(e){
+				if(e !== ""){
+					this.getCounters();
+				}
+				console.log("==================change store:",e);
+			},
+			getCounters(){
+				console.log("==================get counters");
 			},
 			startScan() {
 				let vm = this;

@@ -45,7 +45,7 @@
 			<view class="desc-text-edit">
 				<u--text type="primary" class="desc-text-edit" text="过账日期" size=13></u--text>
 			</view>
-			<uni-datetime-picker v-model="date" type="date" start="2021-3-20" end="2099-6-20"/>
+			<uni-datetime-picker v-model="date" type="date" start="2021-3-20" end="2099-6-20" />
 		</div>
 
 		<div class="divContainer">
@@ -64,7 +64,7 @@
 					</view>
 				</u-col>
 				<u-col span="1">
-					
+
 				</u-col>
 			</u-row>
 		</div>
@@ -172,6 +172,10 @@
 			</uni-table>
 		</view>
 
+		<u-modal :show="show" title="物料凭证" @confirm="close" :asyncClose="true">
+			<text v-text="materialDocument"></text>
+		</u-modal>
+
 	</view>
 </template>
 
@@ -179,19 +183,21 @@
 	export default {
 		data() {
 			return {
-				type:"901",                //类型
-				department:"",             //部门
-				storagePosition:"",        //库位
-				employeeNumber:"",         //员工号
-				date:"",                   //日期
-				warehousePosition:"",      //上架仓位
-				codeNumber:"",             //条形码、包码
-				number_weight:0,          //数量、克重
-				total:0,                  //合计
-				secondaryNumber:0,        //次要数量
-				secondaryTotal:0,         //次要合计
-				tableData:[],
-				focus:false,
+				type: "901", //类型
+				department: "", //部门
+				storagePosition: "", //库位
+				employeeNumber: "", //员工号
+				date: "", //日期
+				warehousePosition: "", //上架仓位
+				codeNumber: "", //条形码、包码
+				number_weight: 0, //数量、克重
+				total: 0, //合计
+				secondaryNumber: 0, //次要数量
+				secondaryTotal: 0, //次要合计
+				tableData: [],
+				focus: false,
+				materialDocument: "", //提交之后返回的物料凭证
+				show: false,
 			}
 		},
 		mounted() {
@@ -203,7 +209,7 @@
 			this.storagePosition = option.launchWarehouse;
 		},
 		methods: {
-			startScanWarehouse(){
+			startScanWarehouse() {
 				let vm = this;
 				uni.scanCode({
 					success: function(res) {
@@ -214,11 +220,11 @@
 						} else {
 							this.$toast.showToast("扫码失败，请重试");
 						}
-							
+
 					}
 				});
 			},
-			startScan(){
+			startScan() {
 				let vm = this;
 				uni.scanCode({
 					success: function(res) {
@@ -229,18 +235,18 @@
 						} else {
 							this.$toast.showToast("扫码失败，请重试");
 						}
-							
+
 					}
 				});
 			},
-			blur(e){
+			blur(e) {
 				if (e.target.value == '') {
 					return;
 				};
 				this.codeNumber = e.target.value;
 				this.startSearch();
 			},
-			startSearch(){
+			startSearch() {
 				if (this.codeNumber === '' || this.codeNumber === undefined) {
 					this.$toast.showToast("请先扫描包码");
 					return;
@@ -260,20 +266,19 @@
 						"codeNumber": this.codeNumber,
 					},
 				};
-				
+
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
-					console.log("===================res:",res);
 					if (res.statusCode === 200) {
-						if(res.data.s_flag == "F"){
+						if (res.data.s_flag == "F") {
 							this.$toast.showToast(`${res.data.m_ess}`);
-						}
-						else{
+						} else {
 							this.number_weight = 0;
 							this.secondaryNumber = 0;
 							this.tableData = [];
 							res.data.forEach(element => {
-								if(element.position == "0000009999" && element.qualityPiece !== 0 && element.subQualityPiece !== 0){
+								if (element.position == "0000009999" && element.qualityPiece !== 0 &&
+									element.subQualityPiece !== 0) {
 									var dataBody = {};
 									dataBody.tagName = element.tagName;
 									dataBody.createdBy = this.employeeNumber;
@@ -286,7 +291,7 @@
 									dataBody.waraHouse = element.waraHouse;
 									dataBody.goodArea = element.goodsArea;
 									dataBody.position = element.position;
-									dataBody.materielCode = element.materialCode;
+									dataBody.materialCode = element.materialCode;
 									dataBody.batch = element.batch;
 									dataBody.barCode = element.barCode;
 									dataBody.fph = element.fph;
@@ -296,6 +301,11 @@
 									dataBody.subUnit = element.subUnit;
 									dataBody.baseUnit = element.baseUnit;
 									dataBody.moveReason = "";
+									dataBody.sou = element.sou;
+									dataBody.materialDesc = element.materialDesc;
+									dataBody.inventoryType = "1";
+									dataBody.groupId = this.getRandomString(10);
+									dataBody.quality = element.qualityPiece;
 									this.number_weight += element.qualityPiece;
 									this.secondaryNumber += element.subQualityPiece;
 									this.tableData.push(dataBody);
@@ -304,14 +314,14 @@
 							this.total += this.number_weight;
 							this.secondaryTotal += this.secondaryNumber;
 						}
-						
+
 					} else {
 						this.$toast.showToast("获取数据失败，请重试");
 					}
-					
+
 				});
 			},
-			confirm(){
+			confirm() {
 				if (this.tableData.length === 0) {
 					this.$toast.showToast("请先扫描包码或条码获取数据");
 					return;
@@ -328,57 +338,77 @@
 					title: '加载中...'
 				});
 				this.focus = false;
+				var changeData = JSON.parse(JSON.stringify(this.tableData));
 				this.tableData.forEach(element => {
 					element.postingDate = this.date;
+					element.groupType = "from";
 				})
-				var changeData = JSON.parse(JSON.stringify(this.tableData));
+
 				changeData.forEach(element => {
 					element.position = this.warehousePosition;
 					element.loanType = "S";
+					element.groupType = "target";
+					delete element.waraHouse;
+					delete element.goodArea;
 				});
 				var header = {
-					"createdBy":this.employeeNumber,
-					"accountingYear":this.$dateTrans.getYear(),
-					"materialDecDate":this.$dateTrans.getDateString(),
-					"postingYear":this.date
+					"createdBy": this.employeeNumber,
+					"accountingYear": this.$dateTrans.getYear(),
+					"materialDecDate": this.$dateTrans.getDateString(),
+					"postingDate": this.date,
+					"totalQuality": this.number_weight,
+					"totalSubQualityPiece": this.secondaryNumber,
 				}
 				var param = {
-					"interface_num": "MOBSCMD0016",
+					"interface_num": "MOBSCMD0024",
 					"serial_no": "123456789",
 					"access_token": "abc",
 					"bus_data": {
 						"header": header,
-						"originalData":this.tableData,
-						"changeData":changeData
+						"originalData": this.tableData,
+						"changeData": changeData
 					},
 				};
-				console.log("===================data:",param);
 				
-				uni.hideLoading();
-				return;
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
-					console.log("===================res:",res);
+					console.log("===================res:", res);
 					if (res.statusCode === 200) {
-						if(res.data.s_flag == "F"){
-							this.$toast.showToast(`${res.data.m_ess}`);
+						if(res.data.code === "200"){
+							//成功之后弹出物料凭证信息
+							this.materialDocument = res.data.data.materialDecCode;
+							this.show = true;
 						}
 						else{
-							this.codeNumber = "";
-							this.$nextTick(function() {
-								this.focus = true;
-							});
+							this.$toast.showToast(`${res.data.msg}`);
 						}
-						
 					} else {
-						this.$toast.showToast("获取数据失败，请重试");
+						this.$toast.showToast("提交失败，请重试");
 					}
-					
+
 				});
 			},
-			cancel(){
-				uni.navigateBack({
+			cancel() {
+				uni.navigateBack({});
+			},
+			close() {
+				this.show = false;
+				this.codeNumber = "";
+				this.$nextTick(function() {
+					this.focus = true;
 				});
+			},
+			getRandomString(n) {
+				var chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+					'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+					'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+				];
+				var res = "";
+				for (var i = 0; i < n; i++) {
+					var id = Math.floor(Math.random() * 36);
+					res += chars[id];
+				}
+				return res;
 			}
 		}
 	}
