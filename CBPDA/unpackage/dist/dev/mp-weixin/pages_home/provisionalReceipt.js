@@ -300,7 +300,8 @@ var _default =
 
   },
   mounted: function mounted() {
-    this.qualityInspector = "当前用户";
+    var userinfo = this.$userInfo.getUserInfo();
+    this.qualityInspector = userinfo.username;
   },
   methods: {
     startSearch: function startSearch() {var _this = this;
@@ -432,6 +433,25 @@ var _default =
         console.log("************res:", res);
         if (res.data.code === "200") {
           _this2.$toast.showToast("提交成功");
+          if (res.data.data.length != 0) {
+            for (var _i in res.data.data) {
+              res.data.data[_i].temprecDate = _this2.$dateTrans.formatMsToDate(res.data.data[_i].temprecDate);
+              switch (res.data.data[_i].itemStatus) {
+                case "0":
+                  res.data.data[_i].itemStatus = "";
+                  break;
+                case "1":
+                  res.data.data[_i].itemStatus = "";
+                  break;
+                case "2":
+                  res.data.data[_i].itemStatus = "已确认暂收";
+                  break;
+
+                default:}
+
+            }
+          }
+          _this2.tableData = res.data.data;
 
         } else {
           _this2.$toast.showToast("提交失败，请重试");

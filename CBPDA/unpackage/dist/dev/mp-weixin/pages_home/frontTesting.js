@@ -426,7 +426,8 @@ var _default =
   },
   mounted: function mounted() {
     //页面加载完成之后的操作
-    this.qualityInspector = "当前用户";
+    var userinfo = this.$userInfo.getUserInfo();
+    this.qualityInspector = userinfo.username;
     var vm = this;
     uni.getStorage({
       key: "reasonList",

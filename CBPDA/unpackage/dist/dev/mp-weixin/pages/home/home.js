@@ -200,6 +200,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
@@ -207,73 +208,73 @@ var _default =
       platfrom: "",
       list: [{
         tag: '0',
-        name: 'search',
+        name: '/static/i1.png',
         title: '初检信息录入',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
         tag: '1',
-        name: 'bell',
+        name: '/static/i2.png',
         title: '入库前质检',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
         tag: '2',
-        name: 'bell-fill',
+        name: '/static/i3.png',
         title: '有损检验',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
         tag: '3',
-        name: 'edit-pen',
+        name: '/static/i4.png',
         title: '回货暂收',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
         tag: '4',
-        name: 'order',
+        name: '/static/i5.png',
         title: '创建送检单',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
         tag: '6',
-        name: 'car-fill',
+        name: '/static/i7.png',
         title: '整单配货',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
         tag: '7',
-        name: 'grid',
+        name: '/static/i8.png',
         title: '交接',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
         tag: '8',
-        name: 'coupon',
+        name: '/static/i9.png',
         title: '上架',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
         tag: '9',
-        name: 'coupon-fill',
+        name: '/static/i10.png',
         title: '库存上架',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
         tag: '11',
-        name: 'map',
+        name: '/static/i12.png',
         title: '仓位调整',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
         tag: '12',
-        name: 'map-fill',
+        name: '/static/i13.png',
         title: '库位调整',
         platform: ["APP", "WEIXIN", "H5"] },
 
       {
         tag: '14',
-        name: 'scan',
+        name: '/static/i15.png',
         title: '配送出库确认',
         platform: ["APP", "WEIXIN", "H5"] }],
 
@@ -289,7 +290,6 @@ var _default =
   onShow: function onShow() {
     // 如果没登录    去登录页面
     this.userInfo = this.$userInfo.getUserInfo();
-    console.log("================user info :", this.userInfo);
     if (this.userInfo === undefined || this.userInfo === '') {
       uni.redirectTo({
         url: "/pages_login/login",

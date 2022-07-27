@@ -18319,12 +18319,16 @@ var httpRequest = function httpRequest(opts, data) {
 };
 
 
-var getTokenRequest = function getTokenRequest(opts, data) {
+var keyCloakRequest = function keyCloakRequest(opts, data) {
   var httpDefaultOpts = {
-    url: keycloakUrl,
+    url: keycloakUrl + opts.url,
     data: data,
     method: opts.method,
-    header: {
+    header: opts.method == 'get' ? {
+      'X-Requested-With': 'XMLHttpRequest',
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': "Bearer ".concat(opts.token) } :
+    {
       'X-Requested-With': 'XMLHttpRequest',
       'Content-Type': 'application/x-www-form-urlencoded' } };
 
@@ -18379,7 +18383,7 @@ var format = function format(time, _format) {
   baseUrl: baseUrl,
   keycloakUrl: keycloakUrl,
   httpRequest: httpRequest,
-  getTokenRequest: getTokenRequest };exports.default = _default;
+  keyCloakRequest: keyCloakRequest };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
@@ -18393,11 +18397,11 @@ var format = function format(time, _format) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });exports.KEYCLOAK_PRODUCTION = exports.API_BASE_PRODUCTION = exports.KEYCLOAK_DEVELOPMENT = exports.API_BASE_DEVELOPMENT = void 0; //测试环境API地址
 var API_BASE_DEVELOPMENT = 'http://10.10.2.130:8080/cb/outside/mobile/v1';exports.API_BASE_DEVELOPMENT = API_BASE_DEVELOPMENT;
-var KEYCLOAK_DEVELOPMENT = 'http://10.10.2.133:8080/auth/realms/caibai/protocol/openid-connect/token';
+var KEYCLOAK_DEVELOPMENT = 'http://10.10.2.133:8080/auth/realms/caibai/protocol/openid-connect';
 
 //正式环境API地址
-exports.KEYCLOAK_DEVELOPMENT = KEYCLOAK_DEVELOPMENT;var API_BASE_PRODUCTION = 'http://172.18.0.203:8080/cb/outside/mobile/v1';exports.API_BASE_PRODUCTION = API_BASE_PRODUCTION;
-var KEYCLOAK_PRODUCTION = 'http://10.10.2.133:8080/auth/realms/caibai/protocol/openid-connect/token';
+exports.KEYCLOAK_DEVELOPMENT = KEYCLOAK_DEVELOPMENT;var API_BASE_PRODUCTION = 'http://10.10.2.130:8080/cb/outside/mobile/v1';exports.API_BASE_PRODUCTION = API_BASE_PRODUCTION;
+var KEYCLOAK_PRODUCTION = 'http://10.10.2.133:8080/auth/realms/caibai/protocol/openid-connect';
 
 
 //集成测试
@@ -18452,6 +18456,18 @@ var getDateString = function getDateString() {
   return dateStr;
 };
 
+//当前日期后推一周
+var getNextWeekDateString = function getNextWeekDateString() {
+  var nowDate = new Date();
+  nowDate = nowDate.setDate(nowDate.getDate() + 7);
+  nowDate = new Date(nowDate);
+  var year = nowDate.getFullYear();
+  var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1) : nowDate.getMonth() + 1;
+  var day = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
+  var dateStr = year + "-" + month + "-" + day;
+  return dateStr;
+};
+
 var getYear = function getYear() {
   var nowDate = new Date();
   var year = nowDate.getFullYear();
@@ -18463,7 +18479,8 @@ function _default(Vue) {
   Vue.prototype.$dateTrans = {
     formatMsToDate: formatMsToDate,
     getDateString: getDateString,
-    getYear: getYear };
+    getYear: getYear,
+    getNextWeekDateString: getNextWeekDateString };
 
 }
 

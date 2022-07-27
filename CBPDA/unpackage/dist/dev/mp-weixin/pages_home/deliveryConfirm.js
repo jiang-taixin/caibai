@@ -127,6 +127,9 @@ try {
     uniTd: function() {
       return __webpack_require__.e(/*! import() | uni_modules/uni-table/components/uni-td/uni-td */ "uni_modules/uni-table/components/uni-td/uni-td").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-table/components/uni-td/uni-td.vue */ 400))
     },
+    uniEasyinput: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 372))
+    },
     uniDatetimePicker: function() {
       return Promise.all(/*! import() | uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker.vue */ 416))
     },
@@ -414,8 +417,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 var _default =
 {
   data: function data() {
@@ -448,13 +449,13 @@ var _default =
 
       selectedList: [], //选中行数组
       tableDataSec: [],
-      selectedListSec: [] //选中行数组
-    };
+      selectedListSec: [], //选中行数组
+      focus: false };
+
   },
   mounted: function mounted() {
-    this.handoverPerson = "NO0001";
-    this.startTime = this.$dateTrans.getDateString();
-    this.endTime = this.$dateTrans.getDateString();
+    var userinfo = this.$userInfo.getUserInfo();
+    this.handoverPerson = userinfo.username;
     //获取箱子类型和箱子状态
     var vm = this;
     uni.getStorage({
@@ -514,10 +515,10 @@ var _default =
       if (e !== "") {
         this.getCounters();
       }
-      console.log("==================change store:", e);
+      //console.log("==================change store:",e);
     },
     getCounters: function getCounters() {
-      console.log("==================get counters");
+      //console.log("==================get counters");
     },
     startScan: function startScan() {
       var vm = this;
@@ -533,14 +534,141 @@ var _default =
         } });
 
     },
-    startSearch: function startSearch() {
+    blur: function blur(e) {
+      if (e.target.value == '') {
+        return;
+      };
+      this.codeNumber = e.target.value;
+      this.startSearch();
+    },
+    startSearch: function startSearch() {var _this = this;
       if (this.codeNumber === '' || this.codeNumber === undefined) {
         this.$toast.showToast("请先扫描配货单");
         return;
       }
 
+      var opts = {
+        url: "",
+        method: 'post' };
+
+      uni.showLoading({
+        title: '加载中...' });
+
+      var param = {
+        "interface_num": "MOBSCMD0017",
+        "serial_no": "123456789",
+        "access_token": "abc",
+        "bus_data": {
+          "poCode": this.codeNumber } };
+
+
+      this.focus = false;
+      this.$http.httpRequest(opts, param).then(function (res) {
+        console.log("================res:", res);
+        uni.hideLoading();
+        if (res.statusCode === 200) {
+          if (res.data.header.pickingSelf == "1" && res.data.header.orderStatus2 === "3") {
+            if (_this.startTime !== "" || _this.endTime !== "") {
+              var startD = new Date(_this.startTime);
+              var startMS = startD.getTime();
+              var endD = new Date(_this.endTime);
+              var endMS = endD.getTime();
+              if (!Object.is(startMS, NaN)) {
+                if (res.data.header.createdDate < startMS) {
+                  _this.$toast.showToast("超出筛选日期范围");
+                  _this.codeNumber = "";
+                  _this.$nextTick(function () {
+                    this.focus = true;
+                  });
+                  return;
+                }
+              }
+              if (!Object.is(endMS, NaN)) {
+                if (res.data.header.createdDate > endMS) {
+                  _this.$toast.showToast("超出筛选日期范围");
+                  _this.codeNumber = "";
+                  _this.$nextTick(function () {
+                    this.focus = true;
+                  });
+                  return;
+                }
+              }
+            }
+
+            var dataBody = {};
+            dataBody.packingCode = res.data.header.poCode;
+            dataBody.orderType = res.data.header.orderType;
+            dataBody.receiveCounterCode = res.data.header.receiveCounterCode;
+            dataBody.receiveShopCode = res.data.header.receiveShopCode;
+            dataBody.category = res.data.header.category;
+            dataBody.totalNumber = res.data.header.totalNumber;
+            dataBody.createdDate = _this.$dateTrans.formatMsToDate(res.data.header.createdDate);
+            dataBody.orderStatus2 = "待确认出库";
+            _this.tableDataSec.push(dataBody);
+            _this.codeNumber = "";
+            _this.$nextTick(function () {
+              this.focus = true;
+            });
+          }
+        } else {
+          _this.$toast.showToast("获取数据失败，请重试");
+        }
+      });
+
     },
-    confirm: function confirm() {
+    confirm: function confirm() {var _this2 = this;
+      if (this.tabCur == 0) {
+        console.log("===========click confirm first commit");
+      } else
+      {
+        console.log("===========click confirm second commit");
+        if (this.selectedListSec.length === 0) {
+          this.$toast.showToast("请先扫描并勾选信息再提交");
+          return;
+        }
+        var bodyList = [];
+        for (var i = 0; i < this.selectedListSec.length; i++) {
+          bodyList.push(this.tableDataSec[this.selectedListSec[i]]);
+        }
+        var submitBody = JSON.parse(JSON.stringify(bodyList));
+        submitBody.forEach(function (element) {
+          element.orderStatus2 = "3";
+        });
+        console.log("====================selected data list:", submitBody);
+        return;
+
+        var opts = {
+          url: "",
+          method: 'post' };
+
+        uni.showLoading({
+          title: '加载中...' });
+
+        var param = {
+          "interface_num": "MOBSCMD0016",
+          "serial_no": "123456789",
+          "access_token": "abc",
+          "bus_data": {
+            "codeNumber": this.codeNumber } };
+
+
+        this.$http.httpRequest(opts, param).then(function (res) {
+          uni.hideLoading();
+          if (res.statusCode === 200) {
+            if (res.data.s_flag == "F") {
+              _this2.$toast.showToast("".concat(res.data.m_ess));
+            } else {
+
+            }
+          } else {
+            _this2.$toast.showToast("获取数据失败，请重试");
+          }
+        });
+
+      }
+
+      console.log("===========click confirm ,list 1 :", this.selectedList);
+      console.log("===========click confirm ,list 2 :", this.selectedListSec);
 
     },
     cancel: function cancel() {

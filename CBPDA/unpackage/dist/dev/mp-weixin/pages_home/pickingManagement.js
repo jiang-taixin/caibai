@@ -234,7 +234,8 @@ var _default =
     };
   },
   mounted: function mounted() {
-    this.employeeNumber = "NO0001";
+    var userinfo = this.$userInfo.getUserInfo();
+    this.employeeNumber = userinfo.username;
     this.date = this.$dateTrans.getDateString();
 
     var vm = this;

@@ -279,6 +279,7 @@
 						this.material = this.headerMessage.goodsMetalMaterial;
 						this.qualifiedNumber = "";
 						this.qualifiedWeight = "";
+						this.testNum = 0;
 						this.tableData = [];
 						
 						

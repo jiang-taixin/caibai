@@ -235,12 +235,17 @@ var _default =
 {
   data: function data() {
     return {
-      account: "USER001",
-      name: "系统管理员",
-      phone: "18907865432",
-      email: "18907865432@126.com",
-      role: "管理员" };
+      userInfo: {
+        username: "",
+        cname: "",
+        ename: "",
+        mobile: "",
+        email: "" } };
 
+
+  },
+  mounted: function mounted() {
+    this.userInfo = this.$userInfo.getUserInfo();
   },
   methods: {
     logout: function logout() {

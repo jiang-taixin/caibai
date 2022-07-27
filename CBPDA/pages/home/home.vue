@@ -5,6 +5,7 @@
 			<u-grid-item v-for="(listItem,listIndex) in list" :key="listIndex"
 				v-if="listItem.platform.indexOf(platfrom) !== -1" @click="click(listItem)">
 				<u-icon :customStyle="{paddingTop:20+'rpx'}" :name="listItem.name" :size="60" color="#2a439c"></u-icon>
+				<br>
 				<text class="grid-text">{{listItem.title}}</text>
 			</u-grid-item>
 		</u-grid>
@@ -17,74 +18,74 @@
 			return {
 				platfrom: "",
 				list: [{
-						tag: '0',
-						name: 'search',
+						tag:'0',
+						name: '/static/i1.png',
 						title: '初检信息录入',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag: '1',
-						name: 'bell',
+						tag:'1',
+						name: '/static/i2.png',
 						title: '入库前质检',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag: '2',
-						name: 'bell-fill',
+						tag:'2',
+						name: '/static/i3.png',
 						title: '有损检验',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag: '3',
-						name: 'edit-pen',
+						tag:'3',
+						name: '/static/i4.png',
 						title: '回货暂收',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag: '4',
-						name: 'order',
+						tag:'4',
+						name: '/static/i5.png',
 						title: '创建送检单',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag: '6',
-						name: 'car-fill',
+						tag:'6',
+						name: '/static/i7.png',
 						title: '整单配货',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag: '7',
-						name: 'grid',
+						tag:'7',
+						name: '/static/i8.png',
 						title: '交接',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag: '8',
-						name: 'coupon',
+						tag:'8',
+						name: '/static/i9.png',
 						title: '上架',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag: '9',
-						name: 'coupon-fill',
+						tag:'9',
+						name: '/static/i10.png',
 						title: '库存上架',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag: '11',
-						name: 'map',
+						tag:'11',
+						name: '/static/i12.png',
 						title: '仓位调整',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag: '12',
-						name: 'map-fill',
+						tag:'12',
+						name: '/static/i13.png',
 						title: '库位调整',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag: '14',
-						name: 'scan',
+						tag:'14',
+						name: '/static/i15.png',
 						title: '配送出库确认',
 						platform: ["APP", "WEIXIN", "H5"],
 					},

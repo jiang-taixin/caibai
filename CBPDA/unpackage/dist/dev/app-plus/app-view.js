@@ -314,13 +314,14 @@ var render = function() {
                 },
                 [
                   _c("u-icon", { attrs: { _i: "4-" + $30 } }),
+                  _c("br", { attrs: { _i: "5-" + $30 } }),
                   _c(
                     "v-uni-text",
                     {
-                      staticClass: _vm._$g("5-" + $30, "sc"),
-                      attrs: { _i: "5-" + $30 }
+                      staticClass: _vm._$g("6-" + $30, "sc"),
+                      attrs: { _i: "6-" + $30 }
                     },
-                    [_vm._v(_vm._$g("5-" + $30, "t0-0"))]
+                    [_vm._v(_vm._$g("6-" + $30, "t0-0"))]
                   )
                 ],
                 1
@@ -2391,36 +2392,44 @@ var render = function() {
     { attrs: { _i: 0 } },
     [
       _c(
-        "u-grid",
+        "uni-view",
         { staticStyle: { "margin-top": "30px" }, attrs: { _i: 1 } },
-        _vm._l(_vm._$g(2, "f"), function(listItem, listIndex, $20, $30) {
-          return _vm._$g("2-" + $30, "i")
-            ? _c(
-                "u-grid-item",
-                {
-                  key: listItem,
-                  attrs: { _i: "2-" + $30 },
-                  on: {
-                    click: function($event) {
-                      return _vm.$handleViewEvent($event)
-                    }
-                  }
-                },
-                [
-                  _c("u-icon", { attrs: { _i: "3-" + $30 } }),
-                  _c(
-                    "v-uni-text",
+        [
+          _c(
+            "u-grid",
+            { attrs: { _i: 2 } },
+            _vm._l(_vm._$g(3, "f"), function(listItem, listIndex, $20, $30) {
+              return _vm._$g("3-" + $30, "i")
+                ? _c(
+                    "u-grid-item",
                     {
-                      staticClass: _vm._$g("4-" + $30, "sc"),
-                      attrs: { _i: "4-" + $30 }
+                      key: listItem,
+                      attrs: { _i: "3-" + $30 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event)
+                        }
+                      }
                     },
-                    [_vm._v(_vm._$g("4-" + $30, "t0-0"))]
+                    [
+                      _c("u-icon", { attrs: { _i: "4-" + $30 } }),
+                      _c("br", { attrs: { _i: "5-" + $30 } }),
+                      _c(
+                        "v-uni-text",
+                        {
+                          staticClass: _vm._$g("6-" + $30, "sc"),
+                          attrs: { _i: "6-" + $30 }
+                        },
+                        [_vm._v(_vm._$g("6-" + $30, "t0-0"))]
+                      )
+                    ],
+                    1
                   )
-                ],
-                1
-              )
-            : _vm._e()
-        }),
+                : _vm._e()
+            }),
+            1
+          )
+        ],
         1
       )
     ],

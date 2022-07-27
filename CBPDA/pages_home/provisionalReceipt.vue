@@ -254,6 +254,25 @@
 					console.log("************res:",res);
 					if (res.data.code === "200") {
 						this.$toast.showToast("提交成功");
+						if (res.data.data.length != 0) {
+							for (let i in res.data.data) {
+								res.data.data[i].temprecDate = this.$dateTrans.formatMsToDate(res.data.data[i].temprecDate);
+								switch (res.data.data[i].itemStatus) {
+									case "0":
+										res.data.data[i].itemStatus = "";
+										break;
+									case "1":
+										res.data.data[i].itemStatus = "";
+										break;
+									case "2":
+										res.data.data[i].itemStatus = "已确认暂收";
+										break;
+										
+									default:
+								}
+							}
+						}
+						this.tableData = res.data.data;
 						
 					} else {
 						this.$toast.showToast("提交失败，请重试");

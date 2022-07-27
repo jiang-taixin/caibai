@@ -370,6 +370,8 @@ var _default =
   },
   mounted: function mounted() {
     this.inspectionDate = this.$dateTrans.getDateString();
+    var userinfo = this.$userInfo.getUserInfo();
+    this.qualityInspector = userinfo.username;
     var vm = this;
     uni.getStorage({
       key: "organList",
@@ -472,7 +474,6 @@ var _default =
         url: "",
         method: 'post' };
 
-      var vm = this;
       var bodyList = [];
       for (var i = 0; i < this.selectedList.length; i++) {
         bodyList.push(this.tableData[this.selectedList[i]]);

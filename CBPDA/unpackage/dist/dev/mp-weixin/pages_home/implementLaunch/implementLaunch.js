@@ -389,7 +389,8 @@ var _default =
 
   },
   mounted: function mounted() {
-    this.employeeNumber = "NO0001";
+    var userinfo = this.$userInfo.getUserInfo();
+    this.employeeNumber = userinfo.username;
     this.date = this.$dateTrans.getDateString();
   },
   onLoad: function onLoad(option) {
@@ -408,7 +409,6 @@ var _default =
           } else {
             this.$toast.showToast("扫码失败，请重试");
           }
-
         } });
 
     },
@@ -423,7 +423,6 @@ var _default =
           } else {
             this.$toast.showToast("扫码失败，请重试");
           }
-
         } });
 
     },

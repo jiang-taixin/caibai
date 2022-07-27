@@ -199,7 +199,7 @@ var _default =
         return;
       }
       var opts = {
-        url: "",
+        url: "/token",
         method: 'post' };
 
       uni.showLoading({
@@ -211,31 +211,86 @@ var _default =
         "username": this.username,
         "password": this.password };
 
-      this.$http.getTokenRequest(opts, param).then(function (res) {
+      this.$http.keyCloakRequest(opts, param).then(function (res) {
         uni.hideLoading();
-        console.log("===========get token res:", res);
         if (res.statusCode == 200) {
-          _this.getUserMessage(res.data.access_token);
+          _this.getUserName(res.data.access_token);
         } else {
-          _this.$toast.showToast("".concat(res.data.error_description));
+          if (res.data.error === "invalid_grant") {
+            _this.$toast.showToast("无效的用户名凭证,请检查用户名或密码");
+          } else
+          {
+            _this.$toast.showToast("".concat(res.data.error_description));
+          }
         }
       });
     },
-    getUserMessage: function getUserMessage(token) {
-      console.log("============start get user information with token:", token);
+    getUserName: function getUserName(token) {var _this2 = this;
+      var opts = {
+        url: "/userinfo",
+        method: 'get',
+        token: token };
 
-      var userData = {
-        "userName": "user1",
-        "employeeCode": "NO09090909",
-        "identity": "admin" };
+      uni.showLoading({
+        title: '加载中...' });
 
-      this.$userInfo.setUserInfo(userData);
 
-      uni.switchTab({
-        url: '/pages/home/home',
-        animationType: 'pop-in',
-        animationDuration: 200 });
+      this.$http.keyCloakRequest(opts, null).then(function (res) {
+        uni.hideLoading();
+        if (res.statusCode == 200) {
+          _this2.getUserMessage(res.data.preferred_username);
+        } else {
+          if (res.data.error === "invalid_token") {
+            _this2.$toast.showToast("Token无效，请重新尝试登录");
+          } else
+          {
+            _this2.$toast.showToast("".concat(res.data.error_description));
+          }
+        }
+      });
+    },
+    getUserMessage: function getUserMessage(username) {var _this3 = this;
+      var opts = {
+        url: "",
+        method: 'post' };
 
+      uni.showLoading({
+        title: '加载中...' });
+
+      var param = {
+        "interface_num": "MOBSCMD0025",
+        "serial_no": "123456789",
+        "access_token": "abc",
+        "bus_data": {
+          "userName": username } };
+
+
+      this.$http.httpRequest(opts, param).then(function (res) {
+        uni.hideLoading();
+        if (res.statusCode === 200) {
+          if (res.data.s_flag == "F") {
+            _this3.$toast.showToast("".concat(res.data.m_ess));
+          } else {
+            var userData = {
+              "username": res.data.data.username, //用户名
+              "cname": res.data.data.cname, //中文名
+              "ename": res.data.data.ename, //英文名
+              "mobile": res.data.data.mobile, //手机号
+              "email": res.data.data.email //邮箱
+            };
+            _this3.$userInfo.setUserInfo(userData);
+
+            uni.switchTab({
+              url: '/pages/home/home',
+              animationType: 'pop-in',
+              animationDuration: 200 });
+
+          }
+
+        } else {
+          _this3.$toast.showToast("登录失败,请重新尝试登录");
+        }
+      });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

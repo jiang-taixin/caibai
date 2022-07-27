@@ -57,7 +57,7 @@
 					<view class="desc-text-edit">
 						<u--text type="primary" text="送检时间" size=13></u--text>
 					</view>
-					<uni-datetime-picker v-model="inspectionTime" type="date" :value="single" start="2021-3-20"
+					<uni-datetime-picker v-model="inspectionTime" type="date" start="2021-3-20"
 						end="2099-6-20" @change="changeDate" />
 				</div>
 			</u-col>

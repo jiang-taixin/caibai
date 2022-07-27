@@ -411,7 +411,8 @@ var _default =
   },
   mounted: function mounted() {
     //页面加载完成之后的操作
-    this.qualityInspector = "当前用户";
+    var userinfo = this.$userInfo.getUserInfo();
+    this.qualityInspector = userinfo.username;
     var vm = this;
     uni.getStorage({
       key: "reasonList",
@@ -463,6 +464,7 @@ var _default =
           _this.material = _this.headerMessage.goodsMetalMaterial;
           _this.qualifiedNumber = "";
           _this.qualifiedWeight = "";
+          _this.testNum = 0;
           _this.tableData = [];
 
 

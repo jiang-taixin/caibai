@@ -221,7 +221,6 @@
 						} else {
 							this.$toast.showToast("扫码失败，请重试");
 						}
-
 					}
 				});
 			},
@@ -236,7 +235,6 @@
 						} else {
 							this.$toast.showToast("扫码失败，请重试");
 						}
-
 					}
 				});
 			},
