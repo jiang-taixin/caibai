@@ -100,7 +100,6 @@
 		onShow() {
 			// 如果没登录    去登录页面
 			this.userInfo = this.$userInfo.getUserInfo();
-			console.log("================user info :",this.userInfo);
 			if (this.userInfo === undefined ||this.userInfo === '') {
 				uni.redirectTo({
 					url: "/pages_login/login",

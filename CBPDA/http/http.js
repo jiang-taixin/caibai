@@ -53,12 +53,16 @@ const httpRequest = (opts, data) => {
 };
 
 
-const getTokenRequest = (opts, data) => {
+const keyCloakRequest = (opts, data) => {
 	let httpDefaultOpts = {
-		url: keycloakUrl,
+		url: keycloakUrl + opts.url,
 		data: data,
 		method: opts.method,
-		header:{
+		header: opts.method == 'get' ? {
+			'X-Requested-With': 'XMLHttpRequest',
+			'Content-Type': 'application/x-www-form-urlencoded',
+			'Authorization':`Bearer ${opts.token}`
+		} : {
 			'X-Requested-With': 'XMLHttpRequest',
 			'Content-Type': 'application/x-www-form-urlencoded',
 		},
@@ -113,5 +117,5 @@ export default {
 	baseUrl,
 	keycloakUrl,
 	httpRequest,
-	getTokenRequest
+	keyCloakRequest
 }

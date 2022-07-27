@@ -61,7 +61,8 @@
 			}
 		},
 		mounted() {
-			this.employeeNumber = "NO0001";
+			var userinfo = this.$userInfo.getUserInfo();
+			this.employeeNumber = userinfo.username;
 			this.date = this.$dateTrans.getDateString();
 			let vm = this;
 			uni.getStorage({

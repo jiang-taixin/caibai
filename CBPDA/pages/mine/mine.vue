@@ -12,15 +12,15 @@
 							<u--text type="primary" text="账号" size=13></u--text>
 						</view>
 					
-						<u--input font-size=13 v-model="account" border="surround" :disabled="true">
+						<u--input font-size=13 v-model="userInfo.username" border="surround" :disabled="true">
 						</u--input>
 					</div>
 					<div class="divContainer">
 						<view >
-							<u--text type="primary" text="角色" size=13></u--text>
+							<u--text type="primary" text="中文名" size=13></u--text>
 						</view>
 					
-						<u--input font-size=13 v-model="role" border="surround" :disabled="true">
+						<u--input font-size=13 v-model="userInfo.cname" border="surround" :disabled="true">
 						</u--input>
 					</div>
 				</u-col>
@@ -29,10 +29,10 @@
 		</div>
 		<div class="divContainer" style="margin-top: 50px;">
 			<view >
-				<u--text type="primary" text="姓名" size=13></u--text>
+				<u--text type="primary" text="英文名" size=13></u--text>
 			</view>
 		
-			<u--input font-size=13 v-model="name" border="surround" :disabled="true">
+			<u--input font-size=13 v-model="userInfo.ename" border="surround" :disabled="true">
 			</u--input>
 		</div>
 		
@@ -41,7 +41,7 @@
 				<u--text type="primary" text="手机号" size=13></u--text>
 			</view>
 		
-			<u--input font-size=13 v-model="phone" border="surround" :disabled="true">
+			<u--input font-size=13 v-model="userInfo.mobile" border="surround" :disabled="true">
 			</u--input>
 		</div>
 		<div class="divContainer">
@@ -49,13 +49,13 @@
 				<u--text type="primary" text="电子邮箱" size=13></u--text>
 			</view>
 		
-			<u--input font-size=13 v-model="email" border="surround" :disabled="true">
+			<u--input font-size=13 v-model="userInfo.email" border="surround" :disabled="true">
 			</u--input>
 		</div>
 		
 		
 		<view style="width: 80%;margin-left: 10%;margin-top: 30px;">
-			<u-button type="primary" @click="logout" text="注销账号">
+			<u-button type="error" @click="logout" text="注销账号">
 			</u-button>
 		</view>
 	</view>
@@ -65,12 +65,17 @@
 	export default {
 		data() {
 			return {
-				account:"USER001",
-				name:"系统管理员",
-				phone:"18907865432",
-				email:"18907865432@126.com",
-				role:"管理员",
+				userInfo:{
+					username:"",
+					cname:"",
+					ename:"",
+					mobile:"",
+					email:"",
+				}
 			}
+		},
+		mounted() {
+			this.userInfo = this.$userInfo.getUserInfo();
 		},
 		methods: {
 			logout(){

@@ -38,7 +38,7 @@
 					return;
 				}
 				var opts = {
-					url: ``,
+					url: `/token`,
 					method: 'post'
 				};
 				uni.showLoading({
@@ -50,30 +50,85 @@
 					"username": this.username,
 					"password": this.password,
 				};
-				this.$http.getTokenRequest(opts, param).then((res) => {
+				this.$http.keyCloakRequest(opts, param).then((res) => {
 					uni.hideLoading();
-					console.log("===========get token res:", res);
 					if (res.statusCode == 200) {
-						this.getUserMessage(res.data.access_token);
+						this.getUserName(res.data.access_token);
 					} else {
-						this.$toast.showToast(`${res.data.error_description}`);
+						if(res.data.error === "invalid_grant"){
+							this.$toast.showToast("无效的用户名凭证,请检查用户名或密码");
+						}
+						else{
+							this.$toast.showToast(`${res.data.error_description}`);
+						}
 					}
 				});
 			},
-			getUserMessage(token) {
-				console.log("============start get user information with token:", token);
-
-				var userData = {
-					"userName": "user1",
-					"employeeCode": "NO09090909",
-					"identity": "admin",
+			getUserName(token) {
+				var opts = {
+					url: `/userinfo`,
+					method: 'get',
+					token:token
 				};
-				this.$userInfo.setUserInfo(userData);
-
-				uni.switchTab({
-					url: '/pages/home/home',
-					animationType: 'pop-in',
-					animationDuration: 200
+				uni.showLoading({
+					title: '加载中...'
+				});
+				
+				this.$http.keyCloakRequest(opts, null).then((res) => {
+					uni.hideLoading();
+					if (res.statusCode == 200) {
+						this.getUserMessage(res.data.preferred_username);
+					} else {
+						if(res.data.error === "invalid_token"){
+							this.$toast.showToast("Token无效，请重新尝试登录");
+						}
+						else{
+							this.$toast.showToast(`${res.data.error_description}`);
+						}
+					}
+				});
+			},
+			getUserMessage(username){
+				var opts = {
+					url: ``,
+					method: 'post'
+				};
+				uni.showLoading({
+					title: '加载中...'
+				});
+				var param = {
+					"interface_num": "MOBSCMD0025",
+					"serial_no": "123456789",
+					"access_token": "abc",
+					"bus_data": {
+						"userName": username
+					},
+				};
+				this.$http.httpRequest(opts, param).then((res) => {
+					uni.hideLoading();
+					if (res.statusCode === 200) {
+						if (res.data.s_flag == "F") {
+							this.$toast.showToast(`${res.data.m_ess}`);
+						} else {
+							var userData = {
+								"username": res.data.data.username,     //用户名
+								"cname":res.data.data.cname,            //中文名
+								"ename": res.data.data.ename,           //英文名
+								"mobile": res.data.data.mobile,         //手机号
+								"email":res.data.data.email            //邮箱
+							};
+							this.$userInfo.setUserInfo(userData);
+							
+							uni.switchTab({
+								url: '/pages/home/home',
+								animationType: 'pop-in',
+								animationDuration: 200
+							});
+						}
+						
+					} else {
+						this.$toast.showToast("登录失败,请重新尝试登录");
+					}
 				});
 			}
 		}

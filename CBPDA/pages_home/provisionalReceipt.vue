@@ -121,7 +121,8 @@
 			}
 		},
 		mounted() {
-			this.qualityInspector = "当前用户";
+			var userinfo = this.$userInfo.getUserInfo();
+			this.qualityInspector = userinfo.username;
 		},
 		methods: {
 			startSearch() {

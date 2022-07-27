@@ -35,6 +35,7 @@ const getDateString = () => {
 	return dateStr;
 }
 
+//当前日期后推一周
 const getNextWeekDateString = () => {
 	var nowDate = new Date();
 	nowDate = nowDate.setDate(nowDate.getDate()+7);

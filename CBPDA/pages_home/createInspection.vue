@@ -179,6 +179,8 @@
 		},
 		mounted() {
 			this.inspectionDate = this.$dateTrans.getDateString();
+			var userinfo = this.$userInfo.getUserInfo();
+			this.qualityInspector = userinfo.username;
 			let vm = this;
 			uni.getStorage({
 				key: "organList",
@@ -281,7 +283,6 @@
 					url: ``,
 					method: 'post'
 				};
-				let vm = this;
 				var bodyList = [];
 				for (var i = 0; i < this.selectedList.length; i++) {
 					bodyList.push(this.tableData[this.selectedList[i]]);

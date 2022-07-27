@@ -250,9 +250,8 @@
 			}
 		},
 		mounted() {
-			this.handoverPerson = "NO0001";
-			this.startTime = this.$dateTrans.getDateString();
-			this.endTime = this.$dateTrans.getNextWeekDateString();
+			var userinfo = this.$userInfo.getUserInfo();
+			this.handoverPerson = userinfo.username;
 			//获取箱子类型和箱子状态
 			let vm = this;
 			uni.getStorage({
@@ -361,9 +360,37 @@
 				};
 				this.focus = false;
 				this.$http.httpRequest(opts, param).then((res) => {
+					console.log("================res:",res);
 					uni.hideLoading();
 					if (res.statusCode === 200) {
-						if(res.data.header.pickingSelf == "0"){
+						if(res.data.header.pickingSelf == "1" && res.data.header.orderStatus2 === "3"){
+							if(this.startTime !== "" ||this.endTime !== ""){
+								let startD = new Date(this.startTime);
+								let startMS = startD.getTime();
+								let endD = new Date(this.endTime);
+								let endMS = endD.getTime();
+								if(!Object.is(startMS, NaN)){
+									if(res.data.header.createdDate < startMS){
+										this.$toast.showToast("超出筛选日期范围");
+										this.codeNumber = "";
+										this.$nextTick(function() {
+											this.focus = true;
+										});
+										return;
+									}
+								}
+								if(!Object.is(endMS, NaN)){
+									if(res.data.header.createdDate > endMS){
+										this.$toast.showToast("超出筛选日期范围");
+										this.codeNumber = "";
+										this.$nextTick(function() {
+											this.focus = true;
+										});
+										return;
+									}
+								}	
+							}
+							
 							var dataBody = {};
 							dataBody.packingCode = res.data.header.poCode;
 							dataBody.orderType = res.data.header.orderType;
@@ -372,9 +399,7 @@
 							dataBody.category = res.data.header.category;
 							dataBody.totalNumber = res.data.header.totalNumber;
 							dataBody.createdDate = this.$dateTrans.formatMsToDate(res.data.header.createdDate);
-							if(res.data.header.orderStatus2 === "4"){
-								dataBody.orderStatus2 = "待确认出库";
-							}
+							dataBody.orderStatus2 = "待确认出库";
 							this.tableDataSec.push(dataBody);
 							this.codeNumber = "";
 							this.$nextTick(function() {
@@ -388,7 +413,56 @@
 				
 			},
 			confirm(){
-				console.log("===========click confirm ,tab :",this.tabCur);
+				if(this.tabCur == 0){
+					console.log("===========click confirm first commit");
+				}
+				else{
+					console.log("===========click confirm second commit");
+					if(this.selectedListSec.length === 0){
+						this.$toast.showToast("请先扫描并勾选信息再提交");
+						return;
+					}
+					var bodyList = [];
+					for (var i = 0; i < this.selectedListSec.length; i++) {
+						bodyList.push(this.tableDataSec[this.selectedListSec[i]]);
+					}
+					var submitBody = JSON.parse(JSON.stringify(bodyList));
+					submitBody.forEach(element => {
+						element.orderStatus2 = "3";
+					});
+					console.log("====================selected data list:",submitBody);
+					return;
+					
+					var opts = {
+						url: ``,
+						method: 'post'
+					};
+					uni.showLoading({
+						title: '加载中...'
+					});
+					var param = {
+						"interface_num": "MOBSCMD0016",
+						"serial_no": "123456789",
+						"access_token": "abc",
+						"bus_data": {
+							"codeNumber": this.codeNumber,
+						},
+					};
+					this.$http.httpRequest(opts, param).then((res) => {
+						uni.hideLoading();
+						if (res.statusCode === 200) {
+							if (res.data.s_flag == "F") {
+								this.$toast.showToast(`${res.data.m_ess}`);
+							} else {
+								
+							}
+						} else {
+							this.$toast.showToast("获取数据失败，请重试");
+						}
+					});
+					
+				}
+				
 				console.log("===========click confirm ,list 1 :",this.selectedList);
 				console.log("===========click confirm ,list 2 :",this.selectedListSec);
 				
