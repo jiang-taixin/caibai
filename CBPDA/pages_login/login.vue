@@ -51,6 +51,7 @@
 					"password": this.password,
 				};
 				this.$http.keyCloakRequest(opts, param).then((res) => {
+					console.log("==============token res:",res);
 					uni.hideLoading();
 					if (res.statusCode == 200) {
 						this.getUserName(res.data.access_token);
@@ -75,6 +76,7 @@
 				});
 				
 				this.$http.keyCloakRequest(opts, null).then((res) => {
+					console.log("==============username:",res);
 					uni.hideLoading();
 					if (res.statusCode == 200) {
 						this.getUserMessage(res.data.preferred_username);
@@ -106,6 +108,7 @@
 				};
 				this.$http.httpRequest(opts, param).then((res) => {
 					uni.hideLoading();
+					console.log("==============login res:",res);
 					if (res.statusCode === 200) {
 						if (res.data.s_flag == "F") {
 							this.$toast.showToast(`${res.data.m_ess}`);

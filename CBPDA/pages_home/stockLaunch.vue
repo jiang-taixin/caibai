@@ -68,7 +68,6 @@
 			uni.getStorage({
 				key:"departmentList",
 				success(res) {
-					console.log("==============department list:",res);
 					vm.department = res.data;
 					vm.warehouse = res.data.find(item => item.value == vm.launchDepartment).warehouseList;
 				},
@@ -104,7 +103,7 @@
 					this.$toast.showToast("请选择时间并重试");
 					return;
 				}
-				console.log("---------select department :", this.department.find(item => item.value === this.launchDepartment).text);
+				//console.log("---------select department :", this.department.find(item => item.value === this.launchDepartment).text);
 				uni.navigateTo({
 					url: `implementLaunch/implementLaunch?launchDepartment=${this.launchDepartment}&launchWarehouse=${this.launchWarehouse}&date=${this.date}`
 				})

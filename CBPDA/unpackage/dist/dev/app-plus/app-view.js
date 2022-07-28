@@ -313,8 +313,11 @@ var render = function() {
                   }
                 },
                 [
-                  _c("u-icon", { attrs: { _i: "4-" + $30 } }),
-                  _c("br", { attrs: { _i: "5-" + $30 } }),
+                  _c("uni-view", {
+                    staticStyle: { height: "15px" },
+                    attrs: { _i: "4-" + $30 }
+                  }),
+                  _c("u-icon", { attrs: { _i: "5-" + $30 } }),
                   _c(
                     "v-uni-text",
                     {
@@ -2412,8 +2415,11 @@ var render = function() {
                       }
                     },
                     [
-                      _c("u-icon", { attrs: { _i: "4-" + $30 } }),
-                      _c("br", { attrs: { _i: "5-" + $30 } }),
+                      _c("uni-view", {
+                        staticStyle: { height: "15px" },
+                        attrs: { _i: "4-" + $30 }
+                      }),
+                      _c("u-icon", { attrs: { _i: "5-" + $30 } }),
                       _c(
                         "v-uni-text",
                         {
@@ -13695,7 +13701,7 @@ var render = function() {
             position: "fixed",
             bottom: "0px",
             width: "100%",
-            "background-color": "aquamarine"
+            "background-color": "floralwhite"
           },
           attrs: { _i: 88 }
         },
@@ -16489,7 +16495,7 @@ var render = function() {
             position: "fixed",
             bottom: "0px",
             width: "100%",
-            "background-color": "aquamarine"
+            "background-color": "floralwhite"
           },
           attrs: { _i: 62 }
         },
@@ -24845,7 +24851,7 @@ var render = function() {
             position: "fixed",
             bottom: "0px",
             width: "100%",
-            "background-color": "aquamarine"
+            "background-color": "floralwhite"
           },
           attrs: { _i: 98 }
         },

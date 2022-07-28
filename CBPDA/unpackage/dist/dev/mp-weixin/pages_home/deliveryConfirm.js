@@ -596,10 +596,12 @@ var _default =
             }
 
             var dataBody = {};
-            dataBody.packingCode = res.data.header.poCode;
+            dataBody.poCode = res.data.header.poCode;
             dataBody.orderType = res.data.header.orderType;
+            dataBody.pickingSelf = res.data.header.pickingSelf;
             dataBody.receiveCounterCode = res.data.header.receiveCounterCode;
             dataBody.receiveShopCode = res.data.header.receiveShopCode;
+
             dataBody.category = res.data.header.category;
             dataBody.totalNumber = res.data.header.totalNumber;
             dataBody.createdDate = _this.$dateTrans.formatMsToDate(res.data.header.createdDate);

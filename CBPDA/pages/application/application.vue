@@ -4,9 +4,8 @@
 			<u-grid :border="false" col="3">
 				<u-grid-item v-for="(listItem,listIndex) in list" :key="listIndex"
 					v-if="listItem.platform.indexOf(platfrom) !== -1" @click="click(listItem)">
-					<u-icon :customStyle="{paddingTop:20+'rpx'}" :name="listItem.name" :size="60" color="#2a439c">
-					</u-icon>
-					<br>
+					<view style="height: 15px;"></view>
+					<u-icon :customStyle="{paddingTop:20+'rpx'}" :name="listItem.name" :size="60" color="#2a439c"></u-icon>
 					<text class="grid-text">{{listItem.title}}</text>
 				</u-grid-item>
 			</u-grid>
@@ -112,22 +111,8 @@
 				]
 			}
 		},
-		onLoad() {
-
-		},
-		beforeCreate() {
-			//如果没登录    去登录页面
-			// uni.redirectTo({
-			// 	url:"/pages_login/login"
-			// })
-		},
 		mounted() {
-			//页面加载完成获取枚举值并缓存在本地
-			this.getAngecy(); //送检机构
-			this.getInspectionCategory(); //送检单类型
-			this.getReason(); //不合格原因
-			this.getTestingCategory(); //质检类别
-			this.getDepartment(); //获取发货部门和库位
+			
 		},
 		created() {
 			//判断平台类型    设置模块是否显示
@@ -233,201 +218,6 @@
 						});
 				}
 			},
-			getAngecy() {
-				//获取检测机构
-				var opts = {
-					url: ``,
-					method: 'post'
-				};
-				var param = {
-					"interface_num": "MOBSCMD0005",
-					"serial_no": "123456789",
-					"access_token": "abc",
-					"bus_data": {
-						"enumCode": "PO_CHECK_TYPE"
-					},
-				};
-				this.$http.httpRequest(opts, param).then((res) => {
-					if (res.data.code === "200") {
-						var organList = [];
-						if (res.data.data.PO_CHECK_TYPE.length != 0) {
-							for (let i in res.data.data.PO_CHECK_TYPE) {
-								organList.push({
-									"text": res.data.data.PO_CHECK_TYPE[i].name,
-									"value": res.data.data.PO_CHECK_TYPE[i].code,
-								});
-							}
-						}
-						uni.setStorage({
-							key: 'organList',
-							data: organList,
-							success: function() {}
-						});
-					} else {
-						this.$toast.showToast("获取检测机构失败，请刷新页面");
-
-					}
-				});
-			},
-			getInspectionCategory() {
-				//获取送检单类别
-				var opts = {
-					url: ``,
-					method: 'post'
-				};
-				var param = {
-					"interface_num": "MOBSCMD0005",
-					"serial_no": "123456789",
-					"access_token": "abc",
-					"bus_data": {
-						"enumCode": "INSPECT_TYPE"
-					},
-				};
-				this.$http.httpRequest(opts, param).then((res) => {
-					if (res.data.code === "200") {
-						var categoryList = [];
-						if (res.data.data.INSPECT_TYPE.length != 0) {
-							for (let i in res.data.data.INSPECT_TYPE) {
-								categoryList.push({
-									"text": res.data.data.INSPECT_TYPE[i].name,
-									"value": res.data.data.INSPECT_TYPE[i].code,
-								});
-							}
-						}
-						uni.setStorage({
-							key: 'categoryList',
-							data: categoryList,
-							success: function() {}
-						});
-					} else {
-						this.$toast.showToast("获取送检单类别失败，请刷新页面");
-
-					}
-				});
-			},
-			getReason() {
-				//获取不合格原因
-				var opts = {
-					url: ``,
-					method: 'post'
-				};
-				var param = {
-					"interface_num": "MOBSCMD0005",
-					"serial_no": "123456789",
-					"access_token": "abc",
-					"bus_data": {
-						"enumCode": "TEMPREC_UNQ_REASON"
-					},
-				};
-				this.$http.httpRequest(opts, param).then((res) => {
-					if (res.data.code === "200") {
-						var reasonList = [];
-						if (res.data.data.TEMPREC_UNQ_REASON.length != 0) {
-							for (let i in res.data.data.TEMPREC_UNQ_REASON) {
-								reasonList.push({
-									"text": res.data.data.TEMPREC_UNQ_REASON[i].name,
-									"value": res.data.data.TEMPREC_UNQ_REASON[i].code,
-								});
-							}
-						}
-						uni.setStorage({
-							key: 'reasonList',
-							data: reasonList,
-							success: function() {}
-						});
-					} else {
-						this.$toast.showToast("获取不合格原因失败，请刷新页面");
-
-					}
-				});
-			},
-			getTestingCategory() {
-				//获取质检类别
-				var opts = {
-					url: ``,
-					method: 'post'
-				};
-				var param = {
-					"interface_num": "MOBSCMD0005",
-					"serial_no": "123456789",
-					"access_token": "abc",
-					"bus_data": {
-						"enumCode": "CHECK_CATEGORY"
-					},
-				};
-				this.$http.httpRequest(opts, param).then((res) => {
-					if (res.data.code === "200") {
-						var typeList = [];
-						if (res.data.data.CHECK_CATEGORY.length != 0) {
-							for (let i in res.data.data.CHECK_CATEGORY) {
-								typeList.push({
-									"text": res.data.data.CHECK_CATEGORY[i].name,
-									"value": res.data.data.CHECK_CATEGORY[i].code,
-								});
-							}
-						}
-						uni.setStorage({
-							key: 'typeList',
-							data: typeList,
-							success: function() {}
-						});
-					} else {
-						this.$toast.showToast("获取质检类别失败，请刷新页面");
-
-					}
-				});
-			},
-			getDepartment() {
-				//获取发货部门和库位信息
-				var opts = {
-					url: ``,
-					method: 'post'
-				};
-				var param = {
-					"interface_num": "MOBSCMD0012",
-					"serial_no": "123456789",
-					"access_token": "abc",
-					"bus_data": {},
-				};
-				this.$http.httpRequest(opts, param).then((res) => {
-					if (res.statusCode === 200) {
-						var departmentList = [];
-						var dataList = [];
-						if (res.data.length != 0) {
-							for (var i = 0; i < res.data.length; i++) {
-								if (departmentList.indexOf(res.data[i].shopCode) == -1) {
-									departmentList.push(res.data[i].shopCode);
-								}
-							};
-							departmentList.forEach(element => {
-								var deparment = {
-									"text": element,
-									"value": element,
-									"warehouseList": [],
-								};
-								dataList.push(deparment);
-								res.data.forEach(element => {
-									if (element.shopCode == deparment.value) {
-										var warehouse = {
-											"text": element.stockPalceName,
-											"value": element.stockPalce,
-										};
-										deparment.warehouseList.push(warehouse);
-									}
-								})
-
-							})
-						}
-						uni.setStorage({
-							key: 'departmentList',
-							data: dataList,
-							success: function() {}
-						});
-					} else {
-						//this.$toast.showToast("获取质检类别失败，请刷新页面");
-					}
-				});
-			}
 		}
 	}
 </script>

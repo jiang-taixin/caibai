@@ -4,8 +4,8 @@
 		<u-grid :border="false" col="3">
 			<u-grid-item v-for="(listItem,listIndex) in list" :key="listIndex"
 				v-if="listItem.platform.indexOf(platfrom) !== -1" @click="click(listItem)">
+				<view style="height: 15px;"></view>
 				<u-icon :customStyle="{paddingTop:20+'rpx'}" :name="listItem.name" :size="60" color="#2a439c"></u-icon>
-				<br>
 				<text class="grid-text">{{listItem.title}}</text>
 			</u-grid-item>
 		</u-grid>

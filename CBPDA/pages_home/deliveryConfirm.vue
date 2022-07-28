@@ -153,7 +153,7 @@
 				</uni-tr>
 				<!-- 表格数据行 -->
 				<uni-tr v-for="(item, index) in tableDataSec">
-					<uni-td>{{item.packingCode}}</uni-td>
+					<uni-td>{{item.poCode}}</uni-td>
 					<uni-td>{{item.orderType}}</uni-td>
 					<uni-td>{{item.receiveCounterCode}}</uni-td>
 					<uni-td>{{item.receiveShopCode}}</uni-td>
@@ -165,7 +165,7 @@
 			</uni-table>
 
 		</view>
-		<div style="position: fixed;bottom: 0px;width: 100%;background-color:aquamarine;">
+		<div style="position: fixed;bottom: 0px;width: 100%;background-color:floralwhite;">
 			<u-row>
 				<u-col span="6">
 					<div class="col-layout">
@@ -311,10 +311,8 @@
 				if(e !== ""){
 					this.getCounters();
 				}
-				//console.log("==================change store:",e);
 			},
 			getCounters(){
-				//console.log("==================get counters");
 			},
 			startScan() {
 				let vm = this;
@@ -392,10 +390,12 @@
 							}
 							
 							var dataBody = {};
-							dataBody.packingCode = res.data.header.poCode;
+							dataBody.poCode = res.data.header.poCode;
 							dataBody.orderType = res.data.header.orderType;
+							dataBody.pickingSelf = res.data.header.pickingSelf;
 							dataBody.receiveCounterCode = res.data.header.receiveCounterCode;
 							dataBody.receiveShopCode = res.data.header.receiveShopCode;
+							
 							dataBody.category = res.data.header.category;
 							dataBody.totalNumber = res.data.header.totalNumber;
 							dataBody.createdDate = this.$dateTrans.formatMsToDate(res.data.header.createdDate);
@@ -459,13 +459,10 @@
 						} else {
 							this.$toast.showToast("获取数据失败，请重试");
 						}
-					});
-					
+					});  	
 				}
-				
 				console.log("===========click confirm ,list 1 :",this.selectedList);
 				console.log("===========click confirm ,list 2 :",this.selectedListSec);
-				
 			},
 			cancel(){
 				uni.navigateBack({

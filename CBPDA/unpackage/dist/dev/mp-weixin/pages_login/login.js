@@ -212,6 +212,7 @@ var _default =
         "password": this.password };
 
       this.$http.keyCloakRequest(opts, param).then(function (res) {
+        console.log("==============token res:", res);
         uni.hideLoading();
         if (res.statusCode == 200) {
           _this.getUserName(res.data.access_token);
@@ -236,6 +237,7 @@ var _default =
 
 
       this.$http.keyCloakRequest(opts, null).then(function (res) {
+        console.log("==============username:", res);
         uni.hideLoading();
         if (res.statusCode == 200) {
           _this2.getUserMessage(res.data.preferred_username);
@@ -267,6 +269,7 @@ var _default =
 
       this.$http.httpRequest(opts, param).then(function (res) {
         uni.hideLoading();
+        console.log("==============login res:", res);
         if (res.statusCode === 200) {
           if (res.data.s_flag == "F") {
             _this3.$toast.showToast("".concat(res.data.m_ess));

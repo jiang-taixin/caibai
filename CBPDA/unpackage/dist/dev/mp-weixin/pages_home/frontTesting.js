@@ -472,6 +472,7 @@ var _default =
 
       this.$http.httpRequest(opts, param).then(function (res) {
         uni.hideLoading();
+        console.log("===============res:", res);
         if (res.data.code === "200") {
           _this.disabled = false;
           _this.detailMessage = res.data.data;

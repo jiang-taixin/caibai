@@ -157,7 +157,7 @@
 			</uni-tr>
 		</uni-table>
 
-		<div style="position: fixed;bottom: 0px;width: 100%;background-color:aquamarine;">
+		<div style="position: fixed;bottom: 0px;width: 100%;background-color:floralwhite;">
 			<u-row>
 				<u-col span="6">
 					<div class="col-layout">
