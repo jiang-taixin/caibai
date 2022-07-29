@@ -5,7 +5,8 @@
 				<u-grid-item v-for="(listItem,listIndex) in list" :key="listIndex"
 					v-if="listItem.platform.indexOf(platfrom) !== -1" @click="click(listItem)">
 					<view style="height: 15px;"></view>
-					<u-icon :customStyle="{paddingTop:20+'rpx'}" :name="listItem.name" :size="60" color="#2a439c"></u-icon>
+					<u-icon :customStyle="{paddingTop:20+'rpx'}" :name="listItem.name" :size="60" color="#2a439c">
+					</u-icon>
 					<text class="grid-text">{{listItem.title}}</text>
 				</u-grid-item>
 			</u-grid>
@@ -108,11 +109,17 @@
 						title: '配送出库确认',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
+					{
+						tag: '15',
+						name: '/static/i16.png',
+						title: '取检确认',
+						platform: ["APP", "WEIXIN", "H5"],
+					},
 				]
 			}
 		},
 		mounted() {
-			
+
 		},
 		created() {
 			//判断平台类型    设置模块是否显示
@@ -209,6 +216,11 @@
 					case 14:
 						uni.navigateTo({
 							url: '/pages_home/deliveryConfirm'
+						});
+						break;
+					case 15:
+						uni.navigateTo({
+							url: '/pages_home/inspectionConfirm'
 						});
 						break;
 

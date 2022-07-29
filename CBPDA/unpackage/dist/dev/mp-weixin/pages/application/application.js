@@ -96,13 +96,13 @@ var components
 try {
   components = {
     uGrid: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid/u-grid */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid/u-grid")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid/u-grid.vue */ 303))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid/u-grid */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid/u-grid")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid/u-grid.vue */ 309))
     },
     uGridItem: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid-item/u-grid-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid-item/u-grid-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid-item/u-grid-item.vue */ 311))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid-item/u-grid-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid-item/u-grid-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid-item/u-grid-item.vue */ 317))
     },
     uIcon: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 319))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 325))
     }
   }
 } catch (e) {
@@ -293,27 +293,19 @@ var _default =
         tag: '14',
         name: '/static/i15.png',
         title: '配送出库确认',
+        platform: ["APP", "WEIXIN", "H5"] },
+
+      {
+        tag: '15',
+        name: '/static/i16.png',
+        title: '取检确认',
         platform: ["APP", "WEIXIN", "H5"] }] };
 
 
 
   },
-  onLoad: function onLoad() {
-
-  },
-  beforeCreate: function beforeCreate() {
-    //如果没登录    去登录页面
-    // uni.redirectTo({
-    // 	url:"/pages_login/login"
-    // })
-  },
   mounted: function mounted() {
-    //页面加载完成获取枚举值并缓存在本地
-    this.getAngecy(); //送检机构
-    this.getInspectionCategory(); //送检单类型
-    this.getReason(); //不合格原因
-    this.getTestingCategory(); //质检类别
-    this.getDepartment(); //获取发货部门和库位
+
   },
   created: function created() {
     //判断平台类型    设置模块是否显示
@@ -412,207 +404,17 @@ var _default =
             url: '/pages_home/deliveryConfirm' });
 
           break;
+        case 15:
+          uni.navigateTo({
+            url: '/pages_home/inspectionConfirm' });
+
+          break;
 
         default:
           uni.navigateTo({
             url: '/pages_home/qualityTesting' });}
 
 
-    },
-    getAngecy: function getAngecy() {var _this = this;
-      //获取检测机构
-      var opts = {
-        url: "",
-        method: 'post' };
-
-      var param = {
-        "interface_num": "MOBSCMD0005",
-        "serial_no": "123456789",
-        "access_token": "abc",
-        "bus_data": {
-          "enumCode": "PO_CHECK_TYPE" } };
-
-
-      this.$http.httpRequest(opts, param).then(function (res) {
-        if (res.data.code === "200") {
-          var organList = [];
-          if (res.data.data.PO_CHECK_TYPE.length != 0) {
-            for (var i in res.data.data.PO_CHECK_TYPE) {
-              organList.push({
-                "text": res.data.data.PO_CHECK_TYPE[i].name,
-                "value": res.data.data.PO_CHECK_TYPE[i].code });
-
-            }
-          }
-          uni.setStorage({
-            key: 'organList',
-            data: organList,
-            success: function success() {} });
-
-        } else {
-          _this.$toast.showToast("获取检测机构失败，请刷新页面");
-
-        }
-      });
-    },
-    getInspectionCategory: function getInspectionCategory() {var _this2 = this;
-      //获取送检单类别
-      var opts = {
-        url: "",
-        method: 'post' };
-
-      var param = {
-        "interface_num": "MOBSCMD0005",
-        "serial_no": "123456789",
-        "access_token": "abc",
-        "bus_data": {
-          "enumCode": "INSPECT_TYPE" } };
-
-
-      this.$http.httpRequest(opts, param).then(function (res) {
-        if (res.data.code === "200") {
-          var categoryList = [];
-          if (res.data.data.INSPECT_TYPE.length != 0) {
-            for (var i in res.data.data.INSPECT_TYPE) {
-              categoryList.push({
-                "text": res.data.data.INSPECT_TYPE[i].name,
-                "value": res.data.data.INSPECT_TYPE[i].code });
-
-            }
-          }
-          uni.setStorage({
-            key: 'categoryList',
-            data: categoryList,
-            success: function success() {} });
-
-        } else {
-          _this2.$toast.showToast("获取送检单类别失败，请刷新页面");
-
-        }
-      });
-    },
-    getReason: function getReason() {var _this3 = this;
-      //获取不合格原因
-      var opts = {
-        url: "",
-        method: 'post' };
-
-      var param = {
-        "interface_num": "MOBSCMD0005",
-        "serial_no": "123456789",
-        "access_token": "abc",
-        "bus_data": {
-          "enumCode": "TEMPREC_UNQ_REASON" } };
-
-
-      this.$http.httpRequest(opts, param).then(function (res) {
-        if (res.data.code === "200") {
-          var reasonList = [];
-          if (res.data.data.TEMPREC_UNQ_REASON.length != 0) {
-            for (var i in res.data.data.TEMPREC_UNQ_REASON) {
-              reasonList.push({
-                "text": res.data.data.TEMPREC_UNQ_REASON[i].name,
-                "value": res.data.data.TEMPREC_UNQ_REASON[i].code });
-
-            }
-          }
-          uni.setStorage({
-            key: 'reasonList',
-            data: reasonList,
-            success: function success() {} });
-
-        } else {
-          _this3.$toast.showToast("获取不合格原因失败，请刷新页面");
-
-        }
-      });
-    },
-    getTestingCategory: function getTestingCategory() {var _this4 = this;
-      //获取质检类别
-      var opts = {
-        url: "",
-        method: 'post' };
-
-      var param = {
-        "interface_num": "MOBSCMD0005",
-        "serial_no": "123456789",
-        "access_token": "abc",
-        "bus_data": {
-          "enumCode": "CHECK_CATEGORY" } };
-
-
-      this.$http.httpRequest(opts, param).then(function (res) {
-        if (res.data.code === "200") {
-          var typeList = [];
-          if (res.data.data.CHECK_CATEGORY.length != 0) {
-            for (var i in res.data.data.CHECK_CATEGORY) {
-              typeList.push({
-                "text": res.data.data.CHECK_CATEGORY[i].name,
-                "value": res.data.data.CHECK_CATEGORY[i].code });
-
-            }
-          }
-          uni.setStorage({
-            key: 'typeList',
-            data: typeList,
-            success: function success() {} });
-
-        } else {
-          _this4.$toast.showToast("获取质检类别失败，请刷新页面");
-
-        }
-      });
-    },
-    getDepartment: function getDepartment() {
-      //获取发货部门和库位信息
-      var opts = {
-        url: "",
-        method: 'post' };
-
-      var param = {
-        "interface_num": "MOBSCMD0012",
-        "serial_no": "123456789",
-        "access_token": "abc",
-        "bus_data": {} };
-
-      this.$http.httpRequest(opts, param).then(function (res) {
-        if (res.statusCode === 200) {
-          var departmentList = [];
-          var dataList = [];
-          if (res.data.length != 0) {
-            for (var i = 0; i < res.data.length; i++) {
-              if (departmentList.indexOf(res.data[i].shopCode) == -1) {
-                departmentList.push(res.data[i].shopCode);
-              }
-            };
-            departmentList.forEach(function (element) {
-              var deparment = {
-                "text": element,
-                "value": element,
-                "warehouseList": [] };
-
-              dataList.push(deparment);
-              res.data.forEach(function (element) {
-                if (element.shopCode == deparment.value) {
-                  var warehouse = {
-                    "text": element.stockPalceName,
-                    "value": element.stockPalce };
-
-                  deparment.warehouseList.push(warehouse);
-                }
-              });
-
-            });
-          }
-          uni.setStorage({
-            key: 'departmentList',
-            data: dataList,
-            success: function success() {} });
-
-        } else {
-          //this.$toast.showToast("获取质检类别失败，请刷新页面");
-        }
-      });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

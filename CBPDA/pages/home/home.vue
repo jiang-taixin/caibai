@@ -18,75 +18,81 @@
 			return {
 				platfrom: "",
 				list: [{
-						tag:'0',
+						tag: '0',
 						name: '/static/i1.png',
 						title: '初检信息录入',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'1',
+						tag: '1',
 						name: '/static/i2.png',
 						title: '入库前质检',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'2',
+						tag: '2',
 						name: '/static/i3.png',
 						title: '有损检验',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'3',
+						tag: '3',
 						name: '/static/i4.png',
 						title: '回货暂收',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'4',
+						tag: '4',
 						name: '/static/i5.png',
 						title: '创建送检单',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'6',
+						tag: '6',
 						name: '/static/i7.png',
 						title: '整单配货',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'7',
+						tag: '7',
 						name: '/static/i8.png',
 						title: '交接',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'8',
+						tag: '8',
 						name: '/static/i9.png',
 						title: '上架',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'9',
+						tag: '9',
 						name: '/static/i10.png',
 						title: '库存上架',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'11',
+						tag: '11',
 						name: '/static/i12.png',
 						title: '仓位调整',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'12',
+						tag: '12',
 						name: '/static/i13.png',
 						title: '库位调整',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 					{
-						tag:'14',
+						tag: '14',
 						name: '/static/i15.png',
 						title: '配送出库确认',
+						platform: ["APP", "WEIXIN", "H5"],
+					},
+					{
+						tag: '15',
+						name: '/static/i16.png',
+						title: '取检确认',
 						platform: ["APP", "WEIXIN", "H5"],
 					},
 				],
@@ -95,13 +101,13 @@
 					'/static/2.png',
 					'/static/3.png',
 				],
-				userInfo:{},
+				userInfo: {},
 			}
 		},
 		onShow() {
 			// 如果没登录    去登录页面
 			this.userInfo = this.$userInfo.getUserInfo();
-			if (this.userInfo === undefined ||this.userInfo === '') {
+			if (this.userInfo === undefined || this.userInfo === '') {
 				uni.redirectTo({
 					url: "/pages_login/login",
 					animationType: 'pop-in',
@@ -214,6 +220,11 @@
 					case 14:
 						uni.navigateTo({
 							url: '/pages_home/deliveryConfirm'
+						});
+						break;
+					case 15:
+						uni.navigateTo({
+							url: '/pages_home/inspectionConfirm'
 						});
 						break;
 

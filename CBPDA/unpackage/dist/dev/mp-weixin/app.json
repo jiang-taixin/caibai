@@ -34,7 +34,8 @@
         "positionAdjustment",
         "locationAdjustment",
         "packing",
-        "deliveryConfirm"
+        "deliveryConfirm",
+        "inspectionConfirm"
       ]
     }
   ],
